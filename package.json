@@ -4,7 +4,11 @@
   "description": "Team blue",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest test/test.js",
+    "test-overview": "jest test/overview-test.js",
+    "test-questions": "jest test/questions-test.js",
+    "test-reviews": "jest test/reviews-test.js",
+    "test-related": "jest test/related-items-test.js",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -w"
   },
@@ -25,13 +29,17 @@
     "mongoose": "^6.2.0",
     "nodemon": "^2.0.15",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.3",
+    "jest": "^27.4.7",
     "webpack": "^5.68.0",
     "webpack-cli": "^4.9.2"
   }
