@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: `${path.join( __dirname, 'client/src/index.jsx' )}`,
+  entry: `${path.join( __dirname, 'client/src/app.jsx' )}`,
   output: {
     path: `${path.join( __dirname, 'client/dist' )}`,
     filename: 'bundle.js'
@@ -17,6 +17,8 @@ module.exports = {
       },
       {
         test: /\.css$/i,
+        include: `${path.join( __dirname, 'client/dist/style.css' )}`,
+        exclude: /node_modules/,
         use: ["style-loader", "css-loader"],
       }
     ]
