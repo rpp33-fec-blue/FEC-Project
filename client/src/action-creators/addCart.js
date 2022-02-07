@@ -17,4 +17,4 @@ var addCart = ( skuId, count ) => {
   };
 };
 
-export default addQuestion;
+export default addCart;
