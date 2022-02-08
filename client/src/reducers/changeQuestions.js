@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../initialState';
 
 const changeQuestions = (state = initialState.questions, action) => {
   if (action.type === 'CHANGE_QUESTIONS') {

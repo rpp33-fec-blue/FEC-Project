@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../initialState';
 
 const changeProduct = (state = initialState.productId, action) => {
   if (action.type === 'CHANGE_PRODUCT') {

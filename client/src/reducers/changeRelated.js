@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../initialState';
 
 const changeRelated = (state = initialState.relatedProducts, action) => {
   if (action.type === 'CHANGE_RELATED') {
