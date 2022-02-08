@@ -11,8 +11,10 @@ var Qa = () => {
       <div>Questions and Answers</div>
       <SearchBar />
       <QuestionList />
-      <MoreAnsweredQuestions />
-      <button type="button">Add a question</button>
+      <div>
+        <button>MORE ANSWERED QUESTIONS</button>
+        <button type="button">Add a question</button>
+      </div>
     </div>
   );
 }

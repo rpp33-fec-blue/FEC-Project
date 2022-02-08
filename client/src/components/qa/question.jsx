@@ -9,7 +9,12 @@ class Question extends React.Component {
 
     return (
       <div>
-        <div> Q: ... </div>
+        <div>
+          <span> Q: ... </span>
+          <span> Helpful? </span>
+          <span> Yes(#) | </span>
+          <span> Add Answer</span>
+        </div>
         <div>{answers}</div>
       </div>
     );
