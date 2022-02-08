@@ -5,7 +5,7 @@ var addOutfit = ( productId ) => {
 
   return ( dispatch ) => {
 
-    var outfits = store.getState().outfits;
+    var outfits = store.getState().outfit;
     var index = outfits.indexOf( productId );
     if ( index === -1 ) {
       outfits.push( productId );

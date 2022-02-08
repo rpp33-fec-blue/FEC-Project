@@ -9,7 +9,7 @@ var addCart = ( skuId, count ) => {
       .then( ( ) => {
         var items = store.getState().cart;
         items.push( { sku_id: skuId, count: count } );
-        dispatch( actionQuestions( items ) );
+        dispatch( actionCart( items ) );
       })
       .catch(( error ) => {
         console.log( 'Error adding to cart' );

@@ -17,6 +17,7 @@ var addAnswer = ( questionId, newAnswer ) => { // it would be faster if we pass 
           return result;
         });
 
+        questions.results = results;
         dispatch( actionQuestions( questions ) );
       })
       .catch(( error ) => {
