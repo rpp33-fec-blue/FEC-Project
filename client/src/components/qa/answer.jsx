@@ -7,22 +7,16 @@ class Answer extends React.Component {
     }
   }
 
-  loadMoreAnswer() {
-
-  }
 
   render() {
     return (
-      <div>
-        <div> A: ... </div>
+      <div className="answer">
+        <div > A: ... </div>
         <div>
           <span> by User1234, December 21, 2022 |</span>
           <span> Helpful? </span>
           <span> Yes(#) | </span>
           <span> Report </span>
-        </div>
-        <div>
-          <button onClick={this.loadMoreAnswer.bind(this)}>LOAD MORE ANSWERS</button>
         </div>
       </div>
     );

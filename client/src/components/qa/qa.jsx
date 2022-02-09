@@ -7,7 +7,7 @@ var Qa = () => {
   var productId = useSelector((state) => {return state.productId});
 
   return (
-    <div>
+    <div id="container-qa">
       <div>Questions and Answers</div>
       <SearchBar />
       <QuestionList />
