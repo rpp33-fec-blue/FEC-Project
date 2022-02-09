@@ -16,7 +16,7 @@ class QuestionList extends React.Component {
 
     // *must be in order of helpfulness
     return (
-      <div>{questions}</div>
+      <div className="item-qa-questionlist">{questions}</div>
     );
   }
 };

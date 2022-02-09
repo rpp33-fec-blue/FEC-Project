@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../initialState';
 
 const changeStyles = ( state = initialState.styles, action ) => {
   if ( action.type === 'CHANGE_STYLES' ) {

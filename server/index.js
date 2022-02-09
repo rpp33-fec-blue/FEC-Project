@@ -4,9 +4,9 @@ const express = require('express');
 let app = express();
 let port = 8080;
 
-// const { JSDOM } = require( "jsdom" );
-// const { window } = new JSDOM( "" );
-const $ = require( "jquery" );
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
 
 
 // middleware
