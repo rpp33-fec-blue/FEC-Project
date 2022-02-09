@@ -5,13 +5,13 @@ var removeOutfit = ( productId ) => { // it would be faster if we pass in the in
 
   return ( dispatch ) => {
 
-    var outfits = store.getState().outfits;
-    var index = outfits.indexOf( productId );
+    var outfit = store.getState().outfit;
+    var index = outfit.indexOf( productId );
     if ( index > -1 ) {
-      outfits.splice( index, 1 );
+      outfit.splice( index, 1 );
     }
 
-    dispatch( actionOutfit( outfits ));
+    dispatch( actionOutfit( outfit ));
   };
 };
 

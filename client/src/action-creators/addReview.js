@@ -10,7 +10,7 @@ var addReview = ( newReview ) => {
       .then( ( ) => {
         var reviews = store.getState().reviews;
         reviews.results.push( newReview );
-        dispatch( actionRelated( reviews ) )
+        dispatch( addReview( reviews ) )
       })
       .catch(( error ) => {
         console.log( 'Error posting review' );

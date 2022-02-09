@@ -15,7 +15,7 @@ var reportAnswer = ( questionId, answerId ) => { // it would be faster if we pas
               return answer.answer_id !== answerId;
             });
 
-            results.answers = updatedAnswers;
+            result.answers = updatedAnswers;
           }
 
           return result;
