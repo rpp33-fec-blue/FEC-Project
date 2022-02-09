@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "jest test/test.js",
-    "test-overview": "jest test/overview-test.js",
-    "test-questions": "jest test/questions-test.js",
-    "test-reviews": "jest test/reviews-test.js",
-    "test-related": "jest test/related-items-test.js",
+    "test-redux": "jest test/redux/test.js",
+    "test-overview": "jest test/overview/test.js",
+    "test-questions": "jest test/questions/test.js",
+    "test-reviews": "jest test/reviews/test.js",
+    "test-related": "jest test/related-items/test.js",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -w"
   },

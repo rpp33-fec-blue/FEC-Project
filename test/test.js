@@ -35,4 +35,5 @@ describe('server prefilter function', () => {
       }
     })
   });
-})
+});
+
