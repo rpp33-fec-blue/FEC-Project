@@ -11,9 +11,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div>Hey From React!</div>
-        <Qa />
+        <Qa className="item-widget-overview"/>
       </div>
     );
   }
