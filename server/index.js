@@ -4,9 +4,9 @@ const express = require('express');
 let app = express();
 let port = 8080;
 
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
+// const { JSDOM } = require( "jsdom" );
+// const { window } = new JSDOM( "" );
+const $ = require( "jquery" );
 
 
 // middleware
@@ -32,7 +32,7 @@ app.all('/*', (req, res) => {
     method: method,
     data: data,
     success: function (results) {
-      res.send(results);
+      res.send({ data: results } );
     }
   });
 })
