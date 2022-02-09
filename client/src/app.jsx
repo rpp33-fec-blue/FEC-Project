@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './configureStore';
-import Qa from './qa/qa.jsx'
+import Qa from './components/qa/qa.jsx'
 
 class App extends React.Component {
   constructor(props) {

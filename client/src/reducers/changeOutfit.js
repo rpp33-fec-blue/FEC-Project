@@ -1,4 +1,4 @@
-import initialState from './initialState';
+import initialState from '../initialState';
 
 const changeOutfit = (state = initialState.outfit, action) => {
   if (action.type === 'CHANGE_OUTFIT') {
