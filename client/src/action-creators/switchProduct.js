@@ -2,11 +2,10 @@ import actionProductId from '../actions/productId.js';
 import actionRelated from '../actions/relatedItems.js';
 import actionReviews from '../actions/reviews.js';
 import actionQuestions from '../actions/questions.js';
-import actionAnswers from '../actions/answers.js';
 import actionMetadata from '../actions/metadata.js';
 import actionStyles from '../actions/styles.js';
 import actionProductInfo from '../actions/productInfo.js';
-
+const axios = require('axios');
 
 var switchProduct = ( productId ) => {
 
@@ -32,75 +31,7 @@ var switchProduct = ( productId ) => {
     .catch( ( error ) => {
       console.log( 'Error getting data!' );
     });
-
-  //   dispatch(actionProductId( productId ));
-
-  //   axios.get( `http://localhost:8080/products/:${productId}/related` )  // related items
-  //   .then( ( response ) => {
-  //     dispatch( actionRelated( response.data ) ); // response.data may need to be changed!!
-
-  //     axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } )  // reviews
-  //     .then( ( response ) => {
-  //       dispatch( actionReviews( response.data ) );
-
-  //       axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } }  )  // questions
-  //       .then( ( response ) => {
-
-  //         // var answers = [];
-  //         // response.data.results.forEach( ( question ) => {
-  //         //   answers.push(axios.get( `http://localhost:8080/qa/questions/:${question.question_id}/answers` + ));  // answers
-  //         // });
-
-  //         // Promise.all( answers )
-  //         //   .then( ( data) => {
-  //         //     dispatch( actionAnswers( data ) );
-  //         //   });
-
-  //         dispatch( actionQuestions( response.data ) );
-
-  //         axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } }  )  // metadata
-  //         .then( ( response ) => {
-
-  //           dispatch( actionQuestions( response.data ) );
-
-  //           axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } }  )  // styles
-  //           .then( ( response ) => {
-
-  //             dispatch( actionQuestions( response.data ) );
-
-  //             axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } }  )  // product info
-  //             .then( ( response ) => {
-
-  //               dispatch( actionQuestions( response.data ) );
-
-
-  //             })
-  //             .catch(( error ) => {
-  //               console.log( 'Error getting product info' );
-  //             });
-  //           })
-  //           .catch(( error ) => {
-  //             console.log( 'Error getting styles' );
-  //           });
-  //         })
-  //         .catch(( error ) => {
-  //           console.log( 'Error getting metadata' );
-  //         });
-  //       })
-  //       .catch(( error ) => {
-  //         console.log( 'Error getting questions & answers data' );
-  //       });
-
-  //     })
-  //     .catch(( error ) => {
-  //       console.log( 'Error getting reviews data' );
-  //     });
-
-  //   })
-  //   .catch(( error ) => {
-  //     console.log( 'Error getting related item data' );
-  //   });
-  // };
+  }
 };
 
 export default switchProduct;

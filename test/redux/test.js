@@ -1,3 +1,5 @@
+import "babel-polyfill";
+
 // Actions
 import changeCart from '../../client/src/actions/cart.js';
 import changeOutfit from '../../client/src/actions/outfit.js';
@@ -19,6 +21,20 @@ import reducerQuestions from '../../client/src/reducers/changeQuestions.js';
 import reducerMetadata from '../../client/src/reducers/changeMetadata.js';
 import reducerStyles from '../../client/src/reducers/changeStyles.js';
 import reducerProductInfo from '../../client/src/reducers/changeProductInfo.js';
+
+// Action Creator
+import addAnswer from '../../client/src/action-creators/addAnswer.js';
+import addCart from '../../client/src/action-creators/addCart.js';
+import addOutfit from '../../client/src/action-creators/addOutfit.js';
+import addQuestion from '../../client/src/action-creators/addQuestion.js';
+import addReview from '../../client/src/action-creators/addReview.js';
+import markAnswer from '../../client/src/action-creators/markAnswer.js';
+import markQuestion from '../../client/src/action-creators/markQuestion.js';
+import markReview from '../../client/src/action-creators/markReview.js';
+import removeOutfit from '../../client/src/action-creators/removeOutfit.js';
+import reportAnswer from '../../client/src/action-creators/reportAnswer.js';
+import reportReview from '../../client/src/action-creators/reportReview.js';
+import switchProduct from '../../client/src/action-creators/switchProduct.js';
 
 describe( 'Actions', () => {
   describe( 'Product Id', () => {
@@ -154,6 +170,7 @@ describe( 'Reducers', () => {
     type: 'FAKE',
     value: value
   });
+
   describe( 'Cart', function() {
     it( 'should change state when changeCart action is passed in', function() {
       expect( reducerCart( 'old state', changeCart( 'new state' ) ) ).toEqual( 'new state' );
@@ -224,6 +241,73 @@ describe( 'Reducers', () => {
     });
     it( 'should retain original state when a different action is passed in', function() {
       expect( reducerProductInfo( 'old state', fakeAction( 'new state' ) ) ).toEqual( 'old state' );
+    });
+  });
+});
+
+describe( 'Action-Creators', () => {
+  var state = {
+    productId: 11,
+    productInfo: { "id": 11, "name": "Air Minis 250" },
+    styles: { "product_id": 11 },
+    metadata: { "product_id": 11, "ratings": { 2: 1, 3: 1, 4: 2}},
+    relatedProducts: [ 2, 3, 4 ],
+    reviews: { "product": 11, "results": [ { "review_id": 5, "rating": 3, "helpfulness": 5 } ] },
+    questions: { "product_id": 11, "results": [ { "question_id": 37, "answers": { 68: { "id": 68, "helpfulness": 4 } } } ] }, // answers is not an array...
+    cart: [ { "sku_id": 1, "count": 2 } ],
+    outfit: [ 5 ]
+  }
+
+  var fakeDispatch = ( action ) => {
+    if (action.type === 'CHANGE_CART') {
+      state.cart = action.cart;
+    }
+    if ( action.type === 'CHANGE_METADATA' ) {
+      state.metadata = action.metadata;
+    }
+    if (action.type === 'CHANGE_OUTFIT') {
+      state.outfit = action.outfit;
+    }
+    if (action.type === 'CHANGE_PRODUCT') {
+      state.productId = action.productId;
+    }
+    if (action.type === 'CHANGE_PRODUCT_INFO') {
+      state.productInfo = action.productInfo;
+    }
+    if (action.type === 'CHANGE_QUESTIONS') {
+      state.questions = action.questions;
+    }
+    if (action.type === 'CHANGE_RELATED') {
+      state.relatedProducts = action.relatedProducts;
+    }
+    if (action.type === 'CHANGE_REVIEWS') {
+      state.reviews = action.reviews;
+    }
+    if ( action.type === 'CHANGE_STYLES' ) {
+      state.styles = action.styles;
+    }
+  }
+  describe( 'Switch Product', () => {
+    it( 'should return a function', () => {
+      expect( typeof switchProduct() ).toBe( 'function' );
+    });
+    it( 'should modify the state', async () => {
+      var startingState = state.questions;
+      await switchProduct( 1 )( fakeDispatch );
+      console.log( state );
+      expect( startingState.questions ).not.toEqual( state.questions );
+
+    });
+  });
+  describe( 'Add Answer', () => {
+    it( 'should return a function', () => {
+      expect( typeof addAnswer() ).toBe( 'function' );
+    });
+    it( 'should modify the the questions (answers do not have their own state) state', async () => {
+      var startingState = state.questions;
+      var newAnswer = { "body": 'test answer', "name": 'joe', "email": "test@gmail.com", "photos": [] };
+      await addAnswer( 37, newAnswer )( fakeDispatch );
+      expect( startingState ).not.toEqual( state.questions );
     });
   });
 });
