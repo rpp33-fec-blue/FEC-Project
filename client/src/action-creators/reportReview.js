@@ -8,13 +8,11 @@ var reportReview = ( reviewId ) => { // it would be faster if we pass in the ind
 
     axios.put( `http://localhost:8080/reviews/${reviewId}/report` ) // unsure of what to pass as second arguement. The API page does not make it clear when it needs.
       .then( ( ) => {
-        var reviews = store.getState().reviews;
-        var results = reviews.results.filter( ( result ) => {
-          return  result.review_id !== reviewId
+        var productId = store.getState().productId;
+        axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } )
+        .then( ( reviews ) => {
+          dispatch( actionReviews( reviews ) );
         });
-
-        reviews.results = results;
-        dispatch( actionReviews( reviews ) )
       })
       .catch(( error ) => {
         console.log( 'Error updating review' );

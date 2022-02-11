@@ -1,26 +1,21 @@
 import actionCart from '../actions/cart.js';
 import store from '../configureStore.js';
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
+const axios = require('axios');
 
 var addCart = ( items ) => {
 
   return ( dispatch ) => {
 
-    $.ajax({
-      url: '/cart',
-      method: 'POST',
-      data: items,
-      success: ( result ) => {
-        var items = store.getState().cart;
-        items.push( { sku_id: skuId, count: count } );
-        dispatch( actionCart( items ) );
-      },
-      error: ( error ) => {
-        console.log( 'Error adding to cart' );
-      }
+    axios.post( '/cart', items )
+    .then( ( result ) => {
+      axios.get( '/cart' )
+      .then( ( cart ) => {
+        dispatch( actionCart( cart ) );
+      })
     })
+    .catch( ( error ) => {
+      console.log( 'Error adding to cart' );
+    });
 
   };
 };

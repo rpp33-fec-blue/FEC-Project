@@ -8,21 +8,11 @@ var reportAnswer = ( questionId, answerId ) => { // it would be faster if we pas
 
     axios.put( `http://localhost:8080/qa/answers/${answerId}/report` ) // unsure of what to pass as second arguement. The API page does not make it clear when it needs.
       .then( ( ) => {
-        var questions = store.getState().questions;
-        var results = questions.results.map( ( result ) => {
-          if ( result.question_id === questionId ) {
-            var updatedAnswers = result.answers.filter( ( answer ) => {
-              return answer.answer_id !== answerId;
-            });
-
-            result.answers = updatedAnswers;
-          }
-
-          return result;
+        var productId = store.getState().productId;
+        axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } } )
+        .then( ( questions ) => {
+          dispatch( actionQuestions( questions ) );
         });
-
-        questions.results = results;
-        dispatch( actionQuestions( questions ) );
       })
       .catch(( error ) => {
         console.log( 'Error updating answer' );

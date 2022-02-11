@@ -307,13 +307,14 @@ describe( 'Action-Creators', () => {
     it( 'should return a function', () => {
       expect( typeof addQuestion() ).toBe( 'function' );
     });
-    it( 'should modify the questions in state', ( ) => {
+    it( 'should modify the questions in state', ( done ) => {
       var startingState = JSON.parse(JSON.stringify(state));
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_QUESTIONS') {
           state.questions = action.questions;
           expect( startingState.questions ).not.toEqual( state.questions );
+          done();
         }
       }
 
@@ -325,13 +326,14 @@ describe( 'Action-Creators', () => {
     it( 'should return a function', () => {
       expect( typeof addAnswer() ).toBe( 'function' );
     });
-    it( 'should modify the the questions (answers do not have their own state) state', () => {
+    it( 'should modify the the questions (answers do not have their own state) state', ( done ) => {
       var startingState = state.questions;
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_QUESTIONS') {
           state.questions = action.questions;
           expect( startingState.questions ).not.toEqual( state.questions );
+          done();
         }
       }
 
@@ -343,13 +345,14 @@ describe( 'Action-Creators', () => {
     it( 'should return a function', () => {
       expect( typeof addReview() ).toBe( 'function' );
     });
-    it( 'should modify the the reviews state', () => {
+    it( 'should modify the the reviews state', ( done ) => {
       var startingState = state.reviews;
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_REVIEWS') {
           state.reviews = action.reviews;
           expect( startingState.reviews ).not.toEqual( state.reviews );
+          done();
         }
       }
 
@@ -362,13 +365,14 @@ describe( 'Action-Creators', () => {
     it( 'should return a function', () => {
       expect( typeof addCart() ).toBe( 'function' );
     });
-    it( 'should modify the the cart state', () => {
+    it( 'should modify the the cart state', ( done ) => {
       var startingState = state.cart;
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_CART') {
           state.cart = action.cart;
           expect( startingState.cart ).not.toEqual( state.cart );
+          done();
         }
       }
 

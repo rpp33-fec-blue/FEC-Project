@@ -1,26 +1,22 @@
 import actionReviews from '../actions/reviews.js';
 import store from '../configureStore.js';
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
+const axios = require('axios');
 
 var addReview = ( newReview ) => {
 
   return ( dispatch ) => {
 
-    $.ajax({
-      url: '/reviews',
-      method: 'POST',
-      data: newReview,
-      success: ( results ) => {
-        var reviews = store.getState().reviews;
-        reviews.results.push( newReview );
+    axios.post('/reviews', newReview )
+    .then( ( result ) => {
+      var productId = store.getState().productId;
+      axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } )
+      .then( ( reviews ) => {
         dispatch( actionReviews( reviews ) );
-      },
-      error: ( error ) => {
-        console.log( 'Error posting review' );
-      }
+      });
     })
+    .catch( ( error ) => {
+      console.log( 'Error posting review' );
+    });
 
   };
 };
