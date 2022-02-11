@@ -1,20 +1,30 @@
 import actionQuestions from '../actions/questions.js';
 import store from '../configureStore.js';
 const axios = require('axios');
+const { JSDOM } = require( "jsdom" );
+const { window } = new JSDOM( "" );
+const $ = require( "jquery" )( window );
 
 var addQuestion = ( newQuestion ) => {
 
   return ( dispatch ) => {
 
-    axios.post( `http://localhost:8080/qa/questions`, newQuestion )
-      .then( ( ) => {
+    $.ajax({
+      url: '/qa/questions',
+      method: 'POST',
+      data: newQuestion,
+      success: ( results ) => {
+        console.log( 'results', results );
+        console.log('store:', store);
         var questions = store.getState().questions;
         questions.results.push( newQuestion );
         dispatch( actionQuestions( questions ) );
-      })
-      .catch(( error ) => {
-        console.log( 'Error posting questions' );
-      });
+      },
+      error: ( error ) => {
+        console.log('error:', error);
+      }
+    });
+
   };
 };
 

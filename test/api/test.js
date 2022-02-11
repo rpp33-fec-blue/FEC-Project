@@ -53,15 +53,5 @@ describe( 'API POST', () => {
         console.log(results);
       }
     });
-
-    // return axios({
-    //   method: 'post',
-    //   url: 'http://localhost:8080/qa/questions',
-    //   data: newQuestion
-    // })
-    // .then( ( result ) => {
-    //   console.log(result);
-    //   expect(results).not.toEqual(undefined);
-    // });
   });
 })

@@ -303,18 +303,17 @@ describe( 'Action-Creators', () => {
     it( 'should return a function', () => {
       expect( typeof addQuestion() ).toBe( 'function' );
     });
-    it( 'should modify the questions in state', ( done ) => {
+    it( 'should modify the questions in state', ( ) => {
       var startingState = JSON.parse(JSON.stringify(state));
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_QUESTIONS') {
           state.questions = action.questions;
           expect( startingState.questions ).not.toEqual( state.questions );
-          done();
         }
       }
 
-      var newQuestion = { "body": 'test question', "name": 'joe', "email": "test@gmail.com", "product_id": 1 };
+      var newQuestion = { 'body': 'this is a test to see if the message posts', 'name': 'joe', 'email': 'test@gmail.com', 'product_id': 64620 };
       addQuestion( newQuestion )( fakeDispatch );
     });
   });
@@ -329,7 +328,6 @@ describe( 'Action-Creators', () => {
         if (action.type === 'CHANGE_QUESTIONS') {
           state.questions = action.questions;
           expect( startingState.questions ).not.toEqual( state.questions );
-          done();
         }
       }
 
