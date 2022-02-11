@@ -1,8 +1,8 @@
 import actionQuestions from '../actions/questions.js';
 import store from '../configureStore.js';
+const axios = require('axios');
 
 var addQuestion = ( newQuestion ) => {
-  var productId = store.getState().productId;
 
   return ( dispatch ) => {
 

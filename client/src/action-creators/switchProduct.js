@@ -11,12 +11,12 @@ var switchProduct = ( productId ) => {
 
   return ( dispatch ) => {
 
-    var relatedItems = axios.get( `http://localhost:8080/products/:${productId}/related`, { params: { product_id: productId } } );
-    var reviews = axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } );
-    var questions = axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } } );
-    var metadata = axios.get( 'http://localhost:8080/reviews/meta', { params: { product_id: productId } } );
-    var styles = axios.get( `http://localhost:8080/products/:${productId}/styles`, { params: { product_id: productId } } );
-    var productInfo = axios.get( `http://localhost:8080/products/:${productId}`, { params: { product_id: productId } } );
+    var relatedItems = axios.get( `http://localhost:8080/products/:${productId}/related`, { data: { product_id: productId } } );
+    var reviews = axios.get( 'http://localhost:8080/reviews', { data: { product_id: productId, count: 1000 } } );
+    var questions = axios.get( 'http://localhost:8080/qa/questions', { data: { product_id: productId, count: 1000 } } );
+    var metadata = axios.get( 'http://localhost:8080/reviews/meta', { data: { product_id: productId } } );
+    var styles = axios.get( `http://localhost:8080/products/:${productId}/styles`, { data: { product_id: productId } } );
+    var productInfo = axios.get( `http://localhost:8080/products/:${productId}`, { data: { product_id: productId } } );
 
     Promise.all( [ relatedItems, reviews, questions, metadata, styles, productInfo ])
     .then( ( results ) => {

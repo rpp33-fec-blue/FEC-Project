@@ -257,57 +257,85 @@ describe( 'Action-Creators', () => {
     cart: [ { "sku_id": 1, "count": 2 } ],
     outfit: [ 5 ]
   }
-
-  var fakeDispatch = ( action ) => {
-    if (action.type === 'CHANGE_CART') {
-      state.cart = action.cart;
-    }
-    if ( action.type === 'CHANGE_METADATA' ) {
-      state.metadata = action.metadata;
-    }
-    if (action.type === 'CHANGE_OUTFIT') {
-      state.outfit = action.outfit;
-    }
-    if (action.type === 'CHANGE_PRODUCT') {
-      state.productId = action.productId;
-    }
-    if (action.type === 'CHANGE_PRODUCT_INFO') {
-      state.productInfo = action.productInfo;
-    }
-    if (action.type === 'CHANGE_QUESTIONS') {
-      state.questions = action.questions;
-    }
-    if (action.type === 'CHANGE_RELATED') {
-      state.relatedProducts = action.relatedProducts;
-    }
-    if (action.type === 'CHANGE_REVIEWS') {
-      state.reviews = action.reviews;
-    }
-    if ( action.type === 'CHANGE_STYLES' ) {
-      state.styles = action.styles;
-    }
-  }
   describe( 'Switch Product', () => {
     it( 'should return a function', () => {
       expect( typeof switchProduct() ).toBe( 'function' );
     });
-    it( 'should modify the state', async () => {
-      var startingState = state.questions;
-      await switchProduct( 1 )( fakeDispatch );
-      console.log( state );
-      expect( startingState.questions ).not.toEqual( state.questions );
+    it( 'should modify the state', ( done ) => {
+      var startingState = JSON.parse(JSON.stringify(state));
 
+      var fakeDispatch = ( action ) => {
+        if ( action.type === 'CHANGE_METADATA' ) {
+          state.metadata = action.metadata;
+          expect( startingState.metadata ).not.toEqual( state.metadata );
+        }
+        if (action.type === 'CHANGE_PRODUCT') {
+          state.productId = action.productId;
+          expect( startingState.productId ).not.toEqual( state.productId );
+        }
+        if (action.type === 'CHANGE_PRODUCT_INFO') {
+          state.productInfo = action.productInfo;
+          expect( startingState.productInfo ).not.toEqual( state.productInfo );
+          console.log( state );
+          done();
+        }
+        if (action.type === 'CHANGE_QUESTIONS') {
+          state.questions = action.questions;
+          expect( startingState.questions ).not.toEqual( state.questions );
+        }
+        if (action.type === 'CHANGE_RELATED') {
+          state.relatedProducts = action.relatedProducts;
+          expect( startingState.relatedProducts ).not.toEqual( state.relatedProducts );
+        }
+        if (action.type === 'CHANGE_REVIEWS') {
+          state.reviews = action.reviews;
+          expect( startingState.reviews ).not.toEqual( state.reviews );
+        }
+        if ( action.type === 'CHANGE_STYLES' ) {
+          state.styles = action.styles;
+          expect( startingState.styles ).not.toEqual( state.styles );
+        }
+      }
+
+      switchProduct( 64620 )( fakeDispatch );
     });
   });
-  describe( 'Add Answer', () => {
-    it( 'should return a function', () => {
-      expect( typeof addAnswer() ).toBe( 'function' );
-    });
-    it( 'should modify the the questions (answers do not have their own state) state', async () => {
-      var startingState = state.questions;
-      var newAnswer = { "body": 'test answer', "name": 'joe', "email": "test@gmail.com", "photos": [] };
-      await addAnswer( 37, newAnswer )( fakeDispatch );
-      expect( startingState ).not.toEqual( state.questions );
-    });
-  });
+  // describe( 'Add Question', () => {
+  //   it( 'should return a function', () => {
+  //     expect( typeof addQuestion() ).toBe( 'function' );
+  //   });
+  //   it( 'should modify the questions in state', ( done ) => {
+  //     var startingState = JSON.parse(JSON.stringify(state));
+
+  //     var fakeDispatch = ( action ) => {
+  //       if (action.type === 'CHANGE_QUESTIONS') {
+  //         state.questions = action.questions;
+  //         expect( startingState.questions ).not.toEqual( state.questions );
+  //         done();
+  //       }
+  //     }
+
+  //     var newQuestion = { "body": 'test question', "name": 'joe', "email": "test@gmail.com", "ptoduct_id": 1 };
+  //     addQuestion( newQuestion )( fakeDispatch );
+  //   });
+  // });
+  // describe( 'Add Answer', () => {
+  //   it( 'should return a function', () => {
+  //     expect( typeof addAnswer() ).toBe( 'function' );
+  //   });
+  //   it( 'should modify the the questions (answers do not have their own state) state', () => {
+  //     var startingState = state.questions;
+
+  //     var fakeDispatch = ( action ) => {
+  //       if (action.type === 'CHANGE_QUESTIONS') {
+  //         state.questions = action.questions;
+  //         expect( startingState.questions ).not.toEqual( state.questions );
+  //         done();
+  //       }
+  //     }
+
+  //     var newAnswer = { "body": 'test answer', "name": 'joe', "email": "test@gmail.com", "photos": [] };
+  //     addAnswer( 37, newAnswer )( fakeDispatch );
+  //   });
+  // });
 });

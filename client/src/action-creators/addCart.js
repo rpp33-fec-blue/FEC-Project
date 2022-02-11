@@ -1,5 +1,6 @@
 import actionCart from '../actions/cart.js';
 import store from '../configureStore.js';
+const axios = require('axios');
 
 var addCart = ( skuId, count ) => {
 

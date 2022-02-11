@@ -22,6 +22,7 @@ app.all('/*', (req, res) => {
   var url = req.url;
   var method = req.method;
   var data = req.body;
+  console.log('url:', url);
 
   $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
     jqXHR.setRequestHeader('Authorization', API_KEY);

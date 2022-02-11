@@ -1,8 +1,8 @@
 import actionQuestions from '../actions/questions.js';
 import store from '../configureStore.js';
+const axios = require('axios');
 
 var reportAnswer = ( questionId, answerId ) => { // it would be faster if we pass in the indexes instead of the ids. That way we do not need to loop through the arrays to find them.
-  var productId = store.getState().productId;
 
   return ( dispatch ) => {
 

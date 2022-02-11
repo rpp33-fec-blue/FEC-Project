@@ -1,8 +1,8 @@
 import actionReviews from '../actions/reviews.js';
 import store from '../configureStore.js';
+const axios = require('axios');
 
 var addReview = ( newReview ) => {
-  var productId = store.getState().productId;
 
   return ( dispatch ) => {
 
