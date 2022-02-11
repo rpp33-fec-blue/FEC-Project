@@ -20,24 +20,23 @@ class QuestionList extends React.Component {
   }
 
   onForm () {
-    document.getElementbyId('overlayAddAnswer').style.display = 'block'
+    onOverlay("overlay-addAnswer");
   }
 
   render () {
-    var questions = (filteredQ, questionsToShow) => {
-      filteredQ.map((question, index) => {
-        if (index+1 <= questionsToShow) {
-          return <Question question={question} questionId={question.question_id} key={index}/>
-        }
-      })
-    }
+    var questions = this.props.filteredQ.map((question, index) => {
+      if (index+1 <= this.state.questionsToShow) {
+        return <Question question={question} questionId={question.question_id} key={index}/>
+      }
+    })
 
+    console.log({questions});
 
     return (
       <div>
         <div className="item-qa-questionlist">{questions}</div>
         <button>MORE ANSWERED QUESTIONS</button>
-        <button onClick={this.onForm}>Add a question</button>
+        <button onClick={this.onForm.bind(this)}>Add a question</button>
       </div>
     );
   }

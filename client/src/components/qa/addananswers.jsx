@@ -13,28 +13,45 @@ var AddAnAnswer = (props) => {
       // call dispatch addAnswer( questionId, newAnswer )
   }
 
-  var offForm () = () => {
-    document.getElementbyId('overlayAddAnswer').style.display = 'none'
+  var offForm = () => {
+    offOverlay("overlay-addAnswer");
   }
 
   var productName = useSelector((state) => state.productInfo.name);
 
   return (
-    <form id="overlayAddAnswer" onSubmit={handleSubmit}>
-      <h3>Add Your Question</h3>
-      <h4>About the {productName}</h4>
-        <label for="question">Your question:*</label>
-        <textarea name="question" cols="5" rows="10"></textarea>
+    <form id="overlay-addAnswer" className="overlay-bg" onSubmit={handleSubmit}>
+      <div className="overlay-content">
+        <div>
+          <h3>Add Your Question</h3>
+          <h4>About the {productName}</h4>
+        </div>
+        <div>
+          <label htmlFor="question">Your question:*</label>
+          <textarea name="question" cols="5" rows="10"></textarea>
+        </div>
 
-        <label for="nickname">What is your nickname?*</label>
-        <input name="nickname" value="Example: jack543!" type="text" id="nickname" />
-        <div> For privacy reasons, do not use your full name or email address </div>
+        <div>
+          <label htmlFor="nickname">What is your nickname?*</label>
+          <br />
+          <input name="nickname" placeholder="Example: jack543!" type="text" id="nickname" />
+          <br />
+          <div> For privacy reasons, do not use your full name or email address </div>
+        </div>
+        <br />
+        <div>
+          <label htmlFor="email"> Your email *</label>
+          <br />
+          <input name="email" placeholder="Example: jack@email.com" type="text" id="email"/>
+          <br />
+          <div> For authentication reasons, you will not be emailed </div>
+        </div>
+        <br />
+        <input type="submit" name="submit" value="submit" />
 
-        <label for="email"> Your email *
-        <input name="email" value="Example: jack@email.com" type="text" id="email">
-        <div> For authentication reasons, you will not be emailed </div>
-
-        <input type="submit" name="submit" value="submit">
+      </div>
     </form>
   );
 }
+
+export default AddAnAnswer;

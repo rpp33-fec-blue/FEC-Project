@@ -51,13 +51,12 @@ class Answers extends React.Component {
   }
 
   render () {
-    var toShow = (filteredA, answersToShow) => {
-      filteredA.map((answer, index) => {
-        if (index+1 <= answersToShow) {
-          return <Answer answer={answer} answerId={answer.answer_id} key={index}/>
-        }
-      })
-    }
+    var toShow = this.props.answers.map((answer, index) => {
+      if (index+1 <= this.state.answersToShow) {
+        return <Answer answer={answer} answerId={answer.answer_id} key={index}/>
+      }
+    })
+
 
     return (
       <div>

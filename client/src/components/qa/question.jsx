@@ -8,13 +8,25 @@ class Question extends React.Component {
     //props
     // props.question
     // props.questionId
-    // might not need to be class!
+    this.state = {
+      answers: []
+    }
+  }
+
+  componentDidMount() {
+    getAnswer(this.props.questionId, (results) => {
+      this.setState({
+        answers: results
+      })
+    });
   }
 
   render() {
-    var answers = getAnswer(questionID);
+    var answers = this.state.answers;
     var body = this.props.question.question_body;
     var helpfulness = this.props.question.question_helpfulness;
+
+    console.log({answers});
 
     return (
       <div className="container-question-answer">

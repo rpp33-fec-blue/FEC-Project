@@ -6,7 +6,7 @@ import {sortedQ, filteredQ} from './helper.js';
 // Import components
 import SearchBar from './searchbar.jsx';
 import QuestionList from './questionlist.jsx';
-
+import AddAnAnswer from './addananswers.jsx'
 
 // Import example state
 import initialState from '../../initialState.js';
@@ -40,6 +40,7 @@ class Qa extends React.Component {
         <div>Questions and Answers</div>
         <SearchBar />
         <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
+        <AddAnAnswer />
       </div>
     );
   }
