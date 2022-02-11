@@ -10,7 +10,7 @@ var addCart = ( items ) => {
     .then( ( result ) => {
       axios.get( '/cart' )
       .then( ( cart ) => {
-        dispatch( actionCart( cart ) );
+        dispatch( actionCart( cart.data ) );
       })
     })
     .catch( ( error ) => {

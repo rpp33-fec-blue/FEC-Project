@@ -42,20 +42,26 @@ describe( 'API GET', () => {
   });
 });
 
-describe( 'API POST', () => {
-  it( 'should post a question', ( ) => {
-    var newQuestion = { 'body': 'test question test test test test test', 'name': 'joe', 'email': 'test@gmail.com', 'product_id': 64620 };
-    return axios.post( 'http://localhost:8080/qa/questions', { params: newQuestion } )
-      .then( ( results ) => {
-        console.log(results);
-        expect(results.status).toBe(201);
-      });
-  });
-});
+// describe( 'API POST', () => {
+//   it( 'should post a question', ( ) => {
+//     var newQuestion = { 'body': 'test question test test test test test', 'name': 'joe', 'email': 'test@gmail.com', 'product_id': 64620 };
+//     return axios.post( 'http://localhost:8080/qa/questions', { params: newQuestion } )
+//       .then( ( results ) => {
+//         console.log(results);
+//         expect(results.status).toBe(201);
+//       });
+//   });
+// });
 
 describe( 'API PUT', ( ) => {
   it( 'should update the helpfullness of the question', ( ) => {
     return axios.put( 'http://localhost:8080/qa/questions/563775/helpful' )
+      .then( ( results ) => {
+        expect(results.status).toBe(200);
+    });
+  });
+  it( 'should update the helpfullness of the review', ( ) => {
+    return axios.put( 'http://localhost:8080/reviews/1135493/helpful' )
       .then( ( results ) => {
         expect(results.status).toBe(200);
     });

@@ -11,7 +11,7 @@ var addReview = ( newReview ) => {
       var productId = store.getState().productId;
       axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } )
       .then( ( reviews ) => {
-        dispatch( actionReviews( reviews ) );
+        dispatch( actionReviews( reviews.data ) );
       });
     })
     .catch( ( error ) => {
