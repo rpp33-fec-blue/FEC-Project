@@ -303,101 +303,101 @@ describe( 'Action-Creators', () => {
       switchProduct( 64620 )( fakeDispatch );
     });
   });
-  // describe( 'Add Question', () => {
-  //   it( 'should return a function', () => {
-  //     expect( typeof addQuestion() ).toBe( 'function' );
-  //   });
-  //   it( 'should modify the questions in state', ( done ) => {
-  //     var startingState = JSON.parse(JSON.stringify(state));
+  describe( 'Add Question', () => {
+    it( 'should return a function', () => {
+      expect( typeof addQuestion() ).toBe( 'function' );
+    });
+    it( 'should modify the questions in state', ( done ) => {
+      var startingState = JSON.parse(JSON.stringify(state));
 
-  //     var fakeDispatch = ( action ) => {
-  //       if (action.type === 'CHANGE_QUESTIONS') {
-  //         state.questions = action.questions;
-  //         expect( startingState.questions ).not.toEqual( state.questions );
-  //         done();
-  //       }
-  //     }
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_QUESTIONS') {
+          state.questions = action.questions;
+          expect( startingState.questions ).not.toEqual( state.questions );
+          done();
+        }
+      }
 
-  //     var newQuestion = { 'body': 'this is a test to see if the message posts', 'name': 'joe', 'email': 'test@gmail.com', 'product_id': 64620 };
-  //     addQuestion( newQuestion )( fakeDispatch );
-  //   });
-  // });
-  // describe( 'Add Answer', () => {
-  //   it( 'should return a function', () => {
-  //     expect( typeof addAnswer() ).toBe( 'function' );
-  //   });
-  //   it( 'should modify the the questions (answers do not have their own state) state', ( done ) => {
-  //     var startingState = JSON.parse(JSON.stringify(state));
+      var newQuestion = { 'body': 'this is a test to see if the message posts', 'name': 'joe', 'email': 'test@gmail.com', 'product_id': 64620 };
+      addQuestion( newQuestion )( fakeDispatch );
+    });
+  });
+  describe( 'Add Answer', () => {
+    it( 'should return a function', () => {
+      expect( typeof addAnswer() ).toBe( 'function' );
+    });
+    it( 'should modify the the questions (answers do not have their own state) state', ( done ) => {
+      var startingState = JSON.parse(JSON.stringify(state));
 
-  //     var fakeDispatch = ( action ) => {
-  //       if (action.type === 'CHANGE_QUESTIONS') {
-  //         state.questions = action.questions;
-  //         expect( startingState.questions ).not.toEqual( state.questions );
-  //         done();
-  //       }
-  //     }
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_QUESTIONS') {
+          state.questions = action.questions;
+          expect( startingState.questions ).not.toEqual( state.questions );
+          done();
+        }
+      }
 
-  //     var newAnswer = { "body": 'test answer', "name": 'joe', "email": "test@gmail.com", "photos": [] };
-  //     addAnswer( 37, newAnswer )( fakeDispatch );
-  //   });
-  // });
-  // describe( 'Add Review', () => {
-  //   it( 'should return a function', () => {
-  //     expect( typeof addReview() ).toBe( 'function' );
-  //   });
-  //   it( 'should modify the the reviews state', ( done ) => {
-  //     var startingState = JSON.parse(JSON.stringify(state));
+      var newAnswer = { "body": 'test answer', "name": 'joe', "email": "test@gmail.com", "photos": [] };
+      addAnswer( 37, newAnswer )( fakeDispatch );
+    });
+  });
+  describe( 'Add Review', () => {
+    it( 'should return a function', () => {
+      expect( typeof addReview() ).toBe( 'function' );
+    });
+    it( 'should modify the the reviews state', ( done ) => {
+      var startingState = JSON.parse(JSON.stringify(state));
 
-  //     var fakeDispatch = ( action ) => {
-  //       if (action.type === 'CHANGE_REVIEWS') {
-  //         state.reviews = action.reviews;
-  //         expect( startingState.reviews ).not.toEqual( state.reviews );
-  //         done();
-  //       }
-  //     }
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_REVIEWS') {
+          state.reviews = action.reviews;
+          expect( startingState.reviews ).not.toEqual( state.reviews );
+          done();
+        }
+      }
 
-  //     var newReview = { "product_id": 64620, "rating": 5, "summary": "good product?", "body": "it may be good i do not know, this is only a test and the product isnt real",
-  //     "recommend": true, "name": "joe", "email": 'test@gmail.com', "photos": [], "characteristics": { } };
-  //     addReview( newReview )( fakeDispatch );
-  //   });
-  // });
-  // describe( 'Add Cart', () => {
-  //   it( 'should return a function', () => {
-  //     expect( typeof addCart() ).toBe( 'function' );
-  //   });
-  //   it( 'should modify the the cart state', ( done ) => {
-  //     var startingState = JSON.parse(JSON.stringify(state));
+      var newReview = { "product_id": 64620, "rating": 5, "summary": "good product?", "body": "it may be good i do not know, this is only a test and the product isnt real",
+      "recommend": true, "name": "joe", "email": 'test@gmail.com', "photos": [], "characteristics": { } };
+      addReview( newReview )( fakeDispatch );
+    });
+  });
+  describe( 'Add Cart', () => {
+    it( 'should return a function', () => {
+      expect( typeof addCart() ).toBe( 'function' );
+    });
+    it( 'should modify the the cart state', ( done ) => {
+      var startingState = JSON.parse(JSON.stringify(state));
 
-  //     var fakeDispatch = ( action ) => {
-  //       if (action.type === 'CHANGE_CART') {
-  //         state.cart = action.cart;
-  //         expect( startingState.cart ).not.toEqual( state.cart );
-  //         done();
-  //       }
-  //     }
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_CART') {
+          state.cart = action.cart;
+          expect( startingState.cart ).not.toEqual( state.cart );
+          done();
+        }
+      }
 
-  //     var newItems = { 'sku_id': 5, 'count': 1 }
-  //     addCart( newItems )( fakeDispatch );
-  //   });
-  // });
-  // describe( 'Add Outfit', () => {
-  //   it( 'should return a function', () => {
-  //     expect( typeof addOutfit() ).toBe( 'function' );
-  //   });
-  //   it( 'should modify the the outfit state', () => {
-  //     var startingState = JSON.parse(JSON.stringify(state));
+      var newItems = { 'sku_id': 5, 'count': 1 }
+      addCart( newItems )( fakeDispatch );
+    });
+  });
+  describe( 'Add Outfit', () => {
+    it( 'should return a function', () => {
+      expect( typeof addOutfit() ).toBe( 'function' );
+    });
+    it( 'should modify the the outfit state', () => {
+      var startingState = JSON.parse(JSON.stringify(state));
 
-  //     var fakeDispatch = ( action ) => {
-  //       if (action.type === 'CHANGE_OUTFIT') {
-  //         state.outfit = action.outfit;
-  //         expect( startingState.outfit ).not.toEqual( state.outfit );
-  //       }
-  //     }
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_OUTFIT') {
+          state.outfit = action.outfit;
+          expect( startingState.outfit ).not.toEqual( state.outfit );
+        }
+      }
 
-  //     var newOutfit = 64620
-  //     addOutfit( newOutfit )( fakeDispatch );
-  //   });
-  // });
+      var newOutfit = 64620
+      addOutfit( newOutfit )( fakeDispatch );
+    });
+  });
   describe( 'Mark Answer', () => {
     it( 'should return a function', () => {
       expect( typeof markAnswer() ).toBe( 'function' );
