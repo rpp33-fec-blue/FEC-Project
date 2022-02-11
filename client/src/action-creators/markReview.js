@@ -6,7 +6,7 @@ var markReview = ( reviewId ) => { // it would be faster if we pass in the index
 
   return ( dispatch ) => {
 
-    axios.put( `http://localhost:8080/reviews/:${reviewId}/helpful` ) // unsure of what to pass as second arguement. The API page does not make it clear when it needs.
+    axios.put( `http://localhost:8080/reviews/${reviewId}/helpful` ) // unsure of what to pass as second arguement. The API page does not make it clear when it needs.
       .then( ( ) => {
         var reviews = store.getState().reviews;
         var results = reviews.results.map( ( result ) => {

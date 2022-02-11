@@ -276,7 +276,6 @@ describe( 'Action-Creators', () => {
         if (action.type === 'CHANGE_PRODUCT_INFO') {
           state.productInfo = action.productInfo;
           expect( startingState.productInfo ).not.toEqual( state.productInfo );
-          console.log( state );
           done();
         }
         if (action.type === 'CHANGE_QUESTIONS') {
@@ -300,42 +299,42 @@ describe( 'Action-Creators', () => {
       switchProduct( 64620 )( fakeDispatch );
     });
   });
-  // describe( 'Add Question', () => {
-  //   it( 'should return a function', () => {
-  //     expect( typeof addQuestion() ).toBe( 'function' );
-  //   });
-  //   it( 'should modify the questions in state', ( done ) => {
-  //     var startingState = JSON.parse(JSON.stringify(state));
+  describe( 'Add Question', () => {
+    it( 'should return a function', () => {
+      expect( typeof addQuestion() ).toBe( 'function' );
+    });
+    it( 'should modify the questions in state', ( done ) => {
+      var startingState = JSON.parse(JSON.stringify(state));
 
-  //     var fakeDispatch = ( action ) => {
-  //       if (action.type === 'CHANGE_QUESTIONS') {
-  //         state.questions = action.questions;
-  //         expect( startingState.questions ).not.toEqual( state.questions );
-  //         done();
-  //       }
-  //     }
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_QUESTIONS') {
+          state.questions = action.questions;
+          expect( startingState.questions ).not.toEqual( state.questions );
+          done();
+        }
+      }
 
-  //     var newQuestion = { "body": 'test question', "name": 'joe', "email": "test@gmail.com", "ptoduct_id": 1 };
-  //     addQuestion( newQuestion )( fakeDispatch );
-  //   });
-  // });
-  // describe( 'Add Answer', () => {
-  //   it( 'should return a function', () => {
-  //     expect( typeof addAnswer() ).toBe( 'function' );
-  //   });
-  //   it( 'should modify the the questions (answers do not have their own state) state', () => {
-  //     var startingState = state.questions;
+      var newQuestion = { "body": 'test question', "name": 'joe', "email": "test@gmail.com", "product_id": 1 };
+      addQuestion( newQuestion )( fakeDispatch );
+    });
+  });
+  describe( 'Add Answer', () => {
+    it( 'should return a function', () => {
+      expect( typeof addAnswer() ).toBe( 'function' );
+    });
+    it( 'should modify the the questions (answers do not have their own state) state', () => {
+      var startingState = state.questions;
 
-  //     var fakeDispatch = ( action ) => {
-  //       if (action.type === 'CHANGE_QUESTIONS') {
-  //         state.questions = action.questions;
-  //         expect( startingState.questions ).not.toEqual( state.questions );
-  //         done();
-  //       }
-  //     }
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_QUESTIONS') {
+          state.questions = action.questions;
+          expect( startingState.questions ).not.toEqual( state.questions );
+          done();
+        }
+      }
 
-  //     var newAnswer = { "body": 'test answer', "name": 'joe', "email": "test@gmail.com", "photos": [] };
-  //     addAnswer( 37, newAnswer )( fakeDispatch );
-  //   });
-  // });
+      var newAnswer = { "body": 'test answer', "name": 'joe', "email": "test@gmail.com", "photos": [] };
+      addAnswer( 37, newAnswer )( fakeDispatch );
+    });
+  });
 });

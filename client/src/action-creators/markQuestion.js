@@ -6,7 +6,7 @@ var markQuestion = ( questionId ) => { // it would be faster if we pass in the i
 
   return ( dispatch ) => {
 
-    axios.put( `http://localhost:8080/qa/questions/:${questionId}/helpful` ) // unsure of what to pass as second arguement. The API page does not make it clear when it needs.
+    axios.put( `http://localhost:8080/qa/questions/${questionId}/helpful` ) // unsure of what to pass as second arguement. The API page does not make it clear when it needs.
       .then( ( ) => {
         var questions = store.getState().questions;
         var results = questions.results.map( ( result ) => {

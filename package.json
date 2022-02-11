@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest test/test.js",
+    "test-api": "jest test/api/test.js",
     "test-redux": "jest test/redux/test.js",
     "test-overview": "jest test/overview/test.js",
     "test-questions": "jest test/questions/test.js",
