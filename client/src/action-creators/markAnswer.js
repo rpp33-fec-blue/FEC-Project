@@ -2,7 +2,7 @@ import actionQuestions from '../actions/questions.js';
 import store from '../configureStore.js';
 const axios = require('axios');
 
-var markAnswer = ( questionId, answerId ) => {
+var markAnswer = ( answerId ) => {
 
   return ( dispatch ) => {
 

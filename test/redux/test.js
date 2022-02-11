@@ -398,4 +398,112 @@ describe( 'Action-Creators', () => {
       addOutfit( newOutfit )( fakeDispatch );
     });
   });
+  describe( 'Mark Answer', () => {
+    it( 'should return a function', () => {
+      expect( typeof markAnswer() ).toBe( 'function' );
+    });
+    it( 'should modify the the questions (which hold the answers) state', ( done ) => {
+      var startingState = state.questions;
+
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_QUESTIONS') {
+          state.questions = action.questions;
+          expect( startingState.questions ).not.toEqual( state.questions );
+          done();
+        }
+      }
+
+      markAnswer( 5 )( fakeDispatch );
+    });
+  });
+  describe( 'Mark Question', () => {
+    it( 'should return a function', () => {
+      expect( typeof markQuestion() ).toBe( 'function' );
+    });
+    it( 'should modify the the questions state', ( done ) => {
+      var startingState = state.questions;
+
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_QUESTIONS') {
+          state.questions = action.questions;
+          expect( startingState.questions ).not.toEqual( state.questions );
+          done();
+        }
+      }
+
+      markQuestion( 563775 )( fakeDispatch );
+    });
+  });
+  describe( 'Mark Review', () => {
+    it( 'should return a function', () => {
+      expect( typeof markReview() ).toBe( 'function' );
+    });
+    it( 'should modify the the reviews state', ( done ) => {
+      var startingState = state.reviews;
+
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_REVIEWS') {
+          state.reviews = action.reviews;
+          expect( startingState.reviews ).not.toEqual( state.reviews );
+          done();
+        }
+      }
+
+      markReview( 10 )( fakeDispatch );
+    });
+  });
+  describe( 'Remove Outfit', () => {
+    it( 'should return a function', () => {
+      expect( typeof removeOutfit() ).toBe( 'function' );
+    });
+    it( 'should modify the the outfit state', ( done ) => {
+      var startingState = state.outfit;
+
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_OUTFIT') {
+          state.outfit = action.outfit;
+          expect( startingState.outfit ).not.toEqual( state.outfit );
+          done();
+        }
+      }
+
+      removeOutfit( 5 )( fakeDispatch );
+    });
+  });
+  describe( 'Report Answer', () => {
+    it( 'should return a function', () => {
+      expect( typeof reportAnswer() ).toBe( 'function' );
+    });
+    it( 'should modify the the questions state', ( done ) => {
+      var startingState = state.questions;
+
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_QUESTIONS') {
+          state.questions = action.questions;
+          expect( startingState.questions ).not.toEqual( state.questions );
+          done();
+        }
+      }
+
+      reportAnswer( 78 )( fakeDispatch );
+    });
+  });
+  describe( 'Report Review', () => {
+    it( 'should return a function', () => {
+      expect( typeof reportReview() ).toBe( 'function' );
+    });
+    it( 'should modify the the reviews state', ( done ) => {
+      var startingState = state.reviews;
+
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_REVIEWS') {
+          state.reviews = action.reviews;
+          expect( startingState.reviews ).not.toEqual( state.reviews );
+          done();
+        }
+      }
+
+      reportReview( 10 )( fakeDispatch );
+    });
+  });
 });
