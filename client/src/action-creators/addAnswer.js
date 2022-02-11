@@ -6,7 +6,7 @@ var addAnswer = ( questionId, newAnswer ) => { // it would be faster if we pass 
 
   return ( dispatch ) => {
 
-    axios.post( `http://localhost:8080/qa/questions/:${questionId}/answers`. newAnswer )
+    axios.post( `http://localhost:8080/qa/questions/:${questionId}/answers`, newAnswer )
       .then( ( ) => {
         var questions = store.getState().questions;
         var results = questions.results.map( ( result ) => {
