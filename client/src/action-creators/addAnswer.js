@@ -1,7 +1,5 @@
 import actionQuestions from '../actions/questions.js';
 import store from '../configureStore.js';
-const axios = require('axios');
-
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
@@ -26,6 +24,9 @@ var addAnswer = ( questionId, newAnswer ) => { // it would be faster if we pass 
 
         questions.results = results;
         dispatch( actionQuestions( questions ) );
+      },
+      error: ( error ) => {
+        console.log( 'Error posting answer' );
       }
     });
 

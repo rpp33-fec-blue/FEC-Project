@@ -1,6 +1,5 @@
 import actionQuestions from '../actions/questions.js';
 import store from '../configureStore.js';
-const axios = require('axios');
 const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );

@@ -246,17 +246,21 @@ describe( 'Reducers', () => {
 });
 
 describe( 'Action-Creators', () => {
-  var state = {
-    productId: 11,
-    productInfo: { "id": 11, "name": "Air Minis 250" },
-    styles: { "product_id": 11 },
-    metadata: { "product_id": 11, "ratings": { 2: 1, 3: 1, 4: 2}},
-    relatedProducts: [ 2, 3, 4 ],
-    reviews: { "product": 11, "results": [ { "review_id": 5, "rating": 3, "helpfulness": 5 } ] },
-    questions: { "product_id": 11, "results": [ { "question_id": 37, "answers": { 68: { "id": 68, "helpfulness": 4 } } } ] }, // answers is not an array...
-    cart: [ { "sku_id": 1, "count": 2 } ],
-    outfit: [ 5 ]
-  }
+  var state = {};
+  beforeEach( () => {
+    state = {
+      productId: 11,
+      productInfo: { "id": 11, "name": "Air Minis 250" },
+      styles: { "product_id": 11 },
+      metadata: { "product_id": 11, "ratings": { 2: 1, 3: 1, 4: 2}},
+      relatedProducts: [ 2, 3, 4 ],
+      reviews: { "product": 11, "results": [ { "review_id": 5, "rating": 3, "helpfulness": 5 } ] },
+      questions: { "product_id": 11, "results": [ { "question_id": 37, "answers": { 68: { "id": 68, "helpfulness": 4 } } } ] }, // answers is not an array...
+      cart: [ { "sku_id": 1, "count": 2 } ],
+      outfit: [ 5 ]
+    }
+  });
+
   describe( 'Switch Product', () => {
     it( 'should return a function', () => {
       expect( typeof switchProduct() ).toBe( 'function' );
@@ -333,6 +337,61 @@ describe( 'Action-Creators', () => {
 
       var newAnswer = { "body": 'test answer', "name": 'joe', "email": "test@gmail.com", "photos": [] };
       addAnswer( 37, newAnswer )( fakeDispatch );
+    });
+  });
+  describe( 'Add Review', () => {
+    it( 'should return a function', () => {
+      expect( typeof addReview() ).toBe( 'function' );
+    });
+    it( 'should modify the the reviews state', () => {
+      var startingState = state.reviews;
+
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_REVIEWS') {
+          state.reviews = action.reviews;
+          expect( startingState.reviews ).not.toEqual( state.reviews );
+        }
+      }
+
+      var newReview = { "product_id": 64620, "rating": 5, "summary": "good product?", "body": "it may be good i do not know, this is only a test and the product isnt real",
+      "recommend": true, "name": "joe", "email": 'test@gmail.com', "photos": [], "characteristics": { } };
+      addReview( newReview )( fakeDispatch );
+    });
+  });
+  describe( 'Add Cart', () => {
+    it( 'should return a function', () => {
+      expect( typeof addCart() ).toBe( 'function' );
+    });
+    it( 'should modify the the cart state', () => {
+      var startingState = state.cart;
+
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_CART') {
+          state.cart = action.cart;
+          expect( startingState.cart ).not.toEqual( state.cart );
+        }
+      }
+
+      var newItems = { 'sku_id': 5, 'count': 1 }
+      addCart( newItems )( fakeDispatch );
+    });
+  });
+  describe( 'Add Outfit', () => {
+    it( 'should return a function', () => {
+      expect( typeof addOutfit() ).toBe( 'function' );
+    });
+    it( 'should modify the the outfit state', () => {
+      var startingState = state.outfit;
+
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_OUTFIT') {
+          state.outfit = action.outfit;
+          expect( startingState.outfit ).not.toEqual( state.outfit );
+        }
+      }
+
+      var newOutfit = 64620
+      addOutfit( newOutfit )( fakeDispatch );
     });
   });
 });
