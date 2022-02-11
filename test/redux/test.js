@@ -327,7 +327,7 @@ describe( 'Action-Creators', () => {
   //     expect( typeof addAnswer() ).toBe( 'function' );
   //   });
   //   it( 'should modify the the questions (answers do not have their own state) state', ( done ) => {
-  //     var startingState = state.questions;
+  //     var startingState = JSON.parse(JSON.stringify(state));
 
   //     var fakeDispatch = ( action ) => {
   //       if (action.type === 'CHANGE_QUESTIONS') {
@@ -346,7 +346,7 @@ describe( 'Action-Creators', () => {
   //     expect( typeof addReview() ).toBe( 'function' );
   //   });
   //   it( 'should modify the the reviews state', ( done ) => {
-  //     var startingState = state.reviews;
+  //     var startingState = JSON.parse(JSON.stringify(state));
 
   //     var fakeDispatch = ( action ) => {
   //       if (action.type === 'CHANGE_REVIEWS') {
@@ -366,7 +366,7 @@ describe( 'Action-Creators', () => {
   //     expect( typeof addCart() ).toBe( 'function' );
   //   });
   //   it( 'should modify the the cart state', ( done ) => {
-  //     var startingState = state.cart;
+  //     var startingState = JSON.parse(JSON.stringify(state));
 
   //     var fakeDispatch = ( action ) => {
   //       if (action.type === 'CHANGE_CART') {
@@ -380,30 +380,30 @@ describe( 'Action-Creators', () => {
   //     addCart( newItems )( fakeDispatch );
   //   });
   // });
-  describe( 'Add Outfit', () => {
-    it( 'should return a function', () => {
-      expect( typeof addOutfit() ).toBe( 'function' );
-    });
-    it( 'should modify the the outfit state', () => {
-      var startingState = state.outfit;
+  // describe( 'Add Outfit', () => {
+  //   it( 'should return a function', () => {
+  //     expect( typeof addOutfit() ).toBe( 'function' );
+  //   });
+  //   it( 'should modify the the outfit state', () => {
+  //     var startingState = JSON.parse(JSON.stringify(state));
 
-      var fakeDispatch = ( action ) => {
-        if (action.type === 'CHANGE_OUTFIT') {
-          state.outfit = action.outfit;
-          expect( startingState.outfit ).not.toEqual( state.outfit );
-        }
-      }
+  //     var fakeDispatch = ( action ) => {
+  //       if (action.type === 'CHANGE_OUTFIT') {
+  //         state.outfit = action.outfit;
+  //         expect( startingState.outfit ).not.toEqual( state.outfit );
+  //       }
+  //     }
 
-      var newOutfit = 64620
-      addOutfit( newOutfit )( fakeDispatch );
-    });
-  });
+  //     var newOutfit = 64620
+  //     addOutfit( newOutfit )( fakeDispatch );
+  //   });
+  // });
   describe( 'Mark Answer', () => {
     it( 'should return a function', () => {
       expect( typeof markAnswer() ).toBe( 'function' );
     });
     it( 'should modify the the questions (which hold the answers) state', ( done ) => {
-      var startingState = state.questions;
+      var startingState = JSON.parse(JSON.stringify(state));
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_QUESTIONS') {
@@ -421,7 +421,7 @@ describe( 'Action-Creators', () => {
       expect( typeof markQuestion() ).toBe( 'function' );
     });
     it( 'should modify the the questions state', ( done ) => {
-      var startingState = state.questions;
+      var startingState = JSON.parse(JSON.stringify(state));
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_QUESTIONS') {
@@ -439,7 +439,7 @@ describe( 'Action-Creators', () => {
       expect( typeof markReview() ).toBe( 'function' );
     });
     it( 'should modify the the reviews state', ( done ) => {
-      var startingState = state.reviews;
+      var startingState = JSON.parse(JSON.stringify(state));
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_REVIEWS') {
@@ -457,7 +457,7 @@ describe( 'Action-Creators', () => {
       expect( typeof removeOutfit() ).toBe( 'function' );
     });
     it( 'should modify the the outfit state', ( done ) => {
-      var startingState = state.outfit;
+      var startingState = JSON.parse(JSON.stringify(state));
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_OUTFIT') {
@@ -475,7 +475,7 @@ describe( 'Action-Creators', () => {
       expect( typeof reportAnswer() ).toBe( 'function' );
     });
     it( 'should modify the the questions state', ( done ) => {
-      var startingState = state.questions;
+      var startingState = JSON.parse(JSON.stringify(state));
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_QUESTIONS') {
@@ -493,7 +493,7 @@ describe( 'Action-Creators', () => {
       expect( typeof reportReview() ).toBe( 'function' );
     });
     it( 'should modify the the reviews state', ( done ) => {
-      var startingState = state.reviews;
+      var startingState = JSON.parse(JSON.stringify(state));
 
       var fakeDispatch = ( action ) => {
         if (action.type === 'CHANGE_REVIEWS') {
