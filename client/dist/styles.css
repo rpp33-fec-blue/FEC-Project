@@ -22,6 +22,11 @@
 }
 
 /*===================== Overlays effect =========================*/
+/* How to add overlays:
+1. use on and off function in html file.
+2. for css style - use className overlay-bg and overlay-text
+3. When calling on and off function don't forget to call with argument id of the overlay form */
+
 form.overlay-bg {
   height: 100%;
   width: 0;
