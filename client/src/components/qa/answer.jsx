@@ -20,8 +20,6 @@ class Answer extends React.Component {
     var day = date.getDate();
     var year = date.getFullYear();
 
-    console.log({month});
-
     return (
       <div className="answer">
         <div > A: {body} </div>

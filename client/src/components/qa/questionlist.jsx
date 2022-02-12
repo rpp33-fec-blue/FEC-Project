@@ -30,8 +30,6 @@ class QuestionList extends React.Component {
       }
     })
 
-    console.log({questions});
-
     return (
       <div>
         <div className="item-qa-questionlist">{questions}</div>
