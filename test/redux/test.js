@@ -1,5 +1,3 @@
-import "babel-polyfill";
-
 // Actions
 import changeCart from '../../client/src/actions/cart.js';
 import changeOutfit from '../../client/src/actions/outfit.js';
@@ -35,6 +33,7 @@ import removeOutfit from '../../client/src/action-creators/removeOutfit.js';
 import reportAnswer from '../../client/src/action-creators/reportAnswer.js';
 import reportReview from '../../client/src/action-creators/reportReview.js';
 import switchProduct from '../../client/src/action-creators/switchProduct.js';
+import initializeState from '../../client/src/action-creators/initializeState.js';
 
 describe( 'Actions', () => {
   describe( 'Product Id', () => {
@@ -504,6 +503,56 @@ describe( 'Action-Creators', () => {
       }
 
       reportReview( 1135493 )( fakeDispatch );
+    });
+  });
+  describe( 'Initialize State', () => {
+    it( 'should return a function', () => {
+      expect( typeof initializeState() ).toBe( 'function' );
+    });
+    it( 'should modify the state', ( done ) => {
+      var startingState = JSON.parse(JSON.stringify(state));
+
+      var fakeDispatch = ( action ) => {
+        if ( action.type === 'CHANGE_METADATA' ) {
+          state.metadata = action.metadata;
+          expect( startingState.metadata ).not.toEqual( state.metadata );
+        }
+        if (action.type === 'CHANGE_PRODUCT') {
+          state.productId = action.productId;
+          expect( startingState.productId ).not.toEqual( state.productId );
+        }
+        if (action.type === 'CHANGE_PRODUCT_INFO') {
+          state.productInfo = action.productInfo;
+          expect( startingState.productInfo ).not.toEqual( state.productInfo );
+        }
+        if (action.type === 'CHANGE_QUESTIONS') {
+          state.questions = action.questions;
+          expect( startingState.questions ).not.toEqual( state.questions );
+        }
+        if (action.type === 'CHANGE_RELATED') {
+          state.relatedProducts = action.relatedProducts;
+          expect( startingState.relatedProducts ).not.toEqual( state.relatedProducts );
+        }
+        if (action.type === 'CHANGE_REVIEWS') {
+          state.reviews = action.reviews;
+          expect( startingState.reviews ).not.toEqual( state.reviews );
+        }
+        if ( action.type === 'CHANGE_STYLES' ) {
+          state.styles = action.styles;
+          expect( startingState.styles ).not.toEqual( state.styles );
+        }
+        if ( action.type === 'CHANGE_CART' ) {
+          state.cart = action.cart;
+          expect( startingState.cart ).not.toEqual( state.cart );
+          done();
+        }
+        if ( action.type === 'CHANGE_OUTFIT' ) {
+          state.outfit = action.outfit;
+          expect( startingState.outfit ).not.toEqual( state.outfit );
+        }
+      }
+
+      initializeState( 64620, [ 10, 2 ] )( fakeDispatch );
     });
   });
 });
