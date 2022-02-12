@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './configureStore';
-import Qa from './components/qa/qa.jsx'
+import Qa from './components/qa/qa.jsx';
+import Overview from './components/Overview.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div>Hey From React!</div>
+        <Overview className="widget-overview" />
         <Qa className="item-widget-overview"/>
       </div>
     );
