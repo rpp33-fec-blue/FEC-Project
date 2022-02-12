@@ -1,7 +1,7 @@
 import actionOutfit from '../actions/outfit.js';
 import store from '../configureStore.js';
 
-var removeOutfit = ( productId ) => { // it would be faster if we pass in the indexes instead of the ids. That way we do not need to loop through the arrays to find them.
+var removeOutfit = ( productId ) => {
 
   return ( dispatch ) => {
 
