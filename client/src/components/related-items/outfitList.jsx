@@ -9,7 +9,7 @@ class OutfitList extends React.Component {
   render() {
     return (
       <div>
-        {this.props.outfit.map( ( item )) => {
+        {this.props.outfit.map( ( item ) => {
           return (
             <ProductCard item={ item }/>
           );

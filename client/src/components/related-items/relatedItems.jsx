@@ -11,9 +11,9 @@ class RelatedItems extends React.Component {
     return (
       <div>
         <div>RELATED PRODUCTS</div>
-        <ProductList />
+        <ProductList relatedItems={this.props.relatedProducts}/>
         <div>YOUR OUTFIT</div>
-        <OutfitList />
+        <OutfitList outfit={this.props.outfit}/>
       </div>
     );
   }

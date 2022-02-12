@@ -9,7 +9,7 @@ class ProductList extends React.Component {
   render() {
     return (
       <div>
-        {this.props.relatedItems.map( ( item )) => {
+        {this.props.relatedItems.map( ( item ) => {
           return (
             <ProductCard item={ item }/>
           )
