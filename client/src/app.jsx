@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import store from './configureStore';
 import ConnectedQA from './components/qa/qa.jsx'
 import Rnr from './components/ratings-and-reviews/rnr.jsx';
@@ -12,7 +11,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // set all initial state in redux store
+    var outfit = [] // need to determine how save/load this across sessions
+    var productId = 64620 // need to pull product id from url (using a default product for now)
+    this.props.handleInitializeState( productId, outfit );
   }
 
   render() {
@@ -26,9 +27,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app')
-);
+export default App;
