@@ -12,7 +12,7 @@ var markReview = ( reviewId ) => {
         var productId = store.getState().productId || defaultProduct;
         axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } )
         .then( ( reviews ) => {
-          dispatch( actionReviews( reviews.data ) );
+          dispatch( actionReviews( reviews.data.data ) );
         });
       })
       .catch(( error ) => {

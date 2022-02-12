@@ -7,13 +7,7 @@ var addAnswer = ( questionId, newAnswer ) => {
 
   return ( dispatch ) => {
 
-    var urlToPost = new URL(`http://localhost:8080/qa/questions/${questionId}/answers`);
-    urlToPost.searchParams.append("body", newAnswer.body );
-    urlToPost.searchParams.append("name", newAnswer.name );
-    urlToPost.searchParams.append("email", newAnswer.email );
-    urlToPost.searchParams.append("photos", newAnswer.photos );
-
-    axios.post( urlToPost )
+    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer )
       .then( ( ) => {
         var productId = store.getState().productId || defaultProduct;
         axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } } )

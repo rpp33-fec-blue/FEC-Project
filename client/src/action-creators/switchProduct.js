@@ -21,12 +21,12 @@ var switchProduct = ( productId ) => {
     Promise.all( [ relatedItems, reviews, questions, metadata, styles, productInfo ])
     .then( ( results ) => {
       dispatch( actionProductId( productId ) );
-      dispatch( actionRelated( results[0].data ) );
-      dispatch( actionReviews( results[1].data ) );
-      dispatch( actionQuestions( results[2].data ) );
-      dispatch( actionMetadata( results[3].data ) );
-      dispatch( actionStyles( results[4].data ) );
-      dispatch( actionProductInfo( results[5].data ) );
+      dispatch( actionRelated( results[0].data.data ) );
+      dispatch( actionReviews( results[1].data.data ) );
+      dispatch( actionQuestions( results[2].data.data ) );
+      dispatch( actionMetadata( results[3].data.data ) );
+      dispatch( actionStyles( results[4].data.data ) );
+      dispatch( actionProductInfo( results[5].data.data ) );
     })
     .catch( ( error ) => {
       console.log( 'Error getting data!' );

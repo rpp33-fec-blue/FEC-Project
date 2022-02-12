@@ -6,11 +6,7 @@ var addCart = ( items ) => {
 
   return ( dispatch ) => {
 
-    const urlToPost = new URL("http://localhost:8080/cart");
-    urlToPost.searchParams.append("sku_id", items.sku_id );
-    urlToPost.searchParams.append("count", items.count );
-
-    axios.post( urlToPost )
+    axios.post( "http://localhost:8080/cart", items )
     .then( ( result ) => {
       axios.get( '/cart' )
       .then( ( cart ) => {

@@ -12,7 +12,7 @@ var markQuestion = ( questionId ) => {
         var productId = store.getState().productId || defaultProduct;
         axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } } )
         .then( ( questions ) => {
-          dispatch( actionQuestions( questions.data ) );
+          dispatch( actionQuestions( questions.data.data ) );
         });
       })
       .catch(( error ) => {
