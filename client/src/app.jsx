@@ -9,6 +9,12 @@ class App extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    var outfit = [] // need to determine how save/load this across sessions
+    var productId = 64620 // need to pull product id from url (using a default product for now)
+    this.props.handleInitializeState( productId, outfit );
+  }
+
   render() {
     return (
       <div className="container">
@@ -18,10 +24,3 @@ class App extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app')
-);
