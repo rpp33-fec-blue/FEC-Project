@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import store from './configureStore';
 import Qa from './components/qa/qa.jsx';
 import Rnr from './components/ratings-and-reviews/rnr.jsx';

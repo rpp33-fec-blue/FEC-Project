@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppContainer from './../containers/AppContainer.js';
+import { Provider } from 'react-redux';
+import AppContainer from './containers/appContainer.js';
 import store from './configureStore';
 
 ReactDOM.render(
