@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import store from './configureStore';
-import Qa from './components/qa/qa.jsx';
+import ConnectedQA from './components/qa/qa.jsx'
 import Rnr from './components/ratings-and-reviews/rnr.jsx';
 
 
@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <div>Hey From React!</div>
-        <Qa className="item-widget-overview"/>
+        <ConnectedQA className="item-widget-overview"/>
         <Rnr />
       </div>
     );

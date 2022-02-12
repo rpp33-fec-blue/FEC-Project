@@ -2,7 +2,6 @@
   "name": "fec-project",
   "version": "1.0.0",
   "description": "Team blue",
-  "main": "index.js",
   "scripts": {
     "test": "jest test/test.js",
     "test-api": "jest test/api/test.js",

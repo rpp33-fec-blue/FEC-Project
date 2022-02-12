@@ -1,7 +1,7 @@
 /*==================== Widget container =======================*/
 .container {
   display: grid;
-  grid-template-columns: 250px auto 250px;
+  grid-template-columns: 5% auto 5%;
 }
 /* use these classes when render your own widget in app.jsx */
 .item-widget-overview {
@@ -19,6 +19,44 @@
 .item-widget-review {
   grid-column: 2 / span 1;
   grid-row: 4 / span 1;
+}
+
+/*===================== Overlays effect =========================*/
+/* How to add overlays:
+1. use on and off function in html file.
+2. for css style - use className overlay-bg and overlay-text
+3. When calling on and off function don't forget to call with argument id of the overlay form */
+
+form.overlay-bg {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  background-color: rgba(224, 224, 224, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+form.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay-content input[type=text],
+.overlay-content textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 /*========================== Overview ==========================*/

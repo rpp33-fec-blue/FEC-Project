@@ -1,21 +1,32 @@
 class Answer extends React.Component {
 
-  constructor () {
-    super();
+  constructor (props) {
+    //props
+    //props.answerId
+    //props.answer
+    super(props);
     this.state = {
-      answersToShow: 2
+
     }
   }
 
 
   render() {
+    var body = this.props.answer.body;
+    var answerer_name = this.props.answer.answerer_name;
+    var helpfulness = this.props.answer.helpfulness;
+    var date = new Date(this.props.answer.date);
+    var month = window.months[date.getMonth()];
+    var day = date.getDate();
+    var year = date.getFullYear();
+
     return (
       <div className="answer">
-        <div > A: ... </div>
+        <div > A: {body} </div>
         <div>
-          <span> by User1234, December 21, 2022 |</span>
+          <span> by {answerer_name}, {month} {day}, {year} |</span>
           <span> Helpful? </span>
-          <span> Yes(#) | </span>
+          <span> Yes({helpfulness}) | </span>
           <span> Report </span>
         </div>
       </div>

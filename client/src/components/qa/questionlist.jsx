@@ -2,21 +2,40 @@ import Question from './question.jsx';
 
 class QuestionList extends React.Component {
 
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
+    //Current props
+    //props.sortedQ
+    //props.filteredQ
     this.state = {
       questionsToShow: 2
     }
   }
-  render () {
-    // var questions = slice array of object with only the first few count => depends on show and counts state, only iterate according to how much we want
-    var questions = <Question />
-    // iterate over this.state.questionFiltered // for each question
-      // return  <Question quesiton={question}/>
 
-    // *must be in order of helpfulness
+  handleMoreAnswerQuestionClick () {
+    // button that will add two more <IndividualQuestion /> everytime you click
+    // if there is one left then only add one.
+    // If nothing left in the list, hid the button.
+    // when the question is too long, cap maximum hieght for the question & Answer and make it scrollable
+  }
+
+  onForm () {
+    onOverlay("overlay-addAnswer");
+  }
+
+  render () {
+    var questions = this.props.filteredQ.map((question, index) => {
+      if (index+1 <= this.state.questionsToShow) {
+        return <Question question={question} questionId={question.question_id} key={index}/>
+      }
+    })
+
     return (
-      <div className="item-qa-questionlist">{questions}</div>
+      <div>
+        <div className="item-qa-questionlist">{questions}</div>
+        <button>MORE ANSWERED QUESTIONS</button>
+        <button onClick={this.onForm.bind(this)}>Add a question</button>
+      </div>
     );
   }
 };
