@@ -40,6 +40,13 @@ describe( 'API GET', () => {
         expect(results.data.data.id).toEqual(64620);
       });
   });
+  it( 'should be able to get data from /cart', () => {
+    return axios.get( 'http://localhost:8080/cart' )
+      .then( ( results ) => {
+        console.log(results.data)
+        expect(results.data.data).not.toEqual(undefined);
+      });
+  });
 });
 
 describe( 'API POST', () => {
@@ -55,11 +62,22 @@ describe( 'API POST', () => {
 
     return axios.post( urlToPost.href, newQuestion )
       .then( ( results ) => {
-        console.log('post success:', results.status);
-        expect(results.status).toBe(201);
+        expect(results.status).toBe(200);
       })
       .catch( ( error ) => {
-        console.log(error);
+        console.log('error:', error);
+      });
+  });
+  it( 'should post an item to the cart', ( ) => {
+    var item = { 'sku_id': 2313108, 'count': 1 };
+
+    return axios.post( 'http://localhost:8080/cart', item )
+      .then( ( results ) => {
+        console.log('success:', results.status);
+        expect(results.status).toBe(200);
+      })
+      .catch( ( error ) => {
+        console.log('error:', error);
       });
   });
 });

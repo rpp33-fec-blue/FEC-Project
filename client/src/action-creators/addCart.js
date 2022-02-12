@@ -8,7 +8,7 @@ var addCart = ( items ) => {
 
     axios.post( "http://localhost:8080/cart", items )
     .then( ( result ) => {
-      axios.get( '/cart' )
+      axios.get( 'http://localhost:8080/cart' )
       .then( ( cart ) => {
         dispatch( actionCart( cart.data ) );
       })

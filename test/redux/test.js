@@ -361,25 +361,25 @@ describe( 'Action-Creators', () => {
       addReview( newReview )( fakeDispatch );
     });
   });
-  // describe( 'Add Cart', () => {
-  //   it( 'should return a function', () => {
-  //     expect( typeof addCart() ).toBe( 'function' );
-  //   });
-  //   it( 'should modify the the cart state', ( done ) => {
-  //     var startingState = JSON.parse(JSON.stringify(state));
+  describe( 'Add Cart', () => {
+    it( 'should return a function', () => {
+      expect( typeof addCart() ).toBe( 'function' );
+    });
+    it( 'should modify the the cart state', ( done ) => {
+      var startingState = JSON.parse(JSON.stringify(state));
 
-  //     var fakeDispatch = ( action ) => {
-  //       if (action.type === 'CHANGE_CART') {
-  //         state.cart = action.cart;
-  //         expect( startingState.cart ).not.toEqual( state.cart );
-  //         done();
-  //       }
-  //     }
+      var fakeDispatch = ( action ) => {
+        if (action.type === 'CHANGE_CART') {
+          state.cart = action.cart;
+          expect( startingState.cart ).not.toEqual( state.cart );
+          done();
+        }
+      }
 
-  //     var newItems = { 'sku_id': 5, 'count': 1 }
-  //     addCart( newItems )( fakeDispatch );
-  //   });
-  // });
+      var newItems = { 'sku_id': 2313108, 'count': 1 };
+      addCart( newItems )( fakeDispatch );
+    });
+  });
   describe( 'Add Outfit', () => {
     it( 'should return a function', () => {
       expect( typeof addOutfit() ).toBe( 'function' );
