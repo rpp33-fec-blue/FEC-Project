@@ -1,23 +1,19 @@
 import actionReviews from '../actions/reviews.js';
 import store from '../configureStore.js';
+const axios = require('axios');
+var defaultProduct = 64620;
 
-var markReview = ( reviewId ) => { // it would be faster if we pass in the indexes instead of the ids. That way we do not need to loop through the arrays to find them.
+var markReview = ( reviewId ) => {
 
   return ( dispatch ) => {
 
-    axios.put( `http://localhost:8080/reviews/:${reviewId}/helpful` ) // unsure of what to pass as second arguement. The API page does not make it clear when it needs.
+    axios.put( `http://localhost:8080/reviews/${reviewId}/helpful` )
       .then( ( ) => {
-        var reviews = store.getState().reviews;
-        var results = reviews.results.map( ( result ) => {
-          if ( result.review_id === reviewId ) {
-            result.helpfulness++;
-          }
-
-          return result;
+        var productId = store.getState().productId || defaultProduct;
+        axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } )
+        .then( ( reviews ) => {
+          dispatch( actionReviews( reviews.data.data ) );
         });
-
-        reviews.results = results;
-        dispatch( actionReviews( reviews ) );
       })
       .catch(( error ) => {
         console.log( 'Error updating review' );
