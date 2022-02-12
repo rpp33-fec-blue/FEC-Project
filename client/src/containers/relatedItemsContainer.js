@@ -7,7 +7,8 @@ import removeOutfit from './../action-creators/removeOutfit.js';
 var RelatedItemsContainer = ( state ) => {
   return {
     productId: state.productId,
-    products: state.products
+    relatedProducts: state.relatedProducts,
+    outfit: state.outfit
   };
 };
 
