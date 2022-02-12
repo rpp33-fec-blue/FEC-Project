@@ -7,7 +7,10 @@ import removeOutfit from './../action-creators/removeOutfit.js';
 var RelatedItemsContainer = ( state ) => {
   return {
     productId: state.productId,
+<<<<<<< HEAD
     relatedProducts: state.relatedProducts,
+=======
+>>>>>>> b7c0ecf577bd424ce495876520212814dd8e6c83
     outfit: state.outfit
   };
 };
