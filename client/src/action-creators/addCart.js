@@ -1,19 +1,22 @@
 import actionCart from '../actions/cart.js';
 import store from '../configureStore.js';
+const axios = require('axios');
 
-var addCart = ( skuId, count ) => {
+var addCart = ( items ) => {
 
   return ( dispatch ) => {
 
-    axios.post( `http://localhost:8080/cart`, { sku_id: skuId, count: count } )
-      .then( ( ) => {
-        var items = store.getState().cart;
-        items.push( { sku_id: skuId, count: count } );
-        dispatch( actionCart( items ) );
+    axios.post( "http://localhost:8080/cart", items )
+    .then( ( result ) => {
+      axios.get( 'http://localhost:8080/cart' )
+      .then( ( cart ) => {
+        dispatch( actionCart( cart.data ) );
       })
-      .catch(( error ) => {
-        console.log( 'Error adding to cart' );
-      });
+    })
+    .catch( ( error ) => {
+      console.log( 'Error adding to cart' );
+    });
+
   };
 };
 
