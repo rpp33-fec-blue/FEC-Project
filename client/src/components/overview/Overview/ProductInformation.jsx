@@ -6,13 +6,10 @@ import OutfitToggle from './OutfitToggle.jsx';
 
 class ProductInformation extends React.Component {
 
-  // Props: metadata, productInfo, styles, selectedStyleId, selectedStyleIndex, addOutfit, removeOutfit
+  // Props: metadata, productInfo, styles, selectedStyleId, selectedStyleIndex, outfit
 
   constructor(props) {
     super(props);
-    this.state = {
-      inOutfit: false;
-    }
   }
 
   render() {
@@ -23,7 +20,7 @@ class ProductInformation extends React.Component {
         <h4>{productInfo.category}</h4>
         <ProductOverview productInfo={this.props.productInfo} />
         <Price styles={this.props.styles} selectedStyleId={this.props.selectedStyleId} />
-        <OutfitToggle inOutfit={this.state.inOutfit} addOutfit={this.props.addOutfit} removeOutfit={this.props.removeOutfit} />
+        <OutfitToggle selectedStyleId={this.props.selectedStyleId} outfit={this.props.outfit} />
     </div>
     );
   }
