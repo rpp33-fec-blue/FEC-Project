@@ -1,6 +1,6 @@
 import StyleThumbnail from './StyleThumbnail.jsx';
 
-const StyleSelector = () => {
+const StyleSelector = ( { styles, selectedStyleId, selectedStyleIndex, updateSelectedStyle } ) => {
 
   // Props: styles, selectedStyleIndex, selectedStyleId, updateSelectedStyle
 

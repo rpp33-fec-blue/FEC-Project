@@ -14,6 +14,11 @@ class Overview extends React.Component {
       selectedStyleId: null,
       selectedStyleIndex: 0
     };
+    this.updateSelectedStyle = this.updateSelectedStyle.bind(this);
+  }
+
+  updateSelectedStyle(event) {
+    // TO DO
   }
 
   render() {
@@ -29,7 +34,12 @@ class Overview extends React.Component {
           outfit={this.props.outfit}
         />
         <h2>Style Selector</h2>
-        <StyleSelector />
+        <StyleSelector
+          styles={this.props.styles}
+          selectedStyleId={this.state.selectedStyleId}
+          selectedStyleIndex={this.state.selectedStyleIndex}
+          updateSelectedStyle={this.updateSelectedStyle}
+        />
         <h2>ImageGallery</h2>
         <ImageGallery />
         <h2>AddToCart</h2>
