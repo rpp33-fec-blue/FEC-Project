@@ -1,6 +1,6 @@
-const QuantitySelector = () => {
+const QuantitySelector = ( { styles, selectedStyleId, quantitySelected, updateQuantitySelected } ) => {
 
-  // Props: quantitySelected, updateQuantitySelected
+  // Props: styles, selectedStyleId, quantitySelected, updateQuantitySelected
 
   return (
     <div>

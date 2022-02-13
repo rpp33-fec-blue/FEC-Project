@@ -1,20 +1,22 @@
 import React from 'react';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
+import addCart from '../action-creators/addCart.js';
 
 class AddToCart extends React.Component {
 
-  // Props: selectedStyleId, styles, addCart
+  // Props: selectedStyleId, styles
 
   constructor(props) {
     super(props);
-    // this.state = {
-    //   sku: 0,
-    //   sizeSelected: 'Select Size',
-    //   quantitySelected: '-'
-    // };
-    // this.updateSizeSelected = this.updateSizeSelected.bind(this);
-    // this.updateQuantitySelected = this.updateQuantitySelected.bind(this);
+    this.state = {
+      sku: 0,
+      sizeSelected: 'Select Size',
+      quantitySelected: '-'
+    };
+    this.updateSizeSelected = this.updateSizeSelected.bind(this);
+    this.updateQuantitySelected = this.updateQuantitySelected.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   updateSizeSelected(event) {
@@ -25,12 +27,26 @@ class AddToCart extends React.Component {
     // TO DO
   }
 
+  addToCart(event) {
+    // TO
+  }
+
   render() {
     return (
       <div>
-        <SizeSelector />
-        <QuantitySelector />
-        <button onClick={this.props.addCart}></button>
+        <SizeSelector
+          styles={this.props.styles}
+          selectedStyleId={this.props.selectedStyleId}
+          sizeSelected={this.state.sizeSelected}
+          updateSizeSelected={this.updateSizeSelected}
+        />
+        <QuantitySelector
+          styles={this.props.styles}
+          selectedStyleId={this.props.selectedStyleId}
+          quantitySelected={this.state.quantitySelected}
+          updateQuantitySelected={this.updateQuantitySelected}
+        />
+        <button onClick={this.addToCart}></button>
       </div>
     );
   }

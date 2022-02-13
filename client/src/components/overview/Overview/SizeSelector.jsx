@@ -1,6 +1,6 @@
-const SizeSelector = () => {
+const SizeSelector = ( { styles, selectedStyleId, sizeSelected, updateSizeSelected } ) => {
 
-  // Props: selectedStyleId, styles, updateSizeSelected
+  // Props: styles, selectedStyleId, sizeSelected, updateSizeSelected
 
   return (
     <div>
