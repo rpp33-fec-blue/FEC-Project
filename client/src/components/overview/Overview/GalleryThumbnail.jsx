@@ -1,10 +1,10 @@
-const GalleryThumbnail = () => {
+const GalleryThumbnail = ( { styles, selectedImageId, selectedImageIndex, updateSelectedImageIndex } ) => {
 
-  // Props: photos, selectedImageIndex, updateSelectedImage
+  // Props: styles, selectedImageId, selectedImageIndex, updateSelectedImageIndex
 
   return (
     <div>
-      {/* TO DO */}
+      {/* TO DO - return thumbnail */}
     </div>
   );
 

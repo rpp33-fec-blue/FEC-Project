@@ -1,16 +1,27 @@
 import GalleryThumbnail from './GalleryThumbnail.jsx';
 
-const DefaultView = () => {
+const DefaultView = ( { styles, selectedStyleId, selectedImageIndex, updateSelectedImageIndex, updateDefaultView } ) => {
 
 
-  //  Props: photos, selectedImageIndex, updateSelectedImageIndex
+  // Props: styles, selectedStyleId, selectedImageIndex, updateSelectedImageIndex, updateDefaultView
 
   return (
     <div>
-      <img></img> {/* TO DO - insert selected image (if clicked, should return ExpandedView */}
-      {/* TO DO - insert gallery thumbnails for other images (<= 7) */}
-      <button onClick={updateSelectedImageIndex} value='left'>Left arrow</button>
-      <button onClick={updateSelectedImageIndex} value='right'>Right arrow</button>
+      <img></img> {/* TO DO - insert selected image (if clicked, should update defaultView)
+                            - on hover, cursor changes to magnifying glass
+                  */}
+      {/* TO DO - insert gallery thumbnails for other images (<= 7)
+                - selectedImage thumbnail should be highlighted (clicking on it has no effect)
+      */}
+      {/* TO DO - insert up and down arrows if more than 7 thumbnails */}
+      <GalleryThumbnail
+        styles={props.styles}
+        selectedStyleId={props.selectedStyleId}
+        selectedImageIndex={props.selectedImageIndex}
+        updateSelectedImageIndex={props.updateSelectedImageIndex}
+      />
+      <button onClick={updateSelectedImageIndex} value='left'>Left arrow</button> {/* TO DO - do not display left arrow if all the way to the left */}
+      <button onClick={updateSelectedImageIndex} value='right'>Right arrow</button> {/* TO DO - do not display right arrow if all the way to the right */}
     </div>
   );
 };

@@ -1,10 +1,10 @@
-const GalleryIcon = () => {
+const GalleryIcon = ( { styles, selectedStyleId, selectedImageIndex, updateSelectedImageIndex } ) => {
 
-  // Props: photos, selectedImageIndex, updateSelectedImage
+  // Props: styles, selectedImageId, selectedImageIndex, updateSelectedImage
 
   return (
     <div>
-      {/* TO DO */}
+      {/* TO DO - return icons */}
     </div>
   );
 

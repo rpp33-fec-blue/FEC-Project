@@ -4,25 +4,46 @@ import ExpandedView from './ExpandedView';
 
 class ImageGallery extends React.Component {
 
-    constructor( props ) {
-      super( props );
+    // Props: styles, selectedStyleId, selectedImageIndex, updateSelectedImageIndex
+
+    constructor(props) {
+      super(props);
       this.state = {
-        photos: this.props.style.photos,
-        selectedImageIndex: 0
+        defaultView: true
       };
-      this.updateSelectedImageIndex = this.updateSelectedImageIndex.bind(this);
+      this.updateDefaultView = this.updateDefaultView.bind(this);
     }
 
-    updateSelectedImageIndex(event) {
-      const index = event.serializeArray(); // TO DO
-      this.setState( { selectedImageIndex: index } );
+    updateDefaultView(event) {
+      // TO DO
     }
 
     render() {
-      if (this.props.expandedView === false) {
-        return <DefaultView photos={this.state.photos} selectedImageIndex={this.state.selectedImageIndex} updateSelectedImageIndex={this.updateSelectedImageIndex} />;
+      // If default view equals true
+      if (this.state.defaultView) {
+        return (
+          <div>
+            <DefaultView
+              styles={this.props.styles}
+              selectedStyleId={this.props.selectedStyleId}
+              selectedImageIndex={this.props.selectedImageIndex}
+              updateSelectedImageIndex={this.props.updateSelectedImageIndex}
+              updateDefaultView={this.updateDefaultView}
+            />
+          </div>
+        );
       } else {
-        return <ExpandedView photos={this.state.photos} selectedImageIndex={this.state.selectedImageIndex} updateSelectedImageIndex={this.updateSelectedImageIndex} />;
+        return (
+          <div>
+            <ExpandedView
+              styles={this.props.styles}
+              selectedStyleId={this.props.selectedStyleId}
+              selectedImageIndex={this.props.selectedImageIndex}
+              updateSelectedImageIndex={this.props.updateSelectedImageIndex}
+              updateDefaultView={this.updateDefaultView}
+            />
+          </div>
+        );
       }
     }
 };

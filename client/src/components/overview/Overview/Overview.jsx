@@ -12,12 +12,18 @@ class Overview extends React.Component {
     super(props);
     this.state = {
       selectedStyleId: null,
-      selectedStyleIndex: 0
+      selectedStyleIndex: 0,
+      selectedImageIndex: 0
     };
     this.updateSelectedStyle = this.updateSelectedStyle.bind(this);
+    this.updateSelectedImageIndex = this.updateSelectedImageIndex.bind(this);
   }
 
   updateSelectedStyle(event) {
+    // TO DO
+  }
+
+  updateSelectedImageIndex(event) {
     // TO DO
   }
 
@@ -41,9 +47,17 @@ class Overview extends React.Component {
           updateSelectedStyle={this.updateSelectedStyle}
         />
         <h2>ImageGallery</h2>
-        <ImageGallery />
+        <ImageGallery
+          styles={this.props.styles}
+          selectedStyleId={this.state.selectedStyleId}
+          selectedImageIndex={this.state.selectedImageIndex}
+          updateSelectedImageIndex={this.updateSelectedImageIndex}
+        />
         <h2>AddToCart</h2>
-        <AddToCart />
+        <AddToCart
+          styles={this.props.styles}
+          selectedStyleId={this.state.selectedStyleId}
+        />
       </div>
     );
   }
