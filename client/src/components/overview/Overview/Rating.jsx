@@ -1,11 +1,11 @@
-const Rating = () => {
+const Rating = ( { metadata } ) => {
 
   // Props: metadata
 
   return (
     <div>
-      <p>TO DO - stars</p>
-      <a href="#">Read all ${'#'} of reviews</a>
+      <p>TO DO - return stars</p>
+      <a href="#">Read all ${'#'} of reviews</a> {/* TO DO - link to reviews */}
     </div>
   );
 };

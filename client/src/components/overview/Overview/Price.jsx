@@ -1,6 +1,8 @@
-const Price = () => {
+const Price = ( { styles, selectedStyleId } ) => {
 
-  // Props: selectedStyle
+  // Props: styles, selectedStyleId
+
+  // TO DO - obtain selected style
 
   return (
     <div></div>

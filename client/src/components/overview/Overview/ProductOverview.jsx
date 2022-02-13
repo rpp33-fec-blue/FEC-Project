@@ -1,4 +1,4 @@
-const ProductOverview = () => {
+const ProductOverview = ( { productInfo } ) => {
 
   // Props: productInfo
 
@@ -6,7 +6,7 @@ const ProductOverview = () => {
     <div>
       <h6>{productInfo.slogan}</h6>
       <p>{productInfo.description}</p>
-      <p>TO DO - product features</p>
+      <p>TO DO - return product features</p>
     </div>
   );
 }

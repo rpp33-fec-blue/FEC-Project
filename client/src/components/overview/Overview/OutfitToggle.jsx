@@ -1,11 +1,11 @@
-const OutfitToggle = () => {
+const OutfitToggle = ( { inOutfit, addOutfit, removeOutfit } ) => {
 
   // Props: inOutfit, addOutfit, removeOutfit
 
   // If in outfit
   //   Return star that can remove outfit
   // Else
-  //   Return star that add outfit
+  //   Return star that can add outfit
 
   return (
     <div></div>
