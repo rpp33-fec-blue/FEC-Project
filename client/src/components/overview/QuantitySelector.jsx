@@ -9,7 +9,6 @@ const QuantitySelector = ( { styles, selectedStyleId, quantitySelected, updateQu
       </select>
     </div>
   );
-}
 };
 
 export default QuantitySelector;
