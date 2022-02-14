@@ -11,13 +11,14 @@ class ProductList extends React.Component {
   buildRelatedItemsData() {
     // call GET on the api for every item in the relatedItems array
     // build up an array of items that has all of the info from get requests
-    return this.props.relatedItems;
+    //return this.props.relatedItems;
+    return [1, 2, 3];
   }
 
 
   render() {
     return (
-      <div>
+      <div className='card-list'>
         {this.items.map( ( item ) => {
           return (
             <ProductCard item={ item }/>

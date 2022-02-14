@@ -63,6 +63,22 @@ form.overlay-content {
 
 /*======================== Related items =======================*/
 
+.product-card {
+  width: 250px;
+  height: 350px;
+  outline: 1px solid black;
+  margin-right: 30px;
+}
+
+.card-info {
+  width: 100%;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: row;
+}
+
 /*========================== Reviews ===========================*/
 
 /*============================= QA =============================*/
