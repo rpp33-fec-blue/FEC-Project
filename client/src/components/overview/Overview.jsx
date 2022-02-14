@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductInformation from './ProductInformation.jsx';
 import StyleSelector from './StyleSelector.jsx';
-import ImageGallery from './ImageSelector.jsx';
+import ImageGallery from './ImageGallery.jsx';
 import AddToCart from './AddToCart.jsx';
 
 class Overview extends React.Component {
@@ -63,7 +63,7 @@ class Overview extends React.Component {
   }
 }
 
-
+export default Overview;
 
 
 /*

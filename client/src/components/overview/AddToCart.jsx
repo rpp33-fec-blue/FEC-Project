@@ -1,11 +1,10 @@
 import React from 'react';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
-import addCart from '../action-creators/addCart.js';
 
 class AddToCart extends React.Component {
 
-  // Props: selectedStyleId, styles
+  // Props: selectedStyleId, styles, addCart
 
   constructor(props) {
     super(props);
@@ -27,10 +26,6 @@ class AddToCart extends React.Component {
     // TO DO
   }
 
-  addToCart(event) {
-    // TO
-  }
-
   render() {
     return (
       <div>
@@ -46,7 +41,7 @@ class AddToCart extends React.Component {
           quantitySelected={this.state.quantitySelected}
           updateQuantitySelected={this.updateQuantitySelected}
         />
-        <button onClick={this.addToCart}></button>
+        <button onClick={this.props.addCart}></button>
       </div>
     );
   }

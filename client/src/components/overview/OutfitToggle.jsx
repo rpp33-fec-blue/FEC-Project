@@ -1,9 +1,6 @@
-import addOutfit from '../action-creators/addCart.js';
-import removeOutfit from '../action-creators/removeCart.js';
+const OutfitToggle = ( { selectedStyleId, outfit, addOutfit, removeOutfit } ) => {
 
-const OutfitToggle = ( { selectedStyleId, outfit } ) => {
-
-  // Props: selectedStyleId, outfit
+  // Props: selectedStyleId, outfit, addOutfit, removeOutfit
 
   // If in outfit
   //   Return star that can remove outfit

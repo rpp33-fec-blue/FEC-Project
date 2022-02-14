@@ -16,8 +16,8 @@ class ProductInformation extends React.Component {
     return (
       <div>
         <Rating metadata={this.props.metadata} />
-        <h2>{productInfo.name}</h2>
-        <h4>{productInfo.category}</h4>
+        <h2>{this.props.productInfo.name}</h2>
+        <h4>{this.props.productInfo.category}</h4>
         <ProductOverview productInfo={this.props.productInfo} />
         <Price styles={this.props.styles} selectedStyleId={this.props.selectedStyleId} />
         <OutfitToggle selectedStyleId={this.props.selectedStyleId} outfit={this.props.outfit} />

@@ -47,4 +47,4 @@ const StyleThumbnail = ({ style, selectedStyleId, updateSelectedStyle }) => {
 
 export default StyleThumbnail;
 
-/*
+*/
