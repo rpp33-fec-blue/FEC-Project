@@ -7,9 +7,14 @@ class ProductCard extends React.Component {
   }
 
   render() {
+    var photo = '';
+    if ( this.props.item.styles ) {
+      photo = this.props.item.styles.photos[0].url
+    }
+
     return (
       <div className='product-card'>
-        <img className='card-info card-photo' src={this.props.item.photo}></img>
+        <img className='card-info card-photo' src={photo}></img>
         <div className='card-info card-category'>{this.props.item.category}</div>
         <div className='card-info card-product-name'>{this.props.item.name}</div>
         <div className='card-info card-price'>{this.props.item.default_price}</div>

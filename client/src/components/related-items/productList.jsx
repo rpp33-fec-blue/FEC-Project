@@ -27,7 +27,6 @@ class ProductList extends React.Component {
         for ( var j = 0; j < results[ i + 2 ].data.data.results.length; j++ ) {
           if ( results[ i + 2 ].data.data.results[ j ]['default?'] ) {
             product = Object.assign( product, { styles: results[ i + 2 ].data.data.results[ j ] } );
-            console.log('default product', product)
             break;
           }
         }
