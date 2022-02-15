@@ -1,16 +1,24 @@
-const Price = ( { styles, selectedStyleId } ) => {
+const Price = ( { styles, selectedStyleIndex } ) => {
 
-  // Props: styles, selectedStyleId
+  const price = Number(styles.results[selectedStyleIndex].original_price);
+  const salePrice = styles.results[selectedStyleIndex].sale_price;
+  if (salePrice !== null) {
+    salePrice = Number(salePrice);
+  }
 
-  // TO DO - obtain selected style
-
-  return (
-    <div></div>
-    // If sale price equals 0
-    //   Return original price
-    // Else
-    //   Return sale price (in red) and original price (crossed out)
-  );
+  if (salePrice === null || salePrice === 0) {
+    return (
+      <div>
+        <p>Price: ${price}</p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <span id="price">Price: ${salePrice}</span><span id="salePrice">${price}</span>
+      </div>
+    );
+  }
 };
 
 export default Price;

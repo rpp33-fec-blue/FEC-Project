@@ -6,7 +6,7 @@ import OutfitToggle from './OutfitToggle.jsx';
 
 class ProductInformation extends React.Component {
 
-  // Props: metadata, productInfo, styles, selectedStyleId, selectedStyleIndex, outfit
+  // Props: productId, metadata, productInfo, styles, selectedStyleIndex, outfit, addOutfit, removeOutfit
 
   constructor(props) {
     super(props);
@@ -16,11 +16,16 @@ class ProductInformation extends React.Component {
     return (
       <div>
         <Rating metadata={this.props.metadata} />
-        <h2>{this.props.productInfo.name}</h2>
-        <h4>{this.props.productInfo.category}</h4>
+        <h2>Name: {this.props.productInfo.name}</h2>
+        <h4>Category: {this.props.productInfo.category}</h4>
         <ProductOverview productInfo={this.props.productInfo} />
-        <Price styles={this.props.styles} selectedStyleId={this.props.selectedStyleId} />
-        <OutfitToggle selectedStyleId={this.props.selectedStyleId} outfit={this.props.outfit} />
+        <Price styles={this.props.styles} selectedStyleIndex={this.props.selectedStyleIndex} />
+        <OutfitToggle
+          productId={this.props.productId}
+          outfit={this.props.outfit}
+          addOutfit={this.props.addOutfit}
+          removeOutfit={this.props.removeOutfit}
+        />
     </div>
     );
   }
@@ -28,29 +33,3 @@ class ProductInformation extends React.Component {
 };
 
 export default ProductInformation;
-
-
-
-
-
-
-
-
-
-/*
-const ProductInformation = ({ metadata, productInfo, selectedStyle, inOutfit, addOutfit, removeOutfit }) => {
-  return (
-    <div>
-      <Rating metadata={metadata} />
-      <h2>{productInfo.name}</h2>
-      <h4>{productInfo.category}</h4>
-      <ProductOverview productInfo={productInfo} />
-      <Price selectedStyle={selectedStyle} />
-      <OutfitToggle inOutfit={inOutfit} addOutfit={addOutfit} removeOutfit={removeOutfit} />
-    </div>
-  );
-}
-
-export default ProductInformation;
-
-*/

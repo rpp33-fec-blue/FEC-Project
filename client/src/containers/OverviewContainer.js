@@ -9,7 +9,9 @@ var OverviewContainer = ( state ) => {
     productId: state.productId,
     metadata: state.metadata,
     productInfo: state.productInfo,
-    styles: state.styles
+    styles: state.styles,
+    cart: state.cart,
+    outfit: state.outfit
   };
 };
 

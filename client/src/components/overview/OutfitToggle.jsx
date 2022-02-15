@@ -1,11 +1,9 @@
-const OutfitToggle = ( { selectedStyleId, outfit, addOutfit, removeOutfit } ) => {
-
-  // Props: selectedStyleId, outfit, addOutfit, removeOutfit
+const OutfitToggle = ( { productId, outfit, addOutfit, removeOutfit } ) => {
 
   // If in outfit
-  //   Return star that can remove outfit
+  //   Return full star that can remove outfit
   // Else
-  //   Return star that can add outfit
+  //   Return empty star that can add outfit
 
   return (
     <div></div>
@@ -13,34 +11,3 @@ const OutfitToggle = ( { selectedStyleId, outfit, addOutfit, removeOutfit } ) =>
 };
 
 export default OutfitToggle;
-
-
-
-
-
-
-
-
-
-
-/*
-
-const OutfitToggle = ( { inOutfit, addOutfit, removeOutfit } ) => {
-  if (!inOutfit) {
-    return (
-      <div>
-        <img src='' onClick={this.props.addOutfit}>Empty star</img>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <img src='' onClick={this.props.removeOutfit}>Filled star</img>
-      </div>
-    );
-  }
-};
-
-export default OutfitToggle;
-
-*/
