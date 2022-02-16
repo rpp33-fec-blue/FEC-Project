@@ -63,6 +63,11 @@ form.overlay-content {
 
 /*======================== Related items =======================*/
 
+.card-list {
+  display: flex;
+  flex-direction: row;
+}
+
 .product-card {
   width: 250px;
   height: 350px;
@@ -72,11 +77,6 @@ form.overlay-content {
 
 .card-info {
   width: 100%;
-}
-
-.card-list {
-  display: flex;
-  flex-direction: row;
 }
 
 .card-photo {
