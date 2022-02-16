@@ -22,11 +22,11 @@ class ProductList extends React.Component {
 
     Promise.all(apiCalls).then( ( results ) => {
       var relatedProductsArray = [];
-      for ( var i = 0; i < results.length; i+=3 ) {
-        var product = Object.assign( results[ i ].data.data, results[ i + 1 ].data.data );
-        for ( var j = 0; j < results[ i + 2 ].data.data.results.length; j++ ) {
-          if ( results[ i + 2 ].data.data.results[ j ]['default?'] ) {
-            product = Object.assign( product, { styles: results[ i + 2 ].data.data.results[ j ] } );
+      for ( var call = 0; call < results.length; call+=3 ) {
+        var product = Object.assign( results[ call ].data.data, results[ call + 1 ].data.data );
+        for ( var style = 0; style < results[ call + 2 ].data.data.results.length; style++ ) {
+          if ( results[ call + 2 ].data.data.results[ style ]['default?'] ) {
+            product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ style ] } );
             break;
           }
         }

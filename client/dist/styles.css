@@ -80,7 +80,21 @@ form.overlay-content {
 }
 
 .card-photo {
-  height: 200px;
+  height: 70%;
+}
+
+.card-category .card-price {
+  font-weight: 200;
+}
+
+.card-name {
+  font-weight: bold;
+}
+
+.card-info-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /*========================== Reviews ===========================*/
