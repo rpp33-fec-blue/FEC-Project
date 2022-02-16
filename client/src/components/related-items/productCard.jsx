@@ -22,7 +22,10 @@ class ProductCard extends React.Component {
 
     return (
       <div className='product-card' onClick={this.cardClicked.bind( this )}>
-        <img className='card-info card-photo' src={photo}></img>
+        <div className='related-image-container'>
+          <img className='card-info card-photo' src={photo}></img>
+          <div className='card-button'>&#9734;</div>
+        </div>
         <div className='card-info-holder'>
           <div className='card-info card-category'>{this.props.item.category}</div>
           <div className='card-info card-product-name'>{this.props.item.name}</div>
