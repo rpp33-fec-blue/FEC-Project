@@ -9,6 +9,7 @@ class ProductList extends React.Component {
       isReady: false
     }
     this.buildRelatedItemsData();
+    this.rebuildRelatedItems = false;
   }
 
   buildRelatedItemsData() {
@@ -33,6 +34,7 @@ class ProductList extends React.Component {
         relatedProductsArray.push( product );
       }
 
+      this.rebuildRelatedItems = false;
       this.setState({
         items: relatedProductsArray,
         isReady: true
@@ -42,24 +44,29 @@ class ProductList extends React.Component {
 
 
   render() {
-    var display;
-    if ( this.state.isReady ) {
-      display = (
-        <div className='card-list'>
-          {this.state.items.map( ( item ) => {
-            return (
-              <ProductCard item={ item }/>
-            )
-          })}
-        </div>
-      );
-    } else {
-      display = <div></div>
-    }
+    var display = <div></div>
 
-    return (
-      display
-    );
+    if ( this.rebuildRelatedItems ) {
+      this.buildRelatedItemsData();
+      return display;
+    } else {
+      if ( this.state.isReady ) {
+        this.rebuildRelatedItems = true;
+        display = (
+          <div className='card-list'>
+            {this.state.items.map( ( item ) => {
+              return (
+                <ProductCard item={ item } changeProduct={this.props.changeProduct}/>
+              )
+            })}
+          </div>
+        );
+      }
+
+      return (
+        display
+      );
+    }
   }
 }
 

@@ -5,6 +5,10 @@ class ProductCard extends React.Component {
     super(props);
   }
 
+  cardClicked() {
+    this.props.changeProduct( this.props.item.id )
+  }
+
   render() {
     var photo = '';
     if ( this.props.item.styles ) {
@@ -17,7 +21,7 @@ class ProductCard extends React.Component {
     }
 
     return (
-      <div className='product-card'>
+      <div className='product-card' onClick={this.cardClicked.bind( this )}>
         <img className='card-info card-photo' src={photo}></img>
         <div className='card-info-holder'>
           <div className='card-info card-category'>{this.props.item.category}</div>
