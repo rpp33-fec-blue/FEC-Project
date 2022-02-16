@@ -34,6 +34,7 @@ class Qa extends React.Component {
     });
   }
 
+  //<QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
   render () {
     return (
       <div id="container-qa">
