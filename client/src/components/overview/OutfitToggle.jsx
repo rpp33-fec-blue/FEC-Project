@@ -1,25 +1,53 @@
-const OutfitToggle = ( { productId, outfit, addOutfit, removeOutfit } ) => {
+import React from 'react';
 
-  var inOutfit = false;
-  for (var index = 0; index < outfit.length; index++) {
-    if (outfit[index] === productId) {
-      inOutfit = true;
-      break;
+class OutfitToggle extends React.Component {
+
+  // Props: productId, outfit, handleAddOutfit, handleRemoveOutfit
+
+  constructor(props) {
+    super(props);
+
+    var inOutfit = false;
+    // Unnecessary check if not persisting outfit
+    for (var index = 0; index < props.outfit.length; index++) {
+      if (props.outfit[index] === productId) {
+        inOutfit = true;
+        break;
+      }
     }
+
+    this.state = {
+      inOutfit: inOutfit,
+    };
+
+    this.addToOutfit = this.addToOutfit.bind(this);
+    this.removeFromOutfit = this.removeFromOutfit.bind(this);
   }
 
-  if (inOutfit) {
-    return (
-      <div>
-        <span onClick={removeOutfit}>Remove from outfit</span> {/* TO DO - return full star that can remove outfit */}
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <span onClick={addOutfit}>Add to outfit</span> {/* TO DO - remove empty star that can add outfit */}
-      </div>
-    );
+  addToOutfit() {
+    this.props.handleAddOutfit(this.props.productId);
+    this.setState( { inOutfit: true } );
+  }
+
+  removeFromOutfit() {
+    this.props.handleRemoveOutfit(this.props.productId);
+    this.setState( { inOutfit: false } );
+  }
+
+  render() {
+    if (this.state.inOutfit) {
+      return (
+        <div>
+          <button onClick={this.removeFromOutfit}>Remove from outfit</button> {/* TO DO - return shaded star that removes from outfit on click */}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <button onClick={this.addToOutfit}>Add to outfit</button> {/* TO DO - return empty star that adds to outfit on click */}
+        </div>
+      );
+    }
   }
 };
 

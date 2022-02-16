@@ -17,7 +17,7 @@ var OverviewContainer = ( state ) => {
 
 var OverviewDispatch = ( dispatch ) => {
   return ( {
-    handleaddCart: ( skuId, count ) => {
+    handleAddCart: ( skuId, count ) => {
       dispatch( addCart( skuId, count ) );
     },
     handleAddOutfit: ( productId ) => {

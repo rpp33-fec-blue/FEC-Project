@@ -6,7 +6,7 @@ import OutfitToggle from './OutfitToggle.jsx';
 
 class ProductInformation extends React.Component {
 
-  // Props: productId, metadata, productInfo, styles, selectedStyleIndex, outfit, addOutfit, removeOutfit
+  // Props: productId, metadata, productInfo, styles, selectedStyleIndex, outfit, handleAddOutfit, handleRemoveOutfit
 
   constructor(props) {
     super(props);
@@ -23,8 +23,8 @@ class ProductInformation extends React.Component {
         <OutfitToggle
           productId={this.props.productId}
           outfit={this.props.outfit}
-          addOutfit={this.props.addOutfit}
-          removeOutfit={this.props.removeOutfit}
+          handleAddOutfit={this.props.handleAddOutfit}
+          handleRemoveOutfit={this.props.handleRemoveOutfit}
         />
     </div>
     );

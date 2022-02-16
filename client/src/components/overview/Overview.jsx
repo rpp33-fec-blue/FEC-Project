@@ -6,7 +6,7 @@ import AddToCart from './AddToCart.jsx';
 
 class Overview extends React.Component {
 
-  // Props: productId, metadata, productInfo, styles, cart, addCart, outfit, addOutfit, removeOutfit
+  // Props: productId, metadata, productInfo, styles, cart, outfit, handleAddCart, handleAddOutfit, handleRemoveOutfit
 
   constructor(props) {
     super(props);
@@ -37,8 +37,8 @@ class Overview extends React.Component {
           styles={this.props.styles}
           selectedStyleIndex={this.state.selectedStyleIndex}
           outfit={this.props.outfit}
-          addOutfit={this.props.addOutfit}
-          removeOutfit={this.props.removeOutfit}
+          handleAddOutfit={this.props.handleAddOutfit}
+          handleRemoveOutfit={this.props.handleRemoveOutfit}
         />
         <h2>Style Selector</h2>
         <StyleSelector

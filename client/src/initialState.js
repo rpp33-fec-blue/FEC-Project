@@ -1,43 +1,14 @@
 var initialState = {
-  isLoading: true,
-  productId: "64620",
-  productInfo: {
-    "id": 64620,
-    "campus": "hr-rpp",
-    "name": "Camo Onesie",
-    "slogan": "Blend in to your crowd",
-    "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-    "category": "Jackets",
-    "default_price": "140.00",
-    "created_at": "2022-01-28T00:20:03.466Z",
-    "updated_at": "2022-01-28T00:20:03.466Z"
-  },
-  styles: {},
-  metadata: {},
-  relatedProducts: [],
-  reviews: {},
-  questions: [
-    {
-        "question_id": 563775,
-        "question_body": "Does this product run big or small?",
-        "question_date": "2019-01-17T00:00:00.000Z",
-        "asker_name": "jbilas",
-        "question_helpfulness": 28,
-        "reported": false,
-        "answers": {
-            "5359236": {
-                "id": 5359236,
-                "body": "45654645654654",
-                "date": "2022-01-28T00:00:00.000Z",
-                "answerer_name": "asassdadsa",
-                "helpfulness": 10,
-                "photos": []
-            },
-            {
-                "feature": "Buttons",
-                "value": "Brass"
-            }
-        ],
+    isLoading: true,
+    productId: "64620",
+    productInfo: {
+        "id": 64620,
+        "campus": "hr-rpp",
+        "name": "Camo Onesie",
+        "slogan": "Blend in to your crowd",
+        "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
+        "category": "Jackets",
+        "default_price": "140.00",
         "created_at": "2022-01-28T00:20:03.466Z",
         "updated_at": "2022-01-28T00:20:03.466Z"
     },
