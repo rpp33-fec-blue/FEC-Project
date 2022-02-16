@@ -1,4 +1,5 @@
 var initialState = {
+  isLoading: true,
   productId: "64620",
   productInfo: {
     "id": 64620,
