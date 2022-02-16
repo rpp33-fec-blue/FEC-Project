@@ -34,12 +34,13 @@ class Qa extends React.Component {
     });
   }
 
+  //<QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
   render () {
     return (
       <div id="container-qa">
         <div>Questions and Answers</div>
         <SearchBar />
-        <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
+        <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.props.questions}/>
         <AddAnAnswer />
       </div>
     );

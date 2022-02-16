@@ -7,6 +7,7 @@ import actionStyles from '../actions/styles.js';
 import actionProductInfo from '../actions/productInfo.js';
 import actionCart from '../actions/cart.js';
 import actionOutfit from '../actions/outfit.js';
+import actionLoadingStatus from '../actions/loading.js';
 const axios = require('axios');
 var defaultProduct = 64620;
 
@@ -33,6 +34,7 @@ var initializeState = ( productId, outfit ) => {
       dispatch( actionStyles( results[4].data.data ) );
       dispatch( actionProductInfo( results[5].data.data ) );
       dispatch( actionCart( results[6].data.data ) );
+      dispatch( actionLoadingStatus( false ) );
     })
     .catch( ( error ) => {
       console.log( 'Error getting data!' );
