@@ -123,7 +123,7 @@ describe('Search Questions', () => {
       // if less than 3 is inputted
         // search will not be called
         // filtered array will be equal to current sorted array
-        
+
 });
 
 // Questions List
@@ -243,4 +243,17 @@ describe('Add a answer', () => {
 
     // get data posted from API
     // current input should match with the answer of last id from answers array
+});
+
+// Report an answer
+describe('Report an answer', () => {
+
+});
+// Helpful question
+describe('Helpful question', () => {
+
+});
+// Helpful answer
+describe('Helpful answer', () => {
+
 });

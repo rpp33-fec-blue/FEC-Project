@@ -33,9 +33,11 @@ class QuestionList extends React.Component {
 
     return (
       <div>
-        <div className="item-qa-questionlist">{questions}</div>
-        <button>MORE ANSWERED QUESTIONS</button>
-        <button onClick={this.onForm.bind(this)}>Add a question</button>
+        <div className="questionlist">{questions}</div>
+        <div className="qa-more-button">
+          <button>MORE ANSWERED QUESTIONS</button>
+          <button onClick={this.onForm.bind(this)}>Add a question</button>
+        </div>
       </div>
     );
   }

@@ -27,7 +27,7 @@ class Qa extends React.Component {
   componentDidMount () {
     var productId = this.props.productId;
     var questions = this.props.questions.results;
-
+    console.log({questions})
     this.setState({
       sortedQ: sortedQ(questions),
       filteredQ: filteredQ(questions)
@@ -56,9 +56,9 @@ class Qa extends React.Component {
 
   render () {
     return (
-      <div id="container-qa">
-        <div>Questions and Answers</div>
-        <SearchBar handleSearch={this.handleSearch.bind(this)} />
+      <div id="container-qa" className="item-widget-qa">
+        <div className="qa">Questions and Answers</div>
+        <SearchBar className="search-bar" handleSearch={this.handleSearch.bind(this)} />
         <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
         <AddAnAnswer />
       </div>
@@ -67,7 +67,6 @@ class Qa extends React.Component {
 }
 
 var mapStateToProps = (state = initialState) => {
-  console.log('initial state - qa:', initialState);
   return {
     productId: state.productId,
     questions: state.questions
