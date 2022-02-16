@@ -7,13 +7,17 @@ class RelatedItems extends React.Component {
     super(props);
   }
 
+  changeProduct( productId ) {
+    this.props.handleSwitchProduct( productId );
+  }
+
   render() {
     return (
-      <div>
+      <div className='item-widget-related-item'>
         <div>RELATED PRODUCTS</div>
-        <ProductList relatedItems={this.props.relatedProducts}/>
+        <ProductList relatedProducts={this.props.relatedProducts} changeProduct={this.changeProduct.bind( this )}/>
         <div>YOUR OUTFIT</div>
-        <OutfitList outfit={this.props.outfit}/>
+        <OutfitList outfit={this.props.outfit} changeProduct={this.changeProduct.bind( this )}/>
       </div>
     );
   }

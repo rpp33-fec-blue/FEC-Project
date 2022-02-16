@@ -1,6 +1,3 @@
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
 const axios = require('axios');
 
 describe( 'API GET', () => {
@@ -13,6 +10,7 @@ describe( 'API GET', () => {
   it( 'should be able to get data from /products/:${productId}/related', () => {
     return axios.get( 'http://localhost:8080/products/64620/related', { params: { product_id: 64620 } } )
       .then( ( results ) => {
+        console.log('related:', results.data.data);
         expect(results.data.data.length).toBeGreaterThan(0);
       });
   });
