@@ -1,21 +1,23 @@
-var sortedQ = (questions) => {
-  var sorted = _.sortBy(questions, 'question_helpfulness');
+import _ from 'underscore';
 
+var sortedQ = (questions) => {
+  var sorted = _.chain(questions)
+    .sortBy((question) => { return question.question_helpfulness})
+    .reverse()
+    .value();
   return sorted;
 };
 
 var filteredQ = (questions, input = '') => {
   var filtered = _.filter(questions, (question) => {
-    var body = question.question_body;
-    // console.log({body, input});
+    var body = question.question_body.toLowerCase();
 
     if (body.includes(input)) {
       return question;
     }
   });
 
-  console.log({input, questions, filtered});
-  return filtered;
+  return sortedQ(filtered);
 }
 
 var getAnswer = (questionID, callback) => {

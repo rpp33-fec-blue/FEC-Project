@@ -2,6 +2,31 @@ import {useSelector, useDispatch} from 'react-redux';
 
 var AddAnAnswer = (props) => {
 
+  //Click add a answer
+    // must open an overlays form
+
+  //Click X at the top of the form
+    //should close and overlay form
+
+  //Click submit
+    // if no input in mandatory field answers/nickname/email
+      // the formContent are all unmounted
+      // show error message "You must enter the following: answers/nickname/email"
+      // return
+
+    // if input in mandatory field
+      // test1 email address in correct format have @ in the middle have  . after @
+      // test2 images selected are invalid or unable to be uploaded.
+      // if test 1 and 2 passed
+        // submit form
+        // the formContent are all unmounted
+        // show complete message
+        // return
+      // else if not passed
+        // the formContent are all unmounted
+        // show error message "You must enter the following: email in a correct format/images selected are invalid or unable to be uploaded."
+        // return
+        
   var handleSubmit = (e) => {
     e.preventDefault();
     // validate email format

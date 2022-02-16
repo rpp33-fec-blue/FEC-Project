@@ -3,11 +3,7 @@ class SearchBar extends React.Component {
   search(e) {
     //TODO: search e.target.value everythree characters typed in
     var input = e.target.value;
-
-    if (input.length > 3) {
-      console.log('value from searchbar - qa', e.target.value);
-      this.props.handleSearch(input);
-    }
+    this.props.handleSearch(input);
   }
 
   render() {

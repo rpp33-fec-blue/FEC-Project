@@ -18,38 +18,42 @@ class Qa extends React.Component {
 
     this.state = {
       sortedQ: [],
-      filteredQ: []
+      filteredQ: [],
+      inputSearch: ''
     }
-    console.log('props - qa', props);
+    // console.log('props - qa', props);
   }
 
   componentDidMount () {
     var productId = this.props.productId;
     var questions = this.props.questions.results;
 
-    // Use questions above to create sorted questions and filtered questions
     this.setState({
       sortedQ: sortedQ(questions),
       filteredQ: filteredQ(questions)
-    });
-  }
+    }, () => {
 
-  componentWillUnmount () {
-    //
+    });
   }
 
   handleSearch(input) {
-    // OBJ: set filteredQ state to only have the filtered quesitons
+
     this.setState({
-      filteredQ: filteredQ(this.state.sortedQ, input)
+      inputSearch: input
     }, () => {
-      this.setState({
-        sortedQ: sortedQ(this.state.filteredQ)
-      });
+      if (this.state.inputSearch.length >= 3) {
+        this.setState({
+          filteredQ: filteredQ(this.state.sortedQ, input)
+        });
+      } else if (this.state.inputSearch.length === 0) {
+        this.setState({
+          filteredQ: this.state.sortedQ
+        });
+      }
     });
   }
 
-  //<QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
+
   render () {
     return (
       <div id="container-qa">
