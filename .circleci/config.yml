@@ -16,8 +16,13 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run test
-      - run: npm run test-questions
       - run: npm run test-api
+      - run: npm run test-redux
+      # - run: npm run test-questions
+      # - run: npm run test-overview
+      # - run: npm run test-reviews
+      # - run: npm run test-related
+      
 
 workflows:
   version: 2
