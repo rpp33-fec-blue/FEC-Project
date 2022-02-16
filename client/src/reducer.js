@@ -7,9 +7,11 @@ import changeReviews from './reducers/changeReviews.js';
 import changeQuestions from './reducers/changeQuestions';
 import changeCart from './reducers/changeCart';
 import changeOutfit from './reducers/changeOutfit';
+import changeLoadingStatus from './reducers/changeLoadingStatus';
 
 const rootReducer = (state = {}, action) => {
   return {
+    isLoading: changeLoadingStatus(state.isLoading, action),
     productId: changeProduct(state.productId, action),
     relatedProducts: changeRelated(state.relatedProducts, action),
     productInfo : changeProductInfo(state.productInfo, action),

@@ -4,7 +4,8 @@ import initializeState from './../action-creators/initializeState.js';
 
 var AppContainer = ( state ) => {
   return {
-    productId: state.productId
+    productId: state.productId,
+    isLoading: state.isLoading
   };
 };
 
