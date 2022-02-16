@@ -108,4 +108,4 @@ typings/
 config.js
 
 # Bundle files
-./client/dist/bundle.js
+client/dist/bundle.js
