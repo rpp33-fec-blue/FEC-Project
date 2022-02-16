@@ -20,12 +20,12 @@ class Qa extends React.Component {
       sortedQ: [],
       filteredQ: []
     }
-    console.log({props});
+    console.log('props - qa', props);
   }
 
   componentDidMount () {
     var productId = this.props.productId;
-    var questions = this.props.questions;
+    var questions = this.props.questions.results;
 
     // Use questions above to create sorted questions and filtered questions
     this.setState({
@@ -34,13 +34,28 @@ class Qa extends React.Component {
     });
   }
 
+  componentWillUnmount () {
+    //
+  }
+
+  handleSearch(input) {
+    // OBJ: set filteredQ state to only have the filtered quesitons
+    this.setState({
+      filteredQ: filteredQ(this.state.sortedQ, input)
+    }, () => {
+      this.setState({
+        sortedQ: sortedQ(this.state.filteredQ)
+      });
+    });
+  }
+
   //<QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
   render () {
     return (
       <div id="container-qa">
         <div>Questions and Answers</div>
-        <SearchBar />
-        <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.props.questions}/>
+        <SearchBar handleSearch={this.handleSearch.bind(this)} />
+        <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
         <AddAnAnswer />
       </div>
     );
@@ -48,7 +63,7 @@ class Qa extends React.Component {
 }
 
 var mapStateToProps = (state = initialState) => {
-  console.log({initialState});
+  console.log('initial state - qa:', initialState);
   return {
     productId: state.productId,
     questions: state.questions

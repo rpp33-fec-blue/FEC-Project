@@ -103,7 +103,7 @@ form.overlay-content {
 /* qa grid */
 #container-qa {
   display: grid;
-  grid-template-rows: 1fr 1fr auto 1fr;
+  grid-template-rows: auto auto auto 1fr;
 }
 
 .item-qa-questionlist {

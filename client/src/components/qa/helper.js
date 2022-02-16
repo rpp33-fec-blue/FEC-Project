@@ -1,10 +1,20 @@
 var sortedQ = (questions) => {
-  var sorted = questions // TODO:
-  return  sorted;
+  var sorted = _.sortBy(questions, 'question_helpfulness');
+
+  return sorted;
 };
 
-var filteredQ = (input = '') => {
-  var filtered = input // TODO:
+var filteredQ = (questions, input = '') => {
+  var filtered = _.filter(questions, (question) => {
+    var body = question.question_body;
+    // console.log({body, input});
+
+    if (body.includes(input)) {
+      return question;
+    }
+  });
+
+  console.log({input, questions, filtered});
   return filtered;
 }
 
