@@ -22,34 +22,3 @@ const Price = ( { styles, selectedStyleIndex } ) => {
 };
 
 export default Price;
-
-
-
-
-
-
-
-
-
-
-/*
-
-const Price = ({ selectedStyle }) => {
-  if (selectedStyle.sale_price === 0) {
-    return (
-      <div>
-        <h2>${selectedStyle.original_price}</h2>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <h2 className='salePrice'>${selectedStyle.sale_price + ' '}</h2><h2 className='originalPrice'>${selectedStyle.original_price}</h2>
-      </div>
-    );
-  }
-};
-
-export default Price;
-
-*/

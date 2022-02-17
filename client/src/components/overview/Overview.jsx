@@ -57,7 +57,8 @@ class Overview extends React.Component {
         <h2>AddToCart</h2>
         <AddToCart
           styles={this.props.styles}
-          selectedStyleId={this.state.selectedStyleId}
+          selectedStyleIndex={this.state.selectedStyleIndex}
+          handleAddCart={this.props.handleAddCart}
         />
       </div>
     );

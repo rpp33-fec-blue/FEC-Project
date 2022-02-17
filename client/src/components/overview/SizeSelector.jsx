@@ -1,39 +1,45 @@
-const SizeSelector = ( { styles, selectedStyleId, sizeSelected, updateSizeSelected } ) => {
+import _ from 'lodash';
 
-  // Props: styles, selectedStyleId, sizeSelected, updateSizeSelected
+const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSelectedAndSku, updateOutOfStock } ) => {
 
-  return (
-    <div>
-      <select onChange={ updateSizeSelected }>
-        {/* TO DO - insert available sizes */}
+  const skus = styles.results[selectedStyleIndex].skus;
+
+  var outOfStock = true;
+  for (var sku in skus) {
+    if (skus[sku].quantity > 0) {
+      outOfStock = false;
+    }
+  }
+
+  var key = 1;
+
+  if (outOfStock) {
+    updateOutOfStock();
+    return (
+      <div>
+        <select disabled>
+          <option value='OUT OF STOCK' selected>OUT OF STOCK</option>
+        </select>
+      </div>
+    );
+  } else if (sizeSelected === 'Select Size') {
+    return (
+      <div>
+      <select onChange={updateSizeSelectedAndSku}>
+        <option value='Select Size'>Select Size</option>
+        {_.map(skus, (sku) => sku.quantity > 0 ? <option value={sku.size} key={key++}>{sku.size}</option> : null )}
       </select>
     </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <select onChange={updateSizeSelectedAndSku}>
+          {_.map(skus, (sku) => sku.quantity > 0 ? <option value={sku.size} key={key++}>{sku.size}</option> : null )}
+        </select>
+      </div>
+    );
+  }
 };
 
 export default SizeSelector;
-
-
-
-
-
-
-
-
-
-
-/*
-
-const SizeSelector = ( { selectedStyle, sizeSelected, updateSizeSelected} ) => {
-  return (
-    <div>
-      <select onChange={ updateSizeSelected }>
-        {_.map(selectedStyle.skus, (sku) => sku.quantity > 0 ? <option value={sku.size}>{sku.size}</option> : null )}
-      </select>
-    </div>
-  );
-};
-
-export default SizeSelector;
-
-*/

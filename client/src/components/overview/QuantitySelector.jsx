@@ -1,48 +1,36 @@
-const QuantitySelector = ( { styles, selectedStyleId, quantitySelected, updateQuantitySelected } ) => {
+const QuantitySelector = ( { styles, selectedStyleIndex, sku, sizeSelected, quantitySelected, updateQuantitySelected } ) => {
 
-  // Props: styles, selectedStyleId, quantitySelected, updateQuantitySelected
-
-  return (
-    <div>
-      <select onChange={updateQuantitySelected}>
-        {/* TO DO - insert available quantities (max = 15) */}
-      </select>
+  if (sku === null) {
+    return (
+      <div>
+        <select disabled>
+        <option value='-'>-</option>
+        </select>
     </div>
-  );
-};
+    );
+  } else {
 
-export default QuantitySelector;
-
-
-
-
-
-
-
-
-
-
-/*
-
-const QuantitySelector = ( { quantity, updateQuantitySelected} ) => {
-
-    const quantitiesAvailable = [];
-    var quantity = 1;
-    while (quantity <= quantitiesAvailable && quantity <= 15) {
-      quantitiesAvailable.push(quantity);
+    var skusAvailable = styles.results[selectedStyleIndex].skus[sku].quantity;
+    if (skusAvailable > 15) {
+      skusAvailable = 15;
     }
+    const validSkuQuantities = [];
+    var validSkuQuantity = 1;
+    while (validSkuQuantity <= skusAvailable) {
+      validSkuQuantities.push(validSkuQuantity);
+      validSkuQuantity += 1;
+    }
+
+    var key = 1;
 
     return (
       <div>
         <select onChange={updateQuantitySelected}>
-          {_.map(quantitiesAvailable, ((quantity)) => <option value={quantity}>{quantity}</option>)}
+        {_.map(validSkuQuantities, (quantity) => <option value={quantity} key={key++}>{quantity}</option>)}
         </select>
-      </div>
+    </div>
     );
   }
 };
 
 export default QuantitySelector;
-
-*/
-
