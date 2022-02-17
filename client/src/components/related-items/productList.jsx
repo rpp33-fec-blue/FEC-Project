@@ -42,6 +42,9 @@ class ProductList extends React.Component {
     });
   }
 
+  compareProduct( productIndex ) {
+    console.log('compare:', productIndex );
+  }
 
   render() {
     var display = <div></div>
@@ -56,16 +59,14 @@ class ProductList extends React.Component {
           <div className='card-list'>
             {this.state.items.map( ( item ) => {
               return (
-                <ProductCard item={ item } changeProduct={this.props.changeProduct}/>
+                <ProductCard item={ item } changeProduct={this.props.changeProduct} compareProduct={this.compareProduct.bind( this )}/>
               )
             })}
           </div>
         );
       }
 
-      return (
-        display
-      );
+      return display;
     }
   }
 }
