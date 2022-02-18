@@ -22,7 +22,7 @@ jobs:
       # Redirect MY_ENV_VAR into $BASH_ENV
       - run:
           name: "Setup custom environment variables"
-          command: echo 'export MY_ENV_VAR="FOO"' >> $BASH_ENV
+          command: echo 'export API_KEY=${API_KEY}' >> $BASH_ENV
       # Run another step, the same as above; note that you can
       # invoke environment variable without curly braces.
       - run:
@@ -40,7 +40,7 @@ jobs:
       # Need to find out how to store github token in the github first!!
       # - run: npm run server-dev
       - run: npm run test
-      - run: npm run test-questions
+      # - run: npm run test-questions
       - run: npm run test-api
       # - run: npm run test-redux
       # - run: npm run test-overview
