@@ -11,7 +11,7 @@ class OutfitList extends React.Component {
       <div>
         {this.props.outfit.map( ( item ) => {
           return (
-            <ProductCard item={ item }/>
+            <ProductCard item={ item } changeProduct={this.props.changeProduct}/>
           );
         })}
       </div>
