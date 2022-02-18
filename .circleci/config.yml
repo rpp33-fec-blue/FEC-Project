@@ -26,6 +26,9 @@ jobs:
       # Run another step, the same as above; note that you can
       # invoke environment variable without curly braces.
       - run:
+          name: "What was my custom environment variable?"
+          command: echo ${MY_ENV_VAR}
+      - run:
           name: "Print an env var stored in the Project"
           command: echo ${API_KEY}
   test:
@@ -51,4 +54,4 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs: 
       - build
-      # - test
+      - test
