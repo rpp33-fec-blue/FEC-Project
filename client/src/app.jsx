@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import store from './configureStore';
+import Qa from './components/qa/qa.jsx';
+import OverviewContainer from './containers/OverviewContainer.js';
 import ConnectedQA from './components/qa/qa.jsx'
 import Rnr from './components/ratings-and-reviews/rnr.jsx';
 import RelatedItemsContainer from './containers/relatedItemsContainer.js';
@@ -25,8 +27,9 @@ class App extends React.Component {
       this.display = (
         <div className="container">
           <div>Hey From React!</div>
-          <ConnectedQA />
+          <OverviewContainer className="widget-overview"/>
           <Rnr />
+          <ConnectedQA />
           <RelatedItemsContainer />
         </div>
       );
