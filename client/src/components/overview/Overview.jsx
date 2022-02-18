@@ -20,7 +20,8 @@ class Overview extends React.Component {
   }
 
   updateSelectedStyle(event) {
-    // TO DO
+    const newSelectedStyleIndex = event.target[Object.keys(event.target)[0]].index;
+    this.setState( {selectedStyleIndex: newSelectedStyleIndex } );
   }
 
   updateSelectedImageIndex(event) {

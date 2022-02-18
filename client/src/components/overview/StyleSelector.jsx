@@ -2,39 +2,21 @@ import StyleThumbnail from './StyleThumbnail.jsx';
 
 const StyleSelector = ( { styles, selectedStyleId, selectedStyleIndex, updateSelectedStyle } ) => {
 
-  // Props: styles, selectedStyleIndex, selectedStyleId, updateSelectedStyle
+  const selectedStyleName = styles.results[selectedStyleIndex].name;
+
+  var index = 0;
+
+  // TO DO - 4 thumbnails per row
+  // TO DO - add checkmark to selected style
 
   return (
     <div>
-      {/* Style name */}
-      {/* Style Thumbnails (<= 4 per row) */}
+      <p>Selected style: {selectedStyleName}</p>
+      {_.map(styles.results, (style) => index === selectedStyleIndex ?
+      <img src={style.photos[index].thumbnail_url} className='style-thumbnail' id='selectedStyle' index={index} key={index++}></img> :
+      <img src={style.photos[index].thumbnail_url} className='style-thumbnail' onClick={updateSelectedStyle} index={index} key={index++}></img>)}
    </div>
   );
 };
 
 export default StyleSelector;
-
-
-
-
-
-
-
-
-
-
-/*
-
-const StyleSelector = ({ styles, selectedStyleIndex, selectedStyleId, updateSelectedStyle }) => {
-  return (
-    <div>
-      <h4>Style > {styles.results[selectedStyleIndex].name}</h4>
-      {TO DO - limit to 4 per row}
-      {styles.results.map((style) => <StyleThumbnail style={style} selectedStyleId={selectedStyleId} updateSelectedStyle={updateSelectedStyle} />)}
-    </div>
-  );
-};
-
-export default StyleSelector;
-
-*/
