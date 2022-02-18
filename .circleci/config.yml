@@ -34,6 +34,8 @@ jobs:
   test:
     docker:
       - image: cimg/node:17.5.0
+        environment:
+          API_KEY: ${API_KEY}
     steps:
       - checkout
       - run: npm install
