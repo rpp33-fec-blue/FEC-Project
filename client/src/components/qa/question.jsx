@@ -26,6 +26,7 @@ class Question extends React.Component {
     var body = this.props.question.question_body;
     var helpfulness = this.props.question.question_helpfulness;
 
+    if (this.state.answers.length === 0) {return null}
     return (
       <div className="container-question-answer">
         <div className="question">Q: {body}</div>

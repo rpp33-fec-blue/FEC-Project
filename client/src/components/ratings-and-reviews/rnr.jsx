@@ -9,7 +9,7 @@ var Rnr = () => {
   });
 
   return (
-    <div id="reviews-container">
+    <div id="reviews-container" className="item-widget-review">
       <div>Hi, I'm the ratings and reviews component.</div>
       <RatingBreakdown />
       <ReviewList />

@@ -18,29 +18,48 @@ class Qa extends React.Component {
 
     this.state = {
       sortedQ: [],
-      filteredQ: []
+      filteredQ: [],
+      inputSearch: ''
     }
-    console.log({props});
+    // console.log('props - qa', props);
   }
 
   componentDidMount () {
     var productId = this.props.productId;
-    var questions = this.props.questions;
-
-    // Use questions above to create sorted questions and filtered questions
+    var questions = this.props.questions.results;
+    console.log({questions})
     this.setState({
       sortedQ: sortedQ(questions),
       filteredQ: filteredQ(questions)
+    }, () => {
+
     });
   }
 
-  //<QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
+  handleSearch(input) {
+
+    this.setState({
+      inputSearch: input
+    }, () => {
+      if (this.state.inputSearch.length >= 3) {
+        this.setState({
+          filteredQ: filteredQ(this.state.sortedQ, input)
+        });
+      } else if (this.state.inputSearch.length === 0) {
+        this.setState({
+          filteredQ: this.state.sortedQ
+        });
+      }
+    });
+  }
+
+
   render () {
     return (
-      <div id="container-qa">
-        <div>Questions and Answers</div>
-        <SearchBar />
-        <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.props.questions}/>
+      <div id="container-qa" className="item-widget-qa">
+        <div className="qa">Questions and Answers</div>
+        <SearchBar className="search-bar" handleSearch={this.handleSearch.bind(this)} />
+        <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
         <AddAnAnswer />
       </div>
     );
@@ -48,7 +67,6 @@ class Qa extends React.Component {
 }
 
 var mapStateToProps = (state = initialState) => {
-  console.log({initialState});
   return {
     productId: state.productId,
     questions: state.questions
