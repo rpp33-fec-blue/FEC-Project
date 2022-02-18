@@ -75,12 +75,30 @@ form.overlay-content {
   margin-right: 30px;
 }
 
+.related-image-container {
+  position: relative;
+  height: 70%;
+}
+
+.related-image-container img {
+  display: block;
+}
+
+.related-image-container .card-button {
+  font-size: 160%;
+  font-weight: 500;
+  background-color: white;
+  position: absolute;
+  top: 4%;
+  right: 4%;
+}
+
 .card-info {
   width: 100%;
 }
 
 .card-photo {
-  height: 70%;
+  height: 100%;
 }
 
 .card-category .card-price {
