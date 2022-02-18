@@ -1,4 +1,5 @@
-const API_KEY = require('../config.js').API_KEY;
+// const API_KEY = require('../config.js').API_KEY;
+const API_KEY = process.env.API_KEY;
 const express = require('express');
 const axios = require( "axios" );
 
