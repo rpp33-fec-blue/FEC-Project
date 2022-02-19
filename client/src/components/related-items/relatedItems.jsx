@@ -15,8 +15,8 @@ class RelatedItems extends React.Component {
     this.props.handleAddOutfit( this.props.productId );
   }
 
-  removeFromOutfit() {
-    this.props.handleRemoveOutfit( this.props.productId );
+  removeFromOutfit( productId ) {
+    this.props.handleRemoveOutfit( productId );
   }
 
   render() {

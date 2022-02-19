@@ -72,7 +72,7 @@ class ProductList extends React.Component {
         <div className='card-list'>
           {this.state.items.map( ( item ) => {
             return (
-              <ProductCard item={ item } changeProduct={this.changeProduct.bind( this )} actionButton={this.compareProduct.bind( this )} isOutfit={false}/>
+              <ProductCard key={item.id} item={ item } changeProduct={this.changeProduct.bind( this )} actionButton={this.compareProduct.bind( this )} isOutfit={false}/>
             )
           })}
         </div>

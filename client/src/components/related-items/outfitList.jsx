@@ -13,6 +13,7 @@ class OutfitList extends React.Component {
 
   buildOutfitList() {
     var apiCalls = [];
+    console.log('outfit:', this.props.outfit);
     for ( var i = 0; i < this.props.outfit.length; i++ ) {
       var productId = this.props.outfit[i];
       apiCalls.push(axios.get( `http://localhost:8080/products/${productId}`, { params: { product_id: productId } } ));
@@ -46,9 +47,9 @@ class OutfitList extends React.Component {
     this.props.addToOutfit();
   }
 
-  removeFromOutfit() {
+  removeFromOutfit( productId ) {
     this.isReady = false;
-    this.props.removeFromOutfit();
+    this.props.removeFromOutfit( productId );
   }
 
   render() {
@@ -63,7 +64,7 @@ class OutfitList extends React.Component {
         <AddOutfitCard addToOutfit={this.addToOutfit.bind( this )}/>
         {this.state.items.map( ( item ) => {
           return (
-            <ProductCard item={ item } changeProduct={this.props.changeProduct} actionButton={this.removeFromOutfit.bind( this )} isOutfit={true}/>
+            <ProductCard key={item.id} item={ item } changeProduct={this.props.changeProduct} actionButton={this.removeFromOutfit.bind( this )} isOutfit={true}/>
           );
         })}
       </div>
