@@ -115,6 +115,27 @@ form.overlay-content {
   justify-content: space-between;
 }
 
+.comparison-modal {
+  width: 100%;
+  height: 100%;
+  position:fixed;
+  z-index: 1;
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.comparison-modal-visible {
+  visibility: visible;  opacity: 1;
+}
+
+
+.comparison-table {
+  align-items: center;
+  background-color: blue;
+  position: absolute;
+}
+
 /*========================== Reviews ===========================*/
 
 /*============================= QA =============================*/
