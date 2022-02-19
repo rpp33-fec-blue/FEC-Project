@@ -29,7 +29,7 @@
 
 form.overlay-bg {
   height: 100%;
-  width: 0;
+  width: 0%;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -38,18 +38,18 @@ form.overlay-bg {
   background-color: rgba(224, 224, 224, 0.9);
   overflow-x: hidden;
   transition: 0.5s;
+  align-content: center;
+
 }
 
-form.overlay-content {
+form > .overlay-content {
   position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
+  width: 80%;
+  margin-left: 10%;
 }
 
-.overlay-content input[type=text],
-.overlay-content textarea {
+form > .overlay-content input[type=text],
+form > .overlay-content textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -57,6 +57,35 @@ form.overlay-content {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+form.overlay-bg .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+form.overlay-bg a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+form.overlay-bg a:hover, form.overlay-bg a:focus {
+  color: #f1f1f1;
+}
+
+@media screen and (max-height: 450px) {
+  form.overlay-bg a {font-size: 20px}
+  form.overlay-bg .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
 }
 
 /*========================== Overview ==========================*/
@@ -164,9 +193,21 @@ form.overlay-content {
   grid-row: 3 / span 1;
 }
 
-/* styles */
+/* general */
 #container-qa > div {
   margin: 10px 0px 0px 0px;
 }
+
+/* Form */
+.warning {
+  color: red;
+}
+#submitMessage {
+  color: Green;
+  text-align: center;
+}
+
+
+
 
 

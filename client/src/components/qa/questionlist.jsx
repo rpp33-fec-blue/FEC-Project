@@ -20,7 +20,7 @@ class QuestionList extends React.Component {
   }
 
   onForm () {
-    onOverlay("overlay-addAnswer");
+    onOverlay("overlay-addQuestion");
   }
 
   render () {
