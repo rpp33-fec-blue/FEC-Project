@@ -75,12 +75,30 @@ form.overlay-content {
   margin-right: 30px;
 }
 
+.related-image-container {
+  position: relative;
+  height: 70%;
+}
+
+.related-image-container img {
+  display: block;
+}
+
+.related-image-container .card-button {
+  font-size: 160%;
+  font-weight: 500;
+  background-color: white;
+  position: absolute;
+  top: 4%;
+  right: 4%;
+}
+
 .card-info {
   width: 100%;
 }
 
 .card-photo {
-  height: 70%;
+  height: 100%;
 }
 
 .card-category .card-price {
@@ -103,12 +121,24 @@ form.overlay-content {
 /* qa grid */
 #container-qa {
   display: grid;
-  grid-template-rows: 1fr 1fr auto 1fr;
+  grid-template-rows: 50px 50px auto 50px;
 }
 
-.item-qa-questionlist {
+.qa {
+  grid-row-start:  span 1;
+}
+
+.search-bar {
+  grid-row-start: 2 span 1;
+}
+
+.questionlist {
   grid-row-start: 3 span 1;
 }
+
+/* .qa-more-button {
+  grid-row-start: 4 span 1;
+} */
 
 /* question-answer grid */
 .container-question-answer {

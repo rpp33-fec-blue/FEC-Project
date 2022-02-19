@@ -27,10 +27,11 @@ class App extends React.Component {
       this.display = (
         <div className="container">
           <div>Hey From React!</div>
-          <OverviewContainer className="item-widget-overview"/>
-          <ConnectedQA className="item-widget-overview"/>
-          <Rnr />
+          <OverviewContainer className="widget-overview"/>
           <RelatedItemsContainer />
+          <ConnectedQA />
+          <Rnr />
+
         </div>
       );
     }

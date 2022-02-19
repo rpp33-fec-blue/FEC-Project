@@ -1,11 +1,23 @@
+import _ from 'underscore';
+
 var sortedQ = (questions) => {
-  var sorted = questions // TODO:
-  return  sorted;
+  var sorted = _.chain(questions)
+    .sortBy((question) => { return question.question_helpfulness})
+    .reverse()
+    .value();
+  return sorted;
 };
 
-var filteredQ = (input = '') => {
-  var filtered = input // TODO:
-  return filtered;
+var filteredQ = (questions, input = '') => {
+  var filtered = _.filter(questions, (question) => {
+    var body = question.question_body.toLowerCase();
+
+    if (body.includes(input)) {
+      return question;
+    }
+  });
+
+  return sortedQ(filtered);
 }
 
 var getAnswer = (questionID, callback) => {

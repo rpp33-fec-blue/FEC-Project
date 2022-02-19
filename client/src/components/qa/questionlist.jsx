@@ -24,8 +24,8 @@ class QuestionList extends React.Component {
   }
 
   render () {
-    var questions = this.props.filteredQ.results.map((question, index) => {
-      //var questions = this.props.filteredQ.map((question, index) => {
+
+    var questions = this.props.filteredQ.map((question, index) => {
       if (index+1 <= this.state.questionsToShow) {
         return <Question question={question} questionId={question.question_id} key={index}/>
       }
@@ -33,9 +33,11 @@ class QuestionList extends React.Component {
 
     return (
       <div>
-        <div className="item-qa-questionlist">{questions}</div>
-        <button>MORE ANSWERED QUESTIONS</button>
-        <button onClick={this.onForm.bind(this)}>Add a question</button>
+        <div className="questionlist">{questions}</div>
+        <div className="qa-more-button">
+          <button>MORE ANSWERED QUESTIONS</button>
+          <button onClick={this.onForm.bind(this)}>Add a question</button>
+        </div>
       </div>
     );
   }
