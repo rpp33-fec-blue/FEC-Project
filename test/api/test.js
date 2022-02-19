@@ -1,8 +1,9 @@
-const axios = require('axios');
+const axios = require( "axios" );
+
 
 describe( 'API GET', () => {
   it( 'should be able to get data from /qa/questions', () => {
-    return axios.get( '/qa/questions', { params: { product_id: 64620, count: 1000 } } )
+    return axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: 64620, count: 1000 } } )
       .then( ( results ) => {
         expect(results.data.data.results.length).toBeGreaterThan(0);
       });
