@@ -162,11 +162,11 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 }
 
 .card-category .card-price {
-  font-weight: 200;
+  font-weight: 100;
 }
 
 .card-name {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .card-info-holder {
@@ -182,7 +182,8 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   z-index: 1;
   top: 0;
   left: 0;
-  transition: 0.5s;
+  transition: opacity 0.2s;
+  opacity: 0;
   visibility: hidden;
 }
 
@@ -191,12 +192,10 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 }
 
 
-.comparison-table {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
+.comparison-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*========================== Reviews ===========================*/
