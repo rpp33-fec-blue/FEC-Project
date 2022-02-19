@@ -46,6 +46,11 @@ class OutfitList extends React.Component {
     this.props.addToOutfit();
   }
 
+  deleteFromOutfit() {
+    this.isReady = false;
+    this.props.deleteFromOutfit();
+  }
+
   render() {
 
     if ( !this.isReady ) {
