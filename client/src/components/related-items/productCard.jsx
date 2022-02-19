@@ -50,7 +50,7 @@ class ProductCard extends React.Component {
         </div>
         <div className='card-info-holder' onClick={this.cardClicked.bind( this )}>
           <div className='card-info card-category'>{this.props.item.category}</div>
-          <div className='card-info card-product-name'>{this.props.item.name}</div>
+          <div className='card-info card-name'>{this.props.item.name}</div>
           <div className='card-info card-price'>{this.props.item.default_price}</div>
           <div className='card-info card-rating'>*rating*</div>
         </div>

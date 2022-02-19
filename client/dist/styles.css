@@ -1,3 +1,7 @@
+body {
+  font-family: Lato;
+}
+
 /*==================== Widget container =======================*/
 .container {
   display: grid;
@@ -161,18 +165,19 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   height: 100%;
 }
 
-.card-category .card-price {
-  font-weight: 100;
+.card-category, .card-price {
+  font-weight: 300;
 }
 
 .card-name {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .card-info-holder {
+  height: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .comparison-modal {
