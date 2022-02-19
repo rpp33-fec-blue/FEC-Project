@@ -1,4 +1,5 @@
-const axios = require('axios');
+const axios = require( "axios" );
+
 
 describe( 'API GET', () => {
   it( 'should be able to get data from /qa/questions', () => {
