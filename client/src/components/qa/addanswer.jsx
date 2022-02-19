@@ -47,7 +47,22 @@ class AddAnswerComp extends React.Component {
       "photos": this.state.imagesUrl
     };
 
-    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer);
+    var formData = new FormData();
+    formData.append('body', answer);
+    formData.append('name', nickname);
+    formData.append('email', email);
+    this.state.imagesUrl.forEach((url) => {
+      formData.append('photos', url);
+    })
+
+    console.log({formData});
+    console.log({newAnswer});
+
+    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
     // addAnswer(newAnswer); // try later when got time
   }
 
@@ -67,6 +82,7 @@ class AddAnswerComp extends React.Component {
   handleAddImage (e) {
     var files = e.target.files; //array
     console.log({files});
+    console.log('file.type', files[0].type);
 
     if (this.state.imagesUrl.length === 5) {
       this.hideUploadImageButton();
