@@ -1,7 +1,7 @@
 const Price = ( { styles, selectedStyleIndex } ) => {
 
   const price = Number(styles.results[selectedStyleIndex].original_price);
-  const salePrice = styles.results[selectedStyleIndex].sale_price;
+  var salePrice = styles.results[selectedStyleIndex].sale_price;
   if (salePrice !== null) {
     salePrice = Number(salePrice);
   }
@@ -15,7 +15,7 @@ const Price = ( { styles, selectedStyleIndex } ) => {
   } else {
     return (
       <div>
-        <span id="price">Price: ${salePrice}</span><span id="salePrice">${price}</span>
+        <p><span id="price">Price: ${salePrice} --> </span><span id="salePrice">${price}</span></p>
       </div>
     );
   }
