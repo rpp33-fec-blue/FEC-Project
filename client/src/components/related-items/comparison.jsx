@@ -6,11 +6,17 @@ class Comparison extends React.Component {
   }
 
   render() {
+    var classes = 'comparison-modal';
+    if ( this.props.visible ) {
+      classes += ' comparison-modal-visible';
+    }
+
     return (
-      <div className='comparison-table'>
-        <div>Table Goes here</div>
+      <div className={classes} onClick={this.props.toggle}>
+        <div className='comparison-content'></div>
+          <p>This should be a pop up... in the center</p>
       </div>
-    );
+    )
   }
 }
 

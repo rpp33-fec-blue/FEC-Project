@@ -1,15 +1,17 @@
 import React from 'react';
 import ProductCard from './productCard.jsx';
+import Comparison from './comparison.jsx'
+import _ from 'underscore';
 
 class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       items: [],
-      isReady: false
+      isPopupVisible: false
     }
-    this.buildRelatedItemsData();
-    this.rebuildRelatedItems = false;
+    this.isReady = false;
+    this.throttledBuildItems = _.throttle( this.buildRelatedItemsData, 100 );
   }
 
   buildRelatedItemsData() {
@@ -34,40 +36,48 @@ class ProductList extends React.Component {
         relatedProductsArray.push( product );
       }
 
-      this.rebuildRelatedItems = false;
+      this.isReady = true;
       this.setState({
-        items: relatedProductsArray,
-        isReady: true
+        items: relatedProductsArray
       });
     });
   }
 
   compareProduct( productIndex ) {
-    console.log('compare:', productIndex );
+    this.toggleCompare();
+  }
+
+  toggleCompare() {
+    var toggle = ( this.state.isPopupVisible ) ? false : true;
+    this.setState({
+      isPopupVisible: toggle
+    });
+  }
+
+  changeProduct( productId ) {
+    this.isReady = false;
+    this.props.changeProduct( productId );
   }
 
   render() {
-    var display = <div></div>
 
-    if ( this.rebuildRelatedItems ) {
-      this.buildRelatedItemsData();
-      return display;
-    } else {
-      if ( this.state.isReady ) {
-        this.rebuildRelatedItems = true;
-        display = (
-          <div className='card-list'>
-            {this.state.items.map( ( item ) => {
-              return (
-                <ProductCard item={ item } changeProduct={this.props.changeProduct} compareProduct={this.compareProduct.bind( this )}/>
-              )
-            })}
-          </div>
-        );
-      }
-
-      return display;
+    if ( !this.isReady ) {
+      this.throttledBuildItems();
+      return null;
     }
+
+    return (
+      <div>
+        <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare.bind( this )}/>
+        <div className='card-list'>
+          {this.state.items.map( ( item ) => {
+            return (
+              <ProductCard key={item.id} item={ item } changeProduct={this.changeProduct.bind( this )} actionButton={this.compareProduct.bind( this )} isOutfit={false}/>
+            )
+          })}
+        </div>
+      </div>
+    );
   }
 }
 
