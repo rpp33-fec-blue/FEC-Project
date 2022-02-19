@@ -147,13 +147,14 @@ form.overlay-content {
 }
 
 .comparison-modal {
-  width: 100%;
   height: 100%;
-  position:fixed;
+  width: 100%;
+  position: fixed;
   z-index: 1;
-  transition: opacity 500ms;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
   visibility: hidden;
-  opacity: 0;
 }
 
 .comparison-modal-visible {
@@ -162,9 +163,11 @@ form.overlay-content {
 
 
 .comparison-table {
-  align-items: center;
-  background-color: blue;
-  position: absolute;
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
 }
 
 /*========================== Reviews ===========================*/
