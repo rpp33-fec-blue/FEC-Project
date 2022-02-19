@@ -60,10 +60,6 @@ class ProductList extends React.Component {
   }
 
   render() {
-    var popup = null;
-    if ( this.state.isPopupVisible ) {
-      popup = <Comparison />
-    }
 
     if ( !this.isReady ) {
       this.throttledBuildItems();
@@ -76,7 +72,7 @@ class ProductList extends React.Component {
         <div className='card-list'>
           {this.state.items.map( ( item ) => {
             return (
-              <ProductCard item={ item } changeProduct={this.changeProduct.bind( this )} compareProduct={this.compareProduct.bind( this )}/>
+              <ProductCard item={ item } changeProduct={this.changeProduct.bind( this )} actionButton={this.compareProduct.bind( this )} isOutfit={false}/>
             )
           })}
         </div>

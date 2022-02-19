@@ -46,9 +46,9 @@ class OutfitList extends React.Component {
     this.props.addToOutfit();
   }
 
-  deleteFromOutfit() {
+  removeFromOutfit() {
     this.isReady = false;
-    this.props.deleteFromOutfit();
+    this.props.removeFromOutfit();
   }
 
   render() {
@@ -63,7 +63,7 @@ class OutfitList extends React.Component {
         <AddOutfitCard addToOutfit={this.addToOutfit.bind( this )}/>
         {this.state.items.map( ( item ) => {
           return (
-            <ProductCard item={ item } changeProduct={this.props.changeProduct}/>
+            <ProductCard item={ item } changeProduct={this.props.changeProduct} actionButton={this.removeFromOutfit.bind( this )} isOutfit={true}/>
           );
         })}
       </div>
