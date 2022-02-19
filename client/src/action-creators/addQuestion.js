@@ -8,7 +8,7 @@ var addQuestion = ( newQuestion ) => {
   return ( dispatch ) => {
 
     axios.post( "http://localhost:8080/qa/questions", newQuestion )
-    .then( ( results) => {
+      .then( ( results) => {
       var productId = store.getState().productId || defaultProduct;
       axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } } )
       .then( ( questions ) => {
