@@ -4,7 +4,7 @@ import ExpandedView from './ExpandedView.jsx';
 
 class ImageGallery extends React.Component {
 
-    // Props: styles, selectedStyleId, selectedImageIndex, updateSelectedImageIndex
+    // Props: styles, selectedStyleIndex, selectedImageIndex, updateSelectedImageIndex
 
     constructor(props) {
       super(props);
@@ -19,17 +19,16 @@ class ImageGallery extends React.Component {
     }
 
     render() {
-      // If default view equals true
       if (this.state.defaultView) {
         return (
           <div>
-            {/* <DefaultView
+            <DefaultView
               styles={this.props.styles}
-              selectedStyleId={this.props.selectedStyleId}
+              selectedStyleIndex={this.props.selectedStyleIndex}
               selectedImageIndex={this.props.selectedImageIndex}
               updateSelectedImageIndex={this.props.updateSelectedImageIndex}
               updateDefaultView={this.updateDefaultView}
-            /> */}
+            />
           </div>
         );
       } else {

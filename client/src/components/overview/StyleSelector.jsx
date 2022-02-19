@@ -1,6 +1,4 @@
-import StyleThumbnail from './StyleThumbnail.jsx';
-
-const StyleSelector = ( { styles, selectedStyleId, selectedStyleIndex, updateSelectedStyle } ) => {
+const StyleSelector = ( { styles, selectedStyleIndex, updateSelectedStyle } ) => {
 
   const selectedStyleName = styles.results[selectedStyleIndex].name;
 

@@ -10,18 +10,18 @@ const QuantitySelector = ( { styles, selectedStyleIndex, sku, sizeSelected, quan
     );
   } else {
 
-    var skusAvailable = styles.results[selectedStyleIndex].skus[sku].quantity;
-    if (skusAvailable > 15) {
-      skusAvailable = 15;
-    }
-    const validSkuQuantities = [];
-    var validSkuQuantity = 1;
-    while (validSkuQuantity <= skusAvailable) {
-      validSkuQuantities.push(validSkuQuantity);
-      validSkuQuantity += 1;
-    }
+  var skusAvailable = styles.results[selectedStyleIndex].skus[sku].quantity;
+  if (skusAvailable > 15) {
+    skusAvailable = 15;
+  }
+  const validSkuQuantities = [];
+  var validSkuQuantity = 1;
+  while (validSkuQuantity <= skusAvailable) {
+    validSkuQuantities.push(validSkuQuantity);
+    validSkuQuantity += 1;
+  }
 
-    var key = 1;
+  var key = 1;
 
     return (
       <div>

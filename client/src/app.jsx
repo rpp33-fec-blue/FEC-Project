@@ -27,7 +27,7 @@ class App extends React.Component {
       this.display = (
         <div className="container">
           <div>Hey From React!</div>
-          <OverviewContainer className="widget-overview"/>
+          <OverviewContainer className="item-widget-overview"/>
           <ConnectedQA className="item-widget-overview"/>
           <Rnr />
           <RelatedItemsContainer />
