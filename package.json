@@ -54,6 +54,8 @@
     "webpack-cli": "^4.9.2"
   },
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>test/setupTests.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>test/setupTests.js"
+    ]
   }
 }
