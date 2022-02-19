@@ -75,6 +75,23 @@ form.overlay-content {
   margin-right: 30px;
 }
 
+.add-outfit-container {
+  position: relative;
+  height: 100%;
+}
+
+.add-outfit-container img {
+  display: block;
+}
+
+.card-add-outfit {
+  font-size: 400%;
+  font-weight: 500;
+  position: absolute;
+  top: 40%;
+  right: 43%;
+}
+
 .related-image-container {
   position: relative;
   height: 70%;
