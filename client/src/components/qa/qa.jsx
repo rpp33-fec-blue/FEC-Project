@@ -6,7 +6,7 @@ import {sortedQ, filteredQ} from './helper.js';
 // Import components
 import SearchBar from './searchbar.jsx';
 import QuestionList from './questionlist.jsx';
-import AddAnAnswer from './addananswers.jsx'
+import AddQuestion from './addquestion.jsx'
 
 // Import example state
 import initialState from '../../initialState.js';
@@ -27,7 +27,7 @@ class Qa extends React.Component {
   componentDidMount () {
     var productId = this.props.productId;
     var questions = this.props.questions.results;
-    console.log({questions})
+    console.log({questions, productId})
     this.setState({
       sortedQ: sortedQ(questions),
       filteredQ: filteredQ(questions)
@@ -60,7 +60,7 @@ class Qa extends React.Component {
         <div className="qa">Questions and Answers</div>
         <SearchBar className="search-bar" handleSearch={this.handleSearch.bind(this)} />
         <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
-        <AddAnAnswer />
+        <AddQuestion />
       </div>
     );
   }
@@ -73,9 +73,11 @@ var mapStateToProps = (state = initialState) => {
   }
 };
 
-var mapDispatchToProps = () => ({
+var mapDispatchToProps = (dispatch) => {
+  return {
 
-});
+  }
+};
 
 var ConnectedQA = connect(mapStateToProps,mapDispatchToProps)(Qa);
 

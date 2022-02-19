@@ -21,6 +21,14 @@ class Question extends React.Component {
     });
   }
 
+  onForm () {
+    onOverlay("overlay-addAnswer");
+  }
+
+  markHelpful () {
+    //call API and update number
+  }
+
   render() {
     var answers = this.state.answers;
     var body = this.props.question.question_body;
@@ -35,8 +43,8 @@ class Question extends React.Component {
 
         <div className="report-question">
           <span> Helpful? </span>
-          <span> Yes({helpfulness}) | </span>
-          <span> Add Answer</span>
+          <span><a href="#" className="smallLink" onClick={this.markHelpful.bind(this)}> Yes({helpfulness})</a> | </span>
+          <span><a href="#" className="smallLink" onClick={this.onForm.bind(this)}>Add Answer</a></span>
         </div>
       </div>
     );
