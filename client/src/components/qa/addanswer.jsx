@@ -123,7 +123,7 @@ class AddAnswerComp extends React.Component {
         <div className="overlay-content">
 
           <div>
-            <a href="#" className="closebtn"
+            <a href="#/" className="closebtn"
               onClick={this.offForm.bind(this)}
             >&times;</a>
             <h3>Submit your Answer</h3>

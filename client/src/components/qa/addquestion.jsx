@@ -51,7 +51,7 @@ class AddQuestionComp extends React.Component {
       <form id="overlay-addQuestion" className="overlay-bg" onSubmit={this.handleSubmit.bind(this)}>
         <div className="overlay-content">
           <div>
-            <a href="#" className="closebtn" onClick={this.offForm.bind(this)}>&times;</a>
+            <a href="#/" className="closebtn" onClick={this.offForm.bind(this)}>&times;</a>
             <h3>Add Your Question</h3>
             <h4>About the {this.props.productName}</h4>
           </div>

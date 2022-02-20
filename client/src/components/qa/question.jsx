@@ -1,5 +1,6 @@
 import Answers from './answers.jsx';
 import {getAnswer} from './helper.js';
+import markQuestion from '../../action-creators/markQuestion.js';
 
 class Question extends React.Component {
 
@@ -8,8 +9,11 @@ class Question extends React.Component {
     //props
     // props.question
     // props.questionId
+
     this.state = {
-      answers: []
+      answers: [],
+      helpfulQuestion: this.props.question.question_helpfulness,
+      helpfulQuestionClicked: false
     }
   }
 
@@ -25,14 +29,35 @@ class Question extends React.Component {
     onOverlay("overlay-addAnswer");
   }
 
-  markHelpful () {
-    //call API and update number
+  // componentDidUpdate (prevProps) {
+  //   if (prevProps.question.question_helpfulness !== this.props.question.question_helpfulness) {
+  //     this.setState({
+  //       helpfulQuestion: this.props.question.question_helpfulness
+  //     })
+  //   }
+  // }
+
+  markHelpfulQuestion () {
+    if (!this.state.helpfulQuestionClicked) {
+      var questionId = this.props.questionId;
+      axios.put( `http://localhost:8080/qa/questions/${questionId}/helpful` )
+        .then(() => {
+          this.setState((prevState) => {
+            return {
+              helpfulQuestion: prevState.helpfulQuestion + 1,
+              helpfulQuestionClicked: true
+            }
+          })
+        })
+        .catch();
+    }
+    // markQuestion(this.props.questionId); Try later when got time
   }
 
   render() {
     var answers = this.state.answers;
     var body = this.props.question.question_body;
-    var helpfulness = this.props.question.question_helpfulness;
+
 
     if (this.state.answers.length === 0) {return null}
     return (
@@ -43,8 +68,8 @@ class Question extends React.Component {
 
         <div className="report-question">
           <span> Helpful? </span>
-          <span><a href="#" className="smallLink" onClick={this.markHelpful.bind(this)}> Yes({helpfulness})</a> | </span>
-          <span><a href="#" className="smallLink" onClick={this.onForm.bind(this)}>Add Answer</a></span>
+          <span><a href="#/" className="smallLink" onClick={this.markHelpfulQuestion.bind(this)}> Yes({this.state.helpfulQuestion})</a> | </span>
+          <span><a href="#/" className="smallLink" onClick={this.onForm.bind(this)}>Add Answer</a></span>
         </div>
       </div>
     );
