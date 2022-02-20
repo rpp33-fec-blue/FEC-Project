@@ -1,5 +1,5 @@
 import actionProductId from '../actions/productId.js';
-import actionRelated from '../actions/relatedItems.js';
+import actionRelated from '../actions/relatedProducts.js';
 import actionReviews from '../actions/reviews.js';
 import actionQuestions from '../actions/questions.js';
 import actionMetadata from '../actions/metadata.js';

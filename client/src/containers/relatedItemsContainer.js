@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import RelatedItems from './../components/related-items/relatedItems.jsx';
+import RelatedProducts from './../components/related-products/relatedItems.jsx';
 import switchProduct from './../action-creators/switchProduct.js';
 import addOutfit from './../action-creators/addOutfit.js';
 import removeOutfit from './../action-creators/removeOutfit.js';
 
-var RelatedItemsContainer = ( state ) => {
+var RelatedProductsContainer = ( state ) => {
   return {
     productId: state.productId,
     relatedProducts: state.relatedProducts,
@@ -12,7 +12,7 @@ var RelatedItemsContainer = ( state ) => {
   };
 };
 
-var RelatedItemsDispatch = ( dispatch ) => {
+var RelatedProductsDispatch = ( dispatch ) => {
   return ( {
     handleSwitchProduct: ( productId ) => {
       dispatch( switchProduct( productId ) );
@@ -26,4 +26,4 @@ var RelatedItemsDispatch = ( dispatch ) => {
   } );
 };
 
-export default connect(RelatedItemsContainer, RelatedItemsDispatch)(RelatedItems);
+export default connect(RelatedProductsContainer, RelatedProductsDispatch)(RelatedProducts);
