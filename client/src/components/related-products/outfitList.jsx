@@ -42,14 +42,18 @@ class OutfitList extends React.Component {
     });
   }
 
+  changeProduct( productId ) {
+    this.props.handleSwitchProduct( productId );
+  }
+
   addToOutfit() {
     this.isReady = false;
-    this.props.addToOutfit();
+    this.props.handleAddOutfit( this.props.productId );
   }
 
   removeFromOutfit( productId ) {
     this.isReady = false;
-    this.props.removeFromOutfit( productId );
+    this.props.handleRemoveOutfit( productId );
   }
 
   render() {
@@ -64,7 +68,7 @@ class OutfitList extends React.Component {
         <AddOutfitCard addToOutfit={this.addToOutfit.bind( this )}/>
         {this.state.items.map( ( item ) => {
           return (
-            <ProductCard key={item.id} item={ item } changeProduct={this.props.changeProduct} actionButton={this.removeFromOutfit.bind( this )} isOutfit={true}/>
+            <ProductCard key={item.id} item={ item } changeProduct={this.changeProduct.bind( this )} actionButton={this.removeFromOutfit.bind( this )} isOutfit={true}/>
           );
         })}
       </div>

@@ -56,7 +56,7 @@ class ProductList extends React.Component {
 
   changeProduct( productId ) {
     this.isReady = false;
-    this.props.changeProduct( productId );
+    this.props.handleSwitchProduct( productId );
   }
 
   render() {
