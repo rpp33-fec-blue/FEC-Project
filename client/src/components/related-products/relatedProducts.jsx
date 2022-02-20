@@ -9,10 +9,10 @@ class RelatedProducts extends React.Component {
 
   render() {
     return (
-      <div className='related-products-holder item-widget-related-products'>
-        <div>RELATED PRODUCTS</div>
+      <div className='item-widget-related-products'>
+        <div className='related-products-headers'>RELATED PRODUCTS</div>
         <ProductsListContainer />
-        <div>YOUR OUTFIT</div>
+        <div className='related-products-headers'>YOUR OUTFIT</div>
         <OutfitContainer />
       </div>
     );

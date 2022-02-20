@@ -30,19 +30,20 @@ describe( 'API GET', () => {
   it( 'should be able to get data from /products/:${productId}/styles', () => {
     return axios.get( `http://localhost:8080/products/64620/styles`, { params: { product_id: 64620 } } )
       .then( ( results ) => {
+        console.log('styles:', results.data.data);
         expect(results.data.data.product_id).toEqual('64620');
       });
   });
   it( 'should be able to get data from /products/:${productId}', () => {
     return axios.get( `http://localhost:8080/products/64620`, { params: { product_id: 64620 } } )
       .then( ( results ) => {
+        console.log('productInfo:', results.data.data);
         expect(results.data.data.id).toEqual(64620);
       });
   });
   it( 'should be able to get data from /cart', () => {
     return axios.get( 'http://localhost:8080/cart' )
       .then( ( results ) => {
-        console.log(results.data)
         expect(results.data.data).not.toEqual(undefined);
       });
   });

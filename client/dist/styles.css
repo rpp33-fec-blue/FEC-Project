@@ -96,6 +96,12 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 /*======================== Related items =======================*/
 
+.related-products-headers {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
 .card-list {
   display: flex;
   flex-direction: row;
@@ -171,6 +177,8 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 .card-name {
   font-weight: 700;
+  font-size: larger;
+
 }
 
 .card-info-holder {
@@ -178,6 +186,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  padding-left: 8px;
 }
 
 .comparison-modal {

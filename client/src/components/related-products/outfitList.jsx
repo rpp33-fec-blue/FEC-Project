@@ -63,6 +63,7 @@ class OutfitList extends React.Component {
       return null;
     }
 
+    console.log('outfit in render:', this.props.outfit);
     return (
       <div className='card-list'>
         <AddOutfitCard addToOutfit={this.addToOutfit.bind( this )}/>
