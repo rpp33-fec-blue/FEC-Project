@@ -20,16 +20,21 @@ var filteredQ = (questions, input = '') => {
   return sortedQ(filtered);
 }
 
-var getAnswer = (questionID, callback) => {
-  // TODO
+var sortedA = (answers) => {
+  var sorted = _.chain(answers)
+    .sortBy((answers) => { return answers.helpfulness})
+    .reverse()
+    .value();
+  return sorted;
+};
 
-  // call api and get list of answers of this questionID
+var getAnswer = (questionID, callback) => {
+
   return axios.get(`/qa/questions/${questionID}/answers`)
     .then((results) => {
       var answers = results.data.data.results;
-      // TODO: sort array according to helpfulness
-
-      return callback(answers);
+      var sorted = sortedA(answers)
+      return callback(sorted);
     })
     .catch(err => {
       throw 'error in getAnswer call'
