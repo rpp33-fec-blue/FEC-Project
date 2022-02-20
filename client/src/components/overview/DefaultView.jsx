@@ -3,13 +3,11 @@ const DefaultView = ( { styles, selectedStyleIndex, selectedImageIndex, updateSe
   const mainImageUrl = styles.results[selectedStyleIndex].photos[selectedImageIndex].url;
   const images = styles.results[selectedStyleIndex].photos;
 
-  var index = 0;
-
   return (
     <div>
       <img src={mainImageUrl}></img> {/* TO DO - On hover, cursor changes to magnifying glass; if clicked, should update defaultView */}
 
-      {_.map(images, (image) => index === selectedImageIndex ? // TO DO - image should be highlighted
+      {images.map((image, index) => index === selectedImageIndex ? // TO DO - image should be highlighted
         <img src={image.thumbnail_url} onClick={updateDefaultView} key={index++}></img> :
         <img src={image.thumbnail_url} onClick={updateSelectedImageIndex} value={index} key={index++}></img>
       )}

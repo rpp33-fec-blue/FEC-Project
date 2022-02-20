@@ -2,9 +2,19 @@ import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 import AddToCartButton from './AddToCartButton.jsx';
 
-const AddToCart = ( { selectedStyleIndex, styles, handleAddCart, sku, sizeSelected, quantitySelected, outOfStock, updateSizeSelectedAndSku, updateQuantitySelected, addToCart, updateOutOfStock } ) => {
-
-  // Props: selectedStyleIndex, styles, handleAddCart, sku, sizeSelected, quantitySelected, outOfStock
+const AddToCart = ( {
+  selectedStyleIndex,
+  styles,
+  handleAddCart,
+  sku,
+  sizeSelected,
+  quantitySelected,
+  outOfStock,
+  updateSizeSelectedAndSku,
+  updateQuantitySelected,
+  addToCart,
+  updateOutOfStock
+} ) => {
 
   return (
     <div>

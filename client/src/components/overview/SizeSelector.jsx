@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSelectedAndSku, updateOutOfStock } ) => {
 
   const skus = styles.results[selectedStyleIndex].skus;
@@ -10,8 +8,6 @@ const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSel
       outOfStock = false;
     }
   }
-
-  var key = 1;
 
   if (outOfStock) {
     updateOutOfStock();
@@ -27,7 +23,7 @@ const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSel
       <div>
       <select onChange={updateSizeSelectedAndSku}>
         <option value='Select Size'>Select Size</option>
-        {_.map(skus, (sku) => sku.quantity > 0 ? <option value={sku.size} key={key++}>{sku.size}</option> : null )}
+        {_.map(skus, (sku, key) => sku.quantity > 0 ? <option value={sku.size} key={key}>{sku.size}</option> : null )}
       </select>
     </div>
     );
