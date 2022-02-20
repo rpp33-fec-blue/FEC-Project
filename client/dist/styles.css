@@ -2,6 +2,7 @@
 .container {
   display: grid;
   grid-template-columns: 5% auto 5%;
+  grid-template-rows: auto auto auto auto;
 }
 /* use these classes when render your own widget in app.jsx */
 .item-widget-overview {
@@ -150,12 +151,16 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 /* qa grid */
 #container-qa {
   display: grid;
-  grid-template-rows: 50px 50px auto 50px;
+  grid-template-rows: auto auto auto auto;
+  grid-template-columns: auto;
 
+  /* align-items: center ;
   grid-auto-flow: row ;
-  grid-auto-rows: auto ;
+
   grid-template-columns: unset;
-  grid-template-rows: unset;
+  grid-template-rows: unset; */
+  min-height: auto;
+  max-height: 600px;
   overflow: scroll;
 }
 
@@ -171,14 +176,14 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   grid-row-start: 3 span 1;
 }
 
-/* .qa-more-button {
+.qa-more-button {
   grid-row-start: 4 span 1;
-} */
+}
 
 /* question-answer grid */
 .container-question-answer {
   display: grid;
-  grid-template-columns: 4fr 2fr;
+  grid-template-columns: auto auto;
   grid-template-rows: auto auto auto;
 }
 
@@ -189,6 +194,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 .report-question {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
+  text-align: right;
 }
 .answer {
   grid-column: 1 / span 1;
@@ -224,11 +230,8 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
-/* questionlist scrollable*/
-.questionlist {
-  width: 100%;
-  height: 100%;
-}
+
+
 
 
 

@@ -51,6 +51,8 @@ class Answers extends React.Component {
   }
 
   render () {
+    if (this.props.answers.length === 0) {return null}
+
     var toShow = this.props.answers.map((answer, index) => {
       if (index+1 <= this.state.answersToShow) {
         return <Answer answer={answer} answerId={answer.answer_id} key={index}/>

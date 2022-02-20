@@ -58,8 +58,6 @@ class Question extends React.Component {
     var answers = this.state.answers;
     var body = this.props.question.question_body;
 
-
-    if (this.state.answers.length === 0) {return null}
     return (
       <div className="container-question-answer">
         <div className="question">Q: {body}</div>
