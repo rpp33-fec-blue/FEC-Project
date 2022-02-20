@@ -33,12 +33,11 @@ class Overview extends React.Component {
 
   updateSelectedImageIndex(event) {
     const newSelectedImageIndex = event.target[Object.keys(event.target)[1]].value;
-    console.log(newSelectedImageIndex);
-    const selectedImageIndex = this.state.selectedImageIndex;
+    // const selectedImageIndex = this.state.selectedImageIndex;
     if (newSelectedImageIndex === 'left') {
-      this.setState( { selectedImageIndex: selectedImageIndex - 1 } );
+      this.setState( (state, props) => ( { selectedImageIndex: state.selectedImageIndex - 1 } ) );
     } else if (newSelectedImageIndex === 'right') {
-      this.setState( { selectedImageIndex: selectedImageIndex + 1 } );
+      this.setState( (state, props) => ( { selectedImageIndex: state.selectedImageIndex + 1 } ) );
     } else {
       this.setState( { selectedImageIndex: newSelectedImageIndex } );
     }
