@@ -1,3 +1,7 @@
+body {
+  font-family: Lato;
+}
+
 /*==================== Widget container =======================*/
 .container {
   display: grid;
@@ -105,6 +109,23 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   margin-right: 30px;
 }
 
+.add-outfit-container {
+  position: relative;
+  height: 100%;
+}
+
+.add-outfit-container img {
+  display: block;
+}
+
+.card-add-outfit {
+  font-size: 400%;
+  font-weight: 500;
+  position: absolute;
+  top: 40%;
+  right: 43%;
+}
+
 .related-image-container {
   position: relative;
   height: 70%;
@@ -114,13 +135,27 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   display: block;
 }
 
-.related-image-container .card-button {
-  font-size: 160%;
-  font-weight: 500;
-  background-color: white;
+.card-icon {
+  background: #e5e5e3;
+  height: 10%;
+  width: 10%;
+  border-radius: 50%;
   position: absolute;
   top: 4%;
   right: 4%;
+}
+
+.card-icon-star {
+  height: 10%;
+  width: 10%;
+  position: absolute;
+  top: 4%;
+  right: 4%;
+}
+
+.card-button {
+  height: 100%;
+  width: 100%;
 }
 
 .card-info {
@@ -131,18 +166,42 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   height: 100%;
 }
 
-.card-category .card-price {
-  font-weight: 200;
+.card-category, .card-price {
+  font-weight: 300;
 }
 
 .card-name {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .card-info-holder {
+  height: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.comparison-modal {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  transition: opacity 0.2s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.comparison-modal-visible {
+  visibility: visible;  opacity: 1;
+}
+
+
+.comparison-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*========================== Reviews ===========================*/
