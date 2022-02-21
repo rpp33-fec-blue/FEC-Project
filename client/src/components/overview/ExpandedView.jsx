@@ -6,7 +6,7 @@ const ExpandedView = ( { styles, selectedStyleId, selectedImageIndex, updateSele
 // Props: styles, selectedStyleId, selectedImageIndex, updateSelectedImageIndex, updateDefaultView
 
   return (
-    <div>
+    <div className='expandedView-component'>
       <img></img> {/* TO DO - insert selected image
                             - should occupy entire screen
                             - on hover, cursor changes to a +

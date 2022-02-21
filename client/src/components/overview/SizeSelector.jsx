@@ -1,3 +1,6 @@
+import React from 'react';
+import _ from 'underscore'; // for testing
+
 const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSelectedAndSku, updateOutOfStock } ) => {
 
   const skus = styles.results[selectedStyleIndex].skus;
@@ -12,7 +15,7 @@ const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSel
   if (outOfStock) {
     updateOutOfStock();
     return (
-      <div>
+      <div className='sizeSelector-component'>
         <select disabled>
           <option value='OUT OF STOCK' selected>OUT OF STOCK</option>
         </select>
@@ -20,7 +23,7 @@ const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSel
     );
   } else if (sizeSelected === 'Select Size') {
     return (
-      <div>
+      <div className='sizeSelector-component'>
       <select onChange={updateSizeSelectedAndSku}>
         <option value='Select Size'>Select Size</option>
         {_.map(skus, (sku, key) => sku.quantity > 0 ? <option value={sku.size} key={key}>{sku.size}</option> : null )}
@@ -29,7 +32,7 @@ const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSel
     );
   } else {
     return (
-      <div>
+      <div className='sizeSelector-component'>
         <select onChange={updateSizeSelectedAndSku}>
           {_.map(skus, (sku) => sku.quantity > 0 ? <option value={sku.size} key={key++}>{sku.size}</option> : null )}
         </select>

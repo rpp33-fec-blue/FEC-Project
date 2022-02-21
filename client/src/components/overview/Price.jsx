@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Price = ( { styles, selectedStyleIndex } ) => {
 
   const price = Number(styles.results[selectedStyleIndex].original_price);
@@ -8,13 +10,13 @@ const Price = ( { styles, selectedStyleIndex } ) => {
 
   if (salePrice === null || salePrice === 0) {
     return (
-      <div>
+      <div className='price-component'>
         <p>Price: ${price}</p>
       </div>
     );
   } else {
     return (
-      <div>
+      <div className='price-component'>
         <p><span id="price">Price: ${salePrice} --> </span><span id="salePrice">${price}</span></p>
       </div>
     );

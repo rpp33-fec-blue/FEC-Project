@@ -1,8 +1,11 @@
+import React from 'react';
+import _ from 'underscore';
+
 const QuantitySelector = ({ styles, selectedStyleIndex, sku, sizeSelected, quantitySelected, updateQuantitySelected }) => {
 
   if (sku === null) {
     return (
-      <div>
+      <div className='quantitySelector-component'>
         <select disabled>
           <option value='-'>-</option>
         </select>
@@ -22,7 +25,7 @@ const QuantitySelector = ({ styles, selectedStyleIndex, sku, sizeSelected, quant
     }
 
     return (
-      <div>
+      <div className='quantitySelector-component'>
         <select onChange={updateQuantitySelected}>
           {_.map(validSkuQuantities, (quantity, index) => <option value={quantity} key={index}>{quantity}</option>)}
         </select>

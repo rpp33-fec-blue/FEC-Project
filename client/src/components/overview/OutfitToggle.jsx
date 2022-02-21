@@ -25,6 +25,7 @@ class OutfitToggle extends React.Component {
   }
 
   addToOutfit() {
+    console.log(this.props.handleAddOutfit);
     this.props.handleAddOutfit(this.props.productId);
     this.setState( { inOutfit: true } );
   }
@@ -37,13 +38,13 @@ class OutfitToggle extends React.Component {
   render() {
     if (this.state.inOutfit) {
       return (
-        <div>
+        <div className='outfitToggle-component'>
           <button onClick={this.removeFromOutfit}>Remove from outfit</button> {/* TO DO - return shaded star that removes from outfit on click */}
         </div>
       );
     } else {
       return (
-        <div>
+        <div className='outfitToggle-component'>
           <button onClick={this.addToOutfit}>Add to outfit</button> {/* TO DO - return empty star that adds to outfit on click */}
         </div>
       );

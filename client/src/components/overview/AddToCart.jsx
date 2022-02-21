@@ -1,3 +1,4 @@
+import React from 'react';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 import AddToCartButton from './AddToCartButton.jsx';
@@ -17,7 +18,7 @@ const AddToCart = ( {
 } ) => {
 
   return (
-    <div>
+    <div className='addToCart-component'>
       <SizeSelector
         styles={styles}
         selectedStyleIndex={selectedStyleIndex}

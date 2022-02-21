@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Rating = ( { metadata } ) => {
 
   var numberOfRatings = 0;
@@ -26,7 +28,7 @@ const Rating = ( { metadata } ) => {
   }
 
   return (
-    <div>
+    <div className='rating-component'>
       <p>{roundedAverageRating} stars</p> {/* TO DO - convert to actual stars */}
       <a href="#">Read all {numberOfRatings} reviews</a> {/* TO DO - link to reviews */}
     </div>

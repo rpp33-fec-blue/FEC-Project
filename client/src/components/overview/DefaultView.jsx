@@ -1,10 +1,12 @@
+import React from 'react';
+
 const DefaultView = ( { styles, selectedStyleIndex, selectedImageIndex, updateSelectedImageIndex, updateDefaultView } ) => {
 
   const mainImageUrl = styles.results[selectedStyleIndex].photos[selectedImageIndex].url;
   const images = styles.results[selectedStyleIndex].photos;
 
   return (
-    <div>
+    <div className='defaultView-component'>
       <img src={mainImageUrl}></img> {/* TO DO - On hover, cursor changes to magnifying glass; if clicked, should update defaultView */}
 
       {images.map((image, index) => index === selectedImageIndex ? // TO DO - image should be highlighted

@@ -10,7 +10,17 @@ var initialState = {
         "category": "Jackets",
         "default_price": "140.00",
         "created_at": "2022-01-28T00:20:03.466Z",
-        "updated_at": "2022-01-28T00:20:03.466Z"
+        "updated_at": "2022-01-28T00:20:03.466Z",
+        "features": [
+            {
+                "feature": "Fabric",
+                "value": "Canvas"
+            },
+            {
+                "feature": "Buttons",
+                "value": "Brass"
+            }
+        ]
     },
     styles: {
         "product_id": "64620",

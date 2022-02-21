@@ -1,3 +1,5 @@
+import React from 'react';
+
 const StyleSelector = ( { styles, selectedStyleIndex, updateSelectedStyle } ) => {
 
   const selectedStyleName = styles.results[selectedStyleIndex].name;
@@ -8,7 +10,7 @@ const StyleSelector = ( { styles, selectedStyleIndex, updateSelectedStyle } ) =>
   // TO DO - add checkmark to selected style
 
   return (
-    <div>
+    <div className='styleSelector-component'>
       <p>Selected style: {selectedStyleName}</p>
       {styles.results.map((style, index) =>  index === selectedStyleIndex ?
         <img src={style.photos[index].thumbnail_url} className='style-thumbnail' id='selectedStyle' key={index}></img> :

@@ -7,7 +7,7 @@ import OutfitToggle from './OutfitToggle.jsx';
 const ProductInformation = ( { productId, metadata, productInfo, styles, selectedStyleIndex, outfit, handleAddOutfit, handleRemoveOutfit } ) => {
 
   return (
-    <div>
+    <div className='productInformation-component'>
       <Rating metadata={metadata} />
       <h2>Name: {productInfo.name}</h2>
       <h4>Category: {productInfo.category}</h4>

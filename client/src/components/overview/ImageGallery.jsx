@@ -21,7 +21,7 @@ class ImageGallery extends React.Component {
     render() {
       if (this.state.defaultView) {
         return (
-          <div>
+          <div className='imageGallery-component'>
             <DefaultView
               styles={this.props.styles}
               selectedStyleIndex={this.props.selectedStyleIndex}
@@ -33,7 +33,7 @@ class ImageGallery extends React.Component {
         );
       } else {
         return (
-          <div>
+          <div className='imageGallery-component'>
             {/* <ExpandedView
               styles={this.props.styles}
               selectedStyleId={this.props.selectedStyleId}
