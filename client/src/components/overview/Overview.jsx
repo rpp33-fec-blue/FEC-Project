@@ -15,7 +15,7 @@ class Overview extends React.Component {
       selectedImageIndex: 0,
       sku: null,
       sizeSelected: 'Select Size',
-      quantitySelected: ' - ',
+      quantitySelected: 0,
       outOfStock: false
     };
     this.updateSelectedStyle = this.updateSelectedStyle.bind(this);
@@ -28,7 +28,7 @@ class Overview extends React.Component {
 
   updateSelectedStyle(event) {
     const newSelectedStyleIndex = event.target[Object.keys(event.target)[0]].index;
-    this.setState( { selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: '-', outOfStock: false } );
+    this.setState( { selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: false } );
   }
 
   updateSelectedImageIndex(event) {

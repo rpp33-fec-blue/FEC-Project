@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 
 const Rating = ( { metadata } ) => {
 
@@ -33,6 +35,10 @@ const Rating = ( { metadata } ) => {
       <a href="#">Read all {numberOfRatings} reviews</a> {/* TO DO - link to reviews */}
     </div>
   );
+};
+
+Rating.propTypes = {
+  metadata: statePropTypes.metadataPropTypes
 };
 
 export default Rating;

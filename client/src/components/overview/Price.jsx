@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 
 const Price = ( { styles, selectedStyleIndex } ) => {
 
@@ -21,6 +23,11 @@ const Price = ( { styles, selectedStyleIndex } ) => {
       </div>
     );
   }
+};
+
+Price.propTypes = {
+  styles: statePropTypes.stylesPropTypes,
+  selectedStyleIndex: PropTypes.number
 };
 
 export default Price;

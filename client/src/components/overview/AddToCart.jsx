@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 import AddToCartButton from './AddToCartButton.jsx';
@@ -43,4 +45,19 @@ const AddToCart = ( {
   );
 };
 
+AddToCart.propTypes = {
+  selectedStyleIndex: PropTypes.number,
+  styles: statePropTypes.stylesPropTypes,
+  handleAddCart: PropTypes.func,
+  sku: PropTypes.string,
+  sizeSelected: PropTypes.string,
+  quantitySelected: PropTypes.number,
+  outOfStock: PropTypes.bool,
+  updateSizeSelectedAndSku: PropTypes.func,
+  updateQuantitySelected: PropTypes.func,
+  addToCart: PropTypes.func,
+  updateOutOfStock: PropTypes.func
+};
+
 export default AddToCart;
+

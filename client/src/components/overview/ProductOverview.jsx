@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 
 const ProductOverview = ( { productInfo } ) => {
 
@@ -13,5 +15,9 @@ const ProductOverview = ( { productInfo } ) => {
     </div>
   );
 }
+
+ProductOverview.propTypes = {
+  productInfo: statePropTypes.productInfoPropTypes
+};
 
 export default ProductOverview;

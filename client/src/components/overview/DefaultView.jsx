@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 
 const DefaultView = ( { styles, selectedStyleIndex, selectedImageIndex, updateSelectedImageIndex, updateDefaultView } ) => {
 
@@ -26,6 +28,14 @@ const DefaultView = ( { styles, selectedStyleIndex, selectedImageIndex, updateSe
       }
     </div>
   );
+};
+
+DefaultView.propTypes = {
+  styles: statePropTypes.stylesPropTypes,
+  selectedStyleIndex: PropTypes.number,
+  selectedImageIndex: PropTypes.number,
+  updateSelectedImageIndex: PropTypes.func,
+  updateDefaultView: PropTypes.func
 };
 
 export default DefaultView;

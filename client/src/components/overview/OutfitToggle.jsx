@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 
 class OutfitToggle extends React.Component {
 
@@ -50,6 +52,13 @@ class OutfitToggle extends React.Component {
       );
     }
   }
+};
+
+OutfitToggle.propTypes = {
+  productId: statePropTypes.productIdPropType,
+  outfit: statePropTypes.outfitPropTypes,
+  handleAddOutfit: PropTypes.func,
+  handleRemoveOutfit: PropTypes.func
 };
 
 export default OutfitToggle;

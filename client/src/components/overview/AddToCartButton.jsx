@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 
 const AddToCartButton = ( { outOfStock, sizeSelected, addToCart } ) => {
 
@@ -21,6 +23,13 @@ const AddToCartButton = ( { outOfStock, sizeSelected, addToCart } ) => {
       </div>
     );
   }
+};
+
+
+AddToCartButton.propTypes = {
+  outOfStock: PropTypes.bool,
+  sizeSelected: PropTypes.string,
+  addToCart: PropTypes.func
 };
 
 export default AddToCartButton;

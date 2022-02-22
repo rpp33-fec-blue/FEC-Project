@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 import _ from 'underscore';
 
 const QuantitySelector = ({ styles, selectedStyleIndex, sku, sizeSelected, quantitySelected, updateQuantitySelected }) => {
@@ -32,6 +34,15 @@ const QuantitySelector = ({ styles, selectedStyleIndex, sku, sizeSelected, quant
       </div>
     );
   }
+};
+
+QuantitySelector.propTypes = {
+  styles: statePropTypes.stylesPropTypes,
+  selectedStyleIndex: PropTypes.number,
+  sku: PropTypes.string,
+  sizeSelected: PropTypes.string,
+  quantitySelected: PropTypes.number,
+  updateQuantitySelected: PropTypes.func
 };
 
 export default QuantitySelector;

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 import Rating from './Rating.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import Price from './Price.jsx';
@@ -21,6 +23,17 @@ const ProductInformation = ( { productId, metadata, productInfo, styles, selecte
       />
   </div>
   );
+};
+
+ProductInformation.propTypes = {
+  productId: statePropTypes.productIdPropType,
+  productInfo: statePropTypes.productInfoPropTypes,
+  styles: statePropTypes.stylesPropTypes,
+  selectedStyleIndex: PropTypes.number,
+  cart: statePropTypes.cartPropTypes,
+  outfit: statePropTypes.outfitPropTypes,
+  handleAddOutfit: PropTypes.func,
+  handleRemoveOutfit: PropTypes.func
 };
 
 export default ProductInformation;

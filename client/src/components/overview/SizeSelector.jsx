@@ -1,5 +1,8 @@
 import React from 'react';
-import _ from 'underscore'; // for testing
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
+
+// import _ from 'underscore'; // for testing
 
 const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSelectedAndSku, updateOutOfStock } ) => {
 
@@ -34,11 +37,19 @@ const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSel
     return (
       <div className='sizeSelector-component'>
         <select onChange={updateSizeSelectedAndSku}>
-          {_.map(skus, (sku) => sku.quantity > 0 ? <option value={sku.size} key={key++}>{sku.size}</option> : null )}
+          {_.map(skus, (sku, key) => sku.quantity > 0 ? <option value={sku.size} key={key}>{sku.size}</option> : null )}
         </select>
       </div>
     );
   }
+};
+
+SizeSelector.propTypes = {
+  styles: statePropTypes.stylesPropTypes,
+  selectedStyleIndex: PropTypes.number,
+  sizeSelected: PropTypes.string,
+  updateSizeSelectedAndSku: PropTypes.func,
+  updateOutOfStock: PropTypes.func
 };
 
 export default SizeSelector;

@@ -1,9 +1,8 @@
 import GalleryIcon from './GalleryIcon.jsx';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 
 const ExpandedView = ( { styles, selectedStyleId, selectedImageIndex, updateSelectedImageIndex, updateDefaultView } ) => {
-
-
-// Props: styles, selectedStyleId, selectedImageIndex, updateSelectedImageIndex, updateDefaultView
 
   return (
     <div className='expandedView-component'>
@@ -25,6 +24,13 @@ const ExpandedView = ( { styles, selectedStyleId, selectedImageIndex, updateSele
       <button onClick={updateSelectedImageIndex} value='right'>Right arrow</button>
     </div>
   );
+};
+
+GalleryIcon.propTypes = {
+  styles: statePropTypes.stylesPropTypes,
+  selectedImageIndex: PropTypes.number,
+  updateSelectedImageIndex: PropTypes.func,
+  updateDefaultView: PropTypes.func
 };
 
 export default ExpandedView;

@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 
 const StyleSelector = ( { styles, selectedStyleIndex, updateSelectedStyle } ) => {
 
   const selectedStyleName = styles.results[selectedStyleIndex].name;
-
-  var index = 0;
 
   // TO DO - 4 thumbnails per row
   // TO DO - add checkmark to selected style
@@ -18,6 +18,12 @@ const StyleSelector = ( { styles, selectedStyleIndex, updateSelectedStyle } ) =>
       )}
    </div>
   );
+};
+
+StyleSelector.propTypes = {
+  styles: statePropTypes.stylesPropTypes,
+  selectedStyleIndex: PropTypes.number,
+  updateSelectedStyle: PropTypes.func
 };
 
 export default StyleSelector;
