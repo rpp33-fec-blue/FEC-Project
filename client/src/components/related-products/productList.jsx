@@ -8,7 +8,8 @@ class ProductList extends React.Component {
     super(props);
     this.state = {
       items: [],
-      isPopupVisible: false
+      isPopupVisible: false,
+      selectedProduct: { features: [] }
     }
     this.isReady = false;
     this.throttledBuildItems = _.throttle( this.buildRelatedItemsData, 100 );
@@ -43,14 +44,18 @@ class ProductList extends React.Component {
     });
   }
 
-  compareProduct( productIndex ) {
-    this.toggleCompare();
-  }
-
   toggleCompare() {
     var toggle = ( this.state.isPopupVisible ) ? false : true;
     this.setState({
       isPopupVisible: toggle
+    });
+  }
+
+  compareProduct( productIndex ) {
+    var toggle = ( this.state.isPopupVisible ) ? false : true;
+    this.setState({
+      isPopupVisible: toggle,
+      selectedProduct: this.state.items[ productIndex ]
     });
   }
 
@@ -68,11 +73,11 @@ class ProductList extends React.Component {
 
     return (
       <div>
-        <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare.bind( this )}/>
+        <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare.bind( this )} currentProduct={this.props.productInfo} selectedProduct={this.state.selectedProduct}/>
         <div className='card-list'>
-          {this.state.items.map( ( item ) => {
+          {this.state.items.map( ( item, index ) => {
             return (
-              <ProductCard key={item.id} item={ item } changeProduct={this.changeProduct.bind( this )} actionButton={this.compareProduct.bind( this )} isOutfit={false}/>
+              <ProductCard key={item.id} item={item} index={index} changeProduct={this.changeProduct.bind( this )} actionButton={this.compareProduct.bind( this )} isOutfit={false}/>
             )
           })}
         </div>

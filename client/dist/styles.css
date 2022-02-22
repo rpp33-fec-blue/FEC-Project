@@ -190,6 +190,9 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 }
 
 .comparison-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -199,6 +202,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   transition: opacity 0.2s;
   opacity: 0;
   visibility: hidden;
+
 }
 
 .comparison-modal-visible {
@@ -207,9 +211,18 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 
 .comparison-content {
+  padding: 8px;
+  height: wrap;
+  width: 15%;
+  border: 1px solid black;
+  background-color: white;
+  flex-direction: column;
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+.related-products-compare-header {
+  font-weight: 300;
 }
 
 /*========================== Reviews ===========================*/

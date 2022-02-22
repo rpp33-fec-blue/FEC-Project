@@ -5,7 +5,8 @@ import switchProduct from './../action-creators/switchProduct.js';
 var RelatedProductsListContainer = ( state ) => {
   return {
     productId: state.productId,
-    relatedProducts: state.relatedProducts
+    relatedProducts: state.relatedProducts,
+    productInfo: state.productInfo
   };
 };
 

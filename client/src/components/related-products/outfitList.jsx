@@ -13,7 +13,6 @@ class OutfitList extends React.Component {
 
   buildOutfitList() {
     var apiCalls = [];
-    console.log('outfit:', this.props.outfit);
     for ( var i = 0; i < this.props.outfit.length; i++ ) {
       var productId = this.props.outfit[i];
       apiCalls.push(axios.get( `http://localhost:8080/products/${productId}`, { params: { product_id: productId } } ));
@@ -35,7 +34,6 @@ class OutfitList extends React.Component {
       }
 
       this.isReady = true;
-      console.log('outfitArray:', outfitArray);
       this.setState({
         items: outfitArray
       });
@@ -63,7 +61,6 @@ class OutfitList extends React.Component {
       return null;
     }
 
-    console.log('outfit in render:', this.props.outfit);
     return (
       <div className='card-list'>
         <AddOutfitCard addToOutfit={this.addToOutfit.bind( this )}/>
