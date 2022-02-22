@@ -28,12 +28,19 @@ class ProductList extends React.Component {
       var relatedProductsArray = [];
       for ( var call = 0; call < results.length; call+=3 ) {
         var product = Object.assign( results[ call ].data.data, results[ call + 1 ].data.data );
+        var defaultFound = false;
         for ( var style = 0; style < results[ call + 2 ].data.data.results.length; style++ ) {
           if ( results[ call + 2 ].data.data.results[ style ]['default?'] ) {
             product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ style ] } );
+            defaultFound = true;
             break;
           }
         }
+
+        if ( !defaultFound ) {
+          product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ 0 ] } );
+        }
+
         relatedProductsArray.push( product );
       }
 
