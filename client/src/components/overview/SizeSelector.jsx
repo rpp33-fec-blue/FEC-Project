@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
-
-// import _ from 'underscore'; // for testing
+import _ from 'underscore'; // for testing
 
 const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSelectedAndSku, updateOutOfStock } ) => {
 
