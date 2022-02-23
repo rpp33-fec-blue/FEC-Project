@@ -52,15 +52,18 @@ class Answer extends React.Component {
     var month = window.months[date.getMonth()];
     var day = date.getDate();
     var year = date.getFullYear();
-    var linkHelpful = <a href="#/" className="smallLink" onClick={this.markHelpfulAnswer.bind(this)}> Yes({this.state.helpfulAns}) </a>
-    var linkReportAnswer = <a href="#/" className="smallLink" onClick={this.reportAnswer.bind(this)}> Report </a>
+    var linkHelpful = <a href="#/" className="helpfulLink" onClick={this.markHelpfulAnswer.bind(this)}> Yes({this.state.helpfulAns}) </a>
+    var linkReportAnswer = <a href="#/" className="reportLink" onClick={this.reportAnswer.bind(this)}> Report </a>
 
     return (
       <div className="answer">
-        <div > A: {body} </div>
         <div>
-          <span> by {answerer_name}, {month} {day}, {year} |</span>
-          <span> Helpful? </span>
+          <span className="A">A: </span>
+          <span className="answer-body">{body}</span>
+        </div>
+        <div>
+          <span className="timeStamp"> by {answerer_name}, {month} {day}, {year} |</span>
+          <span className="helpful"> Helpful? </span>
           <span>{linkHelpful} | </span>
           <span>{linkReportAnswer} </span>
         </div>

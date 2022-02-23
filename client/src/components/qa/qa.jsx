@@ -57,7 +57,7 @@ class Qa extends React.Component {
   render () {
     return (
       <div id="container-qa" className="item-widget-qa">
-        <div className="qa">Questions and Answers</div>
+        <h1 className="qa">QUESTIONS & ANSWERS</h1>
         <SearchBar className="search-bar" handleSearch={this.handleSearch.bind(this)} />
         <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>
         <AddQuestion />

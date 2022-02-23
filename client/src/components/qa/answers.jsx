@@ -22,7 +22,8 @@ class Answers extends React.Component {
     if (answersLength <= 2) {
       this.setState({
         answersToShow: answersLength,
-        remainingAnswer: 0
+        remainingAnswer: 0,
+        buttonName: ""
       })
     } else if (answersLength > 2) {
       var show = 2;
@@ -81,25 +82,19 @@ class Answers extends React.Component {
     if (this.state.buttonName === "") {
       button = "";
     } else {
-      button = <button onClick={this.loadMoreAnswer.bind(this)}>{this.state.buttonName}</button>;
+      button = <button className="load-more-answer" onClick={this.loadMoreAnswer.bind(this)}>{this.state.buttonName}</button>;
     }
 
     var toShow = this.props.answers.map((answer, index) => {
-      console.log('answer', answer);
-      console.log('index+1', index+1);
-      console.log('answersToShow', this.state.answersToShow);
       if (index+1 <= this.state.answersToShow) {
         return <Answer answer={answer} answerId={answer.answer_id} key={index}/>
       }
     })
 
-    console.log('toshow', toShow);
     return (
       <div>
         {toShow}
-        <div className="load-more-answer">
-          {button}
-        </div>
+        {button}
       </div>
     );
   }

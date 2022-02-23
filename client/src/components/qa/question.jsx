@@ -14,18 +14,18 @@ class Question extends React.Component {
       answers: [],
       helpfulQuestion: this.props.question.question_helpfulness,
       helpfulQuestionClicked: false,
-      answersFetched: false
+      answersFetching: false
     }
   }
 
   componentDidMount() {
     this.setState({
-      answersFetched: true
+      answersFetching: true
     }, () => {
       getAnswer(this.props.questionId, (results) => {
         this.setState({
           answers: results,
-          answersFetched: false
+          answersFetching: false
         })
       });
     })
@@ -35,14 +35,6 @@ class Question extends React.Component {
   onForm () {
     onOverlay("overlay-addAnswer");
   }
-
-  // componentDidUpdate (prevProps) {
-  //   if (prevProps.question.question_helpfulness !== this.props.question.question_helpfulness) {
-  //     this.setState({
-  //       helpfulQuestion: this.props.question.question_helpfulness
-  //     })
-  //   }
-  // }
 
   markHelpfulQuestion () {
     if (!this.state.helpfulQuestionClicked) {
@@ -62,15 +54,16 @@ class Question extends React.Component {
   }
 
   render() {
-    var answers = this.state.answersFetched ? <i className="fa fa-spinner fa-spin"></i> : <Answers answers={this.state.answers}/>;
+    var answers = this.state.answersFetching ? <i className="fa fa-spinner fa-spin"></i> : <Answers answers={this.state.answers}/>;
     var body = this.props.question.question_body;
 
     return (
       <div className="container-question-answer">
-        <div className="question">Q: {body}</div>
+        <div className="question">
+          <h3>Q: {body}</h3>
 
         {answers}
-
+        </div>
         <div className="report-question">
           <span> Helpful? </span>
           <span><a href="#/" className="smallLink" onClick={this.markHelpfulQuestion.bind(this)}> Yes({this.state.helpfulQuestion})</a> | </span>

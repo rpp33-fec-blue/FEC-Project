@@ -50,9 +50,9 @@ class AddQuestionComp extends React.Component {
     return (
       <form id="overlay-addQuestion" className="overlay-bg" onSubmit={this.handleSubmit.bind(this)}>
         <div className="overlay-content">
+          <a href="#/" className="closebtn" onClick={this.offForm.bind(this)}>&times;</a>
           <div>
-            <a href="#/" className="closebtn" onClick={this.offForm.bind(this)}>&times;</a>
-            <h3>Add Your Question</h3>
+            <h3>ADD YOUR QUESTION</h3>
             <h4>About the {this.props.productName}</h4>
           </div>
           <div>
@@ -87,12 +87,13 @@ class AddQuestionComp extends React.Component {
               type="email"
               id="email"
               required
+              size="64"
             />
             <br />
             <div className="warning"> For authentication reasons, you will not be emailed </div>
           </div>
           <br />
-          <input type="submit" name="submit" value="submit" />
+          <input type="submit" name="submit" value="SUBMIT" />
           <br />
           <h1 id="submitMessage">{this.state.submitMessage}</h1>
         </div>

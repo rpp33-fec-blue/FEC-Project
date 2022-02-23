@@ -17,9 +17,6 @@ class QuestionList extends React.Component {
   handleMoreAnswerQuestionClick (e) {
     e.preventDefault;
     var noOfQuestions = this.props.filteredQ.length;
-    console.log('noOfQuestions', noOfQuestions);
-    console.log('questionsToShow', this.state.questionsToShow);
-    console.log('moreAnswerQuestionVisible', this.state.moreAnswerQuestionVisible);
     var numOfQuestionsToAdd = noOfQuestions - this.state.questionsToShow ;
 
     if (numOfQuestionsToAdd <= 2) {
@@ -39,7 +36,7 @@ class QuestionList extends React.Component {
         }
       })
     }
-    // when the question is too long, cap maximum hieght for the question & Answer and make it scrollable
+
   }
 
   onForm () {
@@ -58,9 +55,9 @@ class QuestionList extends React.Component {
         )
       }
     });
-    console.log('questions', questions);
+
     var moreAnswerQuestionVisibleBtn;
-    
+
     if (this.state.moreAnswerQuestionVisible) {
       moreAnswerQuestionVisibleBtn = <button onClick={this.handleMoreAnswerQuestionClick.bind(this)}>MORE ANSWERED QUESTIONS</button>;
     } else {
@@ -68,11 +65,11 @@ class QuestionList extends React.Component {
     }
 
     return (
-      <div className="questionlistdiv">
+      <div className="questionlist-and-btn">
         <div className="questionlist">{questions}</div>
-        <div className="qa-more-button">
+        <div className="btn-container">
           {moreAnswerQuestionVisibleBtn}
-          <button onClick={this.onForm.bind(this)}>Add a question</button>
+          <button onClick={this.onForm.bind(this)}>ADD A QUESTION</button>
         </div>
       </div>
     );

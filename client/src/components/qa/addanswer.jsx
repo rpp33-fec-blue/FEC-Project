@@ -47,22 +47,25 @@ class AddAnswerComp extends React.Component {
       "photos": this.state.imagesUrl
     };
 
-    var formData = new FormData();
-    formData.append('body', answer);
-    formData.append('name', nickname);
-    formData.append('email', email);
-    this.state.imagesUrl.forEach((url) => {
-      formData.append('photos', url);
-    })
+    // var formData = new FormData();
+    // formData.append('body', answer);
+    // formData.append('name', nickname);
+    // formData.append('email', email);
+    // this.state.imagesUrl.forEach((url) => {
+    //   formData.append('photos', url);
+    // })
 
-    console.log({formData});
+    // console.log({formData});
+
+    // axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, formData, {
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data'
+    //   }
+    // });
+
     console.log({newAnswer});
 
-    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    });
+    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer);
     // addAnswer(newAnswer); // try later when got time
   }
 
@@ -121,12 +124,12 @@ class AddAnswerComp extends React.Component {
         onSubmit={this.handleSubmit.bind(this)}
       >
         <div className="overlay-content">
-
+          <a href="#/"
+            className="closebtn"
+            onClick={this.offForm.bind(this)}
+          >&times;</a>
           <div>
-            <a href="#/" className="closebtn"
-              onClick={this.offForm.bind(this)}
-            >&times;</a>
-            <h3>Submit your Answer</h3>
+            <h3>SUBMIT YOUR ANSWER</h3>
             <h4>{productName}:{question_body}</h4>
           </div>
 
@@ -163,6 +166,7 @@ class AddAnswerComp extends React.Component {
               type="email"
               id="email"
               required
+              size="64"
             />
             <br />
             <div className="warning"> For authentication reasons, you will not be emailed </div>
@@ -180,7 +184,7 @@ class AddAnswerComp extends React.Component {
           />
 
           <br />
-          <input type="submit" name="submit" value="submit" />
+          <input type="submit" name="submit" value="SUBMIT" />
 
           <br />
           <h1 id="submitMessage">{this.state.submitMessage}</h1>

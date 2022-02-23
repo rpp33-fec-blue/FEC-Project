@@ -1,5 +1,7 @@
 body {
-  font-family: Lato;
+  font-family: Helvetica, sans-serif;
+  font-size: 100%;
+  color: #525152;
 }
 
 /*==================== Widget container =======================*/
@@ -66,7 +68,7 @@ form > .overlay-content textarea {
 
 form.overlay-bg .closebtn {
   position: absolute;
-  top: 20px;
+  top: 0px;
   right: 45px;
   font-size: 60px;
 }
@@ -88,7 +90,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   form.overlay-bg a {font-size: 20px}
   form.overlay-bg .closebtn {
   font-size: 40px;
-  top: 15px;
+  top: 0px;
   right: 35px;
   }
 }
@@ -225,7 +227,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   grid-row-start: 2 span 1;
 }
 
-.questionlistdiv {
+.questionlist-and-btn {
   grid-row-start: 3 span 1;
 }
 
@@ -240,7 +242,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   grid-template-rows: auto auto auto;
 
   min-height: auto;
-  max-height: 250px;
+  max-height: 95%;
   overflow: scroll;
 
   margin: 10px 0 10px 0;
@@ -289,10 +291,170 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
+/* text */
+h1.qa {
+  font-weight: normal;
+  font-size: 1.3em;
+}
 
+#searchQuestion {
+  height: 3em;
+  border-color: #525152;
+  border-radius: 0px;
+  border-width: thin;
+}
 
+::placeholder {
+  font-weight: 8em;
+  font-size: 1.3em;
+  vertical-align: center;
+}
 
+.question > h3,
+.A {
+  font-weight: 3em;
+  font-size: 1.2em;
+  margin: 0px 0px 0px 0px;
+}
 
+.answer-body{
+  font-weight: normal;
+  font-size: 1.1em;
+}
 
+/* link */
+.timeStamp,
+.reportLink {
+  font-weight: 0.4em;
+  font-size: 1em;
+  color: #606160;
+}
 
+.helpful,
+.helpfulLink {
+  font-weight: normal;
+  font-size: 1em;
+}
+
+a {
+  color:  #525152;
+}
+
+/* margin */
+.questionlist-and-btn {
+  margin: 5px 0px 5px 0px;
+}
+
+.container-question-answer {
+  margin: 5px 0px 5px 0px;
+}
+
+.container-question-answer div {
+  margin: 5px 0px 5px 0px;
+}
+
+.question {
+  margin: 5px 0px 5px 0px;
+}
+
+div .answer {
+  margin: 5px 0px 5px 0px;
+  padding: 5px 0px 5px 0px;
+}
+
+/* button */
+.questionlist-and-btn .btn-container button {
+  border-color: #525152;
+  border-radius: 0px;
+  padding: 10px 10px 10px 10px;
+  margin: 0px 10px 0px 0px;
+  border-width: thin;
+
+  font-weight: bold;
+  font-size: 1.2em;
+
+  background-color: white;
+  color:  #525152;
+  cursor: pointer;
+}
+
+.load-more-answer {
+  margin: 10px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+
+  border: none;
+
+  text-align: left;
+  font-weight: bold;
+  font-size: 1em;
+
+  background-color: white;
+  color:  #525152;
+  cursor: pointer;
+}
+
+/* form */
+form div {
+  margin: 10px 0px 10px 0px;
+}
+
+form h3 {
+  margin: 10px 0px 10px 0px;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+form h4 {
+  margin: 10px 0px 20px 0px;
+  font-weight: bold;
+  font-size: 1.4em;
+  text-align: center;
+}
+
+form label {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 10%;
+}
+
+/* .closebtn {
+  position: relative;
+  top: -10%;
+} */
+
+form > #email {
+  font-size: 1.2em;
+}
+
+input[type=email] {
+  padding: 5px 5px 5px 5px;
+
+}
+
+form input[type=submit] {
+  padding: 10px 10px 10px 10px;
+  font-size: 1.2em;
+  background-color: #e5e5e3;
+  border-width: thin;
+  border-color: #525152;
+  color: #525152;
+  border-radius: 0px;
+  position: absolute;
+  left: 90%;
+}
+
+form input[type=submit]:hover {
+  background-color: #525152;
+  color: #e5e5e3;
+  border-color: #e5e5e3;
+}
+
+form input[type=file] {
+  font-size: 1em;
+}
 
