@@ -3,19 +3,11 @@ import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
 import _ from 'underscore'; // for testing
 
-const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSelectedAndSku, updateOutOfStock } ) => {
+const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSelectedAndSku, outOfStock, updateOutOfStock } ) => {
 
   const skus = styles.results[selectedStyleIndex].skus;
 
-  var outOfStock = true;
-  for (var sku in skus) {
-    if (skus[sku].quantity > 0) {
-      outOfStock = false;
-    }
-  }
-
   if (outOfStock) {
-    updateOutOfStock();
     return (
       <div className='sizeSelector-component'>
         <select disabled>
@@ -48,6 +40,7 @@ SizeSelector.propTypes = {
   selectedStyleIndex: PropTypes.number,
   sizeSelected: PropTypes.string,
   updateSizeSelectedAndSku: PropTypes.func,
+  outOfStock: PropTypes.bool,
   updateOutOfStock: PropTypes.func
 };
 

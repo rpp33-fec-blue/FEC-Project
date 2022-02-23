@@ -26,6 +26,7 @@ const AddToCart = ( {
         selectedStyleIndex={selectedStyleIndex}
         sizeSelected={sizeSelected}
         updateSizeSelectedAndSku={updateSizeSelectedAndSku}
+        outOfStock={outOfStock}
         updateOutOfStock={updateOutOfStock}
       />
       <QuantitySelector

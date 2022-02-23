@@ -10,14 +10,25 @@ class Overview extends React.Component {
 
   constructor(props) {
     super(props);
+
+    const skus = this.props.styles.results[0].skus;
+    var outOfStockBool = true;
+    for (var sku in skus) {
+      if (skus[sku].quantity > 0) {
+        outOfStockBool = false;
+      }
+    }
+
     this.state = {
+      styles: this.props.styles,
       selectedStyleIndex: 0,
       selectedImageIndex: 0,
       sku: null,
       sizeSelected: 'Select Size',
       quantitySelected: 0,
-      outOfStock: false
+      outOfStock: outOfStockBool
     };
+
     this.updateSelectedStyle = this.updateSelectedStyle.bind(this);
     this.updateSelectedImageIndex = this.updateSelectedImageIndex.bind(this);
     this.updateSizeSelectedAndSku = this.updateSizeSelectedAndSku.bind(this);
@@ -28,7 +39,18 @@ class Overview extends React.Component {
 
   updateSelectedStyle(event) {
     const newSelectedStyleIndex = event.target[Object.keys(event.target)[0]].index;
-    this.setState( { selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: false } );
+    const skus = this.props.styles.results[newSelectedStyleIndex].skus;
+    var outOfStock = true;
+    for (var sku in skus) {
+      if (skus[sku].quantity > 0) {
+        outOfStock = false;
+      }
+    }
+    if (outOfStock) {
+      this.setState( { selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: true } );
+    } else {
+      this.setState( { selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: false } );
+    }
   }
 
   updateSelectedImageIndex(event) {
