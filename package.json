@@ -9,7 +9,7 @@
     "test-overview": "jest test/overview/test.js",
     "test-questions": "jest test/questions/test.js",
     "test-reviews": "jest test/reviews/test.js",
-    "test-related": "jest test/related-items/test.js",
+    "test-related": "jest test/related-products/test.js",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -w"
   },

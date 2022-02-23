@@ -2,7 +2,7 @@
 import changeCart from '../../client/src/actions/cart.js';
 import changeOutfit from '../../client/src/actions/outfit.js';
 import changeProductId from '../../client/src/actions/productId.js';
-import changeRelatedItems from '../../client/src/actions/relatedItems.js';
+import changeRelatedProducts from '../../client/src/actions/relatedProducts.js';
 import changeReviews from '../../client/src/actions/reviews.js';
 import changeQuestions from '../../client/src/actions/questions.js';
 import changeMetadata from '../../client/src/actions/metadata.js';
@@ -80,16 +80,16 @@ describe( 'Actions', () => {
   });
   describe( 'Related Products', () => {
     it( 'should be a function', () => {
-      expect( typeof changeRelatedItems ).toBe( 'function' );
+      expect( typeof changeRelatedProducts ).toBe( 'function' );
     });
     it( 'should return an object', () => {
-      expect( typeof changeRelatedItems( 'test' ) ).toBe( 'object' );
+      expect( typeof changeRelatedProducts( 'test' ) ).toBe( 'object' );
     });
     it( 'should return an object with a "type" key equal to "CHANGE_RELATED"', () => {
-      expect( changeRelatedItems( 'test' ).type ).toEqual( 'CHANGE_RELATED' );
+      expect( changeRelatedProducts( 'test' ).type ).toEqual( 'CHANGE_RELATED' );
     });
     it('should return an object with a "relatedProducts" key equal to the inputted value', () => {
-      expect( changeRelatedItems( 'test' ).relatedProducts ).toEqual( 'test' );
+      expect( changeRelatedProducts( 'test' ).relatedProducts ).toEqual( 'test' );
     });
   });
   describe( 'Reviews', () => {
@@ -196,7 +196,7 @@ describe( 'Reducers', () => {
   });
   describe( 'Related Items', function() {
     it( 'should change state when changeRelatedItems action is passed in', function() {
-      expect( reducerRelatedItems( 'old state', changeRelatedItems( 'new state' ) ) ).toEqual( 'new state' );
+      expect( reducerRelatedItems( 'old state', changeRelatedProducts( 'new state' ) ) ).toEqual( 'new state' );
     });
     it( 'should retain original state when a different action is passed in', function() {
       expect( reducerRelatedItems( 'old state', fakeAction( 'new state' ) ) ).toEqual( 'old state' );

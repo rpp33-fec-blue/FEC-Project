@@ -5,13 +5,13 @@ var addOutfit = ( productId ) => {
 
   return ( dispatch ) => {
 
-    var outfits = store.getState().outfit;
-    var index = outfits.indexOf( productId );
+    var outfit = JSON.parse(JSON.stringify(store.getState().outfit));
+    var index = outfit.indexOf( productId );
     if ( index === -1 ) {
-      outfits.push( productId );
+      outfit.push( productId );
     }
 
-    dispatch( actionOutfit( outfits ));
+    dispatch( actionOutfit( outfit ));
   };
 };
 
