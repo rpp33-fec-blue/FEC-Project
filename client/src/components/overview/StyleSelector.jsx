@@ -13,8 +13,8 @@ const StyleSelector = ( { styles, selectedStyleIndex, updateSelectedStyle } ) =>
     <div className='styleSelector-component'>
       <p>Selected style: {selectedStyleName}</p>
       {styles.results.map((style, index) =>  index === selectedStyleIndex ?
-        <img src={style.photos[index].thumbnail_url} className='style-thumbnail' id='selectedStyle' key={index}></img> :
-        <img src={style.photos[index].thumbnail_url} className='style-thumbnail' onClick={updateSelectedStyle} index={index} key={index}></img>
+        <img src={style.photos[0].thumbnail_url} className='style-thumbnail' id='selectedStyle' key={index}></img> :
+        <img src={style.photos[0].thumbnail_url} className='style-thumbnail' onClick={updateSelectedStyle} index={index} key={index}></img>
       )}
    </div>
   );
