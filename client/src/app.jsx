@@ -30,8 +30,6 @@ class App extends React.Component {
           <OverviewContainer className="widget-overview"/>
           <RelatedProductsContainer />
           <ConnectedQA />
-          <Rnr />
-
         </div>
       );
     }
