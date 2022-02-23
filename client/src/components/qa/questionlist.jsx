@@ -60,6 +60,7 @@ class QuestionList extends React.Component {
     });
     console.log('questions', questions);
     var moreAnswerQuestionVisibleBtn;
+    
     if (this.state.moreAnswerQuestionVisible) {
       moreAnswerQuestionVisibleBtn = <button onClick={this.handleMoreAnswerQuestionClick.bind(this)}>MORE ANSWERED QUESTIONS</button>;
     } else {

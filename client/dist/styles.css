@@ -212,12 +212,6 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   display: grid;
   grid-template-rows: auto auto auto auto;
   grid-template-columns: auto;
-
-  /* align-items: center ;
-  grid-auto-flow: row ;
-
-  grid-template-columns: unset;
-  grid-template-rows: unset; */
   min-height: auto;
   max-height: 600px;
   overflow: scroll;
@@ -244,6 +238,12 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto auto;
+
+  min-height: auto;
+  max-height: 250px;
+  overflow: scroll;
+
+  margin: 10px 0 10px 0;
 }
 
 .question {
