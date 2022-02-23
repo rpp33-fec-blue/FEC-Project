@@ -8,27 +8,32 @@ const numberOfCores = require('os').cpus().length;
 let app = express();
 let port = 8080;
 
-if ( cluster.isMaster ) {
-  console.log(`Number of CPU cores: ${numberOfCores}`);
-
+var startClusters = () => {
   for ( let i = 0; i < numberOfCores; i++ ) {
     cluster.fork();
   }
+}
 
+var handleWorkerStopping = () => {
   cluster.on( 'exit', ( worker, code, signal ) => {
     console.log(`Worker ${worker.process.pid} went offline`);
     console.log('Creating another worker');
     cluster.fork();
   });
-} else {
+}
 
+var applyMiddleware = () => {
   app.use(express.static('client/dist'));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
+}
 
-  app.get('/', (req, res) => {
-    res.end();
-  });
+if ( cluster.isMaster ) {
+  console.log(`Number of CPU cores: ${numberOfCores}`);
+  startClusters();
+  handleWorkerStopping();
+} else {
+  applyMiddleware();
 
   app.all('/*', (req, res) => {
     var url = req.url;
@@ -55,6 +60,7 @@ if ( cluster.isMaster ) {
     console.log(`Listening on port ${port}`);
   });
 }
+
 
 
 module.exports
