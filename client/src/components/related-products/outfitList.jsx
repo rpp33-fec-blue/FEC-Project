@@ -13,7 +13,6 @@ class OutfitList extends React.Component {
 
   buildOutfitList() {
     var apiCalls = [];
-    console.log('outfit:', this.props.outfit);
     for ( var i = 0; i < this.props.outfit.length; i++ ) {
       var productId = this.props.outfit[i];
       apiCalls.push(axios.get( `http://localhost:8080/products/${productId}`, { params: { product_id: productId } } ));
@@ -25,31 +24,41 @@ class OutfitList extends React.Component {
       var outfitArray = [];
       for ( var call = 0; call < results.length; call+=3 ) {
         var product = Object.assign( results[ call ].data.data, results[ call + 1 ].data.data );
+        var defaultFound = false;
         for ( var style = 0; style < results[ call + 2 ].data.data.results.length; style++ ) {
           if ( results[ call + 2 ].data.data.results[ style ]['default?'] ) {
             product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ style ] } );
+            defaultFound = true;
             break;
           }
         }
+
+        if ( !defaultFound ) {
+          product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ 0 ] } );
+        }
+
         outfitArray.push( product );
       }
 
       this.isReady = true;
-      console.log('outfitArray:', outfitArray);
       this.setState({
         items: outfitArray
       });
     });
   }
 
+  changeProduct( productId ) {
+    this.props.handleSwitchProduct( productId );
+  }
+
   addToOutfit() {
     this.isReady = false;
-    this.props.addToOutfit();
+    this.props.handleAddOutfit( this.props.productId );
   }
 
   removeFromOutfit( productId ) {
     this.isReady = false;
-    this.props.removeFromOutfit( productId );
+    this.props.handleRemoveOutfit( productId );
   }
 
   render() {
@@ -64,7 +73,7 @@ class OutfitList extends React.Component {
         <AddOutfitCard addToOutfit={this.addToOutfit.bind( this )}/>
         {this.state.items.map( ( item ) => {
           return (
-            <ProductCard key={item.id} item={ item } changeProduct={this.props.changeProduct} actionButton={this.removeFromOutfit.bind( this )} isOutfit={true}/>
+            <ProductCard key={item.id} item={ item } changeProduct={this.changeProduct.bind( this )} actionButton={this.removeFromOutfit.bind( this )} isOutfit={true}/>
           );
         })}
       </div>

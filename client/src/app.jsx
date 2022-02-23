@@ -5,7 +5,7 @@ import Qa from './components/qa/qa.jsx';
 import OverviewContainer from './containers/OverviewContainer.js';
 import ConnectedQA from './components/qa/qa.jsx'
 import Rnr from './components/ratings-and-reviews/rnr.jsx';
-import RelatedItemsContainer from './containers/relatedItemsContainer.js';
+import RelatedProductsContainer from './containers/relatedProductsContainer.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,10 +27,8 @@ class App extends React.Component {
       this.display = (
         <div className="container">
           <OverviewContainer className="widget-overview"/>
-          <RelatedItemsContainer />
+          <RelatedProductsContainer />
           <ConnectedQA />
-          <Rnr />
-
         </div>
       );
     }

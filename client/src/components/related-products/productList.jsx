@@ -8,7 +8,8 @@ class ProductList extends React.Component {
     super(props);
     this.state = {
       items: [],
-      isPopupVisible: false
+      isPopupVisible: false,
+      selectedProduct: { features: [] }
     }
     this.isReady = false;
     this.throttledBuildItems = _.throttle( this.buildRelatedItemsData, 100 );
@@ -27,12 +28,19 @@ class ProductList extends React.Component {
       var relatedProductsArray = [];
       for ( var call = 0; call < results.length; call+=3 ) {
         var product = Object.assign( results[ call ].data.data, results[ call + 1 ].data.data );
+        var defaultFound = false;
         for ( var style = 0; style < results[ call + 2 ].data.data.results.length; style++ ) {
           if ( results[ call + 2 ].data.data.results[ style ]['default?'] ) {
             product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ style ] } );
+            defaultFound = true;
             break;
           }
         }
+
+        if ( !defaultFound ) {
+          product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ 0 ] } );
+        }
+
         relatedProductsArray.push( product );
       }
 
@@ -43,10 +51,6 @@ class ProductList extends React.Component {
     });
   }
 
-  compareProduct( productIndex ) {
-    this.toggleCompare();
-  }
-
   toggleCompare() {
     var toggle = ( this.state.isPopupVisible ) ? false : true;
     this.setState({
@@ -54,9 +58,17 @@ class ProductList extends React.Component {
     });
   }
 
+  compareProduct( productIndex ) {
+    var toggle = ( this.state.isPopupVisible ) ? false : true;
+    this.setState({
+      isPopupVisible: toggle,
+      selectedProduct: this.state.items[ productIndex ]
+    });
+  }
+
   changeProduct( productId ) {
     this.isReady = false;
-    this.props.changeProduct( productId );
+    this.props.handleSwitchProduct( productId );
   }
 
   render() {
@@ -68,11 +80,11 @@ class ProductList extends React.Component {
 
     return (
       <div>
-        <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare.bind( this )}/>
+        <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare.bind( this )} currentProduct={this.props.productInfo} selectedProduct={this.state.selectedProduct}/>
         <div className='card-list'>
-          {this.state.items.map( ( item ) => {
+          {this.state.items.map( ( item, index ) => {
             return (
-              <ProductCard key={item.id} item={ item } changeProduct={this.changeProduct.bind( this )} actionButton={this.compareProduct.bind( this )} isOutfit={false}/>
+              <ProductCard key={item.id} item={item} index={index} changeProduct={this.changeProduct.bind( this )} actionButton={this.compareProduct.bind( this )} isOutfit={false}/>
             )
           })}
         </div>

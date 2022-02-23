@@ -10,7 +10,7 @@ class ProductCard extends React.Component {
   }
 
   compareProduct() {
-    this.props.actionButton( this.props.item.id ); // need to change this to index
+    this.props.actionButton( this.props.index );
   }
 
   removeFromOutfit() {

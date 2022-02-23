@@ -1,18 +1,32 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 import AddToCartButton from './AddToCartButton.jsx';
 
-const AddToCart = ( { selectedStyleIndex, styles, handleAddCart, sku, sizeSelected, quantitySelected, outOfStock, updateSizeSelectedAndSku, updateQuantitySelected, addToCart, updateOutOfStock } ) => {
-
-  // Props: selectedStyleIndex, styles, handleAddCart, sku, sizeSelected, quantitySelected, outOfStock
+const AddToCart = ( {
+  selectedStyleIndex,
+  styles,
+  handleAddCart,
+  sku,
+  sizeSelected,
+  quantitySelected,
+  outOfStock,
+  updateSizeSelectedAndSku,
+  updateQuantitySelected,
+  addToCart,
+  updateOutOfStock
+} ) => {
 
   return (
-    <div>
+    <div className='addToCart-component'>
       <SizeSelector
         styles={styles}
         selectedStyleIndex={selectedStyleIndex}
         sizeSelected={sizeSelected}
         updateSizeSelectedAndSku={updateSizeSelectedAndSku}
+        outOfStock={outOfStock}
         updateOutOfStock={updateOutOfStock}
       />
       <QuantitySelector
@@ -32,4 +46,19 @@ const AddToCart = ( { selectedStyleIndex, styles, handleAddCart, sku, sizeSelect
   );
 };
 
+AddToCart.propTypes = {
+  selectedStyleIndex: PropTypes.number,
+  styles: statePropTypes.stylesPropTypes,
+  handleAddCart: PropTypes.func,
+  sku: PropTypes.string,
+  sizeSelected: PropTypes.string,
+  quantitySelected: PropTypes.number,
+  outOfStock: PropTypes.bool,
+  updateSizeSelectedAndSku: PropTypes.func,
+  updateQuantitySelected: PropTypes.func,
+  addToCart: PropTypes.func,
+  updateOutOfStock: PropTypes.func
+};
+
 export default AddToCart;
+
