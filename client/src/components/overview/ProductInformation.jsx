@@ -10,6 +10,7 @@ const ProductInformation = ( { productId, metadata, productInfo, styles, selecte
 
   return (
     <div className='productInformation-component'>
+      <h2>Product Information</h2>
       <Rating metadata={metadata} />
       <h2>Name: {productInfo.name}</h2>
       <h4>Category: {productInfo.category}</h4>

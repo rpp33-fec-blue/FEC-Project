@@ -21,6 +21,7 @@ const AddToCart = ( {
 
   return (
     <div className='addToCart-component'>
+      <h2>AddToCart</h2>
       <SizeSelector
         styles={styles}
         selectedStyleIndex={selectedStyleIndex}

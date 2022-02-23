@@ -11,6 +11,7 @@ const StyleSelector = ( { styles, selectedStyleIndex, updateSelectedStyle } ) =>
 
   return (
     <div className='styleSelector-component'>
+      <h2>Style Selector</h2>
       <p>Selected style: {selectedStyleName}</p>
       {styles.results.map((style, index) =>  index === selectedStyleIndex ?
         <img src={style.photos[0].thumbnail_url} className='style-thumbnail' id='selectedStyle' key={index}></img> :

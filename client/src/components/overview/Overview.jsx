@@ -94,7 +94,6 @@ class Overview extends React.Component {
   render() {
     return (
       <div className='overview-component'>
-        <h2>Product Information</h2>
         <ProductInformation
           metadata={this.props.metadata}
           productInfo={this.props.productInfo}
@@ -104,21 +103,18 @@ class Overview extends React.Component {
           handleAddOutfit={this.props.handleAddOutfit}
           handleRemoveOutfit={this.props.handleRemoveOutfit}
         />
-        <h2>Style Selector</h2>
         <StyleSelector
           styles={this.props.styles}
           selectedStyleIndex={this.state.selectedStyleIndex}
           updateSelectedStyle={this.updateSelectedStyle}
           sku={this.state.sku}
         />
-        <h2>ImageGallery</h2>
         <ImageGallery
           styles={this.props.styles}
           selectedStyleIndex={this.state.selectedStyleIndex}
           selectedImageIndex={this.state.selectedImageIndex}
           updateSelectedImageIndex={this.updateSelectedImageIndex}
         />
-        <h2>AddToCart</h2>
         <AddToCart
           styles={this.props.styles}
           selectedStyleIndex={this.state.selectedStyleIndex}
