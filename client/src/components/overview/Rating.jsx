@@ -1,3 +1,7 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
+
 const Rating = ( { metadata } ) => {
 
   var numberOfRatings = 0;
@@ -26,11 +30,15 @@ const Rating = ( { metadata } ) => {
   }
 
   return (
-    <div>
+    <div className='rating-component'>
       <p>{roundedAverageRating} stars</p> {/* TO DO - convert to actual stars */}
       <a href="#">Read all {numberOfRatings} reviews</a> {/* TO DO - link to reviews */}
     </div>
   );
+};
+
+Rating.propTypes = {
+  metadata: statePropTypes.metadataPropTypes
 };
 
 export default Rating;

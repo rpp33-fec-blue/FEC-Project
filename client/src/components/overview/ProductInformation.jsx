@@ -1,35 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 import Rating from './Rating.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import Price from './Price.jsx';
 import OutfitToggle from './OutfitToggle.jsx';
 
-class ProductInformation extends React.Component {
+const ProductInformation = ( { productId, metadata, productInfo, styles, selectedStyleIndex, outfit, handleAddOutfit, handleRemoveOutfit } ) => {
 
-  // Props: productId, metadata, productInfo, styles, selectedStyleIndex, outfit, handleAddOutfit, handleRemoveOutfit
+  return (
+    <div className='productInformation-component'>
+      <Rating metadata={metadata} />
+      <h2>Name: {productInfo.name}</h2>
+      <h4>Category: {productInfo.category}</h4>
+      <ProductOverview productInfo={productInfo} />
+      <Price styles={styles} selectedStyleIndex={selectedStyleIndex} />
+      <OutfitToggle
+        productId={productId}
+        outfit={outfit}
+        handleAddOutfit={handleAddOutfit}
+        handleRemoveOutfit={handleRemoveOutfit}
+      />
+  </div>
+  );
+};
 
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        <Rating metadata={this.props.metadata} />
-        <h2>Name: {this.props.productInfo.name}</h2>
-        <h4>Category: {this.props.productInfo.category}</h4>
-        <ProductOverview productInfo={this.props.productInfo} />
-        <Price styles={this.props.styles} selectedStyleIndex={this.props.selectedStyleIndex} />
-        <OutfitToggle
-          productId={this.props.productId}
-          outfit={this.props.outfit}
-          handleAddOutfit={this.props.handleAddOutfit}
-          handleRemoveOutfit={this.props.handleRemoveOutfit}
-        />
-    </div>
-    );
-  }
-
+ProductInformation.propTypes = {
+  productId: statePropTypes.productIdPropType,
+  productInfo: statePropTypes.productInfoPropTypes,
+  styles: statePropTypes.stylesPropTypes,
+  selectedStyleIndex: PropTypes.number,
+  cart: statePropTypes.cartPropTypes,
+  outfit: statePropTypes.outfitPropTypes,
+  handleAddOutfit: PropTypes.func,
+  handleRemoveOutfit: PropTypes.func
 };
 
 export default ProductInformation;

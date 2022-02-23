@@ -1,22 +1,15 @@
-import _ from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
+import _ from 'underscore'; // for testing
 
-const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSelectedAndSku, updateOutOfStock } ) => {
+const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSelectedAndSku, outOfStock, updateOutOfStock } ) => {
 
   const skus = styles.results[selectedStyleIndex].skus;
 
-  var outOfStock = true;
-  for (var sku in skus) {
-    if (skus[sku].quantity > 0) {
-      outOfStock = false;
-    }
-  }
-
-  var key = 1;
-
   if (outOfStock) {
-    updateOutOfStock();
     return (
-      <div>
+      <div className='sizeSelector-component'>
         <select disabled>
           <option value='OUT OF STOCK' selected>OUT OF STOCK</option>
         </select>
@@ -24,22 +17,31 @@ const SizeSelector = ( { styles, selectedStyleIndex, sizeSelected, updateSizeSel
     );
   } else if (sizeSelected === 'Select Size') {
     return (
-      <div>
+      <div className='sizeSelector-component'>
       <select onChange={updateSizeSelectedAndSku}>
         <option value='Select Size'>Select Size</option>
-        {_.map(skus, (sku) => sku.quantity > 0 ? <option value={sku.size} key={key++}>{sku.size}</option> : null )}
+        {_.map(skus, (sku, key) => sku.quantity > 0 ? <option value={sku.size} key={key}>{sku.size}</option> : null )}
       </select>
     </div>
     );
   } else {
     return (
-      <div>
+      <div className='sizeSelector-component'>
         <select onChange={updateSizeSelectedAndSku}>
-          {_.map(skus, (sku) => sku.quantity > 0 ? <option value={sku.size} key={key++}>{sku.size}</option> : null )}
+          {_.map(skus, (sku, key) => sku.quantity > 0 ? <option value={sku.size} key={key}>{sku.size}</option> : null )}
         </select>
       </div>
     );
   }
+};
+
+SizeSelector.propTypes = {
+  styles: statePropTypes.stylesPropTypes,
+  selectedStyleIndex: PropTypes.number,
+  sizeSelected: PropTypes.string,
+  updateSizeSelectedAndSku: PropTypes.func,
+  outOfStock: PropTypes.bool,
+  updateOutOfStock: PropTypes.func
 };
 
 export default SizeSelector;
