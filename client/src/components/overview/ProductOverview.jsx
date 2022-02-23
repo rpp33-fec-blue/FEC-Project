@@ -1,17 +1,23 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
+
 const ProductOverview = ( { productInfo } ) => {
 
-  var listItem = 1;
-
   return (
-    <div>
+    <div className='productOverview-component'>
       <h6>Slogan: {productInfo.slogan}</h6>
       <p>Description: {productInfo.description}</p>
       <p>Features:</p>
       <ul>
-        {productInfo.features.map((feature) => <li key={listItem++}>{feature.feature + ': ' + feature.value}</li>)}
+        {productInfo.features.map((feature, index) => <li key={index}>{feature.feature + ': ' + feature.value}</li>)}
       </ul>
     </div>
   );
 }
+
+ProductOverview.propTypes = {
+  productInfo: statePropTypes.productInfoPropTypes
+};
 
 export default ProductOverview;

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
 
@@ -21,7 +23,7 @@ class ImageGallery extends React.Component {
     render() {
       if (this.state.defaultView) {
         return (
-          <div>
+          <div className='imageGallery-component'>
             <DefaultView
               styles={this.props.styles}
               selectedStyleIndex={this.props.selectedStyleIndex}
@@ -33,7 +35,7 @@ class ImageGallery extends React.Component {
         );
       } else {
         return (
-          <div>
+          <div className='imageGallery-component'>
             {/* <ExpandedView
               styles={this.props.styles}
               selectedStyleId={this.props.selectedStyleId}
@@ -45,6 +47,13 @@ class ImageGallery extends React.Component {
         );
       }
     }
+};
+
+ImageGallery.propTypes = {
+  styles: statePropTypes.stylesPropTypes,
+  selectedStyleIndex: PropTypes.number,
+  selectedImageIndex: PropTypes.number,
+  updateSelectedImageIndex: PropTypes.func
 };
 
 export default ImageGallery;

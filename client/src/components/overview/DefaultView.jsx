@@ -1,15 +1,17 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import statePropTypes from '../prop-types.js';
+
 const DefaultView = ( { styles, selectedStyleIndex, selectedImageIndex, updateSelectedImageIndex, updateDefaultView } ) => {
 
   const mainImageUrl = styles.results[selectedStyleIndex].photos[selectedImageIndex].url;
   const images = styles.results[selectedStyleIndex].photos;
 
-  var index = 0;
-
   return (
-    <div>
+    <div className='defaultView-component'>
       <img src={mainImageUrl}></img> {/* TO DO - On hover, cursor changes to magnifying glass; if clicked, should update defaultView */}
 
-      {_.map(images, (image) => index === selectedImageIndex ? // TO DO - image should be highlighted
+      {images.map((image, index) => index === selectedImageIndex ? // TO DO - image should be highlighted
         <img src={image.thumbnail_url} onClick={updateDefaultView} key={index++}></img> :
         <img src={image.thumbnail_url} onClick={updateSelectedImageIndex} value={index} key={index++}></img>
       )}
@@ -26,6 +28,14 @@ const DefaultView = ( { styles, selectedStyleIndex, selectedImageIndex, updateSe
       }
     </div>
   );
+};
+
+DefaultView.propTypes = {
+  styles: statePropTypes.stylesPropTypes,
+  selectedStyleIndex: PropTypes.number,
+  selectedImageIndex: PropTypes.number,
+  updateSelectedImageIndex: PropTypes.func,
+  updateDefaultView: PropTypes.func
 };
 
 export default DefaultView;
