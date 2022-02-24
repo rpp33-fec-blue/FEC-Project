@@ -18,7 +18,7 @@ class Comparison extends React.Component {
       if (features[selectedProductFeatures[i].feature] === undefined) {
         features[selectedProductFeatures[i].feature] = {selectedProduct: selectedProductFeatures[i].value};
       } else {
-        features[selectedProductFeatures[i].feature].selectedProduct = selectedProductFeatures[i].value
+        features[selectedProductFeatures[i].feature].selectedProduct = selectedProductFeatures[i].value;
       }
     }
 
@@ -50,11 +50,21 @@ class Comparison extends React.Component {
             </thead>
             <tbody>
               {Object.keys(this.features).map((feature) => {
+                var currentProduct = <td>{this.features[feature].currentProduct}</td>
+                if (this.features[feature].currentProduct === true) {
+                  currentProduct = <td>&#10003;</td>
+                }
+
+                var selectedProduct = <td>{this.features[feature].selectedProduct}</td>
+                if (this.features[feature].selectedProduct === true) {
+                  selectedProduct = <td>&#10003;</td>
+                }
+
                 return (
                   <tr>
-                    <td>{this.features[feature].currentProduct}</td>
+                    {currentProduct}
                     <td>{feature}</td>
-                    <td>{this.features[feature].selectedProduct}</td>
+                    {selectedProduct}
                   </tr>
                 )
               })}
