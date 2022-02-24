@@ -40,30 +40,30 @@ class Comparison extends React.Component {
       <div className={classes} onClick={this.props.toggle}>
         <div className='comparison-content'>
           <div className='related-products-compare-header'>COMPARING</div>
-          <table>
+          <table className='comparison-table'>
             <thead>
               <tr>
-                <th>{this.props.currentProduct.name}</th>
+                <th className='comparison-currentProduct-name'>{this.props.currentProduct.name}</th>
                 <th></th>
-                <th>{this.props.selectedProduct.name}</th>
+                <th className='comparison-selectedProduct-name'>{this.props.selectedProduct.name}</th>
               </tr>
             </thead>
             <tbody>
               {Object.keys(this.features).map((feature) => {
-                var currentProduct = <td>{this.features[feature].currentProduct}</td>
+                var currentProduct = <td className='comparison-current-product-feature'>{this.features[feature].currentProduct}</td>
                 if (this.features[feature].currentProduct === true) {
-                  currentProduct = <td>&#10003;</td>
+                  currentProduct = <td className='comparison-current-product-feature'>&#10003;</td>
                 }
 
-                var selectedProduct = <td>{this.features[feature].selectedProduct}</td>
+                var selectedProduct = <td className='comparison-selected-product-feature'>{this.features[feature].selectedProduct}</td>
                 if (this.features[feature].selectedProduct === true) {
-                  selectedProduct = <td>&#10003;</td>
+                  selectedProduct = <td className='comparison-selected-product-feature'>&#10003;</td>
                 }
 
                 return (
-                  <tr>
+                  <tr className='comparison-row'>
                     {currentProduct}
-                    <td>{feature}</td>
+                    <td className='comparison-feature'>{feature}</td>
                     {selectedProduct}
                   </tr>
                 )
