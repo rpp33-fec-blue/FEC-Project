@@ -97,6 +97,7 @@ class Overview extends React.Component {
       <ErrorBoundary component={'Overview'}>
         <div className='overview-component'>
           <ProductInformation
+            productId={this.props.productId}
             metadata={this.props.metadata}
             productInfo={this.props.productInfo}
             styles={this.props.styles}

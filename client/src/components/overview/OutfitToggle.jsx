@@ -20,7 +20,7 @@ class OutfitToggle extends React.Component {
     }
 
     this.state = {
-      inOutfit: inOutfit,
+      inOutfit: inOutfit
     };
 
     this.addToOutfit = this.addToOutfit.bind(this);
@@ -28,7 +28,6 @@ class OutfitToggle extends React.Component {
   }
 
   addToOutfit() {
-    console.log(this.props.handleAddOutfit);
     this.props.handleAddOutfit(this.props.productId);
     this.setState( { inOutfit: true } );
   }
