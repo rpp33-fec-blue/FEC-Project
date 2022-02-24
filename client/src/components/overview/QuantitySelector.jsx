@@ -2,16 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
 import _ from 'underscore';
+import ErrorBoundary from '../ErrorBoundary.jsx';
 
 const QuantitySelector = ({ styles, selectedStyleIndex, sku, sizeSelected, quantitySelected, updateQuantitySelected }) => {
 
   if (sku === null) {
     return (
-      <div className='quantitySelector-component'>
-        <select disabled>
-          <option value='-'>-</option>
-        </select>
-      </div>
+      <ErrorBoundary component={'QuantitySelector'}>
+        <div className='quantitySelector-component'>
+          <select disabled>
+            <option value='-'>-</option>
+          </select>
+        </div>
+      </ErrorBoundary>
     );
   } else {
 
@@ -27,11 +30,13 @@ const QuantitySelector = ({ styles, selectedStyleIndex, sku, sizeSelected, quant
     }
 
     return (
-      <div className='quantitySelector-component'>
-        <select onChange={updateQuantitySelected}>
-          {_.map(validSkuQuantities, (quantity, index) => <option value={quantity} key={index}>{quantity}</option>)}
-        </select>
-      </div>
+      <ErrorBoundary component={'QuantitySelector'}>
+        <div className='quantitySelector-component'>
+          <select onChange={updateQuantitySelected}>
+            {_.map(validSkuQuantities, (quantity, index) => <option value={quantity} key={index}>{quantity}</option>)}
+          </select>
+        </div>
+      </ErrorBoundary>
     );
   }
 };

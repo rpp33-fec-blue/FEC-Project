@@ -4,8 +4,9 @@ import statePropTypes from '../prop-types.js';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 import AddToCartButton from './AddToCartButton.jsx';
+import ErrorBoundary from '../ErrorBoundary.jsx';
 
-const AddToCart = ( {
+const AddToCart = ({
   selectedStyleIndex,
   styles,
   handleAddCart,
@@ -17,33 +18,35 @@ const AddToCart = ( {
   updateQuantitySelected,
   addToCart,
   updateOutOfStock
-} ) => {
+}) => {
 
   return (
-    <div className='addToCart-component'>
-      <h2>AddToCart</h2>
-      <SizeSelector
-        styles={styles}
-        selectedStyleIndex={selectedStyleIndex}
-        sizeSelected={sizeSelected}
-        updateSizeSelectedAndSku={updateSizeSelectedAndSku}
-        outOfStock={outOfStock}
-        updateOutOfStock={updateOutOfStock}
-      />
-      <QuantitySelector
-        styles={styles}
-        selectedStyleIndex={selectedStyleIndex}
-        sku={sku}
-        sizeSelected={sizeSelected}
-        quantitySelected={quantitySelected}
-        updateQuantitySelected={updateQuantitySelected}
-      />
-      <AddToCartButton
-        outOfStock={outOfStock}
-        sizeSelected={sizeSelected}
-        addToCart={addToCart}
-      />
-    </div>
+    <ErrorBoundary component={'AddToCart'}>
+      <div className='addToCart-component'>
+        <h2>AddToCart</h2>
+        <SizeSelector
+          styles={styles}
+          selectedStyleIndex={selectedStyleIndex}
+          sizeSelected={sizeSelected}
+          updateSizeSelectedAndSku={updateSizeSelectedAndSku}
+          outOfStock={outOfStock}
+          updateOutOfStock={updateOutOfStock}
+        />
+        <QuantitySelector
+          styles={styles}
+          selectedStyleIndex={selectedStyleIndex}
+          sku={sku}
+          sizeSelected={sizeSelected}
+          quantitySelected={quantitySelected}
+          updateQuantitySelected={updateQuantitySelected}
+        />
+        <AddToCartButton
+          outOfStock={outOfStock}
+          sizeSelected={sizeSelected}
+          addToCart={addToCart}
+        />
+      </div>
+    </ErrorBoundary>
   );
 };
 

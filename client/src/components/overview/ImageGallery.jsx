@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
+import ErrorBoundary from '../ErrorBoundary.jsx';
 
 class ImageGallery extends React.Component {
 
@@ -23,6 +24,7 @@ class ImageGallery extends React.Component {
     render() {
       if (this.state.defaultView) {
         return (
+          <ErrorBoundary component={'ImageGallery'}>
           <div className='imageGallery-component'>
             <h2>ImageGallery</h2>
             <DefaultView
@@ -33,9 +35,11 @@ class ImageGallery extends React.Component {
               updateDefaultView={this.updateDefaultView}
             />
           </div>
+          </ErrorBoundary>
         );
       } else {
         return (
+          <ErrorBoundary component={'ImageGallery'}>
           <div className='imageGallery-component'>
             <h2>ImageGallery</h2>
             {/* <ExpandedView
@@ -46,6 +50,7 @@ class ImageGallery extends React.Component {
               updateDefaultView={this.updateDefaultView}
             /> */}
           </div>
+          </ErrorBoundary>
         );
       }
     }

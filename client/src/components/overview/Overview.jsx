@@ -3,6 +3,7 @@ import ProductInformation from './ProductInformation.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import AddToCart from './AddToCart.jsx';
+import ErrorBoundary from '../ErrorBoundary.jsx';
 
 class Overview extends React.Component {
 
@@ -93,42 +94,44 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div className='overview-component'>
-        <ProductInformation
-          metadata={this.props.metadata}
-          productInfo={this.props.productInfo}
-          styles={this.props.styles}
-          selectedStyleIndex={this.state.selectedStyleIndex}
-          outfit={this.props.outfit}
-          handleAddOutfit={this.props.handleAddOutfit}
-          handleRemoveOutfit={this.props.handleRemoveOutfit}
-        />
-        <StyleSelector
-          styles={this.props.styles}
-          selectedStyleIndex={this.state.selectedStyleIndex}
-          updateSelectedStyle={this.updateSelectedStyle}
-          sku={this.state.sku}
-        />
-        <ImageGallery
-          styles={this.props.styles}
-          selectedStyleIndex={this.state.selectedStyleIndex}
-          selectedImageIndex={this.state.selectedImageIndex}
-          updateSelectedImageIndex={this.updateSelectedImageIndex}
-        />
-        <AddToCart
-          styles={this.props.styles}
-          selectedStyleIndex={this.state.selectedStyleIndex}
-          handleAddCart={this.props.handleAddCart}
-          sku={this.state.sku}
-          sizeSelected={this.state.sizeSelected}
-          quantitySelected={this.state.quantitySelected}
-          outOfStock={this.state.outOfStock}
-          updateSizeSelectedAndSku={this.updateSizeSelectedAndSku}
-          updateQuantitySelected={this.updateQuantitySelected}
-          addToCart={this.addToCart}
-          updateOutOfStock={this.updateOutOfStock}
-        />
-      </div>
+      <ErrorBoundary component={'Overview'}>
+        <div className='overview-component'>
+          <ProductInformation
+            metadata={this.props.metadata}
+            productInfo={this.props.productInfo}
+            styles={this.props.styles}
+            selectedStyleIndex={this.state.selectedStyleIndex}
+            outfit={this.props.outfit}
+            handleAddOutfit={this.props.handleAddOutfit}
+            handleRemoveOutfit={this.props.handleRemoveOutfit}
+          />
+          <StyleSelector
+            styles={this.props.styles}
+            selectedStyleIndex={this.state.selectedStyleIndex}
+            updateSelectedStyle={this.updateSelectedStyle}
+            sku={this.state.sku}
+          />
+          <ImageGallery
+            styles={this.props.styles}
+            selectedStyleIndex={this.state.selectedStyleIndex}
+            selectedImageIndex={this.state.selectedImageIndex}
+            updateSelectedImageIndex={this.updateSelectedImageIndex}
+          />
+          <AddToCart
+            styles={this.props.styles}
+            selectedStyleIndex={this.state.selectedStyleIndex}
+            handleAddCart={this.props.handleAddCart}
+            sku={this.state.sku}
+            sizeSelected={this.state.sizeSelected}
+            quantitySelected={this.state.quantitySelected}
+            outOfStock={this.state.outOfStock}
+            updateSizeSelectedAndSku={this.updateSizeSelectedAndSku}
+            updateQuantitySelected={this.updateQuantitySelected}
+            addToCart={this.addToCart}
+            updateOutOfStock={this.updateOutOfStock}
+          />
+        </div>
+      </ErrorBoundary>
     );
   }
 }
