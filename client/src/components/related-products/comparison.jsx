@@ -3,10 +3,26 @@ import React from 'react';
 class Comparison extends React.Component {
   constructor(props) {
     super(props);
+    this.features = {};
   }
 
   buildComparisonTable() {
+    var features = {};
+    var currentProductFeatures = this.props.currentProduct.features;
+    for (var i = 0; i < currentProductFeatures.length; i++) {
+      features[currentProductFeatures[i].feature] = {currentProduct: currentProductFeatures[i].value};
+    }
 
+    var selectedProductFeatures = this.props.selectedProduct.features;
+    for (var i = 0; i < selectedProductFeatures.length; i++) {
+      if (features[selectedProductFeatures[i].feature] === undefined) {
+        features[selectedProductFeatures[i].feature] = {selectedProduct: selectedProductFeatures[i].value};
+      } else {
+        features[selectedProductFeatures[i].feature].selectedProduct = selectedProductFeatures[i].value
+      }
+    }
+
+    this.features = features;
   }
 
   render() {
@@ -15,10 +31,10 @@ class Comparison extends React.Component {
       classes += ' comparison-modal-visible';
     }
 
+    this.buildComparisonTable();
     console.log('currentProduct:', this.props.currentProduct );
     console.log('selectedProduct:', this.props.selectedProduct);
-    var features = this.props.currentProduct.features.concat( this.props.selectedProduct.features );
-    console.log('features:', features);
+    console.log('features:', this.features);
 
     return (
       <div className={classes} onClick={this.props.toggle}>
@@ -33,26 +49,15 @@ class Comparison extends React.Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Check</td>
-                <td>Feature</td>
-                <td></td>
-              </tr>
-              <tr>
-              <td>Check</td>
-                <td>Feature</td>
-                <td></td>
-              </tr>
-              <tr>
-              <td>Check</td>
-                <td>Feature</td>
-                <td>Check</td>
-              </tr>
-              <tr>
-              <td></td>
-                <td>Feature</td>
-                <td>Check</td>
-              </tr>
+              {Object.keys(this.features).map((feature) => {
+                return (
+                  <tr>
+                    <td>{this.features[feature].currentProduct}</td>
+                    <td>{feature}</td>
+                    <td>{this.features[feature].selectedProduct}</td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
