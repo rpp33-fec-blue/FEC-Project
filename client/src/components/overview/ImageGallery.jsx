@@ -7,25 +7,25 @@ import ErrorBoundary from '../ErrorBoundary.jsx';
 
 class ImageGallery extends React.Component {
 
-    // Props: styles, selectedStyleIndex, selectedImageIndex, updateSelectedImageIndex
+  // Props: styles, selectedStyleIndex, selectedImageIndex, updateSelectedImageIndex
 
-    constructor(props) {
-      super(props);
-      this.state = {
-        defaultView: true
-      };
-      this.updateDefaultView = this.updateDefaultView.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      defaultView: true
+    };
+    this.updateDefaultView = this.updateDefaultView.bind(this);
+  }
 
-    updateDefaultView(event) {
-      // TO DO
-    }
+  updateDefaultView(event) {
+    // TO DO
+  }
 
-    render() {
-      if (this.state.defaultView) {
-        return (
-          <ErrorBoundary component={'ImageGallery'}>
-          <div className='imageGallery-component'>
+  render() {
+    if (this.state.defaultView) {
+      return (
+        <ErrorBoundary component={'ImageGallery'}>
+          <React.Fragment>
             <h2>ImageGallery</h2>
             <DefaultView
               styles={this.props.styles}
@@ -34,13 +34,13 @@ class ImageGallery extends React.Component {
               updateSelectedImageIndex={this.props.updateSelectedImageIndex}
               updateDefaultView={this.updateDefaultView}
             />
-          </div>
-          </ErrorBoundary>
-        );
-      } else {
-        return (
-          <ErrorBoundary component={'ImageGallery'}>
-          <div className='imageGallery-component'>
+          </React.Fragment>
+        </ErrorBoundary>
+      );
+    } else {
+      return (
+        <ErrorBoundary component={'ImageGallery'}>
+          <React.Fragment>
             <h2>ImageGallery</h2>
             {/* <ExpandedView
               styles={this.props.styles}
@@ -49,11 +49,11 @@ class ImageGallery extends React.Component {
               updateSelectedImageIndex={this.props.updateSelectedImageIndex}
               updateDefaultView={this.updateDefaultView}
             /> */}
-          </div>
-          </ErrorBoundary>
-        );
-      }
+          </React.Fragment>
+        </ErrorBoundary>
+      );
     }
+  }
 };
 
 ImageGallery.propTypes = {
