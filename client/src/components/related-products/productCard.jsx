@@ -59,9 +59,11 @@ class ProductCard extends React.Component {
           {button}
         </div>
         <div className='card-info-holder' onClick={this.cardClicked.bind( this )}>
-          <div className='card-info card-category'>{this.props.item.category}</div>
-          <div className='card-info card-name'>{this.props.item.name}</div>
-          {price}
+          <div className='card-info-sub-holder'>
+            <div className='card-info card-category'>{this.props.item.category}</div>
+            <div className='card-info card-name'>{this.props.item.name}</div>
+            {price}
+          </div>
           <div className='card-info card-rating'>*rating*</div>
         </div>
       </div>

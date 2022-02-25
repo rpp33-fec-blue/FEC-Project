@@ -204,12 +204,21 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   height: 100%;
 }
 
+.card-category {
+  padding-bottom: 4px;
+}
+
+.card-price {
+  padding-top: 4px;
+}
+
 .card-category, .card-price {
   font-weight: 300;
 }
 
 .card-name {
   font-weight: 700;
+  font-size: large;
 }
 
 .card-info-holder {

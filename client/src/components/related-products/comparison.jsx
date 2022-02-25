@@ -32,9 +32,6 @@ class Comparison extends React.Component {
     }
 
     this.buildComparisonTable();
-    console.log('currentProduct:', this.props.currentProduct );
-    console.log('selectedProduct:', this.props.selectedProduct);
-    console.log('features:', this.features);
 
     return (
       <div className={classes} onClick={this.props.toggle}>
@@ -61,7 +58,7 @@ class Comparison extends React.Component {
                 }
 
                 return (
-                  <tr className='comparison-row'>
+                  <tr key={feature} className='comparison-row'>
                     {currentProduct}
                     <td className='comparison-feature'>{feature}</td>
                     {selectedProduct}
