@@ -25,8 +25,7 @@ class ImageGallery extends React.Component {
     if (this.state.defaultView) {
       return (
         <ErrorBoundary component={'ImageGallery'}>
-          <React.Fragment>
-            <h2>ImageGallery</h2>
+          <div className='image-gallery-component'>
             <DefaultView
               styles={this.props.styles}
               selectedStyleIndex={this.props.selectedStyleIndex}
@@ -34,14 +33,13 @@ class ImageGallery extends React.Component {
               updateSelectedImageIndex={this.props.updateSelectedImageIndex}
               updateDefaultView={this.updateDefaultView}
             />
-          </React.Fragment>
+          </div>
         </ErrorBoundary>
       );
     } else {
       return (
         <ErrorBoundary component={'ImageGallery'}>
-          <React.Fragment>
-            <h2>ImageGallery</h2>
+          <div className='image-gallery-component'>
             {/* <ExpandedView
               styles={this.props.styles}
               selectedStyleId={this.props.selectedStyleId}
@@ -49,7 +47,7 @@ class ImageGallery extends React.Component {
               updateSelectedImageIndex={this.props.updateSelectedImageIndex}
               updateDefaultView={this.updateDefaultView}
             /> */}
-          </React.Fragment>
+          </div>
         </ErrorBoundary>
       );
     }

@@ -33,8 +33,7 @@ const Rating = ({ metadata }) => {
   return (
     <ErrorBoundary component={'Rating'}>
       <div className='rating-component'>
-        <p>Rating: {roundedAverageRating} stars</p> {/* TO DO - convert to actual stars */}
-        <a href="#">Read all {numberOfRatings} reviews</a> {/* TO DO - link to reviews */}
+        <span>Rating: {roundedAverageRating} stars</span><span href='#'> Read all {numberOfRatings} reviews</span> {/* TO DO - convert to actual stars and link to reviews */}
       </div>
     </ErrorBoundary>
   );
