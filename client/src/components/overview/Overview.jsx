@@ -93,7 +93,7 @@ class Overview extends React.Component {
 
   render() {
     return (
-      <div className='overview-component'>
+      <div className='item-widget-overview'>
         <h2>Product Information</h2>
         <ProductInformation
           metadata={this.props.metadata}

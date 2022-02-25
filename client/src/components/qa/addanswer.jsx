@@ -1,13 +1,10 @@
 import {connect} from 'react-redux';
 import addAnswer from '../../action-creators/addAnswer.js';
 import axios from 'axios';
+import FormData from 'form-data';
+import Image from './image.jsx';
 
 class AddAnswerComp extends React.Component {
-      // test2 images selected are invalid or unable to be uploaded.
-
-      // else if not passed
-
-        // show error message "You must enter the following: email in a correct format/images selected are invalid or unable to be uploaded."
   constructor (props) {
     super(props);
     //props what i have in props
@@ -21,50 +18,34 @@ class AddAnswerComp extends React.Component {
     }
   }
 
-  handleSubmit (e) {
+  async handleSubmit (e) {
     e.preventDefault();
     var answer = e.target.answer.value;
     var nickname = e.target.nickname.value;
     var email = e.target.email.value;
     var questionId = this.props.questionId
 
-    if (!answer || !nickname || !email) {
-      // Did not use this, but use html default set up.
-      this.setState({
-        submitMessage: 'Error: You must enter all the followings: answers, nickname, email.'
-      });
-    } else {
+    var photos = this.state.imagesUrl.map((url, i) => {
+      console.log(url[0])
+      return url[0];
+    });
 
-      console.log({answer, nickname, email, questionId});
-      this.setState({
-        submitMessage: 'Complete sending answers'
-      });
-    }
+    // get secure url from the server to post the image
+    await axios.get('/s3Url')
+      .then((res) => {
+        console.log('url s3 res data', res);
+      })
+
+    // post the image directly to the bucket
+
+    // send another post request to store new answers and photo
     var newAnswer = {
       "body": answer,
       "name": nickname,
       "email": email,
-      "photos": this.state.imagesUrl
+      "photos": photos
     };
-
-    // var formData = new FormData();
-    // formData.append('body', answer);
-    // formData.append('name', nickname);
-    // formData.append('email', email);
-    // this.state.imagesUrl.forEach((url) => {
-    //   formData.append('photos', url);
-    // })
-
-    // console.log({formData});
-
-    // axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, formData, {
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data'
-    //   }
-    // });
-
     console.log({newAnswer});
-
     axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer);
     // addAnswer(newAnswer); // try later when got time
   }
@@ -110,12 +91,7 @@ class AddAnswerComp extends React.Component {
     var question_body = this.props.question_body;
     var productName = this.props.productName;
     var thumbnails = this.state.imagesUrl.map((url, i) => {
-      return <img
-        className="image-thumbnail"
-        src={url}
-        alt="uploaded photo for answer"
-        key={i}
-      />
+      return <Image url={url} key={i} />
     })
 
     return (

@@ -7,25 +7,29 @@ body {
 /*==================== Widget container =======================*/
 .container {
   display: grid;
-  grid-template-columns: 5% auto 5%;
-  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 15% auto 15%;
+  grid-template-rows: auto auto auto auto auto;
 }
 /* use these classes when render your own widget in app.jsx */
-.item-widget-overview {
+.item-widget-logo {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
 }
-.item-widget-related-products {
+.item-widget-overview {
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
 }
-.item-widget-qa {
+.item-widget-related-products {
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
 }
-.item-widget-review {
+.item-widget-qa {
   grid-column: 2 / span 1;
   grid-row: 4 / span 1;
+}
+.item-widget-review {
+  grid-column: 2 / span 1;
+  grid-row: 5 / span 1;
 }
 
 /*===================== Overlays effect =========================*/
@@ -94,7 +98,11 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   right: 35px;
   }
 }
-
+/*========================== Logo ==========================*/
+.item-widget-logo {
+  background-color: #525152;;
+  color: white;
+}
 /*========================== Overview ==========================*/
 
 /*======================== Related items =======================*/
@@ -479,4 +487,5 @@ form input[type=submit]:hover {
 form input[type=file] {
   font-size: 1em;
 }
+
 

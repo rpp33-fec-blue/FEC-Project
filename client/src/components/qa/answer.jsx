@@ -1,3 +1,5 @@
+import Image from './image.jsx';
+
 class Answer extends React.Component {
 
   constructor (props) {
@@ -54,12 +56,17 @@ class Answer extends React.Component {
     var year = date.getFullYear();
     var linkHelpful = <a href="#/" className="helpfulLink" onClick={this.markHelpfulAnswer.bind(this)}> Yes({this.state.helpfulAns}) </a>
     var linkReportAnswer = <a href="#/" className="reportLink" onClick={this.reportAnswer.bind(this)}> Report </a>
+    var imagesUrlArr = this.props.answer.photos;
+    var thumbnails = imagesUrlArr.map((imageUrl, i) => {
+      return <Image url={imageUrl} key={i} />
+    });
 
     return (
       <div className="answer">
         <div>
           <span className="A">A: </span>
           <span className="answer-body">{body}</span>
+          <div className="answer-images">{thumbnails}</div>
         </div>
         <div>
           <span className="timeStamp"> by {answerer_name}, {month} {day}, {year} |</span>

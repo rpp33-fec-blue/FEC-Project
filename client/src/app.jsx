@@ -26,6 +26,7 @@ class App extends React.Component {
     } else {
       this.display = (
         <div className="container">
+          <div className="item-widget-logo">Logo</div>
           <OverviewContainer className="widget-overview"/>
           <RelatedProductsContainer />
           <ConnectedQA />
