@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
+import ErrorBoundary from '../ErrorBoundary.jsx';
 
-const Rating = ( { metadata } ) => {
+const Rating = ({ metadata }) => {
 
   var numberOfRatings = 0;
   var sumOfRatings = 0;
@@ -30,10 +31,12 @@ const Rating = ( { metadata } ) => {
   }
 
   return (
-    <div className='rating-component'>
-      <p>{roundedAverageRating} stars</p> {/* TO DO - convert to actual stars */}
-      <a href="#">Read all {numberOfRatings} reviews</a> {/* TO DO - link to reviews */}
-    </div>
+    <ErrorBoundary component={'Rating'}>
+      <div className='rating-component'>
+        <p>Rating: {roundedAverageRating} stars</p> {/* TO DO - convert to actual stars */}
+        <a href="#">Read all {numberOfRatings} reviews</a> {/* TO DO - link to reviews */}
+      </div>
+    </ErrorBoundary>
   );
 };
 

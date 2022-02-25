@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
+import ErrorBoundary from '../ErrorBoundary.jsx';
 
 const Price = ( { styles, selectedStyleIndex } ) => {
 
@@ -12,15 +13,19 @@ const Price = ( { styles, selectedStyleIndex } ) => {
 
   if (salePrice === null || salePrice === 0) {
     return (
+      <ErrorBoundary component={'Price'}>
       <div className='price-component'>
         <p>Price: ${price}</p>
       </div>
+      </ErrorBoundary>
     );
   } else {
     return (
+      <ErrorBoundary component={'Price'}>
       <div className='price-component'>
-        <p><span id="price">Price: ${salePrice} --> </span><span id="salePrice">${price}</span></p>
+        <p><span>Price:</span> <span className="original-price">${salePrice}</span> <span>--></span> <span className="sale-price">${price}</span></p>
       </div>
+      </ErrorBoundary>
     );
   }
 };
