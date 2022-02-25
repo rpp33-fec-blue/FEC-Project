@@ -1,12 +1,17 @@
 const aws = require('aws-sdk');
 const dotenv = require('dotenv');
+const crypto = require('crypto');
+const {promisify} = require('util');
 
 dotenv.config();
+// Uncomment if got error related to .env Here.
+// dotenv.config({ debug: true });
+// console.log('process.env', process.env);
 
 const region = 'ap-southeast-1';
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
-const bucketName = 'atelier-answers-photo'
+const bucketName = 'atelier-answers-photo';
 const s3 = new aws.S3({
   region,
   accessKeyId,
@@ -16,16 +21,17 @@ const s3 = new aws.S3({
 });
 
 var generateUploadURL = async function generateUploadURL () {
-  console.log('generateUploadURL called');
-  var imageName = "random image name";
+  var rawBytes = await crypto.randomBytes(16);
+  var imageName = rawBytes.toString('hex');
   var params = {
     Bucket: bucketName,
     Key: imageName,
-    Expires: 60
+    Expires: 120,
+    ContentType: 'multipart/form-data'
   }
   var uploadURL = await s3.getSignedUrlPromise('putObject', params)
     .then((res) => {
-      console.log('res here', res)
+      return res;
     })
     .catch((err) => {
       console.log('err here', err)

@@ -17,7 +17,7 @@ var initializeState = ( productId, outfit ) => {
     var productId = productId || defaultProduct;
     var relatedItems = axios.get( `http://localhost:8080/products/${productId}/related`, { params: { product_id: productId } } );
     var reviews = axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } );
-    var questions = axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } } );
+    var questions = axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, page: 1, count: 100 } } );
     var metadata = axios.get( 'http://localhost:8080/reviews/meta', { params: { product_id: productId } } );
     var styles = axios.get( `http://localhost:8080/products/${productId}/styles`, { params: { product_id: productId } } );
     var productInfo = axios.get( `http://localhost:8080/products/${productId}`, { params: { product_id: productId } } );

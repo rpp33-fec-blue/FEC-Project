@@ -14,7 +14,9 @@ class AddAnswerComp extends React.Component {
     //props.productName
     this.state = {
       submitMessage: '',
-      imagesUrl: []
+      imagesUrl: [],
+      images: [],
+      awsUrl: []
     }
   }
 
@@ -25,28 +27,56 @@ class AddAnswerComp extends React.Component {
     var email = e.target.email.value;
     var questionId = this.props.questionId
 
-    var photos = this.state.imagesUrl.map((url, i) => {
-      console.log(url[0])
-      return url[0];
-    });
+    var config = {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }
 
-    // get secure url from the server to post the image
-    await axios.get('/s3Url')
+    for (var i = 0; i < this.state.images.length; i++) {
+      // get secure url from the server to post the image
+      var photoUrl = await axios.get('/s3Url', config)
       .then((res) => {
-        console.log('url s3 res data', res);
+        return res.data;
       })
 
-    // post the image directly to the bucket
+      var image = this.state.images[i][0];
+      console.log('image to upload', image);
+      console.log('photoUrl', photoUrl);
 
+      await axios.put(photoUrl, {'image': image}, config)
+        .then((res) => {
+
+          var imageUrlAws = photoUrl.split('?')[0] + '.jpg';
+          console.log('aws', imageUrlAws);
+          this.setState((prevState) => {
+            return {
+              awsUrl: [...prevState.awsUrl, imageUrlAws]
+            }
+          })
+        })
+        .catch((err) => {
+          console.log('err putted in aws', err);
+        });
+    }
     // send another post request to store new answers and photo
     var newAnswer = {
       "body": answer,
       "name": nickname,
       "email": email,
-      "photos": photos
+      "photos": this.state.awsUrl
     };
     console.log({newAnswer});
-    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer);
+
+    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer)
+      .then(() => {
+        this.setState({
+          submitMessage: 'Complete'
+        })
+      })
+      .catch((err) => {
+        console.log('err in post answers', err)
+      });
     // addAnswer(newAnswer); // try later when got time
   }
 
@@ -77,12 +107,15 @@ class AddAnswerComp extends React.Component {
     this.setState((prevState) => {
       var noOfFiles = files.length;
       var urls = [];
+      var images = []
       for (var i = 0; i < noOfFiles; i++) {
         urls.push(URL.createObjectURL(files[i]));
+        images.push(files[i]);
       };
 
       return {
-        imagesUrl: [...prevState.imagesUrl, urls]
+        imagesUrl: [...prevState.imagesUrl, urls],
+        images: [...prevState.images, images],
       };
     })
   }

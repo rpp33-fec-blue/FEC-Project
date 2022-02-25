@@ -1,11 +1,10 @@
 const API_KEY = require('../config.js').API_KEY;
-// const API_KEY = process.env.API_KEY;
 const express = require('express');
 const axios = require( "axios" );
 const cluster = require('cluster');
 const numberOfCores = require('os').cpus().length;
-// var multer = require('multer');
-// var forms = multer();
+var multer = require('multer');
+var forms = multer();
 const generateUploadURL = require('./s3.js');
 
 let app = express();
@@ -29,7 +28,7 @@ var applyMiddleware = () => {
   app.use(express.static('client/dist'));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  // app.use(forms.array());
+  app.use(forms.array());
 }
 
 if ( cluster.isMaster ) {
@@ -49,12 +48,14 @@ if ( cluster.isMaster ) {
     var url = req.url;
     var method = req.method;
     var data = req.body;
+    var params = req.params;
     // var files = req.files;
-    var contentType = req.get('Content-Type');
+    var contentType = req.headers['content-type'];
 
     console.log('url:', url);
     console.log('data:', data);
     console.log('headers:', contentType);
+    console.log('params:', params);
 
     axios({
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp${url}`,

@@ -29,11 +29,18 @@ var sortedA = (answers) => {
 };
 
 var getAnswer = (questionID, callback) => {
+  var config = {
+    params: {
+      page: 1,
+      count: 100
+    }
+  }
 
-  return axios.get(`/qa/questions/${questionID}/answers`)
+  return axios.get(`/qa/questions/${questionID}/answers`, config)
     .then((results) => {
       var answers = results.data.data.results;
       var sorted = sortedA(answers)
+      console.log({sorted});
       return callback(sorted);
     })
     .catch(err => {
