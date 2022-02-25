@@ -102,12 +102,12 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   color: red;
 }
 
-.overview-component {
+.overview-container {
   display: grid;
-  grid-template-columns: 5% auto 5%;
+  grid-template-columns: 2fr 1fr;
 }
 
-.image-gallery-component {
+.image-gallery-container {
   grid-column: 1;
   grid-row: 1;
 }
@@ -125,6 +125,55 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 .product-features-container {
   grid-column: 2;
   grid-row: 2
+}
+
+.default-view-component {
+  width: 1200px;
+  height: 1000px;
+  position: relative;
+}
+
+.main-image {
+  width: 1200px;
+  height: 1000px;
+  object-fit: cover;
+}
+
+.main-image:hover {
+  cursor: zoom-in;
+}
+
+.gallery-thumbnail {
+  width: 90px;
+  height: 90px;
+  margin: 10px 0px;
+}
+
+.left-scroll-arrow, .right-scroll-arrow {
+  width: 50px;
+  height: 50px;
+  box-shadow: #818181;
+}
+
+.right-scroll-arrow {
+  position: absolute;
+  top: 500px;
+  right: 75px;
+}
+
+.left-scroll-arrow {
+  position: absolute;
+  top: 500px;
+  left: 175px;
+}
+
+.gallery-browser-component {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 960px;
 }
 
 /*======================== Related items =======================*/

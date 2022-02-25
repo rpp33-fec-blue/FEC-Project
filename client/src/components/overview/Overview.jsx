@@ -59,7 +59,6 @@ class Overview extends React.Component {
 
   updateSelectedImageIndex(event) {
     const newSelectedImageIndex = event.target[Object.keys(event.target)[1]].value;
-    // const selectedImageIndex = this.state.selectedImageIndex;
     if (newSelectedImageIndex === 'left') {
       this.setState((state, props) => ({ selectedImageIndex: state.selectedImageIndex - 1 }));
     } else if (newSelectedImageIndex === 'right') {
@@ -98,58 +97,60 @@ class Overview extends React.Component {
   render() {
     return (
       <ErrorBoundary component={'Overview'}>
-        <div className='overview-component'>
-          <div className='image-gallery-component'>
-            <ImageGallery
-              styles={this.props.styles}
-              selectedStyleIndex={this.state.selectedStyleIndex}
-              selectedImageIndex={this.state.selectedImageIndex}
-              updateSelectedImageIndex={this.updateSelectedImageIndex}
-            />
-          </div>
-          <div className='summary-container'>
-          <ProductInformation
-              productId={this.props.productId}
-              metadata={this.props.metadata}
-              productInfo={this.props.productInfo}
-              styles={this.props.styles}
-              selectedStyleIndex={this.state.selectedStyleIndex}
-            />
-            <StyleSelector
-              styles={this.props.styles}
-              selectedStyleIndex={this.state.selectedStyleIndex}
-              updateSelectedStyle={this.updateSelectedStyle}
-              sku={this.state.sku}
-            />
-            <AddToCart
-              styles={this.props.styles}
-              selectedStyleIndex={this.state.selectedStyleIndex}
-              handleAddCart={this.props.handleAddCart}
-              sku={this.state.sku}
-              sizeSelected={this.state.sizeSelected}
-              quantitySelected={this.state.quantitySelected}
-              outOfStock={this.state.outOfStock}
-              updateSizeSelectedAndSku={this.updateSizeSelectedAndSku}
-              updateQuantitySelected={this.updateQuantitySelected}
-              addToCart={this.addToCart}
-              updateOutOfStock={this.updateOutOfStock}
-            />
-            <OutfitToggle
-              productId={this.props.productId}
-              outfit={this.props.outfit}
-              handleAddOutfit={this.props.handleAddOutfit}
-              handleRemoveOutfit={this.props.handleRemoveOutfit}
-            />
-          </div>
-          <div className='product-overview-container'>
-            <ProductOverview
-              productInfo={this.props.productInfo}
-            />
-          </div>
-          <div className='product-features-container'>
-            <ProductFeatures
-              productInfo={this.props.productInfo}
-            />
+        <div className='item-widget-overview'>
+          <div className='overview-container'>
+            <div className='image-gallery-container'>
+              <ImageGallery
+                styles={this.props.styles}
+                selectedStyleIndex={this.state.selectedStyleIndex}
+                selectedImageIndex={this.state.selectedImageIndex}
+                updateSelectedImageIndex={this.updateSelectedImageIndex}
+              />
+            </div>
+            <div className='summary-container'>
+              <ProductInformation
+                productId={this.props.productId}
+                metadata={this.props.metadata}
+                productInfo={this.props.productInfo}
+                styles={this.props.styles}
+                selectedStyleIndex={this.state.selectedStyleIndex}
+              />
+              <StyleSelector
+                styles={this.props.styles}
+                selectedStyleIndex={this.state.selectedStyleIndex}
+                updateSelectedStyle={this.updateSelectedStyle}
+                sku={this.state.sku}
+              />
+              <AddToCart
+                styles={this.props.styles}
+                selectedStyleIndex={this.state.selectedStyleIndex}
+                handleAddCart={this.props.handleAddCart}
+                sku={this.state.sku}
+                sizeSelected={this.state.sizeSelected}
+                quantitySelected={this.state.quantitySelected}
+                outOfStock={this.state.outOfStock}
+                updateSizeSelectedAndSku={this.updateSizeSelectedAndSku}
+                updateQuantitySelected={this.updateQuantitySelected}
+                addToCart={this.addToCart}
+                updateOutOfStock={this.updateOutOfStock}
+              />
+              <OutfitToggle
+                productId={this.props.productId}
+                outfit={this.props.outfit}
+                handleAddOutfit={this.props.handleAddOutfit}
+                handleRemoveOutfit={this.props.handleRemoveOutfit}
+              />
+            </div>
+            <div className='product-overview-container'>
+              <ProductOverview
+                productInfo={this.props.productInfo}
+              />
+            </div>
+            <div className='product-features-container'>
+              <ProductFeatures
+                productInfo={this.props.productInfo}
+              />
+            </div>
           </div>
         </div>
       </ErrorBoundary>
