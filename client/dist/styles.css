@@ -177,8 +177,6 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 .card-name {
   font-weight: 700;
-  font-size: larger;
-
 }
 
 .card-info-holder {
@@ -213,7 +211,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 .comparison-content {
   padding: 16px;
   height: fill;
-  width: 450px;
+  width: 500px;
   border: 1px solid black;
   background-color: white;
   flex-direction: column;
@@ -239,12 +237,14 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 .comparison-feature {
   text-align: center;
+  width: 150px;
   font-weight: 300;
 }
 
 .comparison-currentProduct-name {
   text-align: left;
   font-size: large;
+  width: 175px;
   padding-bottom: 30px;
   padding-top: 8px;
 }
@@ -252,6 +252,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 .comparison-selectedProduct-name {
   text-align: right;
   font-size: large;
+  width: 175px;
   padding-bottom: 30px;
   padding-top: 8px;
 }
