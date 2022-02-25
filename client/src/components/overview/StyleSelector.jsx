@@ -12,9 +12,8 @@ const StyleSelector = ({ styles, selectedStyleIndex, updateSelectedStyle }) => {
 
   return (
     <ErrorBoundary component={'StyleSelector'}>
+      <p>STYLE > {selectedStyleName}</p>
       <div className='styleSelector-component'>
-        <h2>Style Selector</h2>
-        <p>Selected style: {selectedStyleName}</p>
         {styles.results.map((style, index) => index === selectedStyleIndex ?
           <img src={style.photos[0].thumbnail_url} className='style-thumbnail' id='selectedStyle' key={index}></img> :
           <img src={style.photos[0].thumbnail_url} className='style-thumbnail' onClick={updateSelectedStyle} index={index} key={index}></img>

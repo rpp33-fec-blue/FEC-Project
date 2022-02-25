@@ -43,6 +43,7 @@ class Overview extends React.Component {
 
   updateSelectedStyle(event) {
     const newSelectedStyleIndex = event.target[Object.keys(event.target)[0]].index;
+    console.log(newSelectedStyleIndex);
     const skus = this.props.styles.results[newSelectedStyleIndex].skus;
     var outOfStock = true;
     for (var sku in skus) {
