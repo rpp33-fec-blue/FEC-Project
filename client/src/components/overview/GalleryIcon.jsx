@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
+import ErrorBoundary from '../ErrorBoundary.jsx';
 
-const GalleryIcon = ( { styles, selectedStyleIndex, selectedImageIndex, updateSelectedImageIndex } ) => {
+const GalleryIcon = ({ styles, selectedStyleIndex, selectedImageIndex, updateSelectedImageIndex }) => {
 
   // Props: styles, selectedImageId, selectedImageIndex, updateSelectedImage
 
   return (
-    <div className='galleryIcon-component'>
-      {/* TO DO - return icons */}
-    </div>
+    <ErrorBoundary component={'GalleryIcon'}>
+      <div className='galleryIcon-component'>
+        {/* TO DO - return icons */}
+      </div>
+    </ErrorBoundary>
   );
 
 };

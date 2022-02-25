@@ -94,6 +94,39 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 /*========================== Overview ==========================*/
 
+.original-price {
+  text-decoration: line-through;
+}
+
+.sale-price {
+  color: red;
+}
+
+.overview-component {
+  display: grid;
+  grid-template-columns: 5% auto 5%;
+}
+
+.image-gallery-component {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.summary-container {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.product-overview-container {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.product-features-container {
+  grid-column: 2;
+  grid-row: 2
+}
+
 /*======================== Related items =======================*/
 
 .related-products-headers {
