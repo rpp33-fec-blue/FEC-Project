@@ -1,4 +1,5 @@
 import React from 'react';
+import ReviewStars from '../reviewStars.jsx';
 
 class ProductCard extends React.Component {
   constructor(props) {
@@ -64,7 +65,7 @@ class ProductCard extends React.Component {
             <div className='card-info card-name'>{this.props.item.name}</div>
             {price}
           </div>
-          <div className='card-info card-rating'>*rating*</div>
+          <ReviewStars />
         </div>
       </div>
     );

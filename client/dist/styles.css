@@ -127,7 +127,23 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   grid-row: 2
 }
 
+/*======================== Review Stars ========================*/
+
+.review-star-holder {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 20px;
+}
+
+.empty-stars:before,
+.full-stars:before {
+  content: "\2605\2605\2605\2606\2606";
+  font-size: 14pt;
+}
+
 /*======================== Related items =======================*/
+
 
 .related-products-headers {
   margin-top: 60px;
