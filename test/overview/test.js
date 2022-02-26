@@ -15,6 +15,7 @@ import AddToCart from '../../client/src/components/overview/AddToCart.jsx';
 import SizeSelector from '../../client/src/components/overview/SizeSelector.jsx';
 import QuantitySelector from '../../client/src/components/overview/QuantitySelector.jsx';
 import AddToCartButton from '../../client/src/components/overview/AddToCartButton.jsx';
+import ProductFeatures from '../../client/src/components/overview/ProductFeatures.jsx';
 
 import initialState from '../../client/src/initialState.js';
 
@@ -44,7 +45,7 @@ describe('Overview Component', function() {
     });
 
     it('Should render', function() {
-      const nodeWrapper = wrapper.find('.overview-component');
+      const nodeWrapper = wrapper.find('.item-widget-overview');
       expect(nodeWrapper.length).toBe(1);
     });
 
@@ -72,9 +73,6 @@ describe('ProductInformation Component', function() {
         metadata: initialState.metadata,
         styles: initialState.styles,
         selectedStyleIndex: 0,
-        outfit: initialState.outfit,
-        handleAddOutfit: () => {}, // TO DO
-        handleRemoveOutfit: () => {}  // TO DO
       };
       wrapper = buildwrapper(props);
     });
@@ -240,7 +238,7 @@ describe('ImageGallery Component', function() {
     });
 
     it('Should render', function() {
-      const nodeWrapper = wrapper.find('.imageGallery-component');
+      const nodeWrapper = wrapper.find('h2');
       expect(nodeWrapper.length).toBe(1);
     });
   });
@@ -269,7 +267,7 @@ describe('DefaultView Component', function() {
     });
 
     it('Should render', function() {
-      const nodeWrapper = wrapper.find('.defaultView-component');
+      const nodeWrapper = wrapper.find('.default-view-component');
       expect(nodeWrapper.length).toBe(1);
     });
   });
@@ -409,6 +407,30 @@ describe('AddToCartButton Component', function() {
 
     it('Should render', function() {
       const nodeWrapper = wrapper.find('.addToCartButton-component');
+      expect(nodeWrapper.length).toBe(1);
+    });
+  });
+});
+
+describe('ProductFeatures Component', function() {
+
+  describe('When passed props', () => {
+    const buildwrapper = (props = {}) => {
+      const wrapper = shallow(<ProductFeatures {...props}/>);
+      return wrapper;
+    };
+
+    let wrapper;
+
+    beforeEach(() => {
+      const props = {
+        productInfo: initialState.productInfo
+      };
+      wrapper = buildwrapper(props);
+    });
+
+    it('Should render', function() {
+      const nodeWrapper = wrapper.find('p');
       expect(nodeWrapper.length).toBe(1);
     });
   });

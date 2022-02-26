@@ -1,8 +1,12 @@
 import React from 'react';
+import ImageGallery from './ImageGallery.jsx';
 import ProductInformation from './ProductInformation.jsx';
 import StyleSelector from './StyleSelector.jsx';
-import ImageGallery from './ImageGallery.jsx';
 import AddToCart from './AddToCart.jsx';
+import OutfitToggle from './OutfitToggle.jsx';
+import ProductOverview from './ProductOverview.jsx';
+import ProductFeatures from './ProductFeatures.jsx';
+import ErrorBoundary from '../ErrorBoundary.jsx';
 
 class Overview extends React.Component {
 
@@ -39,6 +43,7 @@ class Overview extends React.Component {
 
   updateSelectedStyle(event) {
     const newSelectedStyleIndex = event.target[Object.keys(event.target)[0]].index;
+    console.log(newSelectedStyleIndex);
     const skus = this.props.styles.results[newSelectedStyleIndex].skus;
     var outOfStock = true;
     for (var sku in skus) {
@@ -47,21 +52,20 @@ class Overview extends React.Component {
       }
     }
     if (outOfStock) {
-      this.setState( { selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: true } );
+      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: true });
     } else {
-      this.setState( { selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: false } );
+      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: false });
     }
   }
 
   updateSelectedImageIndex(event) {
     const newSelectedImageIndex = event.target[Object.keys(event.target)[1]].value;
-    // const selectedImageIndex = this.state.selectedImageIndex;
     if (newSelectedImageIndex === 'left') {
-      this.setState( (state, props) => ( { selectedImageIndex: state.selectedImageIndex - 1 } ) );
+      this.setState((state, props) => ({ selectedImageIndex: state.selectedImageIndex - 1 }));
     } else if (newSelectedImageIndex === 'right') {
-      this.setState( (state, props) => ( { selectedImageIndex: state.selectedImageIndex + 1 } ) );
+      this.setState((state, props) => ({ selectedImageIndex: state.selectedImageIndex + 1 }));
     } else {
-      this.setState( { selectedImageIndex: newSelectedImageIndex } );
+      this.setState({ selectedImageIndex: newSelectedImageIndex });
     }
   }
 
@@ -75,12 +79,12 @@ class Overview extends React.Component {
         break;
       }
     }
-    this.setState( { sku: sku, sizeSelected: newSize, quantitySelected: 1 } );
+    this.setState({ sku: sku, sizeSelected: newSize, quantitySelected: 1 });
   }
 
   updateQuantitySelected(event) {
     const newQuantity = Number(event.target.value);
-    this.setState( { quantitySelected: newQuantity } );
+    this.setState({ quantitySelected: newQuantity });
   }
 
   addToCart() {
@@ -88,11 +92,12 @@ class Overview extends React.Component {
   }
 
   updateOutOfStock() {
-    this.setState( { outOfStock: true } );
+    this.setState({ outOfStock: true });
   }
 
   render() {
     return (
+<<<<<<< HEAD
       <div className='item-widget-overview'>
         <h2>Product Information</h2>
         <ProductInformation
@@ -133,6 +138,66 @@ class Overview extends React.Component {
           updateOutOfStock={this.updateOutOfStock}
         />
       </div>
+=======
+      <ErrorBoundary component={'Overview'}>
+        <div className='item-widget-overview'>
+          <div className='overview-container'>
+            <div className='image-gallery-container'>
+              <ImageGallery
+                styles={this.props.styles}
+                selectedStyleIndex={this.state.selectedStyleIndex}
+                selectedImageIndex={this.state.selectedImageIndex}
+                updateSelectedImageIndex={this.updateSelectedImageIndex}
+              />
+            </div>
+            <div className='summary-container'>
+              <ProductInformation
+                productId={this.props.productId}
+                metadata={this.props.metadata}
+                productInfo={this.props.productInfo}
+                styles={this.props.styles}
+                selectedStyleIndex={this.state.selectedStyleIndex}
+              />
+              <StyleSelector
+                styles={this.props.styles}
+                selectedStyleIndex={this.state.selectedStyleIndex}
+                updateSelectedStyle={this.updateSelectedStyle}
+                sku={this.state.sku}
+              />
+              <AddToCart
+                styles={this.props.styles}
+                selectedStyleIndex={this.state.selectedStyleIndex}
+                handleAddCart={this.props.handleAddCart}
+                sku={this.state.sku}
+                sizeSelected={this.state.sizeSelected}
+                quantitySelected={this.state.quantitySelected}
+                outOfStock={this.state.outOfStock}
+                updateSizeSelectedAndSku={this.updateSizeSelectedAndSku}
+                updateQuantitySelected={this.updateQuantitySelected}
+                addToCart={this.addToCart}
+                updateOutOfStock={this.updateOutOfStock}
+              />
+              <OutfitToggle
+                productId={this.props.productId}
+                outfit={this.props.outfit}
+                handleAddOutfit={this.props.handleAddOutfit}
+                handleRemoveOutfit={this.props.handleRemoveOutfit}
+              />
+            </div>
+            <div className='product-overview-container'>
+              <ProductOverview
+                productInfo={this.props.productInfo}
+              />
+            </div>
+            <div className='product-features-container'>
+              <ProductFeatures
+                productInfo={this.props.productInfo}
+              />
+            </div>
+          </div>
+        </div>
+      </ErrorBoundary>
+>>>>>>> 9e0a01fee2cce968b2e44045227a97dcbe2ff0a9
     );
   }
 }

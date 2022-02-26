@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
+import ErrorBoundary from '../ErrorBoundary.jsx';
 
 class OutfitToggle extends React.Component {
 
@@ -19,7 +20,7 @@ class OutfitToggle extends React.Component {
     }
 
     this.state = {
-      inOutfit: inOutfit,
+      inOutfit: inOutfit
     };
 
     this.addToOutfit = this.addToOutfit.bind(this);
@@ -27,7 +28,6 @@ class OutfitToggle extends React.Component {
   }
 
   addToOutfit() {
-    console.log(this.props.handleAddOutfit);
     this.props.handleAddOutfit(this.props.productId);
     this.setState( { inOutfit: true } );
   }
@@ -40,15 +40,19 @@ class OutfitToggle extends React.Component {
   render() {
     if (this.state.inOutfit) {
       return (
+        <ErrorBoundary component={'OutfitToggle'}>
         <div className='outfitToggle-component'>
           <button onClick={this.removeFromOutfit}>Remove from outfit</button> {/* TO DO - return shaded star that removes from outfit on click */}
         </div>
+        </ErrorBoundary>
       );
     } else {
       return (
+        <ErrorBoundary component={'OufitToggle'}>
         <div className='outfitToggle-component'>
           <button onClick={this.addToOutfit}>Add to outfit</button> {/* TO DO - return empty star that adds to outfit on click */}
         </div>
+        </ErrorBoundary>
       );
     }
   }
