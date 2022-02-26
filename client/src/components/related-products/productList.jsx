@@ -79,7 +79,7 @@ class ProductList extends React.Component {
     }
 
     return (
-      <div>
+      <React.Fragment>
         <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare.bind( this )} currentProduct={this.props.productInfo} selectedProduct={this.state.selectedProduct}/>
         <div className='card-list'>
           {this.state.items.map( ( item, index ) => {
@@ -88,7 +88,7 @@ class ProductList extends React.Component {
             )
           })}
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

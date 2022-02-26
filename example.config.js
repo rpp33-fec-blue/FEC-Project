@@ -1,3 +1,3 @@
 const API_KEY = 'PASTE KEY HERE';
 
-export default API_KEY;
+module.exports.API_KEY = API_KEY;
