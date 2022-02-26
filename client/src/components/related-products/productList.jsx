@@ -78,7 +78,7 @@ class ProductList extends React.Component {
   render() {
 
     if ( !this.isReady ) {
-      this.throttledBuildItems();
+      this.buildRelatedItemsData();
       return null;
     }
 
