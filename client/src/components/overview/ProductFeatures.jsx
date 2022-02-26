@@ -8,7 +8,6 @@ const ProductFeatures = ({ productInfo }) => {
   return (
     <ErrorBoundary>
       <React.Fragment>
-        <p>Features:</p>
         <ul>
           {productInfo.features.map((feature, index) => <li key={index}>{feature.feature + ': ' + feature.value}</li>)}
         </ul>
