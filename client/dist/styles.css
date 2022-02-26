@@ -204,6 +204,9 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 /*======================== Related items =======================*/
 
+
+
+
 .related-products-headers {
   margin-top: 60px;
   margin-bottom: 20px;
@@ -385,7 +388,28 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   padding-top: 8px;
 }
 
-/*========================== Reviews ===========================*/
+/*========================== Review Stars ===========================*/
+
+.review-star-holder {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  width: 70px;
+}
+
+.full-stars {
+  font-size: 14px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.empty-stars {
+  font-size: 14px;
+}
 
 /*============================= QA =============================*/
 /* qa grid */
