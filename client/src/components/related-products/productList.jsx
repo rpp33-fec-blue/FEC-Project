@@ -81,15 +81,17 @@ class ProductList extends React.Component {
       return null;
     }
 
+    var productCards = this.state.items.map( ( item, index ) => {
+      return (
+        <ProductCard key={item.id} item={item} index={index} changeProduct={this.changeProduct} actionButton={this.compareProduct} isOutfit={false}/>
+      )
+    });
+
     return (
       <React.Fragment>
         <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare} currentProduct={this.props.productInfo} selectedProduct={this.state.selectedProduct}/>
         <div className='card-list'>
-          {this.state.items.map( ( item, index ) => {
-            return (
-              <ProductCard key={item.id} item={item} index={index} changeProduct={this.changeProduct} actionButton={this.compareProduct} isOutfit={false}/>
-            )
-          })}
+          {productCards}
         </div>
       </React.Fragment>
     );
