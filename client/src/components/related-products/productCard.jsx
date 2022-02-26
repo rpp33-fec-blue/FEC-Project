@@ -43,13 +43,14 @@ class ProductCard extends React.Component {
 
     var button = (
       <div onClick={this.compareProduct}>
-        <img className='card-icon-star' src={'./assets/baseline_star_white.png'}></img>
+        <img className='card-icon-star-background' src={'./assets/baseline_star_white.png'}></img>
         <img className='card-icon-star'  src={'./assets/baseline_star_outline_black.png'}></img>
       </div>
     )
     if ( this.props.isOutfit ) {
       button = (
-        <div className='card-icon' onClick={this.removeFromOutfit}>
+        <div onClick={this.removeFromOutfit}>
+          <div className='card-icon'></div>
           <img className='card-button'  src={'./assets/close.png'}></img>
         </div>
       )
