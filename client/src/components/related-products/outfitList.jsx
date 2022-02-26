@@ -79,14 +79,16 @@ class OutfitList extends React.Component {
 
     this.isReady = false;
 
+    var productCards = this.state.items.map((item) => {
+      return (
+        <ProductCard key={item.id} item={item} changeProduct={this.changeProduct} actionButton={this.removeFromOutfit} isOutfit={true}/>
+      );
+    });
+
     return (
       <div className='card-list'>
         <AddOutfitCard addToOutfit={this.addToOutfit}/>
-        {this.state.items.map((item) => {
-          return (
-            <ProductCard key={item.id} item={item} changeProduct={this.changeProduct} actionButton={this.removeFromOutfit} isOutfit={true}/>
-          );
-        })}
+        {productCards}
       </div>
     );
   }
