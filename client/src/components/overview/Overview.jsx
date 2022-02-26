@@ -97,6 +97,48 @@ class Overview extends React.Component {
 
   render() {
     return (
+<<<<<<< HEAD
+      <div className='item-widget-overview'>
+        <h2>Product Information</h2>
+        <ProductInformation
+          metadata={this.props.metadata}
+          productInfo={this.props.productInfo}
+          styles={this.props.styles}
+          selectedStyleIndex={this.state.selectedStyleIndex}
+          outfit={this.props.outfit}
+          handleAddOutfit={this.props.handleAddOutfit}
+          handleRemoveOutfit={this.props.handleRemoveOutfit}
+        />
+        <h2>Style Selector</h2>
+        <StyleSelector
+          styles={this.props.styles}
+          selectedStyleIndex={this.state.selectedStyleIndex}
+          updateSelectedStyle={this.updateSelectedStyle}
+          sku={this.state.sku}
+        />
+        <h2>ImageGallery</h2>
+        <ImageGallery
+          styles={this.props.styles}
+          selectedStyleIndex={this.state.selectedStyleIndex}
+          selectedImageIndex={this.state.selectedImageIndex}
+          updateSelectedImageIndex={this.updateSelectedImageIndex}
+        />
+        <h2>AddToCart</h2>
+        <AddToCart
+          styles={this.props.styles}
+          selectedStyleIndex={this.state.selectedStyleIndex}
+          handleAddCart={this.props.handleAddCart}
+          sku={this.state.sku}
+          sizeSelected={this.state.sizeSelected}
+          quantitySelected={this.state.quantitySelected}
+          outOfStock={this.state.outOfStock}
+          updateSizeSelectedAndSku={this.updateSizeSelectedAndSku}
+          updateQuantitySelected={this.updateQuantitySelected}
+          addToCart={this.addToCart}
+          updateOutOfStock={this.updateOutOfStock}
+        />
+      </div>
+=======
       <ErrorBoundary component={'Overview'}>
         <div className='item-widget-overview'>
           <div className='overview-container'>
@@ -155,6 +197,7 @@ class Overview extends React.Component {
           </div>
         </div>
       </ErrorBoundary>
+>>>>>>> 9e0a01fee2cce968b2e44045227a97dcbe2ff0a9
     );
   }
 }
