@@ -16,14 +16,12 @@ const AddToCart = ({
   outOfStock,
   updateSizeSelectedAndSku,
   updateQuantitySelected,
-  addToCart,
   updateOutOfStock
 }) => {
 
   return (
     <ErrorBoundary component={'AddToCart'}>
-      <div className='addToCart-component'>
-        <h2>AddToCart</h2>
+      <div className='addToCart-component size-quantity-selectors'>
         <SizeSelector
           styles={styles}
           selectedStyleIndex={selectedStyleIndex}
@@ -40,11 +38,6 @@ const AddToCart = ({
           quantitySelected={quantitySelected}
           updateQuantitySelected={updateQuantitySelected}
         />
-        <AddToCartButton
-          outOfStock={outOfStock}
-          sizeSelected={sizeSelected}
-          addToCart={addToCart}
-        />
       </div>
     </ErrorBoundary>
   );
@@ -60,7 +53,6 @@ AddToCart.propTypes = {
   outOfStock: PropTypes.bool,
   updateSizeSelectedAndSku: PropTypes.func,
   updateQuantitySelected: PropTypes.func,
-  addToCart: PropTypes.func,
   updateOutOfStock: PropTypes.func
 };
 

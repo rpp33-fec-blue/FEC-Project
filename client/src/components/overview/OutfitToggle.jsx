@@ -42,7 +42,7 @@ class OutfitToggle extends React.Component {
       return (
         <ErrorBoundary component={'OutfitToggle'}>
         <div className='outfitToggle-component'>
-          <button onClick={this.removeFromOutfit}>Remove from outfit</button> {/* TO DO - return shaded star that removes from outfit on click */}
+          <button className='outfit-button' onClick={this.removeFromOutfit}>Remove from outfit</button> {/* TO DO - return shaded star that removes from outfit on click */}
         </div>
         </ErrorBoundary>
       );
@@ -50,7 +50,7 @@ class OutfitToggle extends React.Component {
       return (
         <ErrorBoundary component={'OufitToggle'}>
         <div className='outfitToggle-component'>
-          <button onClick={this.addToOutfit}>Add to outfit</button> {/* TO DO - return empty star that adds to outfit on click */}
+          <button className='outfit-button' onClick={this.addToOutfit}>Add to outfit</button> {/* TO DO - return empty star that adds to outfit on click */}
         </div>
         </ErrorBoundary>
       );
