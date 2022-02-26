@@ -1,7 +1,13 @@
-// test if sort function works
-// test if filter function works
 import _ from 'underscore';
 import {sortedQ, filteredQ, getAnswer} from '../../client/src/components/qa/helper.js';
+import {mount} from 'enzyme';
+
+import ConnectedQA from '../../components/qa/qa.jsx';
+import SearchBar from '../../components/qa/SearchBar.jsx';
+import AddQuestion from '../../components/qa/addquestion.jsx';
+import AddAnswer from '../../components/qa/addanswer.jsx';
+
+
 
 describe('sortedQ', () => {
   it('should sort array of question by question_helpfulness in descending order', () => {
@@ -114,8 +120,11 @@ describe('filteredQ', () => {
 });
 
 // Search Questions
-describe('Search Questions', () => {
+describe('<SearchBar/>', () => {
   //Test user search and search function
+  var searchBar = mount(<SearchBar />);
+  searchBar.find('button').simulate('click');
+
     // user input value into the search question input
       // if more than or equal to 3 char is inputted
         // search with all value must return correct filtered array in questionList components

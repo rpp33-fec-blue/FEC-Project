@@ -1,13 +1,10 @@
 import {connect} from 'react-redux';
 import addAnswer from '../../action-creators/addAnswer.js';
 import axios from 'axios';
+import FormData from 'form-data';
+import Image from './image.jsx';
 
 class AddAnswerComp extends React.Component {
-      // test2 images selected are invalid or unable to be uploaded.
-
-      // else if not passed
-
-        // show error message "You must enter the following: email in a correct format/images selected are invalid or unable to be uploaded."
   constructor (props) {
     super(props);
     //props what i have in props
@@ -17,37 +14,69 @@ class AddAnswerComp extends React.Component {
     //props.productName
     this.state = {
       submitMessage: '',
-      imagesUrl: []
+      imagesUrl: [],
+      images: [],
+      awsUrl: []
     }
   }
 
-  handleSubmit (e) {
+  async handleSubmit (e) {
     e.preventDefault();
     var answer = e.target.answer.value;
     var nickname = e.target.nickname.value;
     var email = e.target.email.value;
     var questionId = this.props.questionId
 
-    if (!answer || !nickname || !email) {
-      // Did not use this, but use html default set up.
-      this.setState({
-        submitMessage: 'Error: You must enter all the followings: answers, nickname, email.'
-      });
-    } else {
-
-      console.log({answer, nickname, email, questionId});
-      this.setState({
-        submitMessage: 'Complete sending answers'
-      });
+    var config = {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
     }
+
+    for (var i = 0; i < this.state.images.length; i++) {
+      // get secure url from the server to post the image
+      var photoUrl = await axios.get('/s3Url', config)
+      .then((res) => {
+        return res.data;
+      })
+
+      var image = this.state.images[i][0];
+      console.log('image to upload', image);
+      console.log('photoUrl', photoUrl);
+
+      await axios.put(photoUrl, {'image': image}, config)
+        .then((res) => {
+
+          var imageUrlAws = photoUrl.split('?')[0] + '.jpg';
+          console.log('aws', imageUrlAws);
+          this.setState((prevState) => {
+            return {
+              awsUrl: [...prevState.awsUrl, imageUrlAws]
+            }
+          })
+        })
+        .catch((err) => {
+          console.log('err putted in aws', err);
+        });
+    }
+    // send another post request to store new answers and photo
     var newAnswer = {
       "body": answer,
       "name": nickname,
       "email": email,
-      "photos": this.state.imagesUrl
+      "photos": this.state.awsUrl
     };
+    console.log({newAnswer});
 
-    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer);
+    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer)
+      .then(() => {
+        this.setState({
+          submitMessage: 'Complete'
+        })
+      })
+      .catch((err) => {
+        console.log('err in post answers', err)
+      });
     // addAnswer(newAnswer); // try later when got time
   }
 
@@ -67,6 +96,7 @@ class AddAnswerComp extends React.Component {
   handleAddImage (e) {
     var files = e.target.files; //array
     console.log({files});
+    console.log('file.type', files[0].type);
 
     if (this.state.imagesUrl.length === 5) {
       this.hideUploadImageButton();
@@ -77,12 +107,15 @@ class AddAnswerComp extends React.Component {
     this.setState((prevState) => {
       var noOfFiles = files.length;
       var urls = [];
+      var images = []
       for (var i = 0; i < noOfFiles; i++) {
         urls.push(URL.createObjectURL(files[i]));
+        images.push(files[i]);
       };
 
       return {
-        imagesUrl: [...prevState.imagesUrl, urls]
+        imagesUrl: [...prevState.imagesUrl, urls],
+        images: [...prevState.images, images],
       };
     })
   }
@@ -91,12 +124,7 @@ class AddAnswerComp extends React.Component {
     var question_body = this.props.question_body;
     var productName = this.props.productName;
     var thumbnails = this.state.imagesUrl.map((url, i) => {
-      return <img
-        className="image-thumbnail"
-        src={url}
-        alt="uploaded photo for answer"
-        key={i}
-      />
+      return <Image url={url} key={i} />
     })
 
     return (
@@ -105,12 +133,12 @@ class AddAnswerComp extends React.Component {
         onSubmit={this.handleSubmit.bind(this)}
       >
         <div className="overlay-content">
-
+          <a href="#/"
+            className="closebtn"
+            onClick={this.offForm.bind(this)}
+          >&times;</a>
           <div>
-            <a href="#" className="closebtn"
-              onClick={this.offForm.bind(this)}
-            >&times;</a>
-            <h3>Submit your Answer</h3>
+            <h3>SUBMIT YOUR ANSWER</h3>
             <h4>{productName}:{question_body}</h4>
           </div>
 
@@ -147,6 +175,7 @@ class AddAnswerComp extends React.Component {
               type="email"
               id="email"
               required
+              size="64"
             />
             <br />
             <div className="warning"> For authentication reasons, you will not be emailed </div>
@@ -164,7 +193,7 @@ class AddAnswerComp extends React.Component {
           />
 
           <br />
-          <input type="submit" name="submit" value="submit" />
+          <input type="submit" name="submit" value="SUBMIT" />
 
           <br />
           <h1 id="submitMessage">{this.state.submitMessage}</h1>

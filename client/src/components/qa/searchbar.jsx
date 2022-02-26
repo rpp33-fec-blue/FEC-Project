@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <input
-        type="text" id="newquestion" name="newquestion"
+        type="text" id="searchQuestion" name="searchQuestion"
         //TODO: find a way to make this value disappear when typed in
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS…"
         onChange={this.search.bind(this)}
