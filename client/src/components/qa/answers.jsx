@@ -1,69 +1,100 @@
 import Answer from './answer.jsx';
 
-// List of answers of a question
+// List of answers of a Question
 class Answers extends React.Component {
   constructor (props) {
     // props
     // props.answers
     super(props)
     this.state = {
-      collapseAnswer: false,
       answersToShow: 2,
       remainingAnswer: 0,
-      buttonName: "LOAD MORE ANSWERS"
+      buttonName: "LOAD MORE ANSWERS",
+      collapseAnswer: false
     }
   }
 
   componentDidMount() {
-    // set initial state
-    // collapseAnswer: false,
-    // answersToShow: if answer is 1, show 1, if more than 1, show 2,
-    // remainingAnswer: number of answers - answers to show,
-    // buttonName: if answer is more than two, show "LOAD MORE ANSWERS"
+    var answers = this.props.answers;
+    var answersLength = answers.length;
+    console.log('answers', answers);
+    console.log('answersLength', answersLength);
+    if (answersLength <= 2) {
+      this.setState({
+        answersToShow: answersLength,
+        remainingAnswer: 0,
+        buttonName: ""
+      })
+    } else if (answersLength > 2) {
+      var show = 2;
+      this.setState({
+        answersToShow: show,
+        remainingAnswer: answersLength - show,
+        buttonName: "LOAD MORE ANSWERS"
+      })
+    }
+
   }
 
-  loadMoreAnswer() {
-    //COLLAPSE
-    // if collapse answer = true
-      // change answerToShow to 2
-      // change button name to "LOAD MORE ANSWERS"
-      // return
+  loadMoreAnswer(e) {
+    e.preventDefault;
+    var answers = this.props.answers;
+    var answersLength = answers.length;
 
-    //UPDATE COUNTER
-    // if there are more answer to show
+    // COLLAPSE
+    if (e.target.innerText === "COLLAPSE ANSWERS") {
+      var show = 2;
+      this.setState({
+        answersToShow: show,
+        remainingAnswer: answersLength - show,
+        buttonName: "LOAD MORE ANSWERS"
+      })
+      return;
+    }
 
-      // if more answer to show is 2 or more than 2
-        // add 2 to answerToShow state
-      // else if more answer to show is 1
-        // add 1
+    // LOAD ANSWERS
+    var remainingAnswer = answersLength - this.state.answersToShow ;
+    if (remainingAnswer <= 2) {
+      // no "more Answer button"
+      this.setState((prevState) => {
+        return {
+          buttonName: "",
+          answersToShow: prevState.answersToShow + remainingAnswer
+        }
+      })
 
-    //UPDATE BUTTON NAME
-    // if no more answer to show
-      // change state collapseAnswer to true
+    } else if (remainingAnswer > 2) {
+      this.setState((prevState) => {
+        return {
+          buttonName: "LOAD MORE ANSWERS",
+          answersToShow: prevState.answersToShow + 2
+        }
+      })
+    }
 
-    // if still have more answer to show
-      // change state collapseAnswer to true
-
-    // if collapseAnswer is true
-      // button name = "COLLAPSE ANSWERS"
-    // else if
-      // button name = "LOAD MORE ANSWERS"
+    // when the Answer is too long, cap maximum hieght for the Answer & Answer and make it scrollable
   }
 
   render () {
+    if (this.props.answers.length === 0) {return null}
+
+    var button;
+    if (this.state.buttonName === "") {
+      button = "";
+    } else {
+      button = <button className="load-more-answer" onClick={this.loadMoreAnswer.bind(this)}>{this.state.buttonName}</button>;
+    }
+
     var toShow = this.props.answers.map((answer, index) => {
       if (index+1 <= this.state.answersToShow) {
         return <Answer answer={answer} answerId={answer.answer_id} key={index}/>
       }
     })
 
-
     return (
       <div>
         {toShow}
-        <div className="load-more-answer">
-          <button onClick={this.loadMoreAnswer.bind(this)}>{this.state.buttonName}</button>
-        </div>
+        {button}
       </div>
     );
   }

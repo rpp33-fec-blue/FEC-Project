@@ -9,15 +9,34 @@ class QuestionList extends React.Component {
     //props.sortedQ
     //props.filteredQ
     this.state = {
-      questionsToShow: 2
+      questionsToShow: 2,
+      moreAnswerQuestionVisible: true
     }
   }
 
-  handleMoreAnswerQuestionClick () {
-    // button that will add two more <IndividualQuestion /> everytime you click
-    // if there is one left then only add one.
-    // If nothing left in the list, hid the button.
-    // when the question is too long, cap maximum hieght for the question & Answer and make it scrollable
+  handleMoreAnswerQuestionClick (e) {
+    e.preventDefault;
+    var noOfQuestions = this.props.filteredQ.length;
+    var numOfQuestionsToAdd = noOfQuestions - this.state.questionsToShow ;
+
+    if (numOfQuestionsToAdd <= 2) {
+      // no "more question button"
+      this.setState((prevState) => {
+        return {
+          moreAnswerQuestionVisible: false,
+          questionsToShow: prevState.questionsToShow + numOfQuestionsToAdd
+        }
+      })
+    } else if (numOfQuestionsToAdd > 2) {
+      // have "more question button"
+      this.setState((prevState) => {
+        return {
+          moreAnswerQuestionVisible: true,
+          questionsToShow: prevState.questionsToShow + 2
+        }
+      })
+    }
+
   }
 
   onForm () {
@@ -35,14 +54,22 @@ class QuestionList extends React.Component {
           </div>
         )
       }
-    })
+    });
+
+    var moreAnswerQuestionVisibleBtn;
+
+    if (this.state.moreAnswerQuestionVisible) {
+      moreAnswerQuestionVisibleBtn = <button onClick={this.handleMoreAnswerQuestionClick.bind(this)}>MORE ANSWERED QUESTIONS</button>;
+    } else {
+      moreAnswerQuestionVisibleBtn = '';
+    }
 
     return (
-      <div>
+      <div className="questionlist-and-btn">
         <div className="questionlist">{questions}</div>
-        <div className="qa-more-button">
-          <button>MORE ANSWERED QUESTIONS</button>
-          <button onClick={this.onForm.bind(this)}>Add a question</button>
+        <div className="btn-container">
+          {moreAnswerQuestionVisibleBtn}
+          <button onClick={this.onForm.bind(this)}>ADD A QUESTION</button>
         </div>
       </div>
     );
