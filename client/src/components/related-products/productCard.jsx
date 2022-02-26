@@ -57,7 +57,6 @@ class ProductCard extends React.Component {
       )
     }
 
-    console.log(this.props.item);
     return (
       <div className='product-card'>
         <div className='related-image-container'>
