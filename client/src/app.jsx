@@ -10,14 +10,18 @@ import RelatedProductsContainer from './containers/relatedProductsContainer.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    var outfit = [] // need to determine how save/load this across sessions
     var productId = 64620 // need to pull product id from url (using a default product for now)
-    this.props.handleInitializeState( productId, outfit );
+    this.getPersistedData();
+    this.props.handleInitializeState( productId, this.outfit );
     this.display;
   }
 
-  componentDidMount() {
-
+  getPersistedData() {
+    if(!localStorage.getItem('outfit')) {
+      this.outfit = []
+    } else {
+      this.outfit = JSON.parse(localStorage.getItem('outfit'));
+    }
   }
 
   render() {

@@ -11,6 +11,8 @@ var removeOutfit = ( productId ) => {
       outfit.splice( index, 1 );
     }
 
+    localStorage.setItem('outfit', JSON.stringify(outfit));
+
     dispatch( actionOutfit( outfit ));
   };
 };
