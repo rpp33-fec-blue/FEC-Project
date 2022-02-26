@@ -9,6 +9,9 @@ class OutfitList extends React.Component {
       items: []
     }
     this.isReady = false;
+    this.changeProduct = this.changeProduct.bind(this);
+    this.addToOutfit = this.addToOutfit.bind(this);
+    this.removeFromOutfit = this.removeFromOutfit.bind(this);
   }
 
   buildOutfitList() {
@@ -78,10 +81,10 @@ class OutfitList extends React.Component {
 
     return (
       <div className='card-list'>
-        <AddOutfitCard addToOutfit={this.addToOutfit.bind( this )}/>
+        <AddOutfitCard addToOutfit={this.addToOutfit}/>
         {this.state.items.map((item) => {
           return (
-            <ProductCard key={item.id} item={ item } changeProduct={this.changeProduct.bind(this)} actionButton={this.removeFromOutfit.bind(this)} isOutfit={true}/>
+            <ProductCard key={item.id} item={item} changeProduct={this.changeProduct} actionButton={this.removeFromOutfit} isOutfit={true}/>
           );
         })}
       </div>

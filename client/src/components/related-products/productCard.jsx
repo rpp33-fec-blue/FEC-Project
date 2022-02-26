@@ -3,6 +3,9 @@ import React from 'react';
 class ProductCard extends React.Component {
   constructor(props) {
     super(props);
+    this.cardClicked = this.cardClicked.bind(this);
+    this.compareProduct = this.compareProduct.bind(this);
+    this.removeFromOutfit = this.removeFromOutfit.bind(this);
   }
 
   cardClicked() {
@@ -39,14 +42,14 @@ class ProductCard extends React.Component {
     }
 
     var button = (
-      <div onClick={this.compareProduct.bind( this )}>
+      <div onClick={this.compareProduct}>
         <img className='card-icon-star' src={'./assets/baseline_star_white.png'}></img>
         <img className='card-icon-star'  src={'./assets/baseline_star_outline_black.png'}></img>
       </div>
     )
     if ( this.props.isOutfit ) {
       button = (
-        <div className='card-icon' onClick={this.removeFromOutfit.bind( this )}>
+        <div className='card-icon' onClick={this.removeFromOutfit}>
           <img className='card-button'  src={'./assets/close.png'}></img>
         </div>
       )
@@ -55,10 +58,10 @@ class ProductCard extends React.Component {
     return (
       <div className='product-card'>
         <div className='related-image-container'>
-          <img className='card-info card-photo' src={photo} onClick={this.cardClicked.bind( this )}></img>
+          <img className='card-info card-photo' src={photo} onClick={this.cardClicked}></img>
           {button}
         </div>
-        <div className='card-info-holder' onClick={this.cardClicked.bind( this )}>
+        <div className='card-info-holder' onClick={this.cardClicked}>
           <div className='card-info-sub-holder'>
             <div className='card-info card-category'>{this.props.item.category}</div>
             <div className='card-info card-name'>{this.props.item.name}</div>
