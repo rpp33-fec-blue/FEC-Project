@@ -45,7 +45,7 @@ describe('Overview Component', function() {
     });
 
     it('Should render', function() {
-      const nodeWrapper = wrapper.find('.overview-component');
+      const nodeWrapper = wrapper.find('.item-widget-overview');
       expect(nodeWrapper.length).toBe(1);
     });
 
@@ -267,7 +267,7 @@ describe('DefaultView Component', function() {
     });
 
     it('Should render', function() {
-      const nodeWrapper = wrapper.find('.defaultView-component');
+      const nodeWrapper = wrapper.find('.default-view-component');
       expect(nodeWrapper.length).toBe(1);
     });
   });
