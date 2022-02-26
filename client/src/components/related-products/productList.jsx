@@ -20,8 +20,11 @@ class ProductList extends React.Component {
 
   buildRelatedItemsData() {
     var apiCalls = [];
-    for ( var i = 0; i < this.props.relatedProducts.length; i++ ) {
-      var productId = this.props.relatedProducts[i];
+    console.log('full:', this.props.relatedProducts);
+    var uniqueProducts = [...new Set(this.props.relatedProducts)];
+    console.log('unique:', uniqueProducts);
+    for ( var i = 0; i < uniqueProducts.length; i++ ) {
+      var productId = uniqueProducts[i];
       apiCalls.push(axios.get( `http://localhost:8080/products/${productId}`, { params: { product_id: productId } } ));
       apiCalls.push(axios.get( 'http://localhost:8080/reviews/meta', { params: { product_id: productId } } ));
       apiCalls.push(axios.get( `http://localhost:8080/products/${productId}/styles`, { params: { product_id: productId } } ));
