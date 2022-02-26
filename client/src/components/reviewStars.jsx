@@ -10,16 +10,16 @@ class ReviewStars extends React.Component {
     var count = 0;
 
     Object.keys(this.props.ratings).forEach((key) => {
-      console.log('sum:', sum, 'count:', count);
-      count += this.props.ratings[key];
+      count += Number(this.props.ratings[key]);
       sum += key*this.props.ratings[key];
     });
 
-    console.log('value:', sum/count, 'ratings:', this.props.ratings);
+    var roundedValue = Math.round(((sum/count)*4))/4;
+
     if (count === 0) {
       return '100%'
     }
-    return (sum/count*100) + '%';
+    return (roundedValue/5*100) + '%';
   }
 
   render() {
