@@ -373,6 +373,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   vertical-align: middle;
   display: inline-block;
   overflow: hidden;
+  width: 70px;
 }
 
 .full-stars {
@@ -382,7 +383,6 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   top: 0;
   white-space: nowrap;
   overflow: hidden;
-  width: 10%;
 }
 
 .empty-stars {

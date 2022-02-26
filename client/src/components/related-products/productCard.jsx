@@ -53,6 +53,7 @@ class ProductCard extends React.Component {
       )
     }
 
+    console.log(this.props.item);
     return (
       <div className='product-card'>
         <div className='related-image-container'>
@@ -65,7 +66,7 @@ class ProductCard extends React.Component {
             <div className='card-info card-name'>{this.props.item.name}</div>
             {price}
           </div>
-          <ReviewStars />
+          <ReviewStars ratings={this.props.item.ratings}/>
         </div>
       </div>
     );
