@@ -1,5 +1,5 @@
 import Answer from './answer.jsx';
-
+import React from 'react';
 // List of answers of a Question
 class Answers extends React.Component {
   constructor (props) {

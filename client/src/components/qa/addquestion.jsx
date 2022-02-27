@@ -3,7 +3,7 @@
 import {connect} from 'react-redux';
 import addQuestion from '../../action-creators/addQuestion.js';
 import axios from 'axios';
-
+import React from 'react';
 class AddQuestionComp extends React.Component {
   constructor (props) {
     super(props);

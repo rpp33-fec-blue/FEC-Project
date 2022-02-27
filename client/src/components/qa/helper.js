@@ -1,5 +1,5 @@
 import _ from 'underscore';
-
+import React from 'react';
 var sortedQ = (questions) => {
   var sorted = _.chain(questions)
     .sortBy((question) => { return question.question_helpfulness})

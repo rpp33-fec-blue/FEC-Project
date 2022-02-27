@@ -1,6 +1,6 @@
 var Image = (props) => {
   var url = props.url;
-  
+
   return (
     <img
       className="image-thumbnail"

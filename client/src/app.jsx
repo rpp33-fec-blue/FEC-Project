@@ -4,7 +4,7 @@ import store from './configureStore';
 import Qa from './components/qa/qa.jsx';
 import OverviewContainer from './containers/OverviewContainer.js';
 import ConnectedQA from './components/qa/qa.jsx'
-import Rnr from './components/ratings-and-reviews/rnr.jsx';
+// import Rnr from './components/ratings-and-reviews/rnr.jsx';
 import RelatedProductsContainer from './containers/relatedProductsContainer.js';
 
 class App extends React.Component {

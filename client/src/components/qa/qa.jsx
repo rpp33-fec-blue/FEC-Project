@@ -2,7 +2,7 @@
 // import {useSelector, useDispatch} from 'react-redux';
 import {connect} from 'react-redux';
 import {sortedQ, filteredQ} from './helper.js';
-
+import React from 'react';
 // Import components
 import SearchBar from './searchbar.jsx';
 import QuestionList from './questionlist.jsx';

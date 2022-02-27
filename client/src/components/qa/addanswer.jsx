@@ -3,6 +3,7 @@ import addAnswer from '../../action-creators/addAnswer.js';
 import axios from 'axios';
 import FormData from 'form-data';
 import Image from './image.jsx';
+import React from 'react';
 
 class AddAnswerComp extends React.Component {
   constructor (props) {
