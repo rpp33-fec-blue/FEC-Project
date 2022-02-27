@@ -253,6 +253,11 @@ ul li::before {
   padding-right: 15px;
 }
 
+.outfit-star {
+  width: 50%;
+  height: 50%;
+}
+
 /*======================== Related items =======================*/
 
 
