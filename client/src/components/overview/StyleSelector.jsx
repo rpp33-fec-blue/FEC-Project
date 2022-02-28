@@ -10,7 +10,7 @@ const StyleSelector = ({ styles, selectedStyleIndex, updateSelectedStyle }) => {
 
   return (
     <ErrorBoundary component={'StyleSelector'}>
-      <p>STYLE > {selectedStyleName.toUpperCase()}</p>
+      <span className='l700-font bottom-20px'>STYLE > </span><span className='large-font bottom-20px'>{selectedStyleName.toUpperCase()}</span>
       <div className='styleSelector-component'>
         {styles.results.map((style, index) => <StyleThumbnail styles={styles} index={index} selectedStyleIndex={selectedStyleIndex} updateSelectedStyle={updateSelectedStyle} key={index} />)}
       </div>

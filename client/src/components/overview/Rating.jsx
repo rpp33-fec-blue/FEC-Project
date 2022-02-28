@@ -25,7 +25,7 @@ const Rating = ({ metadata }) => {
   } else {
     return (
       <ErrorBoundary component={'Rating'}>
-        <div className='rating-component'>
+        <div className='rating-component bottom-20px'>
           <ReviewStars ratings={metadata.ratings} /> <a href='#'>Read all {numberOfRatings} reviews</a>
         </div>
       </ErrorBoundary>

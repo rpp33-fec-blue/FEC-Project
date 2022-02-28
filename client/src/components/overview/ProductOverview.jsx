@@ -8,7 +8,7 @@ const ProductOverview = ({ productInfo }) => {
   return (
     <ErrorBoundary>
       <div className='productOverview-component'>
-        <h6>{productInfo.slogan}</h6>
+        <div className='l700-font'>{productInfo.slogan}</div>
         <p>{productInfo.description}</p>
       </div>
     </ErrorBoundary>
