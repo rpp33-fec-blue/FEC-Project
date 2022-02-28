@@ -24,9 +24,17 @@ class Overview extends React.Component {
       }
     }
 
+    var defaultStyleIndex;
+    const styleResults = this.props.styles.results;
+    for (var index = 0; index < styleResults.length; index++) {
+      if (styleResults[index]['default?']) {
+        defaultStyleIndex = index;
+      }
+    }
+
     this.state = {
       styles: this.props.styles,
-      selectedStyleIndex: 0,
+      selectedStyleIndex: defaultStyleIndex,
       selectedImageIndex: 0,
       sku: null,
       sizeSelected: 'Select Size',
@@ -43,8 +51,7 @@ class Overview extends React.Component {
   }
 
   updateSelectedStyle(event) {
-    const newSelectedStyleIndex = event.target[Object.keys(event.target)[0]].index;
-    console.log(newSelectedStyleIndex);
+    const newSelectedStyleIndex = event.target[Object.keys(event.target)[1]].index;
     const skus = this.props.styles.results[newSelectedStyleIndex].skus;
     var outOfStock = true;
     for (var sku in skus) {
