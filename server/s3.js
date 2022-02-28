@@ -36,7 +36,7 @@ var generateUploadURL = async function generateUploadURL () {
     .catch((err) => {
       console.log('err here', err)
     });
-  console.log('uploadURL', uploadURL);
+  // console.log('uploadURL', uploadURL);
   return uploadURL;
 }
 

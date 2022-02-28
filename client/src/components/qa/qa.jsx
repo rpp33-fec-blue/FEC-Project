@@ -2,7 +2,7 @@
 // import {useSelector, useDispatch} from 'react-redux';
 import {connect} from 'react-redux';
 import {sortedQ, filteredQ} from './helper.js';
-
+import React from 'react';
 // Import components
 import SearchBar from './searchbar.jsx';
 import QuestionList from './questionlist.jsx';
@@ -27,7 +27,7 @@ class Qa extends React.Component {
   componentDidMount () {
     var productId = this.props.productId;
     var questions = this.props.questions.results;
-    console.log({questions, productId})
+    // console.log({questions, productId})
     this.setState({
       sortedQ: sortedQ(questions),
       filteredQ: filteredQ(questions)

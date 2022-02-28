@@ -1,5 +1,5 @@
 import Image from './image.jsx';
-
+import React from 'react';
 class Answer extends React.Component {
 
   constructor (props) {
