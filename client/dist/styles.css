@@ -204,6 +204,9 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 /*======================== Related items =======================*/
 
+
+
+
 .related-products-headers {
   margin-top: 60px;
   margin-bottom: 20px;
@@ -217,7 +220,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 .product-card {
   width: 250px;
-  height: 350px;
+  height: 400px;
   outline: 1px solid black;
   margin-right: 30px;
 }
@@ -250,9 +253,17 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 .card-icon {
   background: #e5e5e3;
+  height: 8%;
+  width: 8%;
+  border-radius: 50%;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.card-button {
   height: 10%;
   width: 10%;
-  border-radius: 50%;
   position: absolute;
   top: 4%;
   right: 4%;
@@ -266,9 +277,12 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   right: 4%;
 }
 
-.card-button {
-  height: 100%;
-  width: 100%;
+.card-icon-star-background {
+  height: 8%;
+  width: 8%;
+  position: absolute;
+  top: 5%;
+  right: 5%;
 }
 
 .card-info {
@@ -279,14 +293,21 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   height: 100%;
 }
 
+.card-category {
+  padding-bottom: 4px;
+}
+
+.card-price {
+  padding-top: 4px;
+}
+
 .card-category, .card-price {
   font-weight: 300;
 }
 
 .card-name {
   font-weight: 700;
-  font-size: larger;
-
+  font-size: large;
 }
 
 .card-info-holder {
@@ -319,21 +340,76 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 
 .comparison-content {
-  padding: 8px;
-  height: wrap;
-  width: 15%;
+  padding: 16px;
+  height: fill;
+  width: 500px;
   border: 1px solid black;
   background-color: white;
   flex-direction: column;
   display: flex;
-  justify-content: center;
 }
 
 .related-products-compare-header {
   font-weight: 300;
+  font-size: small;
 }
 
-/*========================== Reviews ===========================*/
+.comparison-current-product-feature, .comparison-current-product-feature, .comparison-feature {
+  padding-bottom: 12px;
+}
+
+.comparison-current-product-feature {
+  text-align: left;
+}
+
+.comparison-selected-product-feature{
+  text-align: right;
+}
+
+.comparison-feature {
+  text-align: center;
+  width: 150px;
+  font-weight: 300;
+}
+
+.comparison-currentProduct-name {
+  text-align: left;
+  font-size: large;
+  width: 175px;
+  padding-bottom: 30px;
+  padding-top: 8px;
+}
+
+.comparison-selectedProduct-name {
+  text-align: right;
+  font-size: large;
+  width: 175px;
+  padding-bottom: 30px;
+  padding-top: 8px;
+}
+
+/*========================== Review Stars ===========================*/
+
+.review-star-holder {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  width: 70px;
+}
+
+.full-stars {
+  font-size: 14px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.empty-stars {
+  font-size: 14px;
+}
 
 /*============================= QA =============================*/
 /* qa grid */

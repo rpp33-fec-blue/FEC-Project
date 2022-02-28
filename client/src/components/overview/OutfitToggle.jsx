@@ -13,7 +13,7 @@ class OutfitToggle extends React.Component {
     var inOutfit = false;
     // Unnecessary check if not persisting outfit
     for (var index = 0; index < props.outfit.length; index++) {
-      if (props.outfit[index] === productId) {
+      if (props.outfit[index] === this.props.productId) {
         inOutfit = true;
         break;
       }
