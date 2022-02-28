@@ -33,6 +33,26 @@ class Comparison extends React.Component {
 
     this.buildComparisonTable();
 
+    var features = Object.keys(this.features).map((feature) => {
+      var currentProduct = <td className='comparison-current-product-feature'>{this.features[feature].currentProduct}</td>
+      if (this.features[feature].currentProduct === true) {
+        currentProduct = <td className='comparison-current-product-feature'>&#10003;</td>
+      }
+
+      var selectedProduct = <td className='comparison-selected-product-feature'>{this.features[feature].selectedProduct}</td>
+      if (this.features[feature].selectedProduct === true) {
+        selectedProduct = <td className='comparison-selected-product-feature'>&#10003;</td>
+      }
+
+      return (
+        <tr key={feature} className='comparison-row'>
+          {currentProduct}
+          <td className='comparison-feature'>{feature}</td>
+          {selectedProduct}
+        </tr>
+      )
+    });
+
     return (
       <div className={classes} onClick={this.props.toggle}>
         <div className='comparison-content'>
@@ -46,25 +66,7 @@ class Comparison extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {Object.keys(this.features).map((feature) => {
-                var currentProduct = <td className='comparison-current-product-feature'>{this.features[feature].currentProduct}</td>
-                if (this.features[feature].currentProduct === true) {
-                  currentProduct = <td className='comparison-current-product-feature'>&#10003;</td>
-                }
-
-                var selectedProduct = <td className='comparison-selected-product-feature'>{this.features[feature].selectedProduct}</td>
-                if (this.features[feature].selectedProduct === true) {
-                  selectedProduct = <td className='comparison-selected-product-feature'>&#10003;</td>
-                }
-
-                return (
-                  <tr key={feature} className='comparison-row'>
-                    {currentProduct}
-                    <td className='comparison-feature'>{feature}</td>
-                    {selectedProduct}
-                  </tr>
-                )
-              })}
+              {features}
             </tbody>
           </table>
         </div>
