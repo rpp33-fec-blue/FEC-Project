@@ -11,6 +11,8 @@ var addOutfit = ( productId ) => {
       outfit.push( productId );
     }
 
+    localStorage.setItem('outfit', JSON.stringify(outfit));
+
     dispatch( actionOutfit( outfit ));
   };
 };
