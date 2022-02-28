@@ -40,7 +40,7 @@ if ( cluster.isMaster ) {
 
   app.get('/s3Url', async (req, res) => {
     var url = await generateUploadURL();
-    console.log('url from app.get', url);
+    // console.log('url from app.get', url);
     res.send(url);
   })
 
@@ -52,10 +52,10 @@ if ( cluster.isMaster ) {
     // var files = req.files;
     var contentType = req.headers['content-type'];
 
-    console.log('url:', url);
-    console.log('data:', data);
-    console.log('headers:', contentType);
-    console.log('params:', params);
+    // console.log('url:', url);
+    // console.log('data:', data);
+    // console.log('headers:', contentType);
+    // console.log('params:', params);
 
     axios({
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp${url}`,

@@ -25,7 +25,7 @@ class AddQuestionComp extends React.Component {
         submitMessage: 'Error: You must enter all the followings: question, nickname, email.'
       });
     } else {
-      console.log({question, nickname, email});
+      // console.log({question, nickname, email});
       this.setState({
         submitMessage: 'Complete sending questions'
       });

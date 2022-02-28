@@ -1,3 +1,5 @@
+var { JSDOM } = require( "jsdom" );
+
 import React from 'react';
 
 import ConnectedQA from '../../client/src/components/qa/qa.jsx';
@@ -5,15 +7,11 @@ import SearchBar from '../../client/src/components/qa/SearchBar.jsx';
 import AddQuestion from '../../client/src/components/qa/addquestion.jsx';
 import AddAnswer from '../../client/src/components/qa/addanswer.jsx';
 import QuestionList from '../../client/src/components/qa/questionlist.jsx';
-// import AppContainer from '../../client/src/index.js';
+// import renderReactDom from '../../client/src/index.js';
 
 import _ from 'underscore';
 import {sortedQ, filteredQ, getAnswer} from '../../client/src/components/qa/helper.js';
 import {shallow, mount} from 'enzyme';
-
-
-
-
 
 describe('sortedQ', () => {
   it('should sort array of question by question_helpfulness in descending order', () => {
@@ -127,8 +125,38 @@ describe('filteredQ', () => {
 // Search Questions
 describe('<SearchBar/>', () => {
   //Test user search and search function
-  var searchBar = shallow(<SearchBar handleSearch={() => {}}/>);
+  var jsdom = new JSDOM("<!doctype html><html><body></body></html>");
+  var { window } = jsdom;
+  global.window = window;
+  global.document = window.document; // global.document is needed to use mount function
 
+  var searchBar = mount(<SearchBar />);
+  it('should have searchQuestion input bar', () => {
+    expect(searchBar.find('#searchQuestion')).toHaveLength(1);
+  })
+
+  it('should be an input html element', () => {
+    expect(searchBar.find('input')).toHaveLength(1);
+  })
+
+  it('should have searchQuestion input bar', () => {
+    expect(searchBar.find('#searchQuestion')).toHaveLength(1);
+  })
+
+});
+
+describe('<SearchBar/> integration testing', () => {
+  // TODO : fix this to render in before
+  JSDOM.fromFile("../../client/dist/index.html")
+    .then(dom => {
+      // console.log('dom serialize:', dom.serialize());
+    })
+    .catch((err) => {
+      // console.log('err jsdom load in searchbar integration:', err);
+    });
+  // renderReactDom();
+
+  // var appContainer = mount(<AppContainer />);
   var target = {
     target: {
       name: "searchQuestion",
@@ -136,156 +164,26 @@ describe('<SearchBar/>', () => {
     }
   };
 
-  it('should have searchQuestion input bar', () => {
-    expect(searchBar.find('#searchQuestion')).toHaveLength(1);
+  it('should have a div parent', () => {
+    // searchBar.find('#searchQuestion').simulate('change', target);
+    // appContainer.debug();
+    // expect(searchBar.find('#searchQuestion').parent().is('div')).toBe(true);
   })
+})
 
-  it('should be an input html element', () => {
-    expect(searchBar.find('input')).toHaveLength(1);
+/* Michelle guide
+use react testing library just to test that your components are rendering.
+Then pick one widget and test that, given a set of props,
+it renders as you expect.
+And lastly, pick one widget and test a user interaction.
+You don't really want to test anything to do with the Atelier API, since you don't control that part of the architectur
+*/
 
-  })
 
 
 
 
-});
 
-// user input value into the search question input
-  // if more than or equal to 3 char is inputted
-    // search with all value must return correct filtered array in questionList components
 
-  // if less than 3 is inputted
-    // search will not be called
-    // filtered array will be equal to current sorted array
 
-// // Questions List
-// describe('Questions List', () => {
-//   // questionsToShow state in questionList component must be updated everytime
-//     // the buttonToShowMoreQuestion is clicked
 
-//   //toShow questions must depends on
-//     //1.filtered array in prop of questionList component
-//     //2.questionsToShow state in questionList component
-
-//   //Test render questions
-//     // if there are 1 question in toShow array
-//       // render 1 question
-//       // no "more question button"
-//     // else if there are 2 question
-//       // render 2 question
-//       // no "more question button"
-//     // otherwise
-//       // render 2 question
-//       // have "more question button"
-
-//     // if more questionButton is cliced
-//       // if filtered = 4, toshow update from 2 to 4
-//         // two more answers must be renders
-//         // no "more question button"
-//       // else if filtered = 5, toshow update from 2 to 4
-//         // two more answers must be renders
-//         // have "more question button"
-//       // else if filtered = 3, toshow update from 2 to 4
-//         // 1 more answers must be renders
-//         // no "more question button"
-// });
-
-// // Individual Questions
-// describe('Individual Questions', () => {
-//   //Test render answers
-//     // if there are 1 answers in toShow array
-//       // render 1 answers
-//       // no "more answers button"
-//     // else if there are 2 answers
-//       // render 2 answers
-//       // no "more answers button"
-//     // otherwise
-//       // render 2 answers
-//       // have "more answers button"
-
-//     // if more answersButton is cliced
-//       // if filtered = 4, toshow update from 2 to 4
-//         // two more answers must be renders
-//         // no "more question button"
-//       // else if filtered = 5, toshow update from 2 to 4
-//         // two more answers must be renders
-//         // have "more question button"
-//       // else if filtered = 3, toshow update from 2 to 4
-//         // 1 more answers must be renders
-//         // no "more question button"
-// });
-
-// //Add a question
-// describe('Add a question', () => {
-//   //Click add a questions
-//     // must open an overlays form
-
-//   //Click X at the top of the form
-//     //should close and overlay form
-
-//   //Click submit with not complete mandatory field
-//     // the formContent should be invisible
-//     // show error message on the overlays : "You must enter the following: questions/nickname/email"
-
-//   //Click submit with complete mandatory field but invalid email format
-//     // the formContent should be invisible
-//     // show error message on the overlays :  "You must enter the following: email in a correct format"
-
-//   //Click submit with complete mandatory field and no validation error
-//     // should submit form
-//     // the formContent are all unmounted
-//     // show complete message
-
-//     // get data posted from API
-//     // current input should match with the question of last id from answers question
-// });
-
-// //Add an answer
-// describe('Add a answer', () => {
-//   //Click add a answer
-//     // must open an overlays form
-
-//   //Click X at the top of the form
-//     //should close and overlay form
-
-//   //Click upload photo
-//     // Click upload 1 photo
-//       // should show thumbnail of the uploaded photo
-//       // should show button to upload more photo
-//     // Click upload 5 times
-//       // should 5 thumbnails of the uploaded photo
-//       // should not show button to upload more photo
-
-//   //Click submit with not complete mandatory field
-//     // the formContent should be invisible
-//     // show error message on the overlays : "You must enter the following: answers/nickname/email"
-
-//   //Click submit with complete mandatory field but invalid email format
-//     // the formContent should be invisible
-//     // show error message on the overlays :  "You must enter the following: email in a correct format"
-
-//   //Click submit with complete mandatory field but images selected are invalid or unable to be uploaded.
-//     // the formContent are all unmounted
-//     // show error message on the overlays :  "You must enter the following:images selected are invalid or unable to be uploaded."
-
-//   //Click submit with complete mandatory field and no validation error
-//     // should submit form
-//     // the formContent are all unmounted
-//     // show complete message
-
-//     // get data posted from API
-//     // current input should match with the answer of last id from answers array
-// });
-
-// // Report an answer
-// describe('Report an answer', () => {
-
-// });
-// // Helpful question
-// describe('Helpful question', () => {
-
-// });
-// // Helpful answer
-// describe('Helpful answer', () => {
-
-// });

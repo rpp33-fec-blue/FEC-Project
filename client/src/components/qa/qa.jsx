@@ -27,7 +27,7 @@ class Qa extends React.Component {
   componentDidMount () {
     var productId = this.props.productId;
     var questions = this.props.questions.results;
-    console.log({questions, productId})
+    // console.log({questions, productId})
     this.setState({
       sortedQ: sortedQ(questions),
       filteredQ: filteredQ(questions)

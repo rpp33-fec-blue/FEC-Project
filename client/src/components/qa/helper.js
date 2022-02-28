@@ -40,7 +40,6 @@ var getAnswer = (questionID, callback) => {
     .then((results) => {
       var answers = results.data.data.results;
       var sorted = sortedA(answers)
-      console.log({sorted});
       return callback(sorted);
     })
     .catch(err => {

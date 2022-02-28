@@ -17,8 +17,6 @@ class Answers extends React.Component {
   componentDidMount() {
     var answers = this.props.answers;
     var answersLength = answers.length;
-    console.log('answers', answers);
-    console.log('answersLength', answersLength);
     if (answersLength <= 2) {
       this.setState({
         answersToShow: answersLength,
