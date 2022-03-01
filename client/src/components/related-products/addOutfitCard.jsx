@@ -10,8 +10,11 @@ class AddOutfitCard extends React.Component {
     return (
       <div className='product-card' onClick={this.props.addToOutfit}>
         <div className='add-outfit-container'>
-          <img className='card-info card-photo' src='./assets/light-grey.jpg'></img>
+          <div className='default-image-color'></div>
           <div className='card-add-outfit'>+</div>
+        </div>
+        <div className='card-outfit-info'>
+          <div className='card-name'>Add to Outfit</div>
         </div>
       </div>
     );
