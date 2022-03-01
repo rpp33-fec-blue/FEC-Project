@@ -420,6 +420,8 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   min-height: auto;
   max-height: 600px;
   overflow: scroll;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .qa {

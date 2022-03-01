@@ -27,7 +27,7 @@ class AddAnswerComp extends React.Component {
     var nickname = e.target.nickname.value;
     var email = e.target.email.value;
     var questionId = this.props.questionId
-
+    console.log('questionId', questionId);
     var config = {
       headers: {
         "Content-Type": "multipart/form-data"
@@ -122,7 +122,7 @@ class AddAnswerComp extends React.Component {
   }
 
   render () {
-    var question_body = this.props.question_body;
+    var question_body = this.props.question.question_body;
     var productName = this.props.productName;
     var thumbnails = this.state.imagesUrl.map((url, i) => {
       return <Image url={url} key={i} />

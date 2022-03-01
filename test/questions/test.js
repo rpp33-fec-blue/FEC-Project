@@ -2,16 +2,27 @@ var { JSDOM } = require( "jsdom" );
 
 import React from 'react';
 
+import { Provider } from 'react-redux';
+import store from '../../client/src/configureStore';
+
 import ConnectedQA from '../../client/src/components/qa/qa.jsx';
 import SearchBar from '../../client/src/components/qa/SearchBar.jsx';
 import AddQuestion from '../../client/src/components/qa/addquestion.jsx';
 import AddAnswer from '../../client/src/components/qa/addanswer.jsx';
 import QuestionList from '../../client/src/components/qa/questionlist.jsx';
+import Question from '../../client/src/components/qa/question.jsx';
+import AppContainer from '../../client/src/app.jsx';
+import initialState from '../../client/src/initialState.js'
 // import renderReactDom from '../../client/src/index.js';
 
 import _ from 'underscore';
 import {sortedQ, filteredQ, getAnswer} from '../../client/src/components/qa/helper.js';
 import {shallow, mount} from 'enzyme';
+
+var jsdom = new JSDOM("");
+var { window } = jsdom;
+global.window = window;
+global.document = window.document;
 
 describe('sortedQ', () => {
   it('should sort array of question by question_helpfulness in descending order', () => {
@@ -111,10 +122,10 @@ describe('filteredQ', () => {
         "reported": false
       }
     ];
-    console.log({results});
+    // console.log({results});
     results.forEach((result, i) => {
 
-      console.log('expected:', expected[i]);
+      // console.log('expected:', expected[i]);
       expect(result).toStrictEqual(expected[i]);
 
     })
@@ -122,15 +133,9 @@ describe('filteredQ', () => {
   });
 });
 
-// Search Questions
 describe('<SearchBar/>', () => {
-  //Test user search and search function
-  var jsdom = new JSDOM("<!doctype html><html><body></body></html>");
-  var { window } = jsdom;
-  global.window = window;
-  global.document = window.document; // global.document is needed to use mount function
-
   var searchBar = mount(<SearchBar />);
+
   it('should have searchQuestion input bar', () => {
     expect(searchBar.find('#searchQuestion')).toHaveLength(1);
   })
@@ -145,31 +150,66 @@ describe('<SearchBar/>', () => {
 
 });
 
-describe('<SearchBar/> integration testing', () => {
-  // TODO : fix this to render in before
-  JSDOM.fromFile("../../client/dist/index.html")
-    .then(dom => {
-      // console.log('dom serialize:', dom.serialize());
-    })
-    .catch((err) => {
-      // console.log('err jsdom load in searchbar integration:', err);
-    });
-  // renderReactDom();
+describe('<QuestionList>', () => {
+  var questionsProps = initialState.questions;
+  var questionList = shallow(<QuestionList sortedQ={questionsProps} filteredQ={questionsProps}/>);
+  var questionWrapper = questionList.find('Question');
+  var addAnswerWrapper = questionList.find('Connect(AddAnswerComp)');
 
-  // var appContainer = mount(<AppContainer />);
-  var target = {
-    target: {
-      name: "searchQuestion",
-      value: "small"
-    }
-  };
-
-  it('should have a div parent', () => {
-    // searchBar.find('#searchQuestion').simulate('change', target);
-    // appContainer.debug();
-    // expect(searchBar.find('#searchQuestion').parent().is('div')).toBe(true);
+  it('should render Question', (done) => {
+    expect(questionWrapper.length).toEqual(2);
+    done();
   })
-})
+
+  it('question props questionId should equal to 563775 and 563777', () => {
+    questionWrapper.forEach((node, i) => {
+      if (i === 0) {
+        expect(node.prop('questionId')).toEqual(563775)
+      } else if (i === 1) {
+        expect(node.prop('questionId')).toEqual(563777)
+      }
+    })
+  })
+
+  it('question should have props question with object data type', () => {
+    questionWrapper.forEach((node) => {
+      expect(typeof node.prop('question') === 'object').toBe(true)
+    })
+  })
+
+  it('should render AddAnswer', () => {
+    expect(addAnswerWrapper.length).toEqual(2);
+  })
+
+  it('AddAnswer should have props question and questionId', () => {
+    addAnswerWrapper.forEach((node) => {
+      expect(typeof node.prop('question') === 'object').toBe(true)
+      expect(typeof node.prop('questionId') === 'number').toBe(true)
+    })
+  })
+
+  it('AddAnswer props questionId should equal to 563775 and 563777', () => {
+    questionWrapper.forEach((node, i) => {
+      if (i === 0) {
+        expect(node.prop('questionId')).toEqual(563775)
+      } else if (i === 1) {
+        expect(node.prop('questionId')).toEqual(563777)
+      }
+    })
+  })
+});
+
+describe('<AddAnswer>', () => {
+  var addAnswer = shallow(<Provider store={store}> <AddAnswer productId="64620" productName="Camo Onesie"/> </Provider>);
+  expect(addAnswer.find(AddAnswer).prop('productId')).toEqual("64620")
+  expect(addAnswer.find(AddAnswer).prop('productName')).toEqual("Camo Onesie")
+
+  // test clicking add answer component
+  // will show overlay pop up window
+  // check that question is the overlay is correct
+});
+
+
 
 /* Michelle guide
 use react testing library just to test that your components are rendering.
@@ -178,12 +218,3 @@ it renders as you expect.
 And lastly, pick one widget and test a user interaction.
 You don't really want to test anything to do with the Atelier API, since you don't control that part of the architectur
 */
-
-
-
-
-
-
-
-
-
