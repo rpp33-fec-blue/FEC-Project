@@ -12,7 +12,7 @@ const SizeSelector = ({ styles, selectedStyleIndex, sizeSelected, updateSizeSele
     return (
       <ErrorBoundary component={'SizeSelector'}>
         <div className='sizeSelector-component'>
-          <select disabled>
+          <select className='size-selector' disabled>
             <option value='OUT OF STOCK' selected>OUT OF STOCK</option>
           </select>
         </div>
@@ -22,7 +22,7 @@ const SizeSelector = ({ styles, selectedStyleIndex, sizeSelected, updateSizeSele
     return (
       <ErrorBoundary component={'SizeSelector'}>
         <div className='sizeSelector-component'>
-          <select onChange={updateSizeSelectedAndSku}>
+          <select className='size-selector' onChange={updateSizeSelectedAndSku}>
             <option value='Select Size'>Select Size</option>
             {_.map(skus, (sku, key) => sku.quantity > 0 ? <option value={sku.size} key={key}>{sku.size}</option> : null)}
           </select>
@@ -33,7 +33,7 @@ const SizeSelector = ({ styles, selectedStyleIndex, sizeSelected, updateSizeSele
     return (
       <ErrorBoundary component={'SizeSelector'}>
         <div className='sizeSelector-component'>
-          <select onChange={updateSizeSelectedAndSku}>
+          <select className='size-selector' onChange={updateSizeSelectedAndSku}>
             {_.map(skus, (sku, key) => sku.quantity > 0 ? <option value={sku.size} key={key}>{sku.size}</option> : null)}
           </select>
         </div>
