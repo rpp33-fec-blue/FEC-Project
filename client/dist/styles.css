@@ -1,19 +1,25 @@
-body {
+html, body {
   font-family: Helvetica, sans-serif;
   font-size: 100%;
   color: #525152;
+  height: 100%;
+  margin: 0;
 }
 
 /*==================== Widget container =======================*/
 .container {
   display: grid;
   grid-template-columns: 10% auto 10%;
-  grid-template-rows: auto auto auto auto auto;
+  grid-template-rows: 3% auto auto auto auto;
 }
 /* use these classes when render your own widget in app.jsx */
 .item-widget-logo {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
 }
 .item-widget-overview {
   grid-column: 2 / span 1;
