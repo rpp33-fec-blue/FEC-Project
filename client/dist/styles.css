@@ -115,7 +115,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 .overview-container {
   display: grid;
-  grid-template-columns: 1200px 500px;
+  grid-template-columns: 60% 40%;
   margin-top: 40px;
 }
 
@@ -133,6 +133,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 .product-overview-container {
   grid-column: 1;
   grid-row: 2;
+  padding-left: 10%;
 }
 
 .product-features-container {
