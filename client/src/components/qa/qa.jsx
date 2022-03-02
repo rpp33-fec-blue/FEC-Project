@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 // helpers
 import {sortedQ, filteredQ, sortedAndFiltered} from './helper.js';
 import React from 'react';
+import postInteraction from '../../interactions.js';
 
 // Import components
 import SearchBar from './searchbar.jsx';
@@ -23,6 +24,12 @@ class Qa extends React.Component {
       filteredQ: [],
       inputSearch: ''
     }
+
+    this.trackInteractions = this.trackInteractions.bind(this);
+  }
+
+  trackInteractions(event) {
+    postInteraction(event, 'Questions & Answers');
   }
 
   fetchData() {
@@ -67,7 +74,7 @@ class Qa extends React.Component {
   render () {
     console.log('productId', this.props.productId)
     return (
-      <div id="container-qa" className="item-widget-qa">
+      <div id="container-qa" className="item-widget-qa" onClick={this.trackInteractions}>
         <h1 className="qa">QUESTIONS & ANSWERS</h1>
         <SearchBar className="search-bar" handleSearch={this.handleSearch.bind(this)} />
         <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>

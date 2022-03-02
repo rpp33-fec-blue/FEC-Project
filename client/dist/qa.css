@@ -34,8 +34,6 @@
   min-height: auto;
   max-height: 100%;
   overflow: scroll;
-
-  margin: 10px 0 10px 0;
 }
 
 .question {
@@ -69,8 +67,8 @@
 
 /*=================== text ===================*/
 h1.qa {
-  font-weight: normal;
-  font-size: 1.3em;
+  font-weight: lighter;
+  font-size: 1em;
 }
 
 #searchQuestion {
@@ -78,12 +76,13 @@ h1.qa {
   border-color: #525152;
   border-radius: 0px;
   border-width: thin;
+  vertical-align: baseline;
 }
 
 ::placeholder {
   font-weight: 8em;
   font-size: 1.3em;
-  vertical-align: center;
+  vertical-align: text-bottom;
 }
 
 .question > h3,
@@ -117,6 +116,18 @@ a {
 }
 
 /*=================== margin ===================*/
+h1.qa {
+  margin: 10px 0px 10px 0px;
+}
+
+.search-bar {
+  margin: 10px 0px 10px 0px;
+}
+
+#searchQuestion {
+  vertical-align: baseline;
+}
+
 #container-qa > div {
   margin: 10px 0px 0px 0px;
 }
@@ -126,7 +137,7 @@ a {
 }
 
 .container-question-answer {
-  margin: 5px 0px 5px 0px;
+  margin: 10px 0 10px 0;
 }
 
 .container-question-answer div {
