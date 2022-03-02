@@ -23,6 +23,7 @@ body {
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
   padding-left: 10%;
+  padding-bottom: 40px;
 }
 .item-widget-qa {
   grid-column: 2 / span 1;
@@ -336,17 +337,18 @@ ul li::before {
 .related-products-headers {
   margin-top: 60px;
   margin-bottom: 20px;
-  font-weight: 300;
+  font-weight: lighter;
 }
 
 .card-list {
   display: flex;
-  width: wrap;
   flex-direction: row;
+  width: min-content
+
 }
 
 .product-card {
-  width: 240px;
+  width: 222px;
   height: 325px;
   outline: 2px solid #c6c6c6;
   margin-right: 24px;
@@ -354,22 +356,21 @@ ul li::before {
 
 .add-outfit-container {
   position: relative;
-  height: 65%;
-}
-
-.card-outfit-info {
-  height: 35%;
   display: flex;
+  flex-direction: column;
+  height: 100%;
   justify-content: center;
   align-items: center;
 }
 
+.card-outfit-info {
+  font-weight: lighter;
+  font-size: .8em;
+}
+
 .card-add-outfit {
-  font-size: 400%;
-  font-weight: 500;
-  position: absolute;
-  top: 30%;
-  right: 43%;
+  font-size: 250%;
+  font-weight: bold;
 }
 
 .related-image-container {
