@@ -7,7 +7,7 @@ body {
 /*==================== Widget container =======================*/
 .container {
   display: grid;
-  grid-template-columns: 15% auto 15%;
+  grid-template-columns: 10% auto 10%;
   grid-template-rows: auto auto auto auto auto;
 }
 /* use these classes when render your own widget in app.jsx */
@@ -22,6 +22,8 @@ body {
 .item-widget-related-products {
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
+  padding-left: 10%;
+  padding-bottom: 40px;
 }
 .item-widget-qa {
   grid-column: 2 / span 1;
@@ -335,41 +337,45 @@ ul li::before {
 .related-products-headers {
   margin-top: 60px;
   margin-bottom: 20px;
-  font-weight: 300;
+  font-weight: lighter;
 }
 
 .card-list {
   display: flex;
   flex-direction: row;
+  width: min-content
+
 }
 
 .product-card {
-  width: 250px;
-  height: 400px;
-  outline: 1px solid black;
-  margin-right: 30px;
+  width: 222px;
+  height: 325px;
+  outline: 2px solid #c6c6c6;
+  margin-right: 24px;
 }
 
 .add-outfit-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
-.add-outfit-container img {
-  display: block;
+.card-outfit-info {
+  font-weight: lighter;
+  font-size: .8em;
 }
 
 .card-add-outfit {
-  font-size: 400%;
-  font-weight: 500;
-  position: absolute;
-  top: 40%;
-  right: 43%;
+  font-size: 250%;
+  font-weight: bold;
 }
 
 .related-image-container {
   position: relative;
-  height: 70%;
+  height: 65%;
 }
 
 .related-image-container img {
@@ -416,6 +422,7 @@ ul li::before {
 
 .card-photo {
   height: 100%;
+  image-rendering: crisp-edges;
 }
 
 .card-category {
@@ -426,21 +433,35 @@ ul li::before {
   padding-top: 4px;
 }
 
+.card-review-stars {
+  padding-bottom: 8px;
+}
+
 .card-category, .card-price {
-  font-weight: 300;
+  font-weight: lighter;
+  font-size: .8em;
 }
 
 .card-name {
-  font-weight: 700;
-  font-size: large;
+  font-weight: bold;
+  font-size: .9em;
+}
+
+.default-image-color {
+  background-color: #ebebeb;
+  height: 100%;
 }
 
 .card-info-holder {
-  height: 30%;
+  height: 35%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding-left: 8px;
+}
+
+.card-info-sub-holder {
+  padding-top: 8px;
 }
 
 .comparison-modal {
