@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
 import ErrorBoundary from '../ErrorBoundary.jsx';
 
-const ScrollArrow = ( { styles, selectedStyleIndex, selectedImageIndex, updateSelectedImageIndex, direction } ) => {
+const ScrollArrow = ({ styles, selectedStyleIndex, selectedImageIndex, updateSelectedImageIndex, direction }) => {
 
   const lastImageIndex = styles.results[selectedStyleIndex].photos.length - 1;
 
@@ -12,20 +12,24 @@ const ScrollArrow = ( { styles, selectedStyleIndex, selectedImageIndex, updateSe
       return null;
     } else {
       return (
-      <ErrorBoundary component={'ScrollArrow'}>
-        <img src={'./assets/left-arrow.png'} className='left-scroll-arrow' onClick={updateSelectedImageIndex} value={direction}></img>
-      </ErrorBoundary>
+        <ErrorBoundary component={'ScrollArrow'}>
+          <div className='scroll-arrow-component'>
+            <img src={'./assets/left-arrow.png'} className='left-scroll-arrow' onClick={updateSelectedImageIndex} value={direction}></img>
+          </div>
+        </ErrorBoundary>
       );
     }
-    return ;
+    return;
   } else {
     if (selectedImageIndex === lastImageIndex) {
       return null;
     } else {
-      return  (
-      <ErrorBoundary component={'ScrollArrow'}>
-        <img src={'./assets/right-arrow.png'} className='right-scroll-arrow' onClick={updateSelectedImageIndex} value={direction}></img>
-      </ErrorBoundary>
+      return (
+        <ErrorBoundary component={'ScrollArrow'}>
+          <div className='scroll-arrow-component'>
+            <img src={'./assets/right-arrow.png'} className='right-scroll-arrow' onClick={updateSelectedImageIndex} value={direction}></img>
+          </div>
+        </ErrorBoundary>
       );
     }
   }
