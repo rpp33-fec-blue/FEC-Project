@@ -22,14 +22,12 @@ class ProductCard extends React.Component {
   }
 
   render() {
-    var photo = null;
+    var photo = <div className='default-image-color' onClick={this.cardClicked}></div>
     if ( this.props.item.styles ) {
-      photo = this.props.item.styles.photos[0].url
-      if ( photo === null ) {
-        photo = './assets/light-grey.jpg';
+      var photoSource = this.props.item.styles.photos[0].url
+      if ( photoSource !== null ) {
+       photo = <img className='card-info card-photo' src={photoSource} onClick={this.cardClicked}></img>
       }
-    } else {
-      photo = './assets/light-grey.jpg';
     }
 
     var price = <div className='card-info card-price'>{'$' + Math.round(this.props.item.default_price)}</div>
@@ -60,7 +58,7 @@ class ProductCard extends React.Component {
     return (
       <div className='product-card'>
         <div className='related-image-container'>
-          <img className='card-info card-photo' src={photo} onClick={this.cardClicked}></img>
+          {photo}
           {button}
         </div>
         <div className='card-info-holder' onClick={this.cardClicked}>
@@ -69,7 +67,9 @@ class ProductCard extends React.Component {
             <div className='card-info card-name'>{this.props.item.name}</div>
             {price}
           </div>
-          <ReviewStars ratings={this.props.item.ratings}/>
+          <div className='card-review-stars'>
+            <ReviewStars ratings={this.props.item.ratings}/>
+          </div>
         </div>
       </div>
     );

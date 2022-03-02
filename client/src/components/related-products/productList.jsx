@@ -12,6 +12,7 @@ class ProductList extends React.Component {
       selectedProduct: { features: [] }
     }
     this.isReady = false;
+    this.productId = null;
     this.throttledBuildItems = _.throttle( this.buildRelatedItemsData, 100 );
     this.changeProduct = this.changeProduct.bind(this);
     this.compareProduct = this.compareProduct.bind(this);
@@ -49,6 +50,7 @@ class ProductList extends React.Component {
       }
 
       this.isReady = true;
+      this.productId = this.props.productId;
       this.setState({
         items: relatedProductsArray
       });
@@ -84,7 +86,7 @@ class ProductList extends React.Component {
 
   render() {
 
-    if ( !this.isReady ) {
+    if (!this.isReady || this.productId !== this.props.productId) {
       this.buildRelatedItemsData();
       return null;
     }
