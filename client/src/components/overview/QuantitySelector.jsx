@@ -10,7 +10,7 @@ const QuantitySelector = ({ styles, selectedStyleIndex, sku, sizeSelected, quant
     return (
       <ErrorBoundary component={'QuantitySelector'}>
         <div className='quantitySelector-component'>
-          <select disabled>
+          <select className='quantity-selector' disabled>
             <option value='-'>-</option>
           </select>
         </div>
@@ -32,7 +32,7 @@ const QuantitySelector = ({ styles, selectedStyleIndex, sku, sizeSelected, quant
     return (
       <ErrorBoundary component={'QuantitySelector'}>
         <div className='quantitySelector-component'>
-          <select onChange={updateQuantitySelected}>
+          <select className='quantity-selector' onChange={updateQuantitySelected}>
             {_.map(validSkuQuantities, (quantity, index) => <option value={quantity} key={index}>{quantity}</option>)}
           </select>
         </div>
