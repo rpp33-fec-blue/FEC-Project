@@ -11,10 +11,15 @@ export default ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-
-
           <Route path="/product/:product_id" element={<AppContainer />} />
-
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>There's nothing here!</p>
+              </main>
+            }
+          />
       </Routes>
     </BrowserRouter>
   </Provider>,
