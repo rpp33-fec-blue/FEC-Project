@@ -65,8 +65,6 @@ class Qa extends React.Component {
 
 
   render () {
-    console.log('all question listFiltered',this.state.filteredQ );
-    console.log('product id',this.props.productId );
     return (
       <div id="container-qa" className="item-widget-qa">
         <h1 className="qa">QUESTIONS & ANSWERS</h1>

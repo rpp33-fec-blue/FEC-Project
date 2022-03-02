@@ -47,8 +47,6 @@ class QuestionList extends React.Component {
 
     var questions = this.props.filteredQ.map((question, index) => {
       if (index+1 <= this.state.questionsToShow) {
-        console.log('index', index)
-        console.log('question.question_id', question.question_id)
         return (
           <div key={index}>
             <Question question={question} questionId={question.question_id} />
