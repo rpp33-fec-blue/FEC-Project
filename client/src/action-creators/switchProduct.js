@@ -8,9 +8,9 @@ import actionProductInfo from '../actions/productInfo.js';
 const axios = require('axios');
 
 var switchProduct = ( productId ) => {
-
+  console.log('id in switchProduct state1', productId);
   return ( dispatch ) => {
-
+    console.log('id in switchProduct state2', productId);
     var relatedItems = axios.get( `http://localhost:8080/products/${productId}/related`, { params: { product_id: productId } } );
     var reviews = axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } );
     var questions = axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, page: 1, count: 100 } } );

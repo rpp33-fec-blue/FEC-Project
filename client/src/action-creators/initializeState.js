@@ -12,9 +12,10 @@ const axios = require('axios');
 var defaultProduct = 64620;
 
 var initializeState = ( productId, outfit ) => {
-
+  console.log('id in initialize state1', productId);
   return ( dispatch ) => {
-    var productId = productId || defaultProduct;
+    console.log('id in initialize state2', productId);
+    productId = Number(productId) || defaultProduct;
     var relatedItems = axios.get( `http://localhost:8080/products/${productId}/related`, { params: { product_id: productId } } );
     var reviews = axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } );
     var questions = axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, page: 1, count: 100 } } );
@@ -25,6 +26,7 @@ var initializeState = ( productId, outfit ) => {
 
     Promise.all( [ relatedItems, reviews, questions, metadata, styles, productInfo, cart ])
     .then( ( results ) => {
+      console.log('info in initialize state', productInfo);
       dispatch( actionProductId( productId ) );
       dispatch( actionOutfit( outfit ) );
       dispatch( actionRelated( results[0].data.data ) );

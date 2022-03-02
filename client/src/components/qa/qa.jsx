@@ -41,7 +41,7 @@ class Qa extends React.Component {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (this.props.questions !== prevProps.questions) {
+    if (this.props !== prevProps) {
       this.fetchData();
     }
   }
@@ -65,6 +65,7 @@ class Qa extends React.Component {
 
 
   render () {
+    console.log('productId', this.props.productId)
     return (
       <div id="container-qa" className="item-widget-qa">
         <h1 className="qa">QUESTIONS & ANSWERS</h1>
