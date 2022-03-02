@@ -34,7 +34,10 @@ class App extends React.Component {
     } else {
       this.display = (
         <div className="container">
-          <div className="item-widget-logo">Logo</div>
+          <div className="item-widget-logo">
+            <h5 >Logo</h5>
+            <p>SITE WIDE ANNOUNCEMENT MESSAGE! SALE / DISCOUNT OFFER - NEW PRODUCT HIGHTLIGHT</p>
+          </div>
           <OverviewContainer />
           <RelatedProductsContainer />
           <ConnectedQA />

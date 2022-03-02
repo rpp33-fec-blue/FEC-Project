@@ -13,14 +13,7 @@ html, body {
   grid-template-rows: 3% auto auto auto auto;
 }
 /* use these classes when render your own widget in app.jsx */
-.item-widget-logo {
-  grid-column: 2 / span 1;
-  grid-row: 1 / span 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
 
-}
 .item-widget-overview {
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
@@ -111,8 +104,26 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 }
 /*========================== Logo ==========================*/
 .item-widget-logo {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  align-items: center;
+  margin: 0;
+}
+
+.item-widget-logo > h5 {
   background-color: #525152;;
   color: white;
+  font-weight: bolder;
+  font-size: 1.3em;
+  margin: auto;
+  padding: 20px 10px 20px 10px;
+
+}
+
+.item-widget-logo > p {
+  padding-left: 10px;
+  text-align: center;
+  margin: 10px 0 10px 0;
 }
 /*========================== Overview ==========================*/
 
