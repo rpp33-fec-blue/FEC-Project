@@ -11,8 +11,8 @@ const ProductInformation = ({ productId, productInfo, metadata, styles, selected
     <ErrorBoundary component={'ProductInformation'}>
       <div className='productInformation-component'>
         <Rating metadata={metadata} />
-        <h4>{productInfo.category.toUpperCase()}</h4>
-        <h2>{productInfo.name}</h2>
+        <div className='large-font bottom-10px'>{productInfo.category.toUpperCase()}</div>
+        <div className='product-name'>{productInfo.name}</div>
         <Price styles={styles} selectedStyleIndex={selectedStyleIndex} />
       </div>
     </ErrorBoundary>

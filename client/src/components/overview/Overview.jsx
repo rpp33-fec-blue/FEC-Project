@@ -6,6 +6,7 @@ import AddToCart from './AddToCart.jsx';
 import OutfitToggle from './OutfitToggle.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import ProductFeatures from './ProductFeatures.jsx';
+import AddToCartButton from './AddToCartButton.jsx';
 import ErrorBoundary from '../ErrorBoundary.jsx';
 
 class Overview extends React.Component {
@@ -23,9 +24,17 @@ class Overview extends React.Component {
       }
     }
 
+    var defaultStyleIndex;
+    const styleResults = this.props.styles.results;
+    for (var index = 0; index < styleResults.length; index++) {
+      if (styleResults[index]['default?']) {
+        defaultStyleIndex = index;
+      }
+    }
+
     this.state = {
       styles: this.props.styles,
-      selectedStyleIndex: 0,
+      selectedStyleIndex: defaultStyleIndex,
       selectedImageIndex: 0,
       sku: null,
       sizeSelected: 'Select Size',
@@ -42,8 +51,7 @@ class Overview extends React.Component {
   }
 
   updateSelectedStyle(event) {
-    const newSelectedStyleIndex = event.target[Object.keys(event.target)[0]].index;
-    console.log(newSelectedStyleIndex);
+    const newSelectedStyleIndex = event.target[Object.keys(event.target)[1]].index;
     const skus = this.props.styles.results[newSelectedStyleIndex].skus;
     var outOfStock = true;
     for (var sku in skus) {
@@ -129,18 +137,24 @@ class Overview extends React.Component {
                 sku={this.state.sku}
                 sizeSelected={this.state.sizeSelected}
                 quantitySelected={this.state.quantitySelected}
-                outOfStock={this.state.outOfStock}
                 updateSizeSelectedAndSku={this.updateSizeSelectedAndSku}
                 updateQuantitySelected={this.updateQuantitySelected}
                 addToCart={this.addToCart}
                 updateOutOfStock={this.updateOutOfStock}
               />
-              <OutfitToggle
-                productId={this.props.productId}
-                outfit={this.props.outfit}
-                handleAddOutfit={this.props.handleAddOutfit}
-                handleRemoveOutfit={this.props.handleRemoveOutfit}
-              />
+              <div className='add-toggle'>
+                <AddToCartButton
+                  outOfStock={this.state.outOfStock}
+                  sizeSelected={this.state.sizeSelected}
+                  addToCart={this.addToCart}
+                />
+                <OutfitToggle
+                  productId={this.props.productId}
+                  outfit={this.props.outfit}
+                  handleAddOutfit={this.props.handleAddOutfit}
+                  handleRemoveOutfit={this.props.handleRemoveOutfit}
+                />
+              </div>
             </div>
             <div className='product-overview-container'>
               <ProductOverview

@@ -9,7 +9,7 @@ const AddToCartButton = ({ outOfStock, sizeSelected, addToCart }) => {
     return (
       <ErrorBoundary component={'AddToCartButton'}>
         <div className='addToCartButton-component'>
-          <button hidden disabled>Add To Cart</button>
+          <button className='add-to-cart-button' hidden disabled>Add To Cart</button>
         </div>
       </ErrorBoundary>
     );
@@ -17,7 +17,7 @@ const AddToCartButton = ({ outOfStock, sizeSelected, addToCart }) => {
     return (
       <ErrorBoundary component={'AddToCartButton'}>
         <div className='addToCartButton-component'>
-          <button onClick={null}>Add To Cart</button> {/* TO DO - open size selector dropdown and display 'Please select size' above */}
+          <button className='add-to-cart-button' onClick={null}>Add To Cart</button> {/* TO DO - open size selector dropdown and display 'Please select size' above */}
         </div>
       </ErrorBoundary>
     );
@@ -25,7 +25,7 @@ const AddToCartButton = ({ outOfStock, sizeSelected, addToCart }) => {
     return (
       <ErrorBoundary component={'AddToCartButton'}>
         <div className='addToCartButton-component'>
-          <button onClick={addToCart} disabled>Add To Cart</button> {/* Can enable if we're comfortable POSTing to cart API */}
+          <button className='add-to-cart-button' onClick={addToCart} disabled>Add To Cart</button> {/* Can enable if we're comfortable POSTing to cart API */}
         </div>
       </ErrorBoundary>
     );

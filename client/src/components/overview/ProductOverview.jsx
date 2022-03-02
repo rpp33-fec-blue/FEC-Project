@@ -8,8 +8,8 @@ const ProductOverview = ({ productInfo }) => {
   return (
     <ErrorBoundary>
       <div className='productOverview-component'>
-        <h6>Slogan: {productInfo.slogan}</h6>
-        <p>Description: {productInfo.description}</p>
+        <div className='l700-font'>{productInfo.slogan}</div>
+        <p>{productInfo.description}</p>
       </div>
     </ErrorBoundary>
   );
