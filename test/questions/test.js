@@ -13,7 +13,6 @@ import QuestionList from '../../client/src/components/qa/questionlist.jsx';
 import Question from '../../client/src/components/qa/question.jsx';
 import AppContainer from '../../client/src/app.jsx';
 import initialState from '../../client/src/initialState.js'
-// import renderReactDom from '../../client/src/index.js';
 
 import _ from 'underscore';
 import {sortedQ, filteredQ, getAnswer} from '../../client/src/components/qa/helper.js';

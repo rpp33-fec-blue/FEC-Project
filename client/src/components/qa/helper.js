@@ -18,8 +18,12 @@ var filteredQ = (questions, input = '') => {
       return question;
     }
   });
-
   return sortedQ(filtered);
+}
+
+var sortedAndFiltered = (questions, input = '') => {
+  var sort = sortedQ(questions);
+  return filteredQ(sort, input)
 }
 
 var sortedA = (answers) => {
@@ -50,4 +54,4 @@ var getAnswer = (questionID, callback) => {
 
 };
 
-export {sortedQ, filteredQ, getAnswer};
+export {sortedQ, filteredQ, getAnswer, sortedAndFiltered};

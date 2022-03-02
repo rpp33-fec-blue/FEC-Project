@@ -29,7 +29,7 @@ var initializeState = ( productId, outfit ) => {
       dispatch( actionOutfit( outfit ) );
       dispatch( actionRelated( results[0].data.data ) );
       dispatch( actionReviews( results[1].data.data ) );
-      dispatch( actionQuestions( results[2].data.data ) );
+      dispatch( actionQuestions( results[2].data.data.results ) );
       dispatch( actionMetadata( results[3].data.data ) );
       dispatch( actionStyles( results[4].data.data ) );
       dispatch( actionProductInfo( results[5].data.data ) );

@@ -1,8 +1,10 @@
-// Import functions and helpers
-// import {useSelector, useDispatch} from 'react-redux';
+// Store
 import {connect} from 'react-redux';
-import {sortedQ, filteredQ} from './helper.js';
+
+// helpers
+import {sortedQ, filteredQ, sortedAndFiltered} from './helper.js';
 import React from 'react';
+
 // Import components
 import SearchBar from './searchbar.jsx';
 import QuestionList from './questionlist.jsx';
@@ -21,23 +23,31 @@ class Qa extends React.Component {
       filteredQ: [],
       inputSearch: ''
     }
-    // console.log('props - qa', props);
+  }
+
+  fetchData() {
+    this.setState((prevState) => {
+      var sort = sortedQ(this.props.questions);
+      var filter = sortedAndFiltered(this.props.questions);
+      return {
+        sortedQ: sort,
+        filteredQ: filter
+      }
+    })
   }
 
   componentDidMount () {
-    var productId = this.props.productId;
-    var questions = this.props.questions.results;
-    // console.log({questions, productId})
-    this.setState({
-      sortedQ: sortedQ(questions),
-      filteredQ: filteredQ(questions)
-    }, () => {
-
-    });
+    this.fetchData();
   }
 
-  handleSearch(input) {
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.questions !== prevProps.questions) {
+      this.fetchData();
+    }
+  }
 
+
+  handleSearch(input) {
     this.setState({
       inputSearch: input
     }, () => {
@@ -55,6 +65,8 @@ class Qa extends React.Component {
 
 
   render () {
+    console.log('all question listFiltered',this.state.filteredQ );
+    console.log('product id',this.props.productId );
     return (
       <div id="container-qa" className="item-widget-qa">
         <h1 className="qa">QUESTIONS & ANSWERS</h1>

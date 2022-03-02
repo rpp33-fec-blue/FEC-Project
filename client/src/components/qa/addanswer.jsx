@@ -17,7 +17,7 @@ class AddAnswerComp extends React.Component {
       submitMessage: '',
       imagesUrl: [],
       images: [],
-      awsUrl: []
+      awsUrl: [],
     }
   }
 
@@ -27,7 +27,6 @@ class AddAnswerComp extends React.Component {
     var nickname = e.target.nickname.value;
     var email = e.target.email.value;
     var questionId = this.props.questionId
-    console.log('questionId', questionId);
     var config = {
       headers: {
         "Content-Type": "multipart/form-data"
@@ -82,7 +81,7 @@ class AddAnswerComp extends React.Component {
   }
 
   offForm () {
-    offOverlay("overlay-addAnswer");
+    offOverlay(`overlay-addAnswer-${this.props.questionId}`);
     return false;
   }
 
@@ -122,14 +121,12 @@ class AddAnswerComp extends React.Component {
   }
 
   render () {
-    var question_body = this.props.question.question_body;
-    var productName = this.props.productName;
     var thumbnails = this.state.imagesUrl.map((url, i) => {
       return <Image url={url} key={i} />
     })
 
     return (
-      <form id="overlay-addAnswer"
+      <form id={`overlay-addAnswer-${this.props.questionId}`}
         className="overlay-bg"
         onSubmit={this.handleSubmit.bind(this)}>
         <div className="overlay-content">
@@ -139,7 +136,7 @@ class AddAnswerComp extends React.Component {
           >&times;</a>
           <div>
             <h3>SUBMIT YOUR ANSWER</h3>
-            <h4>{productName}:{question_body}</h4>
+            <h4>{this.props.productName} : {this.props.question.question_body}</h4>
           </div>
 
           <div>
