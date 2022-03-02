@@ -13,12 +13,16 @@ class ProductList extends React.Component {
     }
     this.isReady = false;
     this.throttledBuildItems = _.throttle( this.buildRelatedItemsData, 100 );
+    this.changeProduct = this.changeProduct.bind(this);
+    this.compareProduct = this.compareProduct.bind(this);
+    this.toggleCompare = this.toggleCompare.bind(this);
   }
 
   buildRelatedItemsData() {
     var apiCalls = [];
-    for ( var i = 0; i < this.props.relatedProducts.length; i++ ) {
-      var productId = this.props.relatedProducts[i];
+    var uniqueProducts = [...new Set(this.props.relatedProducts)];
+    for ( var i = 0; i < uniqueProducts.length; i++ ) {
+      var productId = uniqueProducts[i];
       apiCalls.push(axios.get( `http://localhost:8080/products/${productId}`, { params: { product_id: productId } } ));
       apiCalls.push(axios.get( 'http://localhost:8080/reviews/meta', { params: { product_id: productId } } ));
       apiCalls.push(axios.get( `http://localhost:8080/products/${productId}/styles`, { params: { product_id: productId } } ));
@@ -74,19 +78,21 @@ class ProductList extends React.Component {
   render() {
 
     if ( !this.isReady ) {
-      this.throttledBuildItems();
+      this.buildRelatedItemsData();
       return null;
     }
 
+    var productCards = this.state.items.map( ( item, index ) => {
+      return (
+        <ProductCard key={item.id} item={item} index={index} changeProduct={this.changeProduct} actionButton={this.compareProduct} isOutfit={false}/>
+      )
+    });
+
     return (
       <React.Fragment>
-        <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare.bind( this )} currentProduct={this.props.productInfo} selectedProduct={this.state.selectedProduct}/>
+        <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare} currentProduct={this.props.productInfo} selectedProduct={this.state.selectedProduct}/>
         <div className='card-list'>
-          {this.state.items.map( ( item, index ) => {
-            return (
-              <ProductCard key={item.id} item={item} index={index} changeProduct={this.changeProduct.bind( this )} actionButton={this.compareProduct.bind( this )} isOutfit={false}/>
-            )
-          })}
+          {productCards}
         </div>
       </React.Fragment>
     );

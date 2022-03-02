@@ -3,6 +3,7 @@ import addAnswer from '../../action-creators/addAnswer.js';
 import axios from 'axios';
 import FormData from 'form-data';
 import Image from './image.jsx';
+import React from 'react';
 
 class AddAnswerComp extends React.Component {
   constructor (props) {
@@ -41,14 +42,14 @@ class AddAnswerComp extends React.Component {
       })
 
       var image = this.state.images[i][0];
-      console.log('image to upload', image);
-      console.log('photoUrl', photoUrl);
+      // console.log('image to upload', image);
+      // console.log('photoUrl', photoUrl);
 
       await axios.put(photoUrl, {'image': image}, config)
         .then((res) => {
 
           var imageUrlAws = photoUrl.split('?')[0] + '.jpg';
-          console.log('aws', imageUrlAws);
+          // console.log('aws', imageUrlAws);
           this.setState((prevState) => {
             return {
               awsUrl: [...prevState.awsUrl, imageUrlAws]
@@ -66,7 +67,7 @@ class AddAnswerComp extends React.Component {
       "email": email,
       "photos": this.state.awsUrl
     };
-    console.log({newAnswer});
+    // console.log({newAnswer});
 
     axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer)
       .then(() => {
@@ -130,8 +131,7 @@ class AddAnswerComp extends React.Component {
     return (
       <form id="overlay-addAnswer"
         className="overlay-bg"
-        onSubmit={this.handleSubmit.bind(this)}
-      >
+        onSubmit={this.handleSubmit.bind(this)}>
         <div className="overlay-content">
           <a href="#/"
             className="closebtn"
@@ -175,8 +175,7 @@ class AddAnswerComp extends React.Component {
               type="email"
               id="email"
               required
-              size="64"
-            />
+              size="64"/>
             <br />
             <div className="warning"> For authentication reasons, you will not be emailed </div>
           </div>
@@ -189,8 +188,7 @@ class AddAnswerComp extends React.Component {
             name="answerphoto"
             accept="image/png, image/jpeg"
             onChange={this.handleAddImage.bind(this)}
-            multiple
-          />
+            multiple/>
 
           <br />
           <input type="submit" name="submit" value="SUBMIT" />

@@ -1,5 +1,5 @@
 import _ from 'underscore';
-
+import React from 'react';
 var sortedQ = (questions) => {
   var sorted = _.chain(questions)
     .sortBy((question) => { return question.question_helpfulness})
@@ -40,7 +40,6 @@ var getAnswer = (questionID, callback) => {
     .then((results) => {
       var answers = results.data.data.results;
       var sorted = sortedA(answers)
-      console.log({sorted});
       return callback(sorted);
     })
     .catch(err => {

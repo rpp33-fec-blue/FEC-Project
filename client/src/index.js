@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import AppContainer from './containers/appContainer.js';
 import store from './configureStore';
 
-ReactDOM.render(
+export default ReactDOM.render(
   <Provider store={store}>
     <AppContainer />
   </Provider>,

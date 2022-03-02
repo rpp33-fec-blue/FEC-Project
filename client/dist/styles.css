@@ -378,9 +378,17 @@ ul li::before {
 
 .card-icon {
   background: #e5e5e3;
+  height: 8%;
+  width: 8%;
+  border-radius: 50%;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.card-button {
   height: 10%;
   width: 10%;
-  border-radius: 50%;
   position: absolute;
   top: 4%;
   right: 4%;
@@ -394,9 +402,12 @@ ul li::before {
   right: 4%;
 }
 
-.card-button {
-  height: 100%;
-  width: 100%;
+.card-icon-star-background {
+  height: 8%;
+  width: 8%;
+  position: absolute;
+  top: 5%;
+  right: 5%;
 }
 
 .card-info {

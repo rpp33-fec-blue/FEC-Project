@@ -1,6 +1,6 @@
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
+var { JSDOM } = require( "jsdom" );
+var { window } = new JSDOM( "" );
+var $ = require( "jquery" )( window );
 
 describe('Example Test', () => {
   it('should be true', () => {

@@ -1,7 +1,7 @@
 import Answers from './answers.jsx';
 import {getAnswer} from './helper.js';
 import markQuestion from '../../action-creators/markQuestion.js';
-
+import React from 'react';
 class Question extends React.Component {
 
   constructor(props) {

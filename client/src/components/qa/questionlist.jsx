@@ -1,6 +1,6 @@
 import Question from './question.jsx';
 import AddAnswer from './addanswer.jsx';
-
+import React from 'react';
 class QuestionList extends React.Component {
 
   constructor (props) {

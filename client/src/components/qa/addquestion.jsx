@@ -3,7 +3,7 @@
 import {connect} from 'react-redux';
 import addQuestion from '../../action-creators/addQuestion.js';
 import axios from 'axios';
-
+import React from 'react';
 class AddQuestionComp extends React.Component {
   constructor (props) {
     super(props);
@@ -25,7 +25,7 @@ class AddQuestionComp extends React.Component {
         submitMessage: 'Error: You must enter all the followings: question, nickname, email.'
       });
     } else {
-      console.log({question, nickname, email});
+      // console.log({question, nickname, email});
       this.setState({
         submitMessage: 'Complete sending questions'
       });
