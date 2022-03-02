@@ -77,7 +77,8 @@ class ProductList extends React.Component {
   }
 
   changeUrl (productId) {
-    var url = `/product/${productId}`;
+    var productName = this.props.productInfo.name;
+    var url = `/product/${productId}/${productName}`;
     window.location.href = url;
   }
 

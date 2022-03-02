@@ -11,7 +11,7 @@ export default ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-          <Route path="/product/:product_id" element={<AppContainer />} />
+          <Route path="/product/:product_id/:product_name" element={<AppContainer />} />
           <Route
             path="*"
             element={
