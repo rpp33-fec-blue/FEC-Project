@@ -86,9 +86,11 @@ class OutfitList extends React.Component {
     });
 
     return (
-      <div className='card-list'>
-        <AddOutfitCard addToOutfit={this.addToOutfit}/>
-        {productCards}
+      <div className='card-list-holder'>
+        <div className='card-list'>
+          <AddOutfitCard addToOutfit={this.addToOutfit}/>
+          {productCards}
+        </div>
       </div>
     );
   }

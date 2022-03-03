@@ -77,6 +77,11 @@ class ProductList extends React.Component {
     this.props.handleSwitchProduct( productId );
   }
 
+  scrollRight() {
+    console.log('scroll right');
+    document.getElementById('related-product-list').scrollLeft += 250;
+  }
+
   render() {
 
     if (!this.isReady || this.productId !== this.props.productId) {
@@ -93,8 +98,11 @@ class ProductList extends React.Component {
     return (
       <React.Fragment>
         <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare} currentProduct={this.props.productInfo} selectedProduct={this.state.selectedProduct}/>
-        <div className='card-list'>
-          {productCards}
+        <div id='related-product-list' className='card-list-holder'>
+          <div className='card-list'>
+            {productCards}
+            <div className='card-fade-right' onClick={this.scrollRight}></div>
+          </div>
         </div>
       </React.Fragment>
     );

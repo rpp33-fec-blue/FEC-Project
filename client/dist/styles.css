@@ -7,7 +7,7 @@ body {
 /*==================== Widget container =======================*/
 .container {
   display: grid;
-  grid-template-columns: 10% auto 10%;
+  grid-template-columns: 10% 80% 10%;
   grid-template-rows: auto auto auto auto auto;
 }
 /* use these classes when render your own widget in app.jsx */
@@ -23,6 +23,7 @@ body {
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
   padding-left: 10%;
+  padding-right: 10%;
   padding-bottom: 40px;
 }
 .item-widget-qa {
@@ -340,18 +341,31 @@ ul li::before {
   font-weight: lighter;
 }
 
+.card-list-holder {
+  overflow-x: scroll;
+  width: 100%;
+}
+
 .card-list {
+  padding: 4px;
   display: flex;
   flex-direction: row;
-  width: min-content
-
+  width: min-content;
+  gap: 24px;
 }
 
 .product-card {
   width: 222px;
   height: 325px;
   outline: 2px solid #c6c6c6;
-  margin-right: 24px;
+}
+
+.card-fade-right {
+  position: absolute;
+  width: 100px;
+  height: 325px;
+  left: 76%;
+  background:linear-gradient(to right, transparent, white);
 }
 
 .add-outfit-container {
