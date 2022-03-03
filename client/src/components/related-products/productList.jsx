@@ -23,6 +23,10 @@ class ProductList extends React.Component {
   buildRelatedItemsData() {
     var apiCalls = [];
     var uniqueProducts = [...new Set(this.props.relatedProducts)];
+    var productIdIndex = uniqueProducts.indexOf(this.props.productId);
+    if (productIdIndex > -1) {
+      uniqueProducts.splice(productIdIndex, 1);
+    }
     for ( var i = 0; i < uniqueProducts.length; i++ ) {
       var productId = uniqueProducts[i];
       apiCalls.push(axios.get( `http://localhost:8080/products/${productId}`, { params: { product_id: productId } } ));
@@ -88,6 +92,7 @@ class ProductList extends React.Component {
         productList.scrollLeft += 5
         count += 5;
       } else {
+        console.log('offsetWidth:', productList.offsetWidth, 'scrollX:', productList.scrollX);
         clearInterval(scroll);
       }
     }, 10)
