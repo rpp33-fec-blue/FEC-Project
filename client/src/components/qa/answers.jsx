@@ -90,10 +90,10 @@ class Answers extends React.Component {
     })
 
     return (
-      <div>
+      <>
         {toShow}
         {button}
-      </div>
+      </>
     );
   }
 }

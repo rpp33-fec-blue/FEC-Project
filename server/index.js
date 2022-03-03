@@ -26,6 +26,7 @@ var handleWorkerStopping = () => {
 
 var applyMiddleware = () => {
   app.use(express.static('client/dist'));
+  app.use('/product/*', express.static('client/dist'));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(forms.array());
@@ -38,24 +39,25 @@ if ( cluster.isMaster ) {
 } else {
   applyMiddleware();
 
+  // // GET DATA FOR PRODUCT ID
+  // app.get('/:product_id', (req, res) => {
+  //   var product_id = req.params.product_id
+  //   res.send({ product_id });
+  // })
+
+  // TALK TO S3
   app.get('/s3Url', async (req, res) => {
     var url = await generateUploadURL();
-    // console.log('url from app.get', url);
     res.send(url);
   })
 
+  // Get DATA from HR API
   app.all('/*', (req, res) => {
     var url = req.url;
     var method = req.method;
     var data = req.body;
     var params = req.params;
-    // var files = req.files;
     var contentType = req.headers['content-type'];
-
-    // console.log('url:', url);
-    // console.log('data:', data);
-    // console.log('headers:', contentType);
-    // console.log('params:', params);
 
     axios({
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp${url}`,

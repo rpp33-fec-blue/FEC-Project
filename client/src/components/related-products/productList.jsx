@@ -12,6 +12,7 @@ class ProductList extends React.Component {
       selectedProduct: { features: [] }
     }
     this.isReady = false;
+    this.productId = null;
     this.throttledBuildItems = _.throttle( this.buildRelatedItemsData, 100 );
     this.changeProduct = this.changeProduct.bind(this);
     this.compareProduct = this.compareProduct.bind(this);
@@ -49,6 +50,7 @@ class ProductList extends React.Component {
       }
 
       this.isReady = true;
+      this.productId = this.props.productId;
       this.setState({
         items: relatedProductsArray
       });
@@ -72,12 +74,19 @@ class ProductList extends React.Component {
 
   changeProduct( productId ) {
     this.isReady = false;
+    this.changeUrl(productId);
     this.props.handleSwitchProduct( productId );
+  }
+
+  changeUrl (productId) {
+    var productName = this.props.productInfo.name;
+    var url = `/product/${productId}/${productName}`;
+    window.location.href = url;
   }
 
   render() {
 
-    if ( !this.isReady ) {
+    if (!this.isReady || this.productId !== this.props.productId) {
       this.buildRelatedItemsData();
       return null;
     }
