@@ -65,13 +65,13 @@ class QuestionList extends React.Component {
     }
 
     return (
-      <div className="questionlist-and-btn">
+      <>
         <div className="questionlist">{questions}</div>
         <div className="btn-container">
           {moreAnswerQuestionVisibleBtn}
           <button onClick={this.onForm.bind(this)}>ADD A QUESTION</button>
         </div>
-      </div>
+      </>
     );
   }
 };

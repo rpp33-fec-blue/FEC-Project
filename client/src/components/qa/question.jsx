@@ -2,11 +2,12 @@ import Answers from './answers.jsx';
 import {getAnswer} from './helper.js';
 import markQuestion from '../../action-creators/markQuestion.js';
 import React from 'react';
+
 class Question extends React.Component {
 
   constructor(props) {
     super(props);
-    //props
+    // props
     // props.question
     // props.questionId
 
@@ -18,7 +19,7 @@ class Question extends React.Component {
     }
   }
 
-  componentDidMount() {
+  fetchData () {
     this.setState({
       answersFetching: true
     }, () => {
@@ -29,11 +30,20 @@ class Question extends React.Component {
         })
       });
     })
+  }
 
+  componentDidMount() {
+    this.fetchData()
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.questionId !== prevProps.questionId) {
+      this.fetchData();
+    }
   }
 
   onForm () {
-    onOverlay("overlay-addAnswer");
+    onOverlay(`overlay-addAnswer-${this.props.questionId}`);
   }
 
   markHelpfulQuestion () {
