@@ -352,8 +352,19 @@ ul li::before {
 
 /*======================== Related items =======================*/
 
+.list-scroll-right {
+  position: relative;
+  transform: translateX(150px);
+  opacity: 1;
+  transition: 1s all ease;
+}
 
-
+.list-scroll-left {
+  position: relative;
+  transform: translateX(-150px);
+  opacity: 1;
+  transition: 1s all ease;
+}
 
 .related-products-headers {
   margin-top: 60px;
@@ -362,7 +373,7 @@ ul li::before {
 }
 
 .card-list-holder {
-  overflow-x: scroll;
+  overflow-x: hidden;
   width: 100%;
 }
 

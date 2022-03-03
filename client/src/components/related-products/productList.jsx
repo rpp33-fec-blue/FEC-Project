@@ -2,6 +2,7 @@ import React from 'react';
 import ProductCard from './productCard.jsx';
 import Comparison from './comparison.jsx'
 import _ from 'underscore';
+import $ from 'jquery';
 
 class ProductList extends React.Component {
   constructor(props) {
@@ -80,7 +81,30 @@ class ProductList extends React.Component {
 
   scrollRight() {
     console.log('scroll right');
-    document.getElementById('related-product-list').scrollLeft += 250;
+    var count = 0;
+    var productList = document.getElementById('related-product-list');
+    var scroll = setInterval(() => {
+      if (count < 220) {
+        productList.scrollLeft += 5
+        count += 5;
+      } else {
+        clearInterval(scroll);
+      }
+    }, 10)
+  }
+
+  scrollLeft() {
+    console.log('scroll left');
+    var count = 0;
+    var productList = document.getElementById('related-product-list');
+    var scroll = setInterval(() => {
+      if (count < 230) {
+        productList.scrollLeft -= 5
+        count += 5;
+      } else {
+        clearInterval(scroll);
+      }
+    }, 10)
   }
 
   changeUrl (productId) {
