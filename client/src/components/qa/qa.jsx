@@ -1,8 +1,11 @@
-// Import functions and helpers
-// import {useSelector, useDispatch} from 'react-redux';
+// Store
 import {connect} from 'react-redux';
-import {sortedQ, filteredQ} from './helper.js';
+
+// helpers
+import {sortedQ, filteredQ, sortedAndFiltered} from './helper.js';
 import React from 'react';
+import postInteraction from '../../interactions.js';
+
 // Import components
 import SearchBar from './searchbar.jsx';
 import QuestionList from './questionlist.jsx';
@@ -21,23 +24,37 @@ class Qa extends React.Component {
       filteredQ: [],
       inputSearch: ''
     }
-    // console.log('props - qa', props);
+
+    this.trackInteractions = this.trackInteractions.bind(this);
+  }
+
+  trackInteractions(event) {
+    postInteraction(event, 'Questions & Answers');
+  }
+
+  fetchData() {
+    this.setState((prevState) => {
+      var sort = sortedQ(this.props.questions);
+      var filter = sortedAndFiltered(this.props.questions);
+      return {
+        sortedQ: sort,
+        filteredQ: filter
+      }
+    })
   }
 
   componentDidMount () {
-    var productId = this.props.productId;
-    var questions = this.props.questions.results;
-    // console.log({questions, productId})
-    this.setState({
-      sortedQ: sortedQ(questions),
-      filteredQ: filteredQ(questions)
-    }, () => {
-
-    });
+    this.fetchData();
   }
 
-  handleSearch(input) {
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props !== prevProps) {
+      this.fetchData();
+    }
+  }
 
+
+  handleSearch(input) {
     this.setState({
       inputSearch: input
     }, () => {
@@ -55,8 +72,9 @@ class Qa extends React.Component {
 
 
   render () {
+    console.log('productId', this.props.productId)
     return (
-      <div id="container-qa" className="item-widget-qa">
+      <div id="container-qa" className="item-widget-qa" onClick={this.trackInteractions}>
         <h1 className="qa">QUESTIONS & ANSWERS</h1>
         <SearchBar className="search-bar" handleSearch={this.handleSearch.bind(this)} />
         <QuestionList sortedQ={this.state.sortedQ} filteredQ={this.state.filteredQ}/>

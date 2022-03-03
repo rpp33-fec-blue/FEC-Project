@@ -74,7 +74,14 @@ class ProductList extends React.Component {
 
   changeProduct( productId ) {
     this.isReady = false;
+    this.changeUrl(productId);
     this.props.handleSwitchProduct( productId );
+  }
+
+  changeUrl (productId) {
+    var productName = this.props.productInfo.name;
+    var url = `/product/${productId}/${productName}`;
+    window.location.href = url;
   }
 
   render() {

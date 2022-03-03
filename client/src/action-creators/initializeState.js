@@ -14,7 +14,8 @@ var defaultProduct = 64620;
 var initializeState = ( productId, outfit ) => {
 
   return ( dispatch ) => {
-    var productId = productId || defaultProduct;
+
+    productId = Number(productId) || defaultProduct;
     var relatedItems = axios.get( `http://localhost:8080/products/${productId}/related`, { params: { product_id: productId } } );
     var reviews = axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } );
     var questions = axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, page: 1, count: 100 } } );
@@ -29,7 +30,7 @@ var initializeState = ( productId, outfit ) => {
       dispatch( actionOutfit( outfit ) );
       dispatch( actionRelated( results[0].data.data ) );
       dispatch( actionReviews( results[1].data.data ) );
-      dispatch( actionQuestions( results[2].data.data ) );
+      dispatch( actionQuestions( results[2].data.data.results ) );
       dispatch( actionMetadata( results[3].data.data ) );
       dispatch( actionStyles( results[4].data.data ) );
       dispatch( actionProductInfo( results[5].data.data ) );

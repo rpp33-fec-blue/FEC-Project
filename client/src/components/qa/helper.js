@@ -1,5 +1,7 @@
 import _ from 'underscore';
 import React from 'react';
+import axios from 'axios';
+
 var sortedQ = (questions) => {
   var sorted = _.chain(questions)
     .sortBy((question) => { return question.question_helpfulness})
@@ -16,8 +18,12 @@ var filteredQ = (questions, input = '') => {
       return question;
     }
   });
-
   return sortedQ(filtered);
+}
+
+var sortedAndFiltered = (questions, input = '') => {
+  var sort = sortedQ(questions);
+  return filteredQ(sort, input)
 }
 
 var sortedA = (answers) => {
@@ -36,16 +42,16 @@ var getAnswer = (questionID, callback) => {
     }
   }
 
-  return axios.get(`/qa/questions/${questionID}/answers`, config)
+  axios.get(`/qa/questions/${questionID}/answers`, config)
     .then((results) => {
       var answers = results.data.data.results;
       var sorted = sortedA(answers)
-      return callback(sorted);
+      callback(sorted);
     })
-    .catch(err => {
-      throw 'error in getAnswer call'
+    .catch((err) => {
+      console.log('err in getAnswer', err);
     });
 
 };
 
-export {sortedQ, filteredQ, getAnswer};
+export {sortedQ, filteredQ, getAnswer, sortedAndFiltered};
