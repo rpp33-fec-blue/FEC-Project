@@ -23,7 +23,7 @@ const Price = ( { styles, selectedStyleIndex } ) => {
     return (
       <ErrorBoundary component={'Price'}>
       <div className='price-component'>
-        <p><span>Price:</span> <span className="original-price">${salePrice}</span> <span>--></span> <span className="sale-price">${price}</span></p>
+        <p><span>Price:</span> <span className="original-price">${salePrice}</span> <span>--></span> <span className="red-text">${price}</span></p>
       </div>
       </ErrorBoundary>
     );

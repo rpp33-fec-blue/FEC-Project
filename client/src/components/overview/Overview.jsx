@@ -39,7 +39,8 @@ class Overview extends React.Component {
       sku: null,
       sizeSelected: 'Select Size',
       quantitySelected: 0,
-      outOfStock: outOfStockBool
+      outOfStock: outOfStockBool,
+      addToCartClicked: false
     };
 
     this.updateSelectedStyle = this.updateSelectedStyle.bind(this);
@@ -48,6 +49,7 @@ class Overview extends React.Component {
     this.updateQuantitySelected = this.updateQuantitySelected.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.updateOutOfStock = this.updateOutOfStock.bind(this);
+    this.updateAddToCartClicked = this.updateAddToCartClicked.bind(this);
   }
 
   updateSelectedStyle(event) {
@@ -60,9 +62,9 @@ class Overview extends React.Component {
       }
     }
     if (outOfStock) {
-      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: true });
+      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: true, addToCartClicked: false });
     } else {
-      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: false });
+      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: false, addToCartClicked: false });
     }
   }
 
@@ -87,7 +89,7 @@ class Overview extends React.Component {
         break;
       }
     }
-    this.setState({ sku: sku, sizeSelected: newSize, quantitySelected: 1 });
+    this.setState({ sku: sku, sizeSelected: newSize, quantitySelected: 1, updateAddToCartClicked: false, addToCartClicked: false });
   }
 
   updateQuantitySelected(event) {
@@ -101,6 +103,10 @@ class Overview extends React.Component {
 
   updateOutOfStock() {
     this.setState({ outOfStock: true });
+  }
+
+  updateAddToCartClicked() {
+    this.setState( { addToCartClicked: true } );
   }
 
   render() {
@@ -141,12 +147,14 @@ class Overview extends React.Component {
                 updateQuantitySelected={this.updateQuantitySelected}
                 addToCart={this.addToCart}
                 updateOutOfStock={this.updateOutOfStock}
+                addToCartClicked={this.state.addToCartClicked}
               />
               <div className='add-toggle'>
                 <AddToCartButton
                   outOfStock={this.state.outOfStock}
                   sizeSelected={this.state.sizeSelected}
                   addToCart={this.addToCart}
+                  updateAddToCartClicked={this.updateAddToCartClicked}
                 />
                 <OutfitToggle
                   productId={this.props.productId}
