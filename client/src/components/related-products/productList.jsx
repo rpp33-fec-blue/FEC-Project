@@ -1,6 +1,6 @@
 import React from 'react';
 import ProductCard from './productCard.jsx';
-import Comparison from './comparison.jsx'
+import Comparison from './comparison.jsx';
 import _ from 'underscore';
 import $ from 'jquery';
 
