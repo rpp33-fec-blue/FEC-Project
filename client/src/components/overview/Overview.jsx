@@ -34,7 +34,7 @@ class Overview extends React.Component {
 
     this.state = {
       styles: this.props.styles,
-      selectedStyleIndex: defaultStyleIndex,
+      selectedStyleIndex: defaultStyleIndex || 0,
       selectedImageIndex: 0,
       sku: null,
       sizeSelected: 'Select Size',
