@@ -92,23 +92,26 @@ class ProductList extends React.Component {
     console.log('scroll right');
     var count = 0;
     var productList = document.getElementById('related-product-list');
+    $('.card-fade-left').removeClass('card-no-arrow');
     if (productList.offsetWidth + productList.scrollLeft < productList.scrollWidth) {
       var scroll = setInterval(() => {
-        if (count < 220) {
+        if (count < 220 && (productList.offsetWidth + productList.scrollLeft) < productList.scrollWidth) {
           productList.scrollLeft += 5
           count += 5;
         } else {
-          $('.card-fade-left').show();
+
+          $('.card-fade-left').show(0);
+
           if (productList.offsetWidth + productList.scrollLeft >= productList.scrollWidth) {
-            $('.card-fade-right').hide();
+            $('.card-fade-right').hide(0);
           }
 
           clearInterval(scroll);
         }
       }, 10)
     } else {
-      $('.card-fade-left').show();
-      $('.card-fade-right').hide();
+      $('.card-fade-left').show(0);
+      $('.card-fade-right').hide(0);
       console.log('reached the end');
     }
   }
@@ -117,23 +120,22 @@ class ProductList extends React.Component {
     console.log('scroll left');
     var count = 0;
     var productList = document.getElementById('related-product-list');
-    console.log(productList.scrollWidth, productList.offsetWidth, productList.scrollLeft)
     if (productList.scrollLeft > 0) {
       var scroll = setInterval(() => {
-        if (count < 230) {
+        if (count < 230 && productList.scrollLeft > 0) {
           productList.scrollLeft -= 5
           count += 5;
         } else {
-          $('.card-fade-right').show();
+          $('.card-fade-right').show(0);
           if (productList.scrollLeft === 0) {
-            $('.card-fade-left').hide();
+            $('.card-fade-left').hide(0);
           }
           clearInterval(scroll);
         }
       }, 10)
     } else {
-      $('.card-fade-left').hide();
-      $('.card-fade-right').show();
+      $('.card-fade-left').hide(0);
+      $('.card-fade-right').show(0);
       console.log('reached the end!')
     }
   }
@@ -157,14 +159,19 @@ class ProductList extends React.Component {
       )
     });
 
+    var leftFade = <div className='card-fade-right' onClick={this.scrollRight}>&#x203A;</div>;
+    if (this.state.items.length < 4) {
+      leftFade = <div className='card-fade-right card-no-arrow' onClick={this.scrollRight}>&#x203A;</div>;
+    }
+
     return (
       <React.Fragment>
         <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare} currentProduct={this.props.productInfo} selectedProduct={this.state.selectedProduct}/>
         <div id='related-product-list' className='card-list-holder'>
           <div className='card-list'>
-            <div className='card-fade-left' onClick={this.scrollLeft}>&#x2039;</div>
+            <div className='card-fade-left card-no-arrow' onClick={this.scrollLeft}>&#x2039;</div>
             {productCards}
-            <div className='card-fade-right' onClick={this.scrollRight}>&#x203A;</div>
+            {leftFade}
           </div>
         </div>
       </React.Fragment>
