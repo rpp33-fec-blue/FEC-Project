@@ -1,5 +1,5 @@
 require('dotenv').config();
-console.log(process.env);
+// console.log(process.env);
 
 // const API_KEY = require('../config.js').API_KEY;
 const API_KEY = process.env.API_KEY;
@@ -10,6 +10,7 @@ const numberOfCores = require('os').cpus().length;
 var multer = require('multer');
 var forms = multer();
 const generateUploadURL = require('./s3.js');
+var cors = require('cors')
 
 let app = express();
 let port = 8080;
@@ -34,6 +35,7 @@ var applyMiddleware = () => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(forms.array());
+  app.use(cors());
 }
 
 if ( cluster.isMaster ) {
