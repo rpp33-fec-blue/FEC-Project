@@ -83,13 +83,7 @@ class ProductList extends React.Component {
     this.props.handleSwitchProduct( productId );
   }
 
-  isOverflowing(element) {
-    console.log(element.scrollWidth, element.offsetWidth)
-    return (element.scrollWidth > element.offsetWidth);
-  }
-
   scrollRight() {
-    console.log('scroll right');
     var count = 0;
     var productList = document.getElementById('related-product-list');
     $('.card-fade-left').removeClass('card-no-arrow');
@@ -117,7 +111,6 @@ class ProductList extends React.Component {
   }
 
   scrollLeft() {
-    console.log('scroll left');
     var count = 0;
     var productList = document.getElementById('related-product-list');
     if (productList.scrollLeft > 0) {

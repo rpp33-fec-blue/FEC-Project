@@ -405,6 +405,34 @@ ul li::before {
   background:linear-gradient(to left, transparent, white);
 }
 
+.card-fade-right-outfit {
+  position: absolute;
+  width: 80px;
+  z-index: 1;
+  height: 328px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 300%;
+  color: #525152;
+  left: 77%;
+  background:linear-gradient(to right, transparent, white);
+}
+
+.card-fade-left-outfit {
+  position: absolute;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 300%;
+  color: #525152;
+  z-index: 1;
+  height: 328px;
+  right: 77%;
+  background:linear-gradient(to left, transparent, white);
+}
+
 .card-no-arrow {
   display: none;
 }
