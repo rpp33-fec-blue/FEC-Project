@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCard from './productCard.jsx';
 import AddOutfitCard from './addOutfitCard.jsx';
+import $ from 'jquery';
 
 class OutfitList extends React.Component {
   constructor(props) {
@@ -63,11 +64,62 @@ class OutfitList extends React.Component {
   }
 
   addToOutfit() {
+    $('.card-fade-right-outfit').show(0);
     this.props.handleAddOutfit(this.props.productId);
   }
 
   removeFromOutfit(productId) {
     this.props.handleRemoveOutfit(productId);
+  }
+
+  scrollRight() {
+    console.log('scroll right');
+    var count = 0;
+    var productList = document.getElementById('outfit-product-list');
+    $('.card-fade-left-outfit').removeClass('card-no-arrow');
+    if (productList.offsetWidth + productList.scrollLeft < productList.scrollWidth) {
+      var scroll = setInterval(() => {
+        if (count < 220 && (productList.offsetWidth + productList.scrollLeft) < productList.scrollWidth) {
+          productList.scrollLeft += 5
+          count += 5;
+        } else {
+          $('.card-fade-left-outfit').show(0);
+          if (productList.offsetWidth + productList.scrollLeft >= productList.scrollWidth) {
+            $('.card-fade-right-outfit').hide(0);
+          }
+
+          clearInterval(scroll);
+        }
+      }, 10)
+    } else {
+      $('.card-fade-left-outfit').show(0);
+      $('.card-fade-right-outfit').hide(0);
+      console.log('reached the end');
+    }
+  }
+
+  scrollLeft() {
+    console.log('scroll left');
+    var count = 0;
+    var productList = document.getElementById('outfit-product-list');
+    if (productList.scrollLeft > 0) {
+      var scroll = setInterval(() => {
+        if (count < 230 && productList.scrollLeft > 0) {
+          productList.scrollLeft -= 5
+          count += 5;
+        } else {
+          $('.card-fade-right-outfit').show(0);
+          if (productList.scrollLeft === 0) {
+            $('.card-fade-left-outfit').hide(0);
+          }
+          clearInterval(scroll);
+        }
+      }, 10)
+    } else {
+      $('.card-fade-left-outfit').hide(0);
+      $('.card-fade-right-outfit').show(0);
+      console.log('reached the end!')
+    }
   }
 
   render() {
@@ -85,10 +137,19 @@ class OutfitList extends React.Component {
       );
     });
 
+    var leftFade = <div className='card-fade-right-outfit' onClick={this.scrollRight}>&#x203A;</div>;
+    if (this.state.items.length < 3) {
+      leftFade = <div className='card-fade-right-outfit card-no-arrow' onClick={this.scrollRight}>&#x203A;</div>;
+    }
+
     return (
-      <div className='card-list'>
-        <AddOutfitCard addToOutfit={this.addToOutfit}/>
-        {productCards}
+      <div id='outfit-product-list' className='card-list-holder'>
+        <div className='card-list'>
+          <div className='card-fade-left-outfit card-no-arrow' onClick={this.scrollLeft}>&#x2039;</div>
+          <AddOutfitCard addToOutfit={this.addToOutfit}/>
+          {productCards}
+          {leftFade}
+        </div>
       </div>
     );
   }
