@@ -16,31 +16,60 @@ const AddToCart = ({
   outOfStock,
   updateSizeSelectedAndSku,
   updateQuantitySelected,
-  updateOutOfStock
+  updateOutOfStock,
+  addToCartClicked
 }) => {
 
-  return (
-    <ErrorBoundary component={'AddToCart'}>
-      <div className='addToCart-component size-quantity-selectors'>
-        <SizeSelector
-          styles={styles}
-          selectedStyleIndex={selectedStyleIndex}
-          sizeSelected={sizeSelected}
-          updateSizeSelectedAndSku={updateSizeSelectedAndSku}
-          outOfStock={outOfStock}
-          updateOutOfStock={updateOutOfStock}
-        />
-        <QuantitySelector
-          styles={styles}
-          selectedStyleIndex={selectedStyleIndex}
-          sku={sku}
-          sizeSelected={sizeSelected}
-          quantitySelected={quantitySelected}
-          updateQuantitySelected={updateQuantitySelected}
-        />
-      </div>
-    </ErrorBoundary>
-  );
+  if (addToCartClicked) {
+    return (
+      <ErrorBoundary component={'AddToCart'}>
+        <div className='addToCart-component size-quantity-selectors'>
+          <div className='red-text please-select'>Please select size</div>
+          <SizeSelector
+            styles={styles}
+            selectedStyleIndex={selectedStyleIndex}
+            sizeSelected={sizeSelected}
+            updateSizeSelectedAndSku={updateSizeSelectedAndSku}
+            outOfStock={outOfStock}
+            updateOutOfStock={updateOutOfStock}
+            addToCartClicked={addToCartClicked}
+          />
+          <QuantitySelector
+            styles={styles}
+            selectedStyleIndex={selectedStyleIndex}
+            sku={sku}
+            sizeSelected={sizeSelected}
+            quantitySelected={quantitySelected}
+            updateQuantitySelected={updateQuantitySelected}
+          />
+        </div>
+      </ErrorBoundary>
+    );
+  } else {
+    return (
+      <ErrorBoundary component={'AddToCart'}>
+        <div className='addToCart-component size-quantity-selectors'>
+          <SizeSelector
+            styles={styles}
+            selectedStyleIndex={selectedStyleIndex}
+            sizeSelected={sizeSelected}
+            updateSizeSelectedAndSku={updateSizeSelectedAndSku}
+            outOfStock={outOfStock}
+            updateOutOfStock={updateOutOfStock}
+            addToCartClicked={addToCartClicked}
+          />
+          <QuantitySelector
+            styles={styles}
+            selectedStyleIndex={selectedStyleIndex}
+            sku={sku}
+            sizeSelected={sizeSelected}
+            quantitySelected={quantitySelected}
+            updateQuantitySelected={updateQuantitySelected}
+          />
+        </div>
+      </ErrorBoundary>
+    );
+  }
 };
 
 AddToCart.propTypes = {
@@ -53,7 +82,8 @@ AddToCart.propTypes = {
   outOfStock: PropTypes.bool,
   updateSizeSelectedAndSku: PropTypes.func,
   updateQuantitySelected: PropTypes.func,
-  updateOutOfStock: PropTypes.func
+  updateOutOfStock: PropTypes.func,
+  addToCartClicked: PropTypes.bool
 };
 
 export default AddToCart;

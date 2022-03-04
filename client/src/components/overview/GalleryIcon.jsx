@@ -9,7 +9,7 @@ const GalleryIcon = ({ styles, selectedStyleIndex, selectedImageIndex, updateSel
 
   return (
     <ErrorBoundary component={'GalleryIcon'}>
-      <div className='galleryIcon-component'>
+      <div className='gallery-icon-component'>
         {/* TO DO - return icons */}
       </div>
     </ErrorBoundary>

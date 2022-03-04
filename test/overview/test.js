@@ -16,6 +16,10 @@ import SizeSelector from '../../client/src/components/overview/SizeSelector.jsx'
 import QuantitySelector from '../../client/src/components/overview/QuantitySelector.jsx';
 import AddToCartButton from '../../client/src/components/overview/AddToCartButton.jsx';
 import ProductFeatures from '../../client/src/components/overview/ProductFeatures.jsx';
+import GalleryBrowser from '../../client/src/components/overview/GalleryBrowser.jsx';
+import GalleryIcon from '../../client/src/components/overview/GalleryIcon.jsx';
+import ScrollArrow from '../../client/src/components/overview/ScrollArrow.jsx';
+import StyleThumbnail from '../../client/src/components/overview/StyleThumbnail.jsx';
 
 import initialState from '../../client/src/initialState.js';
 
@@ -238,7 +242,7 @@ describe('ImageGallery Component', function() {
     });
 
     it('Should render', function() {
-      const nodeWrapper = wrapper.find('h2');
+      const nodeWrapper = wrapper.find('.image-gallery-component');
       expect(nodeWrapper.length).toBe(1);
     });
   });
@@ -283,15 +287,15 @@ describe('DefaultView Component', function() {
 
 // });
 
-// describe('GalleryIcon Component', function() {
+describe('GalleryIcon Component', function() {
 
-//   it('Should render', function() {
-//     const wrapper = shallow(<GalleryIcon />);
-//     const component = wrapper.find('.galleryIcon-component');
-//     expect(component.length).toBe(1);
-//   });
+  it('Should render', function() {
+    const wrapper = shallow(<GalleryIcon />);
+    const component = wrapper.find('.gallery-icon-component');
+    expect(component.length).toBe(1);
+  });
 
-// });
+});
 
 // AddToCart and its subcomponents
 
@@ -430,7 +434,91 @@ describe('ProductFeatures Component', function() {
     });
 
     it('Should render', function() {
-      const nodeWrapper = wrapper.find('p');
+      const nodeWrapper = wrapper.find('.product-features-component');
+      expect(nodeWrapper.length).toBe(1);
+    });
+  });
+});
+
+
+describe('GalleryBrowser Component', function() {
+
+  describe('When passed props', () => {
+    const buildwrapper = (props = {}) => {
+      const wrapper = shallow(<GalleryBrowser {...props}/>);
+      return wrapper;
+    };
+
+    let wrapper;
+
+    beforeEach(() => {
+      const props = {
+        styles: initialState.styles,
+        selectedStyleIndex: 0,
+        selectedImageIndex: 0,
+        updateSelectedImageIndex: () => {},
+        updateDefaultView: () => {}
+      };
+      wrapper = buildwrapper(props);
+    });
+
+    it('Should render', function() {
+      const nodeWrapper = wrapper.find('.gallery-browser-component');
+      expect(nodeWrapper.length).toBe(1);
+    });
+  });
+});
+
+describe('ScrollArrow Component', function() {
+
+  describe('When passed props', () => {
+    const buildwrapper = (props = {}) => {
+      const wrapper = shallow(<ScrollArrow {...props}/>);
+      return wrapper;
+    };
+
+    let wrapper;
+
+    beforeEach(() => {
+      const props = {
+        styles: initialState.styles,
+        selectedStyleIndex: 0,
+        selectedImageIndex: 0,
+        updateSelectedImageIndex: () => {},
+        direction: 'right'
+      };
+      wrapper = buildwrapper(props);
+    });
+
+    it('Should render', function() {
+      const nodeWrapper = wrapper.find('.scroll-arrow-component');
+      expect(nodeWrapper.length).toBe(1);
+    });
+  });
+});
+
+describe('StyleThumbnail Component', function() {
+
+  describe('When passed props', () => {
+    const buildwrapper = (props = {}) => {
+      const wrapper = shallow(<StyleThumbnail {...props}/>);
+      return wrapper;
+    };
+
+    let wrapper;
+
+    beforeEach(() => {
+      const props = {
+        styles: initialState.styles,
+        index: 0,
+        selectedStyleIndex: 0,
+        updateSelectedStyle: () => {}
+      };
+      wrapper = buildwrapper(props);
+    });
+
+    it('Should render', function() {
+      const nodeWrapper = wrapper.find('.style-thumbnail-container');
       expect(nodeWrapper.length).toBe(1);
     });
   });

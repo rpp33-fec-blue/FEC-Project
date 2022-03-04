@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
 import ErrorBoundary from '../ErrorBoundary.jsx';
 
-const AddToCartButton = ({ outOfStock, sizeSelected, addToCart }) => {
+const AddToCartButton = ({ outOfStock, sizeSelected, addToCart, updateAddToCartClicked }) => {
 
   if (outOfStock) {
     return (
@@ -17,7 +17,7 @@ const AddToCartButton = ({ outOfStock, sizeSelected, addToCart }) => {
     return (
       <ErrorBoundary component={'AddToCartButton'}>
         <div className='addToCartButton-component'>
-          <button className='add-to-cart-button' onClick={null}>Add To Cart</button> {/* TO DO - open size selector dropdown and display 'Please select size' above */}
+          <button className='add-to-cart-button' onClick={updateAddToCartClicked}>Add To Cart</button>
         </div>
       </ErrorBoundary>
     );
@@ -25,18 +25,18 @@ const AddToCartButton = ({ outOfStock, sizeSelected, addToCart }) => {
     return (
       <ErrorBoundary component={'AddToCartButton'}>
         <div className='addToCartButton-component'>
-          <button className='add-to-cart-button' onClick={addToCart} disabled>Add To Cart</button> {/* Can enable if we're comfortable POSTing to cart API */}
+          <button className='add-to-cart-button' onClick={addToCart}>Add To Cart</button>
         </div>
       </ErrorBoundary>
     );
   }
 };
 
-
 AddToCartButton.propTypes = {
   outOfStock: PropTypes.bool,
   sizeSelected: PropTypes.string,
-  addToCart: PropTypes.func
+  addToCart: PropTypes.func,
+  updateAddToCartClicked: PropTypes.func
 };
 
 export default AddToCartButton;
