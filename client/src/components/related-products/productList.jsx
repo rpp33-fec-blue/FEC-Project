@@ -83,33 +83,51 @@ class ProductList extends React.Component {
     this.props.handleSwitchProduct( productId );
   }
 
+  isOverflowing(element) {
+    console.log(element.scrollWidth, element.offsetWidth)
+    return (element.scrollWidth > element.offsetWidth);
+  }
+
   scrollRight() {
     console.log('scroll right');
     var count = 0;
     var productList = document.getElementById('related-product-list');
-    var scroll = setInterval(() => {
-      if (count < 220) {
-        productList.scrollLeft += 5
-        count += 5;
-      } else {
-        console.log('offsetWidth:', productList.offsetWidth, 'scrollX:', productList.scrollX);
-        clearInterval(scroll);
-      }
-    }, 10)
+    if (productList.offsetWidth + productList.scrollLeft < productList.scrollWidth) {
+      var scroll = setInterval(() => {
+        if (count < 220) {
+          productList.scrollLeft += 5
+          count += 5;
+        } else {
+          if (productList.offsetWidth + productList.scrollLeft >= productList.scrollWidth) {
+            $('.card-fade-right').hide();
+          }
+
+          clearInterval(scroll);
+        }
+      }, 10)
+    } else {
+      $('.card-fade-right').hide();
+      console.log('reached the end');
+    }
   }
 
   scrollLeft() {
     console.log('scroll left');
     var count = 0;
     var productList = document.getElementById('related-product-list');
-    var scroll = setInterval(() => {
-      if (count < 230) {
-        productList.scrollLeft -= 5
-        count += 5;
-      } else {
-        clearInterval(scroll);
-      }
-    }, 10)
+    console.log(productList.scrollWidth, productList.offsetWidth, productList.scrollLeft)
+    if (productList.offsetWidth + productList.scrollLeft < productList.scrollWidth) {
+      var scroll = setInterval(() => {
+        if (count < 230) {
+          productList.scrollLeft -= 5
+          count += 5;
+        } else {
+          clearInterval(scroll);
+        }
+      }, 10)
+    } else {
+      console.log('reached the end!')
+    }
   }
 
   changeUrl (productId) {
