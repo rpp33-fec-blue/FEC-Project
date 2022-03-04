@@ -98,6 +98,7 @@ class ProductList extends React.Component {
           productList.scrollLeft += 5
           count += 5;
         } else {
+          $('.card-fade-left').show();
           if (productList.offsetWidth + productList.scrollLeft >= productList.scrollWidth) {
             $('.card-fade-right').hide();
           }
@@ -106,6 +107,7 @@ class ProductList extends React.Component {
         }
       }, 10)
     } else {
+      $('.card-fade-left').show();
       $('.card-fade-right').hide();
       console.log('reached the end');
     }
@@ -116,16 +118,22 @@ class ProductList extends React.Component {
     var count = 0;
     var productList = document.getElementById('related-product-list');
     console.log(productList.scrollWidth, productList.offsetWidth, productList.scrollLeft)
-    if (productList.offsetWidth + productList.scrollLeft < productList.scrollWidth) {
+    if (productList.scrollLeft > 0) {
       var scroll = setInterval(() => {
         if (count < 230) {
           productList.scrollLeft -= 5
           count += 5;
         } else {
+          $('.card-fade-right').show();
+          if (productList.scrollLeft === 0) {
+            $('.card-fade-left').hide();
+          }
           clearInterval(scroll);
         }
       }, 10)
     } else {
+      $('.card-fade-left').hide();
+      $('.card-fade-right').show();
       console.log('reached the end!')
     }
   }
@@ -154,8 +162,9 @@ class ProductList extends React.Component {
         <Comparison visible={this.state.isPopupVisible} toggle={this.toggleCompare} currentProduct={this.props.productInfo} selectedProduct={this.state.selectedProduct}/>
         <div id='related-product-list' className='card-list-holder'>
           <div className='card-list'>
+            <div className='card-fade-left' onClick={this.scrollLeft}>&#x2039;</div>
             {productCards}
-            <div className='card-fade-right' onClick={this.scrollRight}></div>
+            <div className='card-fade-right' onClick={this.scrollRight}>&#x203A;</div>
           </div>
         </div>
       </React.Fragment>

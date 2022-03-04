@@ -380,9 +380,29 @@ ul li::before {
 .card-fade-right {
   position: absolute;
   width: 80px;
+  z-index: 1;
   height: 328px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 300%;
+  color: #525152;
   left: 77%;
   background:linear-gradient(to right, transparent, white);
+}
+
+.card-fade-left {
+  position: absolute;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 300%;
+  color: #525152;
+  z-index: 1;
+  height: 328px;
+  right: 77%;
+  background:linear-gradient(to left, transparent, white);
 }
 
 .add-outfit-container {
@@ -502,7 +522,7 @@ ul li::before {
   height: 100%;
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   transition: opacity 0.2s;
