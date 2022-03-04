@@ -6,12 +6,12 @@ import ErrorBoundary from '../ErrorBoundary.jsx';
 const ProductFeatures = ({ productInfo }) => {
 
   return (
-    <ErrorBoundary>
-      <React.Fragment>
+    <ErrorBoundary component='ProductFeatures component'>
+      <div className='product-features-component'>
         <ul>
           {productInfo.features.map((feature, index) => <li key={index}>{feature.feature + ': ' + feature.value}</li>)}
         </ul>
-      </React.Fragment>
+      </div>
     </ErrorBoundary>
   );
 }

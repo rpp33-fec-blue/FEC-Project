@@ -13,7 +13,7 @@ const StyleThumbnail = ({ styles, index, selectedStyleIndex, updateSelectedStyle
       <ErrorBoundary component={'StyleThumbnail'}>
         <div className='style-thumbnail-container'>
           <img src={style.photos[0].thumbnail_url} className='style-thumbnail'></img>
-          <img src='./assets/checkmark.png' className='style-checkmark'></img>
+          <img src='/assets/checkmark.png' className='style-checkmark'></img>
         </div>
       </ErrorBoundary>
     );
