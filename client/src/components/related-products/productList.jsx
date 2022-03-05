@@ -29,9 +29,9 @@ class ProductList extends React.Component {
     }
     for ( var i = 0; i < uniqueProducts.length; i++ ) {
       var productId = uniqueProducts[i];
-      apiCalls.push(axios.get( `http://localhost:8080/products/${productId}`, { params: { product_id: productId } } ));
-      apiCalls.push(axios.get( 'http://localhost:8080/reviews/meta', { params: { product_id: productId } } ));
-      apiCalls.push(axios.get( `http://localhost:8080/products/${productId}/styles`, { params: { product_id: productId } } ));
+      apiCalls.push(axios.get( `/products/${productId}`, { params: { product_id: productId } } ));
+      apiCalls.push(axios.get( '/reviews/meta', { params: { product_id: productId } } ));
+      apiCalls.push(axios.get( `/products/${productId}/styles`, { params: { product_id: productId } } ));
     }
 
     Promise.all(apiCalls).then( ( results ) => {
