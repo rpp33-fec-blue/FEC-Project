@@ -9,7 +9,7 @@ var multer = require('multer');
 var forms = multer();
 var cors = require('cors')
 const generateUploadURL = require('./s3.js');
-var cors = require('cors')
+
 
 let app = express();
 let port = 8080;
