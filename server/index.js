@@ -6,6 +6,7 @@ const cluster = require('cluster');
 const numberOfCores = require('os').cpus().length;
 var multer = require('multer');
 var forms = multer();
+var cors = require('cors')
 const generateUploadURL = require('./s3.js');
 
 let app = express();
@@ -31,6 +32,7 @@ var applyMiddleware = () => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(forms.array());
+  app.use(cors());
 }
 
 if ( cluster.isMaster ) {
