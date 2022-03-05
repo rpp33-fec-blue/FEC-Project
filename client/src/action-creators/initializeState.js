@@ -26,6 +26,7 @@ var initializeState = ( productId, outfit ) => {
 
     Promise.all( [ relatedItems, reviews, questions, metadata, styles, productInfo, cart ])
     .then( ( results ) => {
+      console.log('results', results);
       dispatch( actionProductId( productId ) );
       dispatch( actionOutfit( outfit ) );
       dispatch( actionRelated( results[0].data.data ) );
