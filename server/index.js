@@ -1,5 +1,6 @@
 require('dotenv').config()
 const API_KEY = process.env.API_KEY
+console.log(API_KEY);
 const express = require('express');
 const axios = require( "axios" );
 const cluster = require('cluster');
