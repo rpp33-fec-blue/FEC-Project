@@ -7,10 +7,10 @@ var markReview = ( reviewId ) => {
 
   return ( dispatch ) => {
 
-    axios.put( `http://localhost:8080/reviews/${reviewId}/helpful` )
+    axios.put( `/reviews/${reviewId}/helpful` )
       .then( ( ) => {
         var productId = store.getState().productId || defaultProduct;
-        axios.get( 'http://localhost:8080/reviews', { params: { product_id: productId, count: 1000 } } )
+        axios.get( '/reviews', { params: { product_id: productId, count: 1000 } } )
         .then( ( reviews ) => {
           dispatch( actionReviews( reviews.data.data ) );
         });

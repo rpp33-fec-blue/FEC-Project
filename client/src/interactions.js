@@ -5,7 +5,7 @@ var PostInteraction = (event, widgetName) => {
     time: Date.now().toString()
   }
 
-  axios.post("http://localhost:8080/interactions", interaction)
+  axios.post('/interactions', interaction)
   .then( (result) => {
     console.log('interaction posted!');
   })

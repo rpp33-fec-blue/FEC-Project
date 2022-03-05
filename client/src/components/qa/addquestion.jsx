@@ -37,7 +37,7 @@ class AddQuestionComp extends React.Component {
       "product_id": Number(this.props.productId)
     };
 
-    axios.post( "http://localhost:8080/qa/questions", newQuestion);
+    axios.post( "/qa/questions", newQuestion);
     // addQuestion(newQuestion); - if got time tried to find out how to use this later.
   }
 
