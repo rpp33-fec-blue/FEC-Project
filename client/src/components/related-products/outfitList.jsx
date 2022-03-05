@@ -80,8 +80,8 @@ class OutfitList extends React.Component {
     if (productList.offsetWidth + productList.scrollLeft < productList.scrollWidth) {
       var scroll = setInterval(() => {
         if (count < 220 && (productList.offsetWidth + productList.scrollLeft) < productList.scrollWidth) {
-          productList.scrollLeft += 5
-          count += 5;
+          productList.scrollLeft += 1;
+          count += 1;
         } else {
           $('.card-fade-left-outfit').show(0);
           if (productList.offsetWidth + productList.scrollLeft >= productList.scrollWidth) {
@@ -90,7 +90,7 @@ class OutfitList extends React.Component {
 
           clearInterval(scroll);
         }
-      }, 10)
+      }, 1)
     } else {
       $('.card-fade-left-outfit').show(0);
       $('.card-fade-right-outfit').hide(0);
@@ -104,9 +104,9 @@ class OutfitList extends React.Component {
     var productList = document.getElementById('outfit-product-list');
     if (productList.scrollLeft > 0) {
       var scroll = setInterval(() => {
-        if (count < 230 && productList.scrollLeft > 0) {
-          productList.scrollLeft -= 5
-          count += 5;
+        if (count < 220 && productList.scrollLeft > 0) {
+          productList.scrollLeft -= 1;
+          count += 1;
         } else {
           $('.card-fade-right-outfit').show(0);
           if (productList.scrollLeft === 0) {
@@ -114,7 +114,7 @@ class OutfitList extends React.Component {
           }
           clearInterval(scroll);
         }
-      }, 10)
+      }, 1)
     } else {
       $('.card-fade-left-outfit').hide(0);
       $('.card-fade-right-outfit').show(0);
