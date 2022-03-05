@@ -74,6 +74,7 @@ if ( cluster.isMaster ) {
       data: data
     })
     .then( ( results ) => {
+      console.log('results', results);
       res.send({ data: results.data } );
     })
     .catch( ( error ) => {
