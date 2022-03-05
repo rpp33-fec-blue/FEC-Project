@@ -16,13 +16,13 @@ var initializeState = ( productId, outfit ) => {
   return ( dispatch ) => {
 
     productId = Number(productId) || defaultProduct;
-    var relatedItems = axios.get( `http://ec2-13-229-215-161.ap-southeast-1.compute.amazonaws.com/products/${productId}/related`, { params: { product_id: productId } } );
-    var reviews = axios.get( 'http://ec2-13-229-215-161.ap-southeast-1.compute.amazonaws.com/reviews', { params: { product_id: productId, count: 1000 } } );
-    var questions = axios.get( 'http://ec2-13-229-215-161.ap-southeast-1.compute.amazonaws.com/qa/questions', { params: { product_id: productId, page: 1, count: 100 } } );
-    var metadata = axios.get( 'http://ec2-13-229-215-161.ap-southeast-1.compute.amazonaws.com/reviews/meta', { params: { product_id: productId } } );
-    var styles = axios.get( `http://ec2-13-229-215-161.ap-southeast-1.compute.amazonaws.com/${productId}/styles`, { params: { product_id: productId } } );
-    var productInfo = axios.get( `http://ec2-13-229-215-161.ap-southeast-1.compute.amazonaws.com/${productId}`, { params: { product_id: productId } } );
-    var cart = axios.get( 'http://ec2-13-229-215-161.ap-southeast-1.compute.amazonaws.com/cart' );
+    var relatedItems = axios.get( `/products/${productId}/related`, { params: { product_id: productId } } );
+    var reviews = axios.get( '/reviews', { params: { product_id: productId, count: 1000 } } );
+    var questions = axios.get( '/qa/questions', { params: { product_id: productId, page: 1, count: 100 } } );
+    var metadata = axios.get( '/reviews/meta', { params: { product_id: productId } } );
+    var styles = axios.get( `/products/${productId}/styles`, { params: { product_id: productId } } );
+    var productInfo = axios.get( `/products/${productId}`, { params: { product_id: productId } } );
+    var cart = axios.get( '/cart' );
 
     Promise.all( [ relatedItems, reviews, questions, metadata, styles, productInfo, cart ])
     .then( ( results ) => {

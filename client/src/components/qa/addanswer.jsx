@@ -68,7 +68,7 @@ class AddAnswerComp extends React.Component {
     };
     // console.log({newAnswer});
 
-    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer)
+    axios.post( `/qa/questions/${questionId}/answers`, newAnswer)
       .then(() => {
         this.setState({
           submitMessage: 'Complete'

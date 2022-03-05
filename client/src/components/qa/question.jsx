@@ -49,7 +49,7 @@ class Question extends React.Component {
   markHelpfulQuestion () {
     if (!this.state.helpfulQuestionClicked) {
       var questionId = this.props.questionId;
-      axios.put( `http://localhost:8080/qa/questions/${questionId}/helpful` )
+      axios.put( `/qa/questions/${questionId}/helpful` )
         .then(() => {
           this.setState((prevState) => {
             return {

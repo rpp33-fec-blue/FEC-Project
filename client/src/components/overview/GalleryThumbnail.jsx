@@ -12,7 +12,7 @@ const GalleryThumbnail = ({ styles, index, selectedStyleIndex, selectedImageInde
       <ErrorBoundary component={'GalleryThumbnail'}>
         <div className='gallery-thumbnail-component'>
           <img src={images[index].thumbnail_url} className='gallery-thumbnail'></img>
-          <img src='./assets/horizontal-line.png' className='horizontal-bar'></img>
+          <img src='/assets/horizontal-line.png' className='horizontal-bar'></img>
         </div>
       </ErrorBoundary>
     );

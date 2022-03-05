@@ -9,7 +9,7 @@ html, body {
 /*==================== Widget container =======================*/
 .container {
   display: grid;
-  grid-template-columns: 10% auto 10%;
+  grid-template-columns: 10% 80% 10%;
   grid-template-rows: 3% auto auto auto auto;
 }
 /* use these classes when render your own widget in app.jsx */
@@ -22,6 +22,7 @@ html, body {
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
   padding-left: 10%;
+  padding-right: 10%;
   padding-bottom: 40px;
 }
 .item-widget-qa {
@@ -131,7 +132,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   text-decoration: line-through;
 }
 
-.sale-price {
+.red-text {
   color: red;
 }
 
@@ -155,7 +156,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 .product-overview-container {
   grid-column: 1;
   grid-row: 2;
-  padding-left: 10%;
+  padding-left: 16.7%;
 }
 
 .product-features-container {
@@ -219,6 +220,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   flex-wrap: wrap;
   align-content: space-evenly;
   width: 450px;
+  margin-bottom: 50px;
 }
 
 .style-thumbnail {
@@ -349,10 +351,14 @@ ul li::before {
   margin-top: 20px;
 }
 
+.please-select {
+  position: absolute;
+  margin: -26px;
+  margin-left: 4px;
+
+}
+
 /*======================== Related items =======================*/
-
-
-
 
 .related-products-headers {
   margin-top: 60px;
@@ -360,18 +366,83 @@ ul li::before {
   font-weight: lighter;
 }
 
+.card-list-holder {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 .card-list {
+  padding: 4px;
   display: flex;
   flex-direction: row;
-  width: min-content
-
+  width: min-content;
+  gap: 24px;
 }
 
 .product-card {
   width: 222px;
   height: 325px;
   outline: 2px solid #c6c6c6;
-  margin-right: 24px;
+}
+
+.card-fade-right {
+  position: absolute;
+  width: 80px;
+  z-index: 1;
+  height: 328px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 300%;
+  color: #525152;
+  left: 77%;
+  background:linear-gradient(to right, transparent, white);
+}
+
+.card-fade-left {
+  position: absolute;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 300%;
+  color: #525152;
+  z-index: 1;
+  height: 328px;
+  right: 77%;
+  background:linear-gradient(to left, transparent, white);
+}
+
+.card-fade-right-outfit {
+  position: absolute;
+  width: 80px;
+  z-index: 1;
+  height: 328px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 300%;
+  color: #525152;
+  left: 77%;
+  background:linear-gradient(to right, transparent, white);
+}
+
+.card-fade-left-outfit {
+  position: absolute;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 300%;
+  color: #525152;
+  z-index: 1;
+  height: 328px;
+  right: 77%;
+  background:linear-gradient(to left, transparent, white);
+}
+
+.card-no-arrow {
+  display: none;
 }
 
 .add-outfit-container {
@@ -416,6 +487,8 @@ ul li::before {
   height: 10%;
   width: 10%;
   position: absolute;
+  color: #525152;
+  font-size: 160%;
   top: 4%;
   right: 4%;
 }
@@ -424,17 +497,11 @@ ul li::before {
   height: 10%;
   width: 10%;
   position: absolute;
+  color: #525152;
   top: 4%;
   right: 4%;
 }
 
-.card-icon-star-background {
-  height: 8%;
-  width: 8%;
-  position: absolute;
-  top: 5%;
-  right: 5%;
-}
 
 .card-info {
   width: 100%;
@@ -491,7 +558,7 @@ ul li::before {
   height: 100%;
   width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   transition: opacity 0.2s;
@@ -504,15 +571,22 @@ ul li::before {
   visibility: visible;  opacity: 1;
 }
 
+.comparison-table {
+  width: 100%;
+}
 
 .comparison-content {
   padding: 16px;
-  height: fill;
+  height: 250px;
   width: 500px;
   border: 1px solid black;
   background-color: white;
   flex-direction: column;
   display: flex;
+}
+
+.comparison-table-body {
+  overflow-y: scroll;
 }
 
 .related-products-compare-header {
