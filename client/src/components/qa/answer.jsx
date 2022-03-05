@@ -17,7 +17,7 @@ class Answer extends React.Component {
   markHelpfulAnswer () {
     if (!this.state.helpfulAnsClicked) {
       var answerId = this.props.answerId;
-      axios.put( `http://localhost:8080/qa/answers/${answerId}/helpful` )
+      axios.put( `/qa/answers/${answerId}/helpful` )
         .then(() => {
           this.setState((prevState) => {
             return {
@@ -34,7 +34,7 @@ class Answer extends React.Component {
   reportAnswer () {
     if (!this.state.reportAnsClicked) {
       var answerId = this.props.answerId;
-      axios.put( `http://localhost:8080/qa/answers/${answerId}/report` )
+      axios.put( `/qa/answers/${answerId}/report` )
         .then(() => {
           this.setState((prevState) => {
             return {

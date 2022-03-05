@@ -7,10 +7,10 @@ var addAnswer = ( questionId, newAnswer ) => {
 
   return ( dispatch ) => {
 
-    axios.post( `http://localhost:8080/qa/questions/${questionId}/answers`, newAnswer )
+    axios.post( `/qa/questions/${questionId}/answers`, newAnswer )
       .then( ( ) => {
         var productId = store.getState().productId || defaultProduct;
-        axios.get( 'http://localhost:8080/qa/questions', { params: { product_id: productId, count: 1000 } } )
+        axios.get( '/qa/questions', { params: { product_id: productId, count: 1000 } } )
         .then( ( questions ) => {
           dispatch( actionQuestions( questions.data ) );
         });
