@@ -155,7 +155,7 @@ class AddAnswerComp extends React.Component {
               name="nickname"
               placeholder="Example: jack543!"
               type="text"
-              id="nickname"
+              id={`nicknameForQuestionId${this.props.questionId}`}
               required
             />
             <br />
