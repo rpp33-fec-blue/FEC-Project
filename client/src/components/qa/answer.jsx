@@ -57,8 +57,9 @@ class Answer extends React.Component {
     var linkHelpful = <a href="#/" className="helpfulLink" onClick={this.markHelpfulAnswer.bind(this)}> Yes({this.state.helpfulAns}) </a>
     var linkReportAnswer = <a href="#/" className="reportLink" onClick={this.reportAnswer.bind(this)}> Report </a>
     var imagesUrlArr = this.props.answer.photos;
+    console.log('imagesUrlArr', imagesUrlArr);
     var thumbnails = imagesUrlArr.map((imageUrl, i) => {
-      return <Image url={imageUrl} key={i} />
+      return <Image url={imageUrl.url} key={i} />
     });
 
     return (
