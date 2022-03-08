@@ -143,6 +143,7 @@ class AddAnswerComp extends React.Component {
           <div>
             <label htmlFor="answer">Your Answer:*</label>
             <textarea
+              id="answer"
               name="answer"
               cols="5" rows="10"
               required
@@ -150,15 +151,17 @@ class AddAnswerComp extends React.Component {
           </div>
 
           <div>
-            <label htmlFor="nickname">What is your nickname?*</label>
-            <br />
-            <input
-              name="nickname"
-              placeholder="Example: jack543!"
-              type="text"
-              id={`nicknameForQuestionId${this.props.questionId}`}
-              required
-            />
+            <label>
+              What is your nickname?*
+              <br />
+              <input
+                name="nickname"
+                placeholder="Example: jack543!"
+                type="text"
+                id={`nicknameForQuestionId${this.props.questionId}`}
+                required
+              />
+            </label>
             <br />
             <div className="warning"> For privacy reasons, do not use your full name or email address </div>
           </div>
@@ -168,7 +171,7 @@ class AddAnswerComp extends React.Component {
             <label htmlFor="email"> Your email *</label>
             <br />
             <input
-              name="email"
+              name={`emailForQuestionId${this.props.questionId}`}
               placeholder="Example: jack@email.com"
               type="email"
               id="email"
@@ -182,7 +185,7 @@ class AddAnswerComp extends React.Component {
           {thumbnails}
           <input
             type="file"
-            id="answerphoto"
+            id={`answerphotoForQuestionId${this.props.questionId}`}
             name="answerphoto"
             accept="image/png, image/jpeg"
             onChange={this.handleAddImage.bind(this)}
