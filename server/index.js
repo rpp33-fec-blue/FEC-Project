@@ -10,7 +10,6 @@ var forms = multer();
 var cors = require('cors')
 const generateUploadURL = require('./s3.js');
 
-
 let app = express();
 let port = 8080;
 
@@ -57,7 +56,7 @@ if ( cluster.isMaster ) {
   })
 
   // Get DATA from HR API
-  app.all('/*', (req, res) => {
+  app.all('/*',(req, res) => {
     var url = req.url;
     var method = req.method;
     var data = req.body;
