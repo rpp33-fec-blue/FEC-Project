@@ -37,18 +37,19 @@ class AddAnswerComp extends React.Component {
       // get secure url from the server to post the image
       var photoUrl = await axios.get('/s3Url', config)
       .then((res) => {
+        console.log('res.data', res.data);
         return res.data;
       })
 
       var image = this.state.images[i][0];
-      // console.log('image to upload', image);
-      // console.log('photoUrl', photoUrl);
+      console.log('image to upload', image);
+      console.log('photoUrl', photoUrl);
 
       await axios.put(photoUrl, {'image': image}, config)
         .then((res) => {
 
           var imageUrlAws = photoUrl.split('?')[0] + '.jpg';
-          // console.log('aws', imageUrlAws);
+          console.log('aws', imageUrlAws);
           this.setState((prevState) => {
             return {
               awsUrl: [...prevState.awsUrl, imageUrlAws]
