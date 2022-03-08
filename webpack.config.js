@@ -1,13 +1,10 @@
 var path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()],
-  },
-  // devtool: 'inline-source-map',
+
+  devtool: 'inline-source-map',
   entry: `${path.join( __dirname, 'client/src/index.js' )}`,
 
   output: {
@@ -29,6 +26,12 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       }
     ]
-  }
-
+  },
+  plugins: [
+    new CompressionPlugin({
+      filename: "bundle.gz",
+      test: /\.(js|jsx|css|html)$/,
+      threshold: 10240
+    })
+  ]
 }
