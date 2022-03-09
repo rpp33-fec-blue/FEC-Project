@@ -191,6 +191,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   width: 50px;
   height: 50px;
   box-shadow: #818181;
+  font-size: 350%;
 }
 
 .right-scroll-arrow {
@@ -277,11 +278,12 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 }
 
 .outfit-button {
-  margin-left: 25px;
+  font-size: 200%;
   height: 50px;
-  background-color: white;
   width: 100px;
-  border: solid black 1px;
+  margin-left: 25px;
+  background-color: white;
+  border: black solid 1px;
 }
 
 ul {
@@ -316,9 +318,9 @@ ul li::before {
 .horizontal-bar {
   position: absolute;
   width: 90px;
-  left: 1px;
-  top: 104px;
-
+  left: 2px;
+  top: -52px;
+  font-size: 1000%;
 }
 
 .l700-font {
