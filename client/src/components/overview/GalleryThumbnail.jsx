@@ -11,8 +11,8 @@ const GalleryThumbnail = ({ styles, index, selectedStyleIndex, selectedImageInde
     return (
       <ErrorBoundary component={'GalleryThumbnail'}>
         <div className='gallery-thumbnail-component'>
-          <img src={images[index].thumbnail_url} className='gallery-thumbnail'></img>
-          <img src='/assets/horizontal-line.png' className='horizontal-bar'></img>
+          <img src={images[index].thumbnail_url} className='gallery-thumbnail' alt='thumbnail of main image'></img>
+          <span className='horizontal-bar' alt='horizontal bar'>&#95;</span>
         </div>
       </ErrorBoundary>
     );
@@ -20,7 +20,7 @@ const GalleryThumbnail = ({ styles, index, selectedStyleIndex, selectedImageInde
     return (
     <ErrorBoundary component={'GalleryThumbnail'}>
       <div className='gallery-thumbnail-component'>
-        <img src={images[index].thumbnail_url} className='gallery-thumbnail' onClick={updateSelectedImageIndex} value={index}></img>
+        <img src={images[index].thumbnail_url} className='gallery-thumbnail' onClick={updateSelectedImageIndex} value={index} alt='thumbnail of other image'></img>
       </div>
     </ErrorBoundary>
     );
