@@ -537,8 +537,8 @@ ul li::before {
 
 .comparison-content {
   padding: 16px;
-  height: 250px;
-  width: 500px;
+  height: 25vh;
+  width: 25vw;
   border: 1px solid black;
   background-color: white;
   flex-direction: column;
@@ -551,11 +551,12 @@ ul li::before {
 
 .related-products-compare-header {
   font-weight: 300;
-  font-size: small;
+  font-size: 1vmin;
 }
 
 .comparison-current-product-feature, .comparison-current-product-feature, .comparison-feature {
   padding-bottom: 12px;
+  font-size: 1.2vmin;
 }
 
 .comparison-current-product-feature {
@@ -568,14 +569,15 @@ ul li::before {
 
 .comparison-feature {
   text-align: center;
-  width: 150px;
+  width: 7.5vmin;
   font-weight: 300;
+  font-size: 1.6vmin;
 }
 
 .comparison-currentProduct-name {
   text-align: left;
   font-size: large;
-  width: 175px;
+  width: 15vmin;
   padding-bottom: 30px;
   padding-top: 8px;
 }
@@ -583,7 +585,7 @@ ul li::before {
 .comparison-selectedProduct-name {
   text-align: right;
   font-size: large;
-  width: 175px;
+  width: 15vmin;
   padding-bottom: 30px;
   padding-top: 8px;
 }
