@@ -381,7 +381,7 @@ ul li::before {
 
 .product-card {
   width: 25%;
-  height: 500px;
+  height: 100%;
   outline: 2px solid #c6c6c6;
 }
 
