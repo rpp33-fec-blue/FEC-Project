@@ -10,7 +10,7 @@ html, body {
 .container {
   display: grid;
   grid-template-columns: 25% 50% 25%;
-  grid-template-rows: 3% auto auto auto auto;
+  grid-template-rows: 3% 36% 36% 25% 0%;
 }
 /* use these classes when render your own widget in app.jsx */
 
@@ -375,13 +375,13 @@ ul li::before {
   padding: 4px;
   display: flex;
   flex-direction: row;
-  width: min-content;
+  width: 100%;
   gap: 24px;
 }
 
 .product-card {
-  width: 222px;
-  height: 325px;
+  width: 25%;
+  height: 100%;
   outline: 2px solid #c6c6c6;
 }
 
