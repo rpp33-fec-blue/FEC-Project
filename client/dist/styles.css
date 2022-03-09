@@ -398,7 +398,7 @@ ul li::before {
   justify-content: right;
   align-items: center;
   font-size: 300%;
-  color: #525152;
+  color: #707070;
   left: 60%;
   background:linear-gradient(to right, transparent, white);
 }
@@ -410,7 +410,7 @@ ul li::before {
   justify-content: left;
   align-items: center;
   font-size: 300%;
-  color: #525152;
+  color: #707070;
   z-index: 1;
   height: 31vh;
   right: 60%;
@@ -449,35 +449,20 @@ ul li::before {
   display: block;
 }
 
-.card-icon {
-  background: #e5e5e3;
-  height: 8%;
-  width: 8%;
-  border-radius: 50%;
-  position: absolute;
-  top: 5%;
-  right: 5%;
-}
-
-.card-button {
-  height: 10%;
-  width: 10%;
+.card-button, .card-icon-star {
+  height: 2vh;
+  width: 2vw;
   position: absolute;
   color: #525152;
-  font-size: 160%;
+  font-size: 2vmin;
+  text-align: center;
   top: 4%;
-  right: 4%;
+  right: 1%;
 }
 
 .card-icon-star {
-  height: 10%;
-  width: 10%;
-  position: absolute;
-  color: #525152;
-  top: 4%;
-  right: 4%;
+  font-weight: bold;
 }
-
 
 .card-info {
   width: 100%;
