@@ -1,7 +1,8 @@
 var path = require('path');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
 
   devtool: 'inline-source-map',
   entry: `${path.join( __dirname, 'client/src/index.js' )}`,
@@ -25,6 +26,12 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       }
     ]
-  }
-
+  },
+  plugins: [
+    new CompressionPlugin({
+      filename: "bundle.gz",
+      test: /\.(js|jsx|css|html)$/,
+      threshold: 10240
+    })
+  ]
 }

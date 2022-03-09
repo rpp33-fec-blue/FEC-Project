@@ -63,6 +63,12 @@ if ( cluster.isMaster ) {
     var params = req.params;
     var contentType = req.headers['content-type'];
 
+    app.get('/bundle.js', (req, res, next) => {
+      req.url = req.url + '.gz';
+      res.set('Content-Encoding', 'gzip');
+      next();
+    });
+
     axios({
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp${url}`,
       headers: {

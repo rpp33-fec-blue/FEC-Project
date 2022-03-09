@@ -109,3 +109,4 @@ config.js
 
 # Bundle files
 client/dist/bundle.js
+client/dist/bundle.gz
