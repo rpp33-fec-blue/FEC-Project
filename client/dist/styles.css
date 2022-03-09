@@ -10,7 +10,7 @@ html, body {
 .container {
   display: grid;
   grid-template-columns: 25% 50% 25%;
-  grid-template-rows: 3% 36% 36% 25% 0%;
+  grid-template-rows: 3% auto auto auto auto;
 }
 /* use these classes when render your own widget in app.jsx */
 
@@ -22,7 +22,6 @@ html, body {
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
   padding-left: 10%;
-  padding-right: 10%;
   padding-bottom: 40px;
 }
 .item-widget-qa {
@@ -368,6 +367,8 @@ ul li::before {
 
 .card-list-holder {
   overflow-x: hidden;
+  overflow-y: hidden;
+  height: 40%;
   width: 100%;
 }
 
@@ -375,14 +376,15 @@ ul li::before {
   padding: 4px;
   display: flex;
   flex-direction: row;
+  height: 100%;
   width: 100%;
   gap: 24px;
 }
 
 .product-card {
-  width: 25%;
-  height: 100%;
-  outline: 2px solid #c6c6c6;
+  width: 25vw;
+  height: 15vw;
+  outline: 1px solid #707070;
 }
 
 .card-fade-right {
