@@ -35,6 +35,7 @@ html, body {
 .item-widget-review {
   grid-column: 2 / span 1;
   grid-row: 5 / span 1;
+  margin-top: 1vw;
 }
 
 /*===================== Overlays effect =========================*/
@@ -139,12 +140,14 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 .overview-container {
   display: grid;
   grid-template-columns: 60% 40%;
-  margin-top: 40px;
+  margin-top: 1vw;
 }
 
 .image-gallery-container {
   grid-column: 1;
   grid-row: 1;
+  width: 31vw;
+  height: 25vw;
 }
 
 .summary-container {
@@ -168,11 +171,13 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   width: 100%;
   height: 1000px;
   position: relative;
+  width: 31vw;
+  height: 25vw;
 }
 
 .main-image {
-  width: 100%;
-  height: 1000px;
+  width: 31vw;
+  height: 25vw;
   object-fit: cover;
 }
 
@@ -181,9 +186,9 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 }
 
 .gallery-thumbnail {
-  width: 90px;
-  height: 90px;
-  margin: 10px 0px;
+  width: 3vw;
+  height: 3vw;
+  margin: 0.05vw 0vw;
   border: solid black 1px;
 }
 
@@ -196,23 +201,23 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 .right-scroll-arrow {
   position: absolute;
-  top: 500px;
-  right: 75px;
+  top: 12vw;
+  right: 1vw;
 }
 
 .left-scroll-arrow {
   position: absolute;
-  top: 500px;
-  left: 175px;
+  top: 12vw;
+  left: 5vw;
 }
 
 .gallery-browser-component {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 0.8vw;
+  left: 0.8vw;
   display: flex;
   flex-direction: column;
-  height: 820px;
+  height: 93%;
   overflow: hidden;
 }
 
@@ -317,11 +322,10 @@ ul li::before {
 
 .horizontal-bar {
   position: absolute;
-  width: 90px;
-  left: 2px;
-  top: -52px;
-  font-size: 1000%;
-  color: black;
+  width: 5vw;
+  left: 0.05vw;
+  top: 3.0vw;
+
 }
 
 .l700-font {
@@ -358,7 +362,14 @@ ul li::before {
   position: absolute;
   margin: -26px;
   margin-left: 4px;
+}
 
+.overview-text {
+  font-size: 0.6vw;
+}
+
+.rating-link {
+  margin-left: 0.5vw;
 }
 
 /*======================== Related items ===========60============*/
