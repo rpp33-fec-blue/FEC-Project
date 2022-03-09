@@ -39,8 +39,8 @@ class App extends React.Component {
             <p>SITE WIDE ANNOUNCEMENT MESSAGE! SALE / DISCOUNT OFFER - NEW PRODUCT HIGHTLIGHT</p>
           </div>
           <OverviewContainer />
-          <RelatedProductsContainer />
-          <ConnectedQA />
+          {/* <RelatedProductsContainer />
+          <ConnectedQA /> */}
         </div>
       );
     }
