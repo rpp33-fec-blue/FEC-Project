@@ -375,13 +375,13 @@ ul li::before {
   padding: 4px;
   display: flex;
   flex-direction: row;
-  width: min-content;
+  width: 100%;
   gap: 24px;
 }
 
 .product-card {
-  width: 222px;
-  height: 325px;
+  width: 25%;
+  height: 500px;
   outline: 2px solid #c6c6c6;
 }
 
