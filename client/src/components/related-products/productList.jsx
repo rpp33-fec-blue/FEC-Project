@@ -90,8 +90,8 @@ class ProductList extends React.Component {
     if (productList.offsetWidth + productList.scrollLeft < productList.scrollWidth) {
       var scroll = setInterval(() => {
         if (count < 220 && (productList.offsetWidth + productList.scrollLeft) < productList.scrollWidth) {
-          productList.scrollLeft += 1
-          count += 1;
+          productList.scrollLeft += 2
+          count += 2;
         } else {
 
           $('.card-fade-left').show(0);
@@ -116,8 +116,8 @@ class ProductList extends React.Component {
     if (productList.scrollLeft > 0) {
       var scroll = setInterval(() => {
         if (count < 220 && productList.scrollLeft > 0) {
-          productList.scrollLeft -= 1
-          count += 1;
+          productList.scrollLeft -= 2
+          count += 2;
         } else {
           $('.card-fade-right').show(0);
           if (productList.scrollLeft === 0) {
