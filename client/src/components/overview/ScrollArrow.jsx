@@ -27,7 +27,7 @@ const ScrollArrow = ({ styles, selectedStyleIndex, selectedImageIndex, updateSel
       return (
         <ErrorBoundary component={'ScrollArrow'}>
           <div className='scroll-arrow-component'>
-            <span className='right-scroll-arrow' onClick={updateSelectedImageIndex} value={direction}>&rarr;</span>>
+            <span className='right-scroll-arrow' onClick={updateSelectedImageIndex} value={direction}>&rarr;</span>
           </div>
         </ErrorBoundary>
       );
