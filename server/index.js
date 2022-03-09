@@ -50,7 +50,7 @@ if ( cluster.isMaster ) {
   })
 
   // Get DATA from HR API
-  app.all('/*',(req, res) => {
+  app.all('/*', (req, res) => {
     var url = req.url;
     var method = req.method;
     var data = req.body;
