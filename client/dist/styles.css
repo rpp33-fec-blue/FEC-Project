@@ -9,7 +9,7 @@ html, body {
 /*==================== Widget container =======================*/
 .container {
   display: grid;
-  grid-template-columns: 10% 80% 10%;
+  grid-template-columns: 25% 50% 25%;
   grid-template-rows: 3% auto auto auto auto;
 }
 /* use these classes when render your own widget in app.jsx */
@@ -115,9 +115,9 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   background-color: #525152;;
   color: white;
   font-weight: bolder;
-  font-size: 1.3em;
+  font-size: 1.6em;
   margin: auto;
-  padding: 20px 10px 20px 10px;
+  padding: 28px 10px 28px 28px;
 
 }
 
@@ -358,16 +358,19 @@ ul li::before {
 
 }
 
-/*======================== Related items =======================*/
+/*======================== Related items ===========60============*/
 
 .related-products-headers {
   margin-top: 60px;
   margin-bottom: 20px;
+  font-size: 1.4vmin;
   font-weight: lighter;
 }
 
 .card-list-holder {
   overflow-x: hidden;
+  overflow-y: hidden;
+  height: 40%;
   width: 100%;
 }
 
@@ -375,69 +378,42 @@ ul li::before {
   padding: 4px;
   display: flex;
   flex-direction: row;
-  width: min-content;
+  height: 100%;
+  width: 100%;
   gap: 24px;
 }
 
 .product-card {
-  width: 222px;
-  height: 325px;
-  outline: 2px solid #c6c6c6;
+  aspect-ratio: 2/ 3;
+  height: 30vh;
+  outline: 1px solid #707070;
 }
 
-.card-fade-right {
+.card-fade-right, .card-fade-right-outfit {
   position: absolute;
-  width: 80px;
+  width: 10vw;
   z-index: 1;
-  height: 328px;
+  height: 31vh;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   font-size: 300%;
-  color: #525152;
-  left: 77%;
+  color: #707070;
+  left: 60%;
   background:linear-gradient(to right, transparent, white);
 }
 
-.card-fade-left {
+.card-fade-left, .card-fade-left-outfit {
   position: absolute;
-  width: 80px;
+  width: 10vw;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   font-size: 300%;
-  color: #525152;
+  color: #707070;
   z-index: 1;
-  height: 328px;
-  right: 77%;
-  background:linear-gradient(to left, transparent, white);
-}
-
-.card-fade-right-outfit {
-  position: absolute;
-  width: 80px;
-  z-index: 1;
-  height: 328px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 300%;
-  color: #525152;
-  left: 77%;
-  background:linear-gradient(to right, transparent, white);
-}
-
-.card-fade-left-outfit {
-  position: absolute;
-  width: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 300%;
-  color: #525152;
-  z-index: 1;
-  height: 328px;
-  right: 77%;
+  height: 31vh;
+  right: 60%;
   background:linear-gradient(to left, transparent, white);
 }
 
@@ -456,11 +432,11 @@ ul li::before {
 
 .card-outfit-info {
   font-weight: lighter;
-  font-size: .8em;
+  font-size: 1.1vmin;
 }
 
 .card-add-outfit {
-  font-size: 250%;
+  font-size: 5vmin;
   font-weight: bold;
 }
 
@@ -473,35 +449,20 @@ ul li::before {
   display: block;
 }
 
-.card-icon {
-  background: #e5e5e3;
-  height: 8%;
-  width: 8%;
-  border-radius: 50%;
-  position: absolute;
-  top: 5%;
-  right: 5%;
-}
-
-.card-button {
-  height: 10%;
-  width: 10%;
+.card-button, .card-icon-star {
+  height: 2vh;
+  width: 2vw;
   position: absolute;
   color: #525152;
-  font-size: 160%;
+  font-size: 2vmin;
+  text-align: center;
   top: 4%;
-  right: 4%;
+  right: 1%;
 }
 
 .card-icon-star {
-  height: 10%;
-  width: 10%;
-  position: absolute;
-  color: #525152;
-  top: 4%;
-  right: 4%;
+  font-weight: bold;
 }
-
 
 .card-info {
   width: 100%;
@@ -509,7 +470,6 @@ ul li::before {
 
 .card-photo {
   height: 100%;
-  image-rendering: crisp-edges;
 }
 
 .card-category {
@@ -526,12 +486,12 @@ ul li::before {
 
 .card-category, .card-price {
   font-weight: lighter;
-  font-size: .8em;
+  font-size: 1.1vmin;
 }
 
 .card-name {
   font-weight: bold;
-  font-size: .9em;
+  font-size: 1.4vmin;
 }
 
 .default-image-color {
@@ -577,8 +537,8 @@ ul li::before {
 
 .comparison-content {
   padding: 16px;
-  height: 250px;
-  width: 500px;
+  height: 25vh;
+  width: 25vw;
   border: 1px solid black;
   background-color: white;
   flex-direction: column;
@@ -591,11 +551,12 @@ ul li::before {
 
 .related-products-compare-header {
   font-weight: 300;
-  font-size: small;
+  font-size: 1vmin;
 }
 
 .comparison-current-product-feature, .comparison-current-product-feature, .comparison-feature {
   padding-bottom: 12px;
+  font-size: 1.2vmin;
 }
 
 .comparison-current-product-feature {
@@ -608,14 +569,15 @@ ul li::before {
 
 .comparison-feature {
   text-align: center;
-  width: 150px;
+  width: 7.5vmin;
   font-weight: 300;
+  font-size: 1.6vmin;
 }
 
 .comparison-currentProduct-name {
   text-align: left;
   font-size: large;
-  width: 175px;
+  width: 15vmin;
   padding-bottom: 30px;
   padding-top: 8px;
 }
@@ -623,7 +585,7 @@ ul li::before {
 .comparison-selectedProduct-name {
   text-align: right;
   font-size: large;
-  width: 175px;
+  width: 15vmin;
   padding-bottom: 30px;
   padding-top: 8px;
 }
@@ -635,11 +597,11 @@ ul li::before {
   vertical-align: middle;
   display: inline-block;
   overflow: hidden;
-  width: 70px;
+  width: 6.8vmin;
 }
 
 .full-stars {
-  font-size: 14px;
+  font-size: 1.5vmin;
   position: absolute;
   left: 0;
   top: 0;
@@ -648,6 +610,6 @@ ul li::before {
 }
 
 .empty-stars {
-  font-size: 14px;
+  font-size: 1.5vmin;
 }
 
