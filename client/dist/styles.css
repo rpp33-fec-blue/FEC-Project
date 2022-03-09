@@ -22,6 +22,7 @@ html, body {
   grid-column: 2 / span 1;
   grid-row: 3 / span 1;
   padding-left: 10%;
+  padding-right: 10%;
   padding-bottom: 40px;
 }
 .item-widget-qa {
@@ -357,11 +358,12 @@ ul li::before {
 
 }
 
-/*======================== Related items =======================*/
+/*======================== Related items ===========60============*/
 
 .related-products-headers {
   margin-top: 60px;
   margin-bottom: 20px;
+  font-size: 1.4vmin;
   font-weight: lighter;
 }
 
@@ -382,64 +384,36 @@ ul li::before {
 }
 
 .product-card {
-  width: 25vw;
-  height: 15vw;
+  aspect-ratio: 2/ 3;
+  height: 30vh;
   outline: 1px solid #707070;
 }
 
-.card-fade-right {
+.card-fade-right, .card-fade-right-outfit {
   position: absolute;
-  width: 80px;
+  width: 10vw;
   z-index: 1;
-  height: 328px;
+  height: 31vh;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   font-size: 300%;
   color: #525152;
-  left: 77%;
+  left: 60%;
   background:linear-gradient(to right, transparent, white);
 }
 
-.card-fade-left {
+.card-fade-left, .card-fade-left-outfit {
   position: absolute;
-  width: 80px;
+  width: 10vw;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   font-size: 300%;
   color: #525152;
   z-index: 1;
-  height: 328px;
-  right: 77%;
-  background:linear-gradient(to left, transparent, white);
-}
-
-.card-fade-right-outfit {
-  position: absolute;
-  width: 80px;
-  z-index: 1;
-  height: 328px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 300%;
-  color: #525152;
-  left: 77%;
-  background:linear-gradient(to right, transparent, white);
-}
-
-.card-fade-left-outfit {
-  position: absolute;
-  width: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 300%;
-  color: #525152;
-  z-index: 1;
-  height: 328px;
-  right: 77%;
+  height: 31vh;
+  right: 60%;
   background:linear-gradient(to left, transparent, white);
 }
 
@@ -458,11 +432,11 @@ ul li::before {
 
 .card-outfit-info {
   font-weight: lighter;
-  font-size: .8em;
+  font-size: 1.1vmin;
 }
 
 .card-add-outfit {
-  font-size: 250%;
+  font-size: 5vmin;
   font-weight: bold;
 }
 
@@ -511,7 +485,6 @@ ul li::before {
 
 .card-photo {
   height: 100%;
-  image-rendering: crisp-edges;
 }
 
 .card-category {
@@ -528,12 +501,12 @@ ul li::before {
 
 .card-category, .card-price {
   font-weight: lighter;
-  font-size: .8em;
+  font-size: 1.1vmin;
 }
 
 .card-name {
   font-weight: bold;
-  font-size: .9em;
+  font-size: 1.4vmin;
 }
 
 .default-image-color {
@@ -637,11 +610,11 @@ ul li::before {
   vertical-align: middle;
   display: inline-block;
   overflow: hidden;
-  width: 70px;
+  width: 6.8vmin;
 }
 
 .full-stars {
-  font-size: 14px;
+  font-size: 1.5vmin;
   position: absolute;
   left: 0;
   top: 0;
@@ -650,6 +623,6 @@ ul li::before {
 }
 
 .empty-stars {
-  font-size: 14px;
+  font-size: 1.5vmin;
 }
 
