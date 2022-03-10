@@ -193,11 +193,11 @@ class AddAnswerComp extends React.Component {
             <br />
             <div className="warning"> For authentication reasons, you will not be emailed </div>
           </div>
-
+          <br />
+          <label htmlFor="answerphoto"> Add photo here:</label>
           <br />
             {thumbnails}
           <br />
-
           <input
             type="file"
             id={`answerphotoForQuestionId${this.props.questionId}`}
@@ -210,7 +210,7 @@ class AddAnswerComp extends React.Component {
           <input type="submit" name="submit" value="SUBMIT" />
 
           <br />
-          
+
           <h1 id="submitMessage">{this.state.submitMessage}</h1>
 
         </div>
