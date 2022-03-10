@@ -58,6 +58,7 @@ class AddQuestionComp extends React.Component {
           <div>
             <label htmlFor="question">Your question:*</label>
             <textarea
+              id="question"
               name="question"
               cols="5" rows="10"
               required

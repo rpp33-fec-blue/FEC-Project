@@ -53,11 +53,19 @@ class Answers extends React.Component {
     // LOAD ANSWERS
     var remainingAnswer = answersLength - this.state.answersToShow ;
     if (remainingAnswer <= 2) {
-      // no "more Answer button"
+
       this.setState((prevState) => {
-        return {
-          buttonName: "",
-          answersToShow: prevState.answersToShow + remainingAnswer
+        // no "more Answer button"
+        if (answersLength <= 2) {
+          return {
+            buttonName: "",
+            answersToShow: prevState.answersToShow + remainingAnswer
+          }
+        } else {
+          return {
+            buttonName: "COLLAPSE ANSWERS",
+            answersToShow: prevState.answersToShow + remainingAnswer
+          }
         }
       })
 
@@ -79,7 +87,9 @@ class Answers extends React.Component {
     var button;
     if (this.state.buttonName === "") {
       button = "";
-    } else {
+    } else if (this.state.buttonName === "LOAD MORE ANSWERS") {
+      button = <button className="load-more-answer" onClick={this.loadMoreAnswer.bind(this)}>{this.state.buttonName}</button>;
+    } else if (this.state.buttonName === "COLLAPSE ANSWERS") {
       button = <button className="load-more-answer" onClick={this.loadMoreAnswer.bind(this)}>{this.state.buttonName}</button>;
     }
 

@@ -46,12 +46,6 @@ if ( cluster.isMaster ) {
 } else {
   applyMiddleware();
 
-  // // GET DATA FOR PRODUCT ID
-  // app.get('/:product_id', (req, res) => {
-  //   var product_id = req.params.product_id
-  //   res.send({ product_id });
-  // })
-
   // TALK TO S3
   app.get('/s3Url', async (req, res) => {
     var url = await generateUploadURL();
@@ -85,7 +79,7 @@ if ( cluster.isMaster ) {
       res.send({ data: results.data } );
     })
     .catch( ( error ) => {
-      console.log( 'error:', error );
+      res.status(500).send({ error: 'Fail retrieving data from Heroku!' })
       res.end();
     })
   })
