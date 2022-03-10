@@ -9,6 +9,7 @@ var multer = require('multer');
 var forms = multer();
 var cors = require('cors')
 const generateUploadURL = require('./s3.js');
+const compression = require('compression');
 
 let app = express();
 let port = 8080;
@@ -28,12 +29,14 @@ var handleWorkerStopping = () => {
 }
 
 var applyMiddleware = () => {
+  app.use(compression());
   app.use(express.static('client/dist'));
   app.use('/product/*', express.static('client/dist'));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(forms.array());
   app.use(cors());
+  app.use(compression());
 }
 
 if ( cluster.isMaster ) {
