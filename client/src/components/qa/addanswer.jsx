@@ -44,24 +44,18 @@ class AddAnswerComp extends React.Component {
         "Content-Type": "multipart/form-data"
       }
     }
-
+    // ================ S3 start =======================
     for (var i = 0; i < this.state.images.length; i++) {
       // get secure url from the server to post the image
       var photoUrl = await axios.get('/s3Url', config)
       .then((res) => {
-        // console.log('res.data', res.data);
         return res.data;
       })
 
       var image = this.state.images[i][0];
-      // console.log('image to upload', image);
-      // console.log('photoUrl', photoUrl);
-
-      await axios.put(photoUrl, {'image': image}, config)
+      await axios.put(photoUrl, image, config)
         .then((res) => {
-
-          var imageUrlAws = photoUrl.split('?')[0] + '.jpg';
-          // console.log('aws', imageUrlAws);
+          var imageUrlAws = photoUrl.split('?')[0];
           this.setState((prevState) => {
             return {
               awsUrl: [...prevState.awsUrl, imageUrlAws]
@@ -72,6 +66,7 @@ class AddAnswerComp extends React.Component {
           console.log('err putted in aws', err);
         });
     }
+    // ================ S3 end =======================
     // send another post request to store new answers and photo
     var newAnswer = {
       "body": answer,
@@ -106,8 +101,6 @@ class AddAnswerComp extends React.Component {
 
   handleAddImage (e) {
     var files = e.target.files; //array
-    // console.log({files});
-    // console.log('file.type', files[0].type);
 
     if (this.state.imagesUrl.length === 5) {
       this.hideUploadImageButton();
@@ -118,10 +111,10 @@ class AddAnswerComp extends React.Component {
     this.setState((prevState) => {
       var noOfFiles = files.length;
       var urls = [];
-      var images = []
+      var images = files;
       for (var i = 0; i < noOfFiles; i++) {
         urls.push(URL.createObjectURL(files[i]));
-        images.push(files[i]);
+
       };
 
       return {
