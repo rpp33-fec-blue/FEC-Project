@@ -42,7 +42,7 @@ jobs:
       # Need to find out how to store github token in the github first!!
       # - run: npm run server-dev
       - run: npm run test
-      - run: npm run test-questions
+      # - run: npm run test-questions
       # - run: npm run test-api
       # - run: npm run test-redux
       # - run: npm run test-overview
