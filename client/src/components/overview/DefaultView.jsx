@@ -13,7 +13,7 @@ const DefaultView = ({ styles, selectedStyleIndex, selectedImageIndex, updateSel
   return (
     <ErrorBoundary component={'DefaultView'}>
       <div className='default-view-component'>
-        <img src={mainImageUrl} className='main-image' ></img> {/* TO DO - On hover, cursor changes to magnifying glass; if clicked, should update defaultView */}
+        <img src={mainImageUrl} className='main-image' alt='main image of selected style'></img>
         <ScrollArrow
           styles={styles}
           selectedStyleIndex={selectedStyleIndex}
