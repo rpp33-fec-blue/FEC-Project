@@ -5,7 +5,7 @@ const {promisify} = require('util');
 
 dotenv.config();
 // Uncomment if got error related to .env Here.
-dotenv.config({ debug: true });
+// dotenv.config({ debug: true });
 console.log('process.env', process.env);
 
 const region = 'ap-southeast-1';
@@ -36,7 +36,6 @@ var generateUploadURL = async function generateUploadURL () {
     .catch((err) => {
       console.log('err here', err)
     });
-  // console.log('uploadURL', uploadURL);
   return uploadURL;
 }
 

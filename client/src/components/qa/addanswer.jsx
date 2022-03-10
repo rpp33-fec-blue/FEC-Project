@@ -101,25 +101,19 @@ class AddAnswerComp extends React.Component {
 
   handleAddImage (e) {
     var files = e.target.files; //array
-
     if (this.state.imagesUrl.length === 5) {
       this.hideUploadImageButton();
     } else {
       this.showUploadImageButton();
     }
-
     this.setState((prevState) => {
-      var noOfFiles = files.length;
       var urls = [];
-      var images = files;
-      for (var i = 0; i < noOfFiles; i++) {
+      for (var i = 0; i < files.length; i++) {
         urls.push(URL.createObjectURL(files[i]));
-
       };
-
       return {
         imagesUrl: [...prevState.imagesUrl, urls],
-        images: [...prevState.images, images],
+        images: [...prevState.images, files],
       };
     })
   }
