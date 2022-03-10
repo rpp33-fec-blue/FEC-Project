@@ -14,6 +14,9 @@ class AddAnswerComp extends React.Component {
     //props.productId
     //props.productName
     this.state = {
+      nickname: '',
+      answer: '',
+      email: '',
       submitMessage: '',
       imagesUrl: [],
       images: [],
@@ -21,11 +24,20 @@ class AddAnswerComp extends React.Component {
     }
   }
 
+  async handleChange (e) {
+    var target = e.target;
+    var name = target.name;
+    var value = target.value;
+    await this.setState({
+      [name]: value
+    })
+  }
+
   async handleSubmit (e) {
     e.preventDefault();
-    var answer = e.target.answer.value;
-    var nickname = e.target.nickname.value;
-    var email = e.target.email.value;
+    var answer = this.state.answer;
+    var nickname = this.state.nickname;
+    var email = this.state.email;
     var questionId = this.props.questionId
     var config = {
       headers: {
@@ -37,6 +49,7 @@ class AddAnswerComp extends React.Component {
       // get secure url from the server to post the image
       var photoUrl = await axios.get('/s3Url', config)
       .then((res) => {
+        // console.log('res.data', res.data);
         return res.data;
       })
 
@@ -66,7 +79,6 @@ class AddAnswerComp extends React.Component {
       "email": email,
       "photos": this.state.awsUrl
     };
-    // console.log({newAnswer});
 
     axios.post( `/qa/questions/${questionId}/answers`, newAnswer)
       .then(() => {
@@ -77,7 +89,6 @@ class AddAnswerComp extends React.Component {
       .catch((err) => {
         console.log('err in post answers', err)
       });
-    // addAnswer(newAnswer); // try later when got time
   }
 
   offForm () {
@@ -86,17 +97,17 @@ class AddAnswerComp extends React.Component {
   }
 
   hideUploadImageButton () {
-    document.getElementById("answerphoto").style.display = "none";
+    document.getElementById(`overlay-addAnswer-${this.props.questionId}`).style.display = "none";
   }
 
   showUploadImageButton () {
-    document.getElementById("answerphoto").style.display = "block";
+    document.getElementById(`overlay-addAnswer-${this.props.questionId}`).style.display = "block";
   }
 
   handleAddImage (e) {
     var files = e.target.files; //array
-    console.log({files});
-    console.log('file.type', files[0].type);
+    // console.log({files});
+    // console.log('file.type', files[0].type);
 
     if (this.state.imagesUrl.length === 5) {
       this.hideUploadImageButton();
@@ -142,6 +153,8 @@ class AddAnswerComp extends React.Component {
           <div>
             <label htmlFor="answer">Your Answer:*</label>
             <textarea
+              onChange={this.handleChange.bind(this)}
+              id="answer"
               name="answer"
               cols="5" rows="10"
               required
@@ -149,15 +162,18 @@ class AddAnswerComp extends React.Component {
           </div>
 
           <div>
-            <label htmlFor="nickname">What is your nickname?*</label>
-            <br />
-            <input
-              name="nickname"
-              placeholder="Example: jack543!"
-              type="text"
-              id="nickname"
-              required
-            />
+            <label>
+              What is your nickname?*
+              <br />
+              <input
+                onChange={this.handleChange.bind(this)}
+                name="nickname"
+                placeholder="Example: jack543!"
+                type="text"
+                id={`nicknameForQuestionId${this.props.questionId}`}
+                required
+              />
+            </label>
             <br />
             <div className="warning"> For privacy reasons, do not use your full name or email address </div>
           </div>
@@ -167,10 +183,11 @@ class AddAnswerComp extends React.Component {
             <label htmlFor="email"> Your email *</label>
             <br />
             <input
+              onChange={this.handleChange.bind(this)}
               name="email"
               placeholder="Example: jack@email.com"
               type="email"
-              id="email"
+              id={`emailForQuestionId${this.props.questionId}`}
               required
               size="64"/>
             <br />
@@ -178,19 +195,22 @@ class AddAnswerComp extends React.Component {
           </div>
 
           <br />
-          {thumbnails}
+            {thumbnails}
+          <br />
+
           <input
             type="file"
-            id="answerphoto"
+            id={`answerphotoForQuestionId${this.props.questionId}`}
             name="answerphoto"
             accept="image/png, image/jpeg"
             onChange={this.handleAddImage.bind(this)}
             multiple/>
-
           <br />
+
           <input type="submit" name="submit" value="SUBMIT" />
 
           <br />
+          
           <h1 id="submitMessage">{this.state.submitMessage}</h1>
 
         </div>

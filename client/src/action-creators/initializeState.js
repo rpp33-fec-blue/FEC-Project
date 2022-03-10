@@ -38,7 +38,7 @@ var initializeState = ( productId, outfit ) => {
       dispatch( actionLoadingStatus( false ) );
     })
     .catch( ( error ) => {
-      console.log( 'Error getting data!' );
+      console.log( 'Error getting data!', error );
     });
   }
 };
