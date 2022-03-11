@@ -10,13 +10,13 @@
 
 ## Overview
 Main features include:
-- **Product Overview**__
-![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/product-overview.gif)
+- **Product Overview** <br />
+![Alt Text]<img src="https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/product-overview.gif" width="100" height="100" />
 
-- **Related products**__
+- **Related products** <br />
 ![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/related-products.gif)
 
-- **Questions & Answers**__
+- **Questions & Answers** <br />
 ![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/questions-answers.gif)
 
 ## Getting started
