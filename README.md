@@ -5,10 +5,10 @@
 :shopping_cart: Utilize Express and aws s3 for server and storage :shopping_cart:<br />
 
 ## Table of Contents
-- Main features
-- Getting Started
-- API references
-- Roadmap
+- [Main features](#main-features)
+- [Getting Started](#getting-started)
+- [API references](#api-reference---connecting-to-your-shopping-cart-server)
+- [Roadmap](#roadmap)
 
 ## Main features:
 **Product Overview** <br />
@@ -102,7 +102,7 @@ Sample responses: <br />
       },
       {
 ```
-<a>See more API end points documents</a>
+[:book: See more API end points documents here! :book:]()
 
 ## API reference - Connecting to s3 storage
 1. Create a new bucket name "atelier-answers-photo"
