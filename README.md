@@ -10,7 +10,7 @@
 
 ## Main features:
 **Product Overview** <br />
-Product overview feature enables customers to see relevant information for a single product in the catalogue. The functionality contained within this feature can be divided into image gallery, product information, style selector, Add to cart <br />
+Product overview feature enables customers to see relevant information for a single product in the catalogue. The functionality contained within this feature can be divided into image gallery, product information, style selector, and add to cart <br />
 
 <img src="https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/product-overview.gif" height="500" /><br />
 
@@ -20,7 +20,7 @@ The Related Items & Comparison module displays two sets of related products. The
 <img src="https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/related-products.gif" height="500" /><br />
 
 **Questions & Answers** <br />
-The Questions & Answers feature allows asking and answering questions for the product selected. The functionality contained within this module are view questions,
+The Questions & Answers feature allows asking, answering and searching questions for the product selected. The functionality contained within this module are view questions,
 search for a question, asking a question, answering a question <br />
 
 <img src="https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/questions-answers.gif" height="400" /><br />
@@ -46,7 +46,7 @@ Here are end points that you need to have: <br /><br />
 **GET /products** <br /><br />
 Sample Request: <br />
 ```
-#axios.get( `/products/${productId}`, {
+axios.get( `/products/${productId}`, {
   params: {
     product_id: productId
   }
@@ -54,7 +54,7 @@ Sample Request: <br />
 ```
 Sample responses: <br />
 ```
-#[
+[
   {
         "id": 1,
         "name": "Camo Onesie",
@@ -67,7 +67,7 @@ Sample responses: <br />
 **GET /qa/questions**<br />
 Sample Request: <br />
 ```
-#axios.get( '/qa/questions', {
+axios.get( '/qa/questions', {
   params: {
     product_id: productId,
     page: 1,
@@ -77,7 +77,7 @@ Sample Request: <br />
 ```
 Sample responses: <br />
 ```
-#{
+{
   "product_id": "5",
   "results": [{
         "question_id": 37,
