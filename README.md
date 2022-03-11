@@ -10,12 +10,12 @@
 
 ## Overview
 Main features include:
-Product Overview
+- Product Overview
 
-Related products
-Your outfit lists
-Questions & Answers
-![Alt Text](https://recordit.co/gkf5HVEIgM)
+- Related products
+- Your outfit lists
+- Questions & Answers
+![Alt Text](http://g.recordit.co/gkf5HVEIgM.gif)
 
 ## Getting started
 1. npm install
