@@ -15,7 +15,7 @@ Product Overview
 Related products
 Your outfit lists
 Questions & Answers
-
+![Alt Text](https://recordit.co/gkf5HVEIgM)
 
 ## Getting started
 1. npm install
