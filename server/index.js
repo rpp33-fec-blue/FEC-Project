@@ -9,6 +9,7 @@ var multer = require('multer');
 var forms = multer();
 var cors = require('cors')
 const generateUploadURL = require('./s3.js');
+var compression = require('compression')
 
 let app = express();
 let port = 8080;
@@ -28,6 +29,7 @@ var handleWorkerStopping = () => {
 }
 
 var applyMiddleware = () => {
+  app.use(compression())
   app.use(express.static('client/dist'));
   app.use('/product/*', express.static('client/dist'));
   app.use(express.urlencoded({ extended: true }));

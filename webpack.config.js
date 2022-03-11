@@ -2,6 +2,8 @@ var path = require('path');
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 // const BrotliPlugin = require('brotli-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 module.exports = {
   mode: 'production',
