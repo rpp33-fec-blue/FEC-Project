@@ -16,29 +16,22 @@ var initializeState = ( productId, outfit ) => {
   return ( dispatch ) => {
 
     productId = Number(productId) || defaultProduct;
-    var relatedItems = axios.get( `/products/${productId}/related`, { params: { product_id: productId } } );
-    var reviews = axios.get( '/reviews', { params: { product_id: productId, count: 1000 } } );
-    var questions = axios.get( '/qa/questions', { params: { product_id: productId, page: 1, count: 100 } } );
-    var metadata = axios.get( '/reviews/meta', { params: { product_id: productId } } );
-    var styles = axios.get( `/products/${productId}/styles`, { params: { product_id: productId } } );
-    var productInfo = axios.get( `/products/${productId}`, { params: { product_id: productId } } );
-    var cart = axios.get( '/cart' );
 
-    Promise.all( [ relatedItems, reviews, questions, metadata, styles, productInfo, cart ])
-    .then( ( results ) => {
-      dispatch( actionProductId( productId ) );
-      dispatch( actionOutfit( outfit ) );
-      dispatch( actionRelated( results[0].data.data ) );
-      dispatch( actionReviews( results[1].data.data ) );
-      dispatch( actionQuestions( results[2].data.data.results ) );
-      dispatch( actionMetadata( results[3].data.data ) );
-      dispatch( actionStyles( results[4].data.data ) );
-      dispatch( actionProductInfo( results[5].data.data ) );
-      dispatch( actionCart( results[6].data.data ) );
-      dispatch( actionLoadingStatus( false ) );
+    axios.get(`/initializeState`, {params: {product_id: productId}})
+    .then((results) => {
+      dispatch( actionProductId(productId));
+      dispatch( actionOutfit(outfit));
+      dispatch( actionRelated(results.data.data[0]));
+      dispatch( actionReviews(results.data.data[1]));
+      dispatch( actionQuestions(results.data.data[2]));
+      dispatch( actionMetadata(results.data.data[3]));
+      dispatch( actionStyles(results.data.data[4]));
+      dispatch( actionProductInfo(results.data.data[5]));
+      dispatch( actionCart(results.data.data[6]));
+      dispatch( actionLoadingStatus(false));
     })
     .catch( ( error ) => {
-      console.log( 'Error getting data!', error );
+      console.log( 'Error getting data!' );
     });
   }
 };

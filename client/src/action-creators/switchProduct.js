@@ -10,23 +10,15 @@ const axios = require('axios');
 var switchProduct = ( productId ) => {
   console.log('id in switchProduct state1', productId);
   return ( dispatch ) => {
-    console.log('id in switchProduct state2', productId);
-    var relatedItems = axios.get( `/products/${productId}/related`, { params: { product_id: productId } } );
-    var reviews = axios.get( '/reviews', { params: { product_id: productId, count: 1000 } } );
-    var questions = axios.get( '/qa/questions', { params: { product_id: productId, page: 1, count: 100 } } );
-    var metadata = axios.get( '/reviews/meta', { params: { product_id: productId } } );
-    var styles = axios.get( `/products/${productId}/styles`, { params: { product_id: productId } } );
-    var productInfo = axios.get( `/products/${productId}`, { params: { product_id: productId } } );
-
-    Promise.all( [ relatedItems, reviews, questions, metadata, styles, productInfo ])
-    .then( ( results ) => {
-      dispatch( actionProductId( productId ) );
-      dispatch( actionRelated( results[0].data.data ) );
-      dispatch( actionReviews( results[1].data.data ) );
-      dispatch( actionQuestions( results[2].data.data.results ) );
-      dispatch( actionMetadata( results[3].data.data ) );
-      dispatch( actionStyles( results[4].data.data ) );
-      dispatch( actionProductInfo( results[5].data.data ) );
+    axios.get(`/switchProduct`, {params: {product_id: productId}})
+    .then((results) => {
+      dispatch( actionProductId(productId));
+      dispatch( actionRelated(results.data.data[0]));
+      dispatch( actionReviews(results.data.data[1]));
+      dispatch( actionQuestions(results.data.data[2]));
+      dispatch( actionMetadata(results.data.data[3]));
+      dispatch( actionStyles(results.data.data[4]));
+      dispatch( actionProductInfo(results.data.data[5]));
     })
     .catch( ( error ) => {
       console.log( 'Error getting data!' );
