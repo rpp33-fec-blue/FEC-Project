@@ -9,7 +9,8 @@
 - Roadmap
 
 ## Overview
-Main features include:
+Main features include: 
+---
 **Product Overview** <br />
 Product overview feature enables customers to see relevant information for a single product in the catalogue. The functionality contained within this feature can be divided into Image gallery, Product information, Style selector, Add to cart <br />
 
