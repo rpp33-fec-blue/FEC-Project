@@ -331,11 +331,12 @@ ul li::before {
 }
 
 .horizontal-bar {
-  position: absolute;
+  position: relative;
   width: 5vw;
-  left: 0.05vw;
-  top: 3.0vw;
-
+  left: -3.5vw;
+  top: 1.3vw;
+  font-size: 4vw;
+  color: black;
 }
 
 .l700-font {
