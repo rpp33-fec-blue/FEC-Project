@@ -100,7 +100,7 @@ if ( cluster.isMaster ) {
 
     var relatedItems = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productId}/related`);
     var reviews = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?${params}`);
-    var questions = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions?${params}`);
+    var questions = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions?${params}&page=1&count=100`);
     var metadata = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?${params}`);
     var styles = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productId}/styles`);
     var productInfo = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productId}`);
