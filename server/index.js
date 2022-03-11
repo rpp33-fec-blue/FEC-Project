@@ -9,6 +9,7 @@ var multer = require('multer');
 var forms = multer();
 var cors = require('cors')
 const generateUploadURL = require('./s3.js');
+// const compression = require('compression');
 
 let app = express();
 let port = 8080;
@@ -28,6 +29,7 @@ var handleWorkerStopping = () => {
 }
 
 var applyMiddleware = () => {
+  // app.use(compression());
   app.use(express.static('client/dist'));
   app.use('/product/*', express.static('client/dist'));
   app.use(express.urlencoded({ extended: true }));
@@ -36,18 +38,29 @@ var applyMiddleware = () => {
   app.use(cors());
 }
 
+var sendCompressedBundle = () => {
+  app.get('*.js', (req, res, next) => {
+    req.url = req.url + '.br';
+    console.log(req.url);
+    res.set('Content-Encoding', 'br');
+    res.set('Content-Type', 'application/javascript; charset=UTF-8');
+    next();
+  });
+}
+
 if ( cluster.isMaster ) {
   console.log(`Number of CPU cores: ${numberOfCores}`);
   startClusters();
   handleWorkerStopping();
 } else {
+  sendCompressedBundle();
   applyMiddleware();
 
   // TALK TO S3
   app.get('/s3Url', async (req, res) => {
     var url = await generateUploadURL();
     res.send(url);
-  })
+  });
 
   // Get DATA from HR API
   app.all('/*', (req, res) => {
@@ -56,12 +69,6 @@ if ( cluster.isMaster ) {
     var data = req.body;
     var params = req.params;
     var contentType = req.headers['content-type'];
-
-    app.get('/bundle.js', (req, res, next) => {
-      req.url = req.url + '.gz';
-      res.set('Content-Encoding', 'gzip');
-      next();
-    });
 
     axios({
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp${url}`,

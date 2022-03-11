@@ -373,7 +373,7 @@ ul li::before {
 .card-list-holder {
   overflow-x: hidden;
   overflow-y: hidden;
-  height: 40%;
+  height: 31vh;
   width: 100%;
 }
 
@@ -616,3 +616,252 @@ ul li::before {
   font-size: 1.5vmin;
 }
 
+/*============================= QA =============================*/
+/*========================= MAIN CONTAINER ==================== */
+#container-qa {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  grid-template-columns: auto;
+  min-height: auto;
+  max-height: 600px;
+  overflow: scroll;
+}
+
+.qa {
+  grid-row-start: 1 span 1;
+}
+
+.search-bar {
+  grid-row-start: 2 span 1;
+}
+
+.questionlist-and-btn {
+  grid-row-start: 3 span 1;
+}
+
+.qa-more-button {
+  grid-row-start: 4 span 1;
+}
+
+/*=================== question-answer grid ===================*/
+.container-question-answer {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+
+  min-height: auto;
+  max-height: 100%;
+  overflow: scroll;
+}
+
+.question {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+}
+.report-question {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  text-align: right;
+}
+.answer {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+}
+.load-more-answer {
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 1;
+}
+
+/*=================== thumbnail ===================*/
+.image-thumbnail {
+  border: 1px solid #ddd; /* Gray border */
+  border-radius: 4px;  /* Rounded border */
+  padding: 5px; /* Some padding */
+  width: 150px; /* Set a small width */
+}
+.image-thumbnail:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+/*=================== text ===================*/
+h1.qa {
+  font-weight: lighter;
+  font-size: 1em;
+}
+
+#searchQuestion {
+  height: 3em;
+  border-color: #525152;
+  border-radius: 0px;
+  border-width: thin;
+  vertical-align: baseline;
+}
+
+::placeholder {
+  font-weight: 8em;
+  font-size: 1.3em;
+  vertical-align: text-bottom;
+}
+
+.question > h3,
+.A {
+  font-weight: 3em;
+  font-size: 1.2em;
+  margin: 0px 0px 0px 0px;
+}
+
+.answer-body{
+  font-weight: normal;
+  font-size: 1.1em;
+}
+
+/*=================== link ===================*/
+.timeStamp,
+.reportLink {
+  font-weight: 0.4em;
+  font-size: 1em;
+  color: #606160;
+}
+
+.helpful,
+.helpfulLink {
+  font-weight: normal;
+  font-size: 1em;
+}
+
+a {
+  color:  #525152;
+}
+
+/*=================== margin ===================*/
+h1.qa {
+  margin: 10px 0px 10px 0px;
+}
+
+.search-bar {
+  margin: 10px 0px 10px 0px;
+}
+
+#searchQuestion {
+  vertical-align: baseline;
+}
+
+#container-qa > div {
+  margin: 10px 0px 0px 0px;
+}
+
+.container-question-answer {
+  margin: 10px 0 10px 0;
+}
+
+.container-question-answer div {
+  margin: 5px 0px 5px 0px;
+}
+
+.question {
+  margin: 5px 0px 5px 0px;
+}
+
+div .answer {
+  margin: 5px 0px 5px 0px;
+  padding: 5px 0px 5px 0px;
+}
+
+/*=================== button ===================*/
+.btn-container button {
+  border-color: #525152;
+  border-radius: 0px;
+  padding: 10px 10px 10px 10px;
+  margin: 0px 10px 0px 0px;
+  border-width: thin;
+
+  font-weight: bold;
+  font-size: 1.2em;
+
+  background-color: white;
+  color:  #525152;
+  cursor: pointer;
+}
+
+.load-more-answer {
+  margin: 10px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+
+  border: none;
+
+  text-align: left;
+  font-weight: bold;
+  font-size: 1em;
+
+  background-color: white;
+  color:  #525152;
+  cursor: pointer;
+}
+
+/*=================== Form ===================*/
+.warning {
+  color: red;
+}
+#submitMessage {
+  color: Green;
+  text-align: center;
+}
+
+form div {
+  margin: 10px 0px 10px 0px;
+}
+
+form h3 {
+  margin: 10px 0px 10px 0px;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+form h4 {
+  margin: 10px 0px 20px 0px;
+  font-weight: bold;
+  font-size: 1.4em;
+  text-align: center;
+}
+
+form label {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 10%;
+}
+
+form > #email {
+  font-size: 1.2em;
+}
+
+input[type=email] {
+  padding: 5px 5px 5px 5px;
+
+}
+
+form input[type=submit] {
+  padding: 10px 10px 10px 10px;
+  font-size: 1.2em;
+  background-color: #e5e5e3;
+  border-width: thin;
+  border-color: #525152;
+  color: #525152;
+  border-radius: 0px;
+  position: absolute;
+  left: 90%;
+}
+
+form input[type=submit]:hover {
+  background-color: #525152;
+  color: #e5e5e3;
+  border-color: #e5e5e3;
+}
+
+form input[type=file] {
+  font-size: 1em;
+}

@@ -6,7 +6,7 @@ const {promisify} = require('util');
 dotenv.config();
 // Uncomment if got error related to .env Here.
 // dotenv.config({ debug: true });
-console.log('process.env', process.env);
+// console.log('process.env', process.env);
 
 const region = 'ap-southeast-1';
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
