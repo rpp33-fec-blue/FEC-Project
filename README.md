@@ -11,13 +11,13 @@
 ## Overview
 Main features include:
 - **Product Overview**__
-![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/product-overview.mp4)
+![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/product-overview.gif)
 
 - **Related products**__
-![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/Related-+product.mp4)
+![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/related-products.gif)
 
 - **Questions & Answers**__
-![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/qacomponent.mp4)
+![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/questions-answers.gif)
 
 ## Getting started
 1. npm install
