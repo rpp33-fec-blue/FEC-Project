@@ -42,9 +42,17 @@ npm run react-dev
 ```
 
 ## API reference - Connecting to Your shopping cart server
-Here are end points that you need to have:
-**GET /products**
-Responses: <br />
+Here are end points that you need to have: <br />
+**GET /products** <br />
+Sample Request: <br />
+```
+#axios.get( `/products/${productId}`, {
+  params: {
+    product_id: productId
+  }
+} );
+```
+Sample responses: <br />
 ```
 #[
   {
@@ -57,7 +65,17 @@ Responses: <br />
     },
 ```
 **GET /qa/questions**
-Responses: <br />
+Sample Request: <br />
+```
+#axios.get( '/qa/questions', {
+  params: {
+    product_id: productId,
+    page: 1,
+    count: 100
+  }
+} )
+```
+Sample responses: <br />
 ```
 #{
   "product_id": "5",
