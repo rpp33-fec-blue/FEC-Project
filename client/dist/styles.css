@@ -373,7 +373,7 @@ ul li::before {
 .card-list-holder {
   overflow-x: hidden;
   overflow-y: hidden;
-  height: 40%;
+  height: 31vh;
   width: 100%;
 }
 
