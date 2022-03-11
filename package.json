@@ -46,6 +46,7 @@
     "@gfx/zopfli": "^1.0.15",
     "aws-sdk": "^2.1081.0",
     "babel-loader": "^8.2.3",
+    "brotli-webpack-plugin": "^1.1.0",
     "compression": "^1.7.4",
     "compression-webpack-plugin": "^9.2.0",
     "enzyme": "^3.11.0",
