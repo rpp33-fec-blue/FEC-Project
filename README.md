@@ -10,12 +10,14 @@
 
 ## Overview
 Main features include:
-- Product Overview
+- **Product Overview**__
+![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/product-overview.mp4)
 
-- Related products
-- Your outfit lists
-- Questions & Answers
-![Alt Text](http://g.recordit.co/gkf5HVEIgM.gif)
+- **Related products**__
+![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/Related-+product.mp4)
+
+- **Questions & Answers**__
+![Alt Text](https://atelier-answers-photo.s3.ap-southeast-1.amazonaws.com/qacomponent.mp4)
 
 ## Getting started
 1. npm install
