@@ -1,6 +1,8 @@
 # FEC-Project
 
-:shopping_cart: Modern E-Commerce website in javascript :shopping_cart:
+:shopping_cart: Modern E-Commerce website in javascript :shopping_cart:<br />
+:shopping_cart: Utilize React and Redux on client side :shopping_cart:<br />
+:shopping_cart: Utilize Express and aws s3 for server and storage :shopping_cart:<br />
 
 ## Table of Contents
 - Main features
