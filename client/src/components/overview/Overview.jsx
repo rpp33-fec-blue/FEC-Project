@@ -8,6 +8,7 @@ import ProductOverview from './ProductOverview.jsx';
 import ProductFeatures from './ProductFeatures.jsx';
 import AddToCartButton from './AddToCartButton.jsx';
 import ErrorBoundary from '../ErrorBoundary.jsx';
+import postInteraction from '../../interactions.js';
 
 class Overview extends React.Component {
 
@@ -50,6 +51,7 @@ class Overview extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.updateOutOfStock = this.updateOutOfStock.bind(this);
     this.updateAddToCartClicked = this.updateAddToCartClicked.bind(this);
+    this.trackInteractions = this.trackInteractions.bind(this);
   }
 
   updateSelectedStyle(event) {
@@ -109,10 +111,14 @@ class Overview extends React.Component {
     this.setState( { addToCartClicked: true } );
   }
 
+  trackInteractions(event) {
+    postInteraction(event, 'Overview');
+  }
+
   render() {
     return (
       <ErrorBoundary component={'Overview'}>
-        <div className='item-widget-overview'>
+        <div className='item-widget-overview' onClick={this.trackInteractions}>
           <div className='overview-container'>
             <div className='image-gallery-container'>
               <ImageGallery
