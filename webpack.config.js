@@ -1,5 +1,6 @@
 var path = require('path');
-const BrotliPlugin = require('brotli-webpack-plugin');
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
+// const BrotliPlugin = require('brotli-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
@@ -33,9 +34,10 @@ module.exports = {
     minimizer: [new TerserPlugin()],
   },
   plugins: [
-    new BrotliPlugin({
-      asset: '[file].br',
-      test: /\.(js)$/
+    new CompressionWebpackPlugin({
+      filename: "[file].gz",
+      algorithm: "gzip",
+      test: /\.js$/,
     })
   ]
 }
