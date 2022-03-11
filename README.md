@@ -41,10 +41,9 @@ npm run server-dev
 npm run react-dev
 ```
 
-## API reference
-**Connecting to Your shopping cart server**
+## API reference - Connecting to Your shopping cart server
 Here are end points that you need to have:
-- GET /products <br />
+**GET /products**
 Responses: <br />
 ```
 #[
@@ -57,9 +56,35 @@ Responses: <br />
         "default_price": "140"
     },
 ```
-[Link](See more API end points documents)
+**GET /qa/questions**
+Responses: <br />
+```
+#{
+  "product_id": "5",
+  "results": [{
+        "question_id": 37,
+        "question_body": "Why is this product cheaper here than other sites?",
+        "question_date": "2018-10-18T00:00:00.000Z",
+        "asker_name": "williamsmith",
+        "question_helpfulness": 4,
+        "reported": false,
+        "answers": {
+          68: {
+            "id": 68,
+            "body": "We are selling it here without any markup from the middleman!",
+            "date": "2018-08-18T00:00:00.000Z",
+            "answerer_name": "Seller",
+            "helpfulness": 4,
+            "photos": []
+            // ...
+          }
+        }
+      },
+      {
+```
+<a>See more API end points documents</a>
 
-**Connecting to s3 storage**
+## API reference - Connecting to s3 storage
 1. Create a new bucket name "atelier-answers-photo"
 2. Create a new policy for anyone to be able to putObject into the "atelier-answers-photo" bucket.
 3. Create a new user and apply above policy to this new user.
