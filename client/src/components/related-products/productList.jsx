@@ -21,34 +21,29 @@ class ProductList extends React.Component {
   }
 
   buildRelatedItemsData() {
-    var apiCalls = [];
+
     var uniqueProducts = [...new Set(this.props.relatedProducts)];
     var productIdIndex = uniqueProducts.indexOf(this.props.productId);
     if (productIdIndex > -1) {
       uniqueProducts.splice(productIdIndex, 1);
     }
-    for ( var i = 0; i < uniqueProducts.length; i++ ) {
-      var productId = uniqueProducts[i];
-      apiCalls.push(axios.get( `/products/${productId}`, { params: { product_id: productId } } ));
-      apiCalls.push(axios.get( '/reviews/meta', { params: { product_id: productId } } ));
-      apiCalls.push(axios.get( `/products/${productId}/styles`, { params: { product_id: productId } } ));
-    }
 
-    Promise.all(apiCalls).then( ( results ) => {
+    axios.get('/relatedProducts', {params: {related: JSON.stringify(uniqueProducts)}})
+    .then((results) => {
       var relatedProductsArray = [];
-      for ( var call = 0; call < results.length; call+=3 ) {
-        var product = Object.assign( results[ call ].data.data, results[ call + 1 ].data.data );
+      for ( var call = 0; call < results.data.data.length; call+=3 ) {
+        var product = Object.assign( results.data.data[ call ], results.data.data[ call + 1 ] );
         var defaultFound = false;
-        for ( var style = 0; style < results[ call + 2 ].data.data.results.length; style++ ) {
-          if ( results[ call + 2 ].data.data.results[ style ]['default?'] ) {
-            product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ style ] } );
+        for ( var style = 0; style < results.data.data[ call + 2 ].results.length; style++ ) {
+          if ( results.data.data[ call + 2 ].results[ style ]['default?'] ) {
+            product = Object.assign( product, { styles: results.data.data[ call + 2 ].results[ style ] } );
             defaultFound = true;
             break;
           }
         }
 
         if ( !defaultFound ) {
-          product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ 0 ] } );
+          product = Object.assign( product, { styles: results.data.data[ call + 2 ].results[ 0 ] } );
         }
 
         relatedProductsArray.push( product );
