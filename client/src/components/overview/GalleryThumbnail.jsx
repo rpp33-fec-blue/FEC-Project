@@ -12,7 +12,7 @@ const GalleryThumbnail = ({ styles, index, selectedStyleIndex, selectedImageInde
       <ErrorBoundary component={'GalleryThumbnail'}>
         <div className='gallery-thumbnail-component'>
           <img src={images[index].thumbnail_url} className='gallery-thumbnail' alt='thumbnail of main image'></img>
-          <span className='horizontal-bar' alt='horizontal bar'>&#95;</span>
+          <span className='horizontal-bar' alt='horizontal bar'>&#8213;</span>
         </div>
       </ErrorBoundary>
     );

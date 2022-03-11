@@ -37,7 +37,7 @@ class Overview extends React.Component {
       selectedStyleIndex: defaultStyleIndex || 0,
       selectedImageIndex: 0,
       sku: null,
-      sizeSelected: 'Select Size',
+      sizeSelected: 'SELECT SIZE',
       quantitySelected: 0,
       outOfStock: outOfStockBool,
       addToCartClicked: false
@@ -62,9 +62,9 @@ class Overview extends React.Component {
       }
     }
     if (outOfStock) {
-      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: true, addToCartClicked: false });
+      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'SELECT SIZE', quantitySelected: 0, outOfStock: true, addToCartClicked: false });
     } else {
-      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: false, addToCartClicked: false });
+      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'SELECT SIZE', quantitySelected: 0, outOfStock: false, addToCartClicked: false });
     }
   }
 
@@ -142,7 +142,7 @@ class Overview extends React.Component {
                 handleAddCart={this.props.handleAddCart}
                 sku={this.state.sku}
                 sizeSelected={this.state.sizeSelected}
-                quantitySelected={this.state.quantitySelected}
+                quantitySelected={this.state.quantitySelected.toString()}
                 updateSizeSelectedAndSku={this.updateSizeSelectedAndSku}
                 updateQuantitySelected={this.updateQuantitySelected}
                 addToCart={this.addToCart}

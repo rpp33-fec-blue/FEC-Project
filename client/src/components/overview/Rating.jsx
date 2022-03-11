@@ -26,7 +26,7 @@ const Rating = ({ metadata }) => {
     return (
       <ErrorBoundary component={'Rating'}>
         <div className='rating-component bottom-20px'>
-          <ReviewStars ratings={metadata.ratings} /> <a className='overview-text rating-link' href='#'>Read all {numberOfRatings} reviews</a>
+          <ReviewStars ratings={metadata.ratings} /> <a className='rating-text' href='#'>Read all {numberOfRatings} reviews</a>
         </div>
       </ErrorBoundary>
     );

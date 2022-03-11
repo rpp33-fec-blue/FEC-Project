@@ -9,7 +9,7 @@ const ProductOverview = ({ productInfo }) => {
     <ErrorBoundary>
       <div className='productOverview-component'>
         <div className='l700-font'>{productInfo.slogan}</div>
-        <p>{productInfo.description}</p>
+        <p className='overview-text'>{productInfo.description}</p>
       </div>
     </ErrorBoundary>
   );
