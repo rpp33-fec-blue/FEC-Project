@@ -11,7 +11,7 @@ module.exports = {
 
   output: {
     path: `${path.join( __dirname, 'client/dist' )}`,
-    filename: 'bundle1.js'
+    filename: 'bundle.js'
   },
   module: {
     rules: [

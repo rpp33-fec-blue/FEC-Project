@@ -16,7 +16,6 @@ class OutfitList extends React.Component {
   }
 
   buildOutfitList() {
-    var apiCalls = [];
 
     if (this.props.outfit.lenght === this.state.items.length) {
       this.isReady = true;
@@ -25,31 +24,25 @@ class OutfitList extends React.Component {
       });
     }
 
-    for (var i = 0; i < this.props.outfit.length; i++) {
-      var productId = this.props.outfit[i];
-      apiCalls.push(axios.get(`/products/${productId}`, {params: {product_id: productId}} ));
-      apiCalls.push(axios.get('/reviews/meta', {params: {product_id: productId}} ));
-      apiCalls.push(axios.get(`/products/${productId}/styles`, {params: {product_id: productId}} ));
-    }
-
-    Promise.all(apiCalls).then((results) => {
+    axios.get('/relatedProducts', {params: {related: JSON.stringify(this.props.outfit)}})
+    .then((results) => {
       var outfitArray = [];
-      for (var call = 0; call < results.length; call+=3) {
-        var product = Object.assign(results[call].data.data, results[call + 1].data.data);
+      for ( var call = 0; call < results.data.data.length; call+=3 ) {
+        var product = Object.assign( results.data.data[ call ], results.data.data[ call + 1 ] );
         var defaultFound = false;
-        for (var style = 0; style < results[call + 2].data.data.results.length; style++) {
-          if (results[call + 2].data.data.results[style]['default?']) {
-            product = Object.assign(product, {styles: results[call + 2].data.data.results[style]});
+        for ( var style = 0; style < results.data.data[ call + 2 ].results.length; style++ ) {
+          if ( results.data.data[ call + 2 ].results[ style ]['default?'] ) {
+            product = Object.assign( product, { styles: results.data.data[ call + 2 ].results[ style ] } );
             defaultFound = true;
             break;
           }
         }
 
-        if (!defaultFound) {
-          product = Object.assign(product, {styles: results[call + 2].data.data.results[0]});
+        if ( !defaultFound ) {
+          product = Object.assign( product, { styles: results.data.data[ call + 2 ].results[ 0 ] } );
         }
 
-        outfitArray.push(product);
+        outfitArray.push( product );
       }
 
       this.isReady = true;
