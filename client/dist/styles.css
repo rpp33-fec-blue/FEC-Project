@@ -119,8 +119,8 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   font-weight: bolder;
   font-size: 1.6vmin;
   margin: auto;
-  padding-top: 12px;
-  padding-left: 12px;
+  padding-top: .5vw;
+  padding-left: .5vw;
   height: 3vh;
 }
 
