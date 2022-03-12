@@ -19,6 +19,17 @@ var startClusters = () => {
   }
 }
 
+var cacheHeader = {
+  etag: true, // Just being explicit about the default.
+  lastModified: true,  // Just being explicit about the default.
+  setHeaders: (res, path) => {
+    if (path.endsWith('.html')) {
+      // All of the project's HTML files end in .html
+      res.setHeader('Cache-Control', 'no-cache');
+    }
+  },
+}
+
 var handleWorkerStopping = () => {
   cluster.on( 'exit', ( worker, code, signal ) => {
     console.log(`Worker ${worker.process.pid} went offline`);
@@ -28,8 +39,8 @@ var handleWorkerStopping = () => {
 }
 
 var applyMiddleware = () => {
-  app.use(express.static('client/dist'));
-  app.use('/product/*', express.static('client/dist'));
+  app.use(express.static('client/dist', cacheHeader));
+  app.use('/product/*', express.static('client/dist', cacheHeader));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(forms.array());
