@@ -40,14 +40,8 @@ var handleWorkerStopping = () => {
 }
 
 var applyMiddleware = () => {
-<<<<<<< HEAD
-  app.use(compression())
-  app.use(express.static('client/dist'));
-  app.use('/product/*', express.static('client/dist'));
-=======
   app.use(express.static('client/dist', cacheHeader));
   app.use('/product/*', express.static('client/dist', cacheHeader));
->>>>>>> 1f3ac4ac0572eafdfb3b8cedd1b690bb99d467ed
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(forms.array());

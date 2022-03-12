@@ -1,11 +1,5 @@
 var path = require('path');
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
-<<<<<<< HEAD
-=======
-// const BrotliPlugin = require('brotli-webpack-plugin');
-// const CssMinimizerPlugin = require("css-minimizer-webpack-plugin"); // doesn't improve performance
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // doesn't improve performance
->>>>>>> 1f3ac4ac0572eafdfb3b8cedd1b690bb99d467ed
 const TerserPlugin = require('terser-webpack-plugin');
 
 
@@ -17,7 +11,7 @@ module.exports = {
 
   output: {
     path: `${path.join( __dirname, 'client/dist' )}`,
-    filename: 'bundle.js'
+    filename: 'bundle1.js'
   },
   module: {
     rules: [
