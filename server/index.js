@@ -40,8 +40,8 @@ var applyMiddleware = () => {
 
 var sendCompressedBundle = () => {
   app.get('*.js', (req, res, next) => {
-    req.url = req.url + '.gz';
-    res.set('Content-Encoding', 'gzip');
+    req.url = req.url + '.br';
+    res.set('Content-Encoding', 'br');
     res.set('Content-Type', 'application/javascript; charset=UTF-8');
     next();
   });
