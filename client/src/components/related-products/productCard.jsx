@@ -26,7 +26,7 @@ class ProductCard extends React.Component {
     if ( this.props.item.styles ) {
       var photoSource = this.props.item.styles.photos[0].thumbnail_url;
       if ( photoSource !== null ) {
-       photo = <img className='card-info card-photo' src={photoSource} loading="lazy" onClick={this.cardClicked}></img>
+       photo = <img className='card-info card-photo' src={photoSource} alt={'Photo of ' & this.props.item.name} loading="lazy" onClick={this.cardClicked}></img>
       }
     }
 
