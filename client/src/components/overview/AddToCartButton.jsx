@@ -9,7 +9,7 @@ const AddToCartButton = ({ outOfStock, sizeSelected, addToCart, updateAddToCartC
     return (
       <ErrorBoundary component={'AddToCartButton'}>
         <div className='addToCartButton-component'>
-          <button className='add-to-cart-button' hidden disabled>Add To Cart</button>
+          <button className='add-to-cart-button overview-text' hidden disabled>ADD TO BAG</button>
         </div>
       </ErrorBoundary>
     );
@@ -17,7 +17,7 @@ const AddToCartButton = ({ outOfStock, sizeSelected, addToCart, updateAddToCartC
     return (
       <ErrorBoundary component={'AddToCartButton'}>
         <div className='addToCartButton-component'>
-          <button className='add-to-cart-button' onClick={updateAddToCartClicked}>Add To Cart</button>
+          <button className='add-to-cart-button overview-text' onClick={updateAddToCartClicked}>ADD TO BAG</button>
         </div>
       </ErrorBoundary>
     );
@@ -25,7 +25,7 @@ const AddToCartButton = ({ outOfStock, sizeSelected, addToCart, updateAddToCartC
     return (
       <ErrorBoundary component={'AddToCartButton'}>
         <div className='addToCartButton-component'>
-          <button className='add-to-cart-button' onClick={addToCart}>Add To Cart</button>
+          <button className='add-to-cart-button overview-text' onClick={addToCart}>ADD TO BAG</button>
         </div>
       </ErrorBoundary>
     );

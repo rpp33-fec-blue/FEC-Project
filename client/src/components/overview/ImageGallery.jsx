@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import statePropTypes from '../prop-types.js';
 import DefaultView from './DefaultView.jsx';
-import ExpandedView from './ExpandedView.jsx';
 import ErrorBoundary from '../ErrorBoundary.jsx';
 
 class ImageGallery extends React.Component {

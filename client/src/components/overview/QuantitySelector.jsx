@@ -46,7 +46,7 @@ QuantitySelector.propTypes = {
   selectedStyleIndex: PropTypes.number,
   sku: PropTypes.string,
   sizeSelected: PropTypes.string,
-  quantitySelected: PropTypes.number,
+  quantitySelected: PropTypes.string,
   updateQuantitySelected: PropTypes.func
 };
 

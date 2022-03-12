@@ -8,6 +8,7 @@ import ProductOverview from './ProductOverview.jsx';
 import ProductFeatures from './ProductFeatures.jsx';
 import AddToCartButton from './AddToCartButton.jsx';
 import ErrorBoundary from '../ErrorBoundary.jsx';
+import postInteraction from '../../interactions.js';
 
 class Overview extends React.Component {
 
@@ -37,7 +38,7 @@ class Overview extends React.Component {
       selectedStyleIndex: defaultStyleIndex || 0,
       selectedImageIndex: 0,
       sku: null,
-      sizeSelected: 'Select Size',
+      sizeSelected: 'SELECT SIZE',
       quantitySelected: 0,
       outOfStock: outOfStockBool,
       addToCartClicked: false
@@ -50,6 +51,7 @@ class Overview extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.updateOutOfStock = this.updateOutOfStock.bind(this);
     this.updateAddToCartClicked = this.updateAddToCartClicked.bind(this);
+    this.trackInteractions = this.trackInteractions.bind(this);
   }
 
   updateSelectedStyle(event) {
@@ -62,9 +64,9 @@ class Overview extends React.Component {
       }
     }
     if (outOfStock) {
-      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: true, addToCartClicked: false });
+      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'SELECT SIZE', quantitySelected: 0, outOfStock: true, addToCartClicked: false });
     } else {
-      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'Select Size', quantitySelected: 0, outOfStock: false, addToCartClicked: false });
+      this.setState({ selectedStyleIndex: newSelectedStyleIndex, sku: null, sizeSelected: 'SELECT SIZE', quantitySelected: 0, outOfStock: false, addToCartClicked: false });
     }
   }
 
@@ -109,10 +111,14 @@ class Overview extends React.Component {
     this.setState( { addToCartClicked: true } );
   }
 
+  trackInteractions(event) {
+    postInteraction(event, 'Overview');
+  }
+
   render() {
     return (
       <ErrorBoundary component={'Overview'}>
-        <div className='item-widget-overview'>
+        <div className='item-widget-overview' onClick={this.trackInteractions}>
           <div className='overview-container'>
             <div className='image-gallery-container'>
               <ImageGallery
@@ -142,7 +148,7 @@ class Overview extends React.Component {
                 handleAddCart={this.props.handleAddCart}
                 sku={this.state.sku}
                 sizeSelected={this.state.sizeSelected}
-                quantitySelected={this.state.quantitySelected}
+                quantitySelected={this.state.quantitySelected.toString()}
                 updateSizeSelectedAndSku={this.updateSizeSelectedAndSku}
                 updateQuantitySelected={this.updateQuantitySelected}
                 addToCart={this.addToCart}

@@ -7,12 +7,15 @@ const GalleryThumbnail = ({ styles, index, selectedStyleIndex, selectedImageInde
 
   const images = styles.results[selectedStyleIndex].photos;
 
+  var src = images[index].thumbnail_url;
+  var srcSmaller = src.slice(0, -8) + '100&q=50';
+
   if (index === selectedImageIndex) {
     return (
       <ErrorBoundary component={'GalleryThumbnail'}>
         <div className='gallery-thumbnail-component'>
-          <img src={images[index].thumbnail_url} className='gallery-thumbnail' alt='thumbnail of main image'></img>
-          <span className='horizontal-bar' alt='horizontal bar'>&#95;</span>
+          <img src={srcSmaller} className='gallery-thumbnail' alt='thumbnail of main image'></img>
+          <span className='horizontal-bar' alt='horizontal bar'>&#8213;</span>
         </div>
       </ErrorBoundary>
     );
@@ -20,7 +23,7 @@ const GalleryThumbnail = ({ styles, index, selectedStyleIndex, selectedImageInde
     return (
     <ErrorBoundary component={'GalleryThumbnail'}>
       <div className='gallery-thumbnail-component'>
-        <img src={images[index].thumbnail_url} className='gallery-thumbnail' onClick={updateSelectedImageIndex} value={index} alt='thumbnail of other image'></img>
+        <img src={srcSmaller} className='gallery-thumbnail' onClick={updateSelectedImageIndex} value={index} alt='thumbnail of other image'></img>
       </div>
     </ErrorBoundary>
     );
