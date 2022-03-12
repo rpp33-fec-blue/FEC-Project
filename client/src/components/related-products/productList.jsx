@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCard from './productCard.jsx';
 import Comparison from './comparison.jsx';
+import LoadingCard from './loadingCard.jsx';
 import _ from 'underscore';
 import $ from 'jquery';
 
@@ -138,7 +139,9 @@ class ProductList extends React.Component {
 
     if (!this.isReady || this.productId !== this.props.productId) {
       this.buildRelatedItemsData();
-      return null;
+      return (
+        <LoadingCard />
+      )
     }
 
     var productCards = this.state.items.map( ( item, index ) => {
