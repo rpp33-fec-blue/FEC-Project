@@ -138,14 +138,14 @@ class AddAnswerComp extends React.Component {
           </div>
 
           <div>
-            <label htmlFor="answer">Your Answer:*</label>
-            <textarea
-              onChange={this.handleChange.bind(this)}
-              id="answer"
-              name="answer"
-              cols="5" rows="10"
-              required
-            ></textarea>
+            <label htmlFor="answer">Your Answer:*
+              <textarea
+                onChange={this.handleChange.bind(this)}
+                name="answer"
+                cols="5" rows="10"
+                required
+              ></textarea>
+            </label>
           </div>
 
           <div>
