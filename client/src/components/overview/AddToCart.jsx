@@ -78,7 +78,7 @@ AddToCart.propTypes = {
   handleAddCart: PropTypes.func,
   sku: PropTypes.string,
   sizeSelected: PropTypes.string,
-  quantitySelected: PropTypes.number,
+  quantitySelected: PropTypes.string,
   outOfStock: PropTypes.bool,
   updateSizeSelectedAndSku: PropTypes.func,
   updateQuantitySelected: PropTypes.func,

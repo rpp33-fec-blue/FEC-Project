@@ -20,6 +20,17 @@ var startClusters = () => {
   }
 }
 
+var cacheHeader = {
+  etag: true, // Just being explicit about the default.
+  lastModified: true,  // Just being explicit about the default.
+  setHeaders: (res, path) => {
+    if (path.endsWith('.html')) {
+      // All of the project's HTML files end in .html
+      res.setHeader('Cache-Control', 'no-cache');
+    }
+  },
+}
+
 var handleWorkerStopping = () => {
   cluster.on( 'exit', ( worker, code, signal ) => {
     console.log(`Worker ${worker.process.pid} went offline`);
@@ -29,9 +40,14 @@ var handleWorkerStopping = () => {
 }
 
 var applyMiddleware = () => {
+<<<<<<< HEAD
   app.use(compression())
   app.use(express.static('client/dist'));
   app.use('/product/*', express.static('client/dist'));
+=======
+  app.use(express.static('client/dist', cacheHeader));
+  app.use('/product/*', express.static('client/dist', cacheHeader));
+>>>>>>> 1f3ac4ac0572eafdfb3b8cedd1b690bb99d467ed
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(forms.array());
@@ -78,7 +94,7 @@ if ( cluster.isMaster ) {
 
     var relatedItems = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productId}/related`);
     var reviews = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?${params}`);
-    var questions = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions?${params}`);
+    var questions = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions?${params}&page=1&count=100`);
     var metadata = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?${params}`);
     var styles = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productId}/styles`);
     var productInfo = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productId}`);
@@ -102,7 +118,7 @@ if ( cluster.isMaster ) {
 
     var relatedItems = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productId}/related`);
     var reviews = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?${params}`);
-    var questions = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions?${params}`);
+    var questions = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions?${params}&page=1&count=100`);
     var metadata = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?${params}`);
     var styles = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productId}/styles`);
     var productInfo = authorizedGet(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/products/${productId}`);

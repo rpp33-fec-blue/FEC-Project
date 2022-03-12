@@ -15,15 +15,15 @@ const Price = ( { styles, selectedStyleIndex } ) => {
     return (
       <ErrorBoundary component={'Price'}>
       <div className='price-component'>
-        <p>Price: ${price}</p>
+        <p className='overview-text'>Price: ${price}</p>
       </div>
       </ErrorBoundary>
     );
   } else {
     return (
       <ErrorBoundary component={'Price'}>
-      <div className='price-component'>
-        <p><span>Price:</span> <span className="original-price">${salePrice}</span> <span>--></span> <span className="red-text">${price}</span></p>
+      <div className='price-component overview-text'>
+        <p><span className='overview-text'>Price:</span> <span className="overview-text">${salePrice}</span> <span>--></span> <span className="red-text">${price}</span></p>
       </div>
       </ErrorBoundary>
     );

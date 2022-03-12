@@ -17,6 +17,7 @@ global.document = window.document;
 
 describe('<AddQuestion>', () => {
   var questions = initialState.questions;
+
   var addQuestion = mount(<Provider store={store}> <AddQuestion productId="64620" productName="Camo Onesie" questions={questions}/> </Provider>);
   it ('should have prop productId equal to initial state in store', () => {
     expect(addQuestion.find(AddQuestion).prop('productId')).toEqual("64620")
@@ -28,7 +29,7 @@ describe('<AddQuestion>', () => {
     expect(addQuestion.find(AddQuestion).prop('questions')).toEqual(questions);
   })
 
-  // console.log(addQuestion.debug());
+  console.log(addQuestion.debug());
   it('should have form with id overlay-addQuestion', () => {
     expect(addQuestion.find('#overlay-addQuestion')).toHaveLength(1);
     expect(addQuestion.find('form')).toHaveLength(1);

@@ -35,6 +35,7 @@ html, body {
 .item-widget-review {
   grid-column: 2 / span 1;
   grid-row: 5 / span 1;
+  margin-top: 1vw;
 }
 
 /*===================== Overlays effect =========================*/
@@ -109,6 +110,7 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   grid-row: 1 / span 1;
   align-items: center;
   margin: 0;
+  height: 5.4vw;
 }
 
 .item-widget-logo > h5 {
@@ -117,14 +119,18 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   font-weight: bolder;
   font-size: 1.6em;
   margin: auto;
-  padding: 28px 10px 28px 28px;
-
+  height: 3vw;
 }
 
 .item-widget-logo > p {
-  padding-left: 10px;
   text-align: center;
-  margin: 10px 0 10px 0;
+}
+
+.banner {
+  font-size: 0.6vw;
+  margin: 0;
+  height: 2vw;
+  padding-top: 0.4vw;
 }
 /*========================== Overview ==========================*/
 
@@ -134,23 +140,27 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 .red-text {
   color: red;
+  font-size: 1.4vmin;
 }
 
 .overview-container {
   display: grid;
   grid-template-columns: 60% 40%;
-  margin-top: 40px;
+  margin-top: 1vw;
 }
 
 .image-gallery-container {
   grid-column: 1;
   grid-row: 1;
+  width: 31vw;
+  height: 25vw;
 }
 
 .summary-container {
   grid-column: 2;
   grid-row: 1;
-  padding: 40px 0px 0px 50px;
+  margin-left: 3vw;
+  margin-top: 1.2vw;
 }
 
 .product-overview-container {
@@ -161,18 +171,20 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 
 .product-features-container {
   grid-column: 2;
-  grid-row: 2
+  grid-row: 2;
+  margin-left: 3vw;
+  border-left: solid 0.12vw;
 }
 
 .default-view-component {
-  width: 100%;
-  height: 1000px;
   position: relative;
+  width: 31vw;
+  height: 25vw;
 }
 
 .main-image {
-  width: 100%;
-  height: 1000px;
+  width: 31vw;
+  height: 25vw;
   object-fit: cover;
 }
 
@@ -181,38 +193,41 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
 }
 
 .gallery-thumbnail {
-  width: 90px;
-  height: 90px;
-  margin: 10px 0px;
-  border: solid black 1px;
+  width: 2.8vw;
+  height: 2.8vw;
+  margin: 0.05vw 0vw;
+  border: solid black 0.07vw;
 }
 
 .left-scroll-arrow, .right-scroll-arrow {
-  width: 50px;
-  height: 50px;
-  box-shadow: #818181;
-  font-size: 350%;
+  font-size:2vw;
+  color: black;
+}
+
+.left-scroll-arrow:hover, .right-scroll-arrow:hover {
+  cursor: default;
+  color: white;
 }
 
 .right-scroll-arrow {
   position: absolute;
-  top: 500px;
-  right: 75px;
+  top: 12vw;
+  right: 1vw;
 }
 
 .left-scroll-arrow {
   position: absolute;
-  top: 500px;
-  left: 175px;
+  top: 12vw;
+  left: 5vw;
 }
 
 .gallery-browser-component {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 1vw;
+  left: 0.8vw;
   display: flex;
   flex-direction: column;
-  height: 820px;
+  height: 90%;
   overflow: hidden;
 }
 
@@ -220,79 +235,77 @@ form.overlay-bg a:hover, form.overlay-bg a:focus {
   display: flex;
   flex-wrap: wrap;
   align-content: space-evenly;
-  width: 450px;
-  margin-bottom: 50px;
+  width: 100%;
+  margin-top: 1vw;
 }
 
 .style-thumbnail {
-  height: 90px;
-  width: 90px;
+  margin: 0.1vw 0.3vw;
   object-fit: cover;
-  margin: 5px 5px;
   border-radius: 50%;
-  border: solid 1px;
+  border: solid 0.07vw;
   border-color: black;
+  height: 3vw;
+  width: 3vw;
 }
 
 .style-thumbnail-container {
   position: relative;
-  margin-right: 8px;
 }
 
 .size-selector {
-  height: 50px;
-  width: 250px;
-  border: solid black 1px;
+  height: 2vw;
+  width: 10vw;
+  border: solid black 0.07vw;
+  text-indent: 0.5vw;
 }
 
 .quantity-selector {
-  height: 50px;
-  width: 150px;
-  border: solid black 1px;
+  height: 2vw;
+  width: 5vw;
+  border: solid black 0.07vw;
 }
 
 .size-quantity-selectors {
   display: flex;
-  margin-top: 20px;
+  margin-top: 1vw;
 }
 
 .quantitySelector-component {
-  margin-left: 25px;
+  margin-left: 1vw;
 }
 
 .add-toggle {
   display: flex;
-  margin-top: 20px;
-}
-
-.addToCartButton-component {
-  width: 300px;
-  height: 50px;
+  margin-top: 0.8vw;
 }
 
 .add-to-cart-button {
-  height: 50px;
-  width: 300px;
+  height: 2vw;
+  width: 12vw;
   background-color: white;
-  border: solid black 1px;
+  border: solid black 0.07vw;
+  text-align: left;
+  text-indent: 0.5vw;
 }
 
 .outfit-button {
-  font-size: 200%;
-  height: 50px;
-  width: 100px;
-  margin-left: 25px;
+  font-size: 1.3vw;
+  height: 2vw;
+  width: 3vw;
+  margin-left: 1vw;
   background-color: white;
-  border: black solid 1px;
+  border: black solid 0.07vw;
 }
 
 ul {
   list-style: none;
+  padding-left: 1vw;
 }
 
 ul li::before {
   content: '\2713';
-  padding-right: 15px;
+  padding-right: 0.5vw;
 }
 
 .outfit-star {
@@ -301,64 +314,98 @@ ul li::before {
 }
 
 .style-checkmark {
-  height: 20px;
-  width: 20px;
+  height: 0.7vw;
+  width: 0.7vw;
   position: absolute;
-  bottom: 80px;
-  right: 8px;
-  border: solid black 1px;
+  bottom: 2.6vw;
+  right: 0.4vw;
+  border: solid black 0.07vw;
   border-radius: 100%;
   background-color: white;
+  font-size: 0.7vw;
 }
 
 .gallery-thumbnail-component {
   position: relative;
+  top: 0vw;
 }
 
 .horizontal-bar {
-  position: absolute;
-  width: 90px;
-  left: 2px;
-  top: -52px;
-  font-size: 1000%;
+  position: relative;
+  width: 5vw;
+  left: -3.5vw;
+  top: 1.3vw;
+  font-size: 4vw;
   color: black;
 }
 
 .l700-font {
-  font-size: large;
-  font-weight: 700;
+  font-size: 1.4vmin;
+  font-weight: bolder;
 }
 
 .large-font {
-  font-size: large;
+  font-size: 1.4vmin;
+  font-weight: lighter;
 }
 
 .bottom-20px {
-  margin-bottom: 20px;
+  margin-bottom: 0.7vw;
 }
 
 .bottom-10px {
-  margin-bottom: 10px
+  margin-bottom: 0.3vw;
 }
 
 .productOverview-component, .product-features-container {
-  margin-top: 60px;
+  margin-top: 2vw;
+}
+
+.product-features-component {
+  font-size: 1.4vmin;
+  line-height: 1.6;
+  position: absolute;
 }
 
 .product-name {
-  font-size: xxx-large;
-  font-weight: 700;
-}
-
-.styleSelector-component {
-  margin-top: 20px;
+  font-size: 3vmin;
+  font-weight: bold;
 }
 
 .please-select {
   position: absolute;
   margin: -26px;
   margin-left: 4px;
+}
 
+.overview-text {
+  font-size: 1.4vmin;
+}
+
+.rating-text {
+  font-size: 1.2vmin;
+}
+
+.up-arrow, .down-arrow {
+  font-size: 1vw;
+  text-align: center;
+  color: black;
+}
+
+.up-arrow:hover, .down-arrow:hover {
+  color: white;
+}
+
+.down-arrow {
+  top: 23.8vw;
+  position: absolute;
+  left: 1.9vw;
+}
+
+.up-arrow {
+  position: absolute;
+  top: 0vw;
+  left: 1.9vw;
 }
 
 /*======================== Related items ===========60============*/
@@ -600,7 +647,7 @@ ul li::before {
   vertical-align: middle;
   display: inline-block;
   overflow: hidden;
-  width: 6.8vmin;
+  /* width: 6.8vmin; */
 }
 
 .full-stars {
@@ -703,7 +750,7 @@ h1.qa {
   vertical-align: text-bottom;
 }
 
-.question > h3,
+.question > h4,
 .A {
   font-weight: 3em;
   font-size: 1.2em;

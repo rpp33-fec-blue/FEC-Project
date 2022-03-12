@@ -44,24 +44,18 @@ class AddAnswerComp extends React.Component {
         "Content-Type": "multipart/form-data"
       }
     }
-
+    // ================ S3 start =======================
     for (var i = 0; i < this.state.images.length; i++) {
       // get secure url from the server to post the image
       var photoUrl = await axios.get('/s3Url', config)
       .then((res) => {
-        // console.log('res.data', res.data);
         return res.data;
       })
 
       var image = this.state.images[i][0];
-      // console.log('image to upload', image);
-      // console.log('photoUrl', photoUrl);
-
-      await axios.put(photoUrl, {'image': image}, config)
+      await axios.put(photoUrl, image, config)
         .then((res) => {
-
-          var imageUrlAws = photoUrl.split('?')[0] + '.jpg';
-          // console.log('aws', imageUrlAws);
+          var imageUrlAws = photoUrl.split('?')[0];
           this.setState((prevState) => {
             return {
               awsUrl: [...prevState.awsUrl, imageUrlAws]
@@ -72,6 +66,7 @@ class AddAnswerComp extends React.Component {
           console.log('err putted in aws', err);
         });
     }
+    // ================ S3 end =======================
     // send another post request to store new answers and photo
     var newAnswer = {
       "body": answer,
@@ -106,27 +101,19 @@ class AddAnswerComp extends React.Component {
 
   handleAddImage (e) {
     var files = e.target.files; //array
-    // console.log({files});
-    // console.log('file.type', files[0].type);
-
     if (this.state.imagesUrl.length === 5) {
       this.hideUploadImageButton();
     } else {
       this.showUploadImageButton();
     }
-
     this.setState((prevState) => {
-      var noOfFiles = files.length;
       var urls = [];
-      var images = []
-      for (var i = 0; i < noOfFiles; i++) {
+      for (var i = 0; i < files.length; i++) {
         urls.push(URL.createObjectURL(files[i]));
-        images.push(files[i]);
       };
-
       return {
         imagesUrl: [...prevState.imagesUrl, urls],
-        images: [...prevState.images, images],
+        images: [...prevState.images, files],
       };
     })
   }
@@ -193,11 +180,11 @@ class AddAnswerComp extends React.Component {
             <br />
             <div className="warning"> For authentication reasons, you will not be emailed </div>
           </div>
-
+          <br />
+          <label htmlFor={`answerphotoForQuestionId${this.props.questionId}`}> Add photo here:</label>
           <br />
             {thumbnails}
           <br />
-
           <input
             type="file"
             id={`answerphotoForQuestionId${this.props.questionId}`}
@@ -210,7 +197,7 @@ class AddAnswerComp extends React.Component {
           <input type="submit" name="submit" value="SUBMIT" />
 
           <br />
-          
+
           <h1 id="submitMessage">{this.state.submitMessage}</h1>
 
         </div>
