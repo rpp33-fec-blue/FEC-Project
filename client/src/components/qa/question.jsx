@@ -70,7 +70,7 @@ class Question extends React.Component {
     return (
       <div className="container-question-answer">
         <div className="question">
-          <h3>Q: {body}</h3>
+          <h4>Q: {body}</h4>
 
         {answers}
         </div>

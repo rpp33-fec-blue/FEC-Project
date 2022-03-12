@@ -181,7 +181,7 @@ class AddAnswerComp extends React.Component {
             <div className="warning"> For authentication reasons, you will not be emailed </div>
           </div>
           <br />
-          <label htmlFor="answerphoto"> Add photo here:</label>
+          <label htmlFor={`answerphotoForQuestionId${this.props.questionId}`}> Add photo here:</label>
           <br />
             {thumbnails}
           <br />

@@ -1,6 +1,8 @@
 var path = require('path');
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 // const BrotliPlugin = require('brotli-webpack-plugin');
+// const CssMinimizerPlugin = require("css-minimizer-webpack-plugin"); // doesn't improve performance
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // doesn't improve performance
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
