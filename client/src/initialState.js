@@ -1,6 +1,6 @@
 var initialState = {
     isLoading: true,
-    productId: "64620",
+    productId: 64620,
     productInfo: {
         "id": 64620,
         "campus": "hr-rpp",

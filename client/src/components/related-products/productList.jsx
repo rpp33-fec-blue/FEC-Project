@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCard from './productCard.jsx';
 import Comparison from './comparison.jsx';
+import LoadingCard from './loadingCard.jsx';
 import _ from 'underscore';
 import $ from 'jquery';
 
@@ -21,34 +22,29 @@ class ProductList extends React.Component {
   }
 
   buildRelatedItemsData() {
-    var apiCalls = [];
+
     var uniqueProducts = [...new Set(this.props.relatedProducts)];
     var productIdIndex = uniqueProducts.indexOf(this.props.productId);
     if (productIdIndex > -1) {
       uniqueProducts.splice(productIdIndex, 1);
     }
-    for ( var i = 0; i < uniqueProducts.length; i++ ) {
-      var productId = uniqueProducts[i];
-      apiCalls.push(axios.get( `/products/${productId}`, { params: { product_id: productId } } ));
-      apiCalls.push(axios.get( '/reviews/meta', { params: { product_id: productId } } ));
-      apiCalls.push(axios.get( `/products/${productId}/styles`, { params: { product_id: productId } } ));
-    }
 
-    Promise.all(apiCalls).then( ( results ) => {
+    axios.get('/relatedProducts', {params: {related: JSON.stringify(uniqueProducts)}})
+    .then((results) => {
       var relatedProductsArray = [];
-      for ( var call = 0; call < results.length; call+=3 ) {
-        var product = Object.assign( results[ call ].data.data, results[ call + 1 ].data.data );
+      for ( var call = 0; call < results.data.data.length; call+=3 ) {
+        var product = Object.assign( results.data.data[ call ], results.data.data[ call + 1 ] );
         var defaultFound = false;
-        for ( var style = 0; style < results[ call + 2 ].data.data.results.length; style++ ) {
-          if ( results[ call + 2 ].data.data.results[ style ]['default?'] ) {
-            product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ style ] } );
+        for ( var style = 0; style < results.data.data[ call + 2 ].results.length; style++ ) {
+          if ( results.data.data[ call + 2 ].results[ style ]['default?'] ) {
+            product = Object.assign( product, { styles: results.data.data[ call + 2 ].results[ style ] } );
             defaultFound = true;
             break;
           }
         }
 
         if ( !defaultFound ) {
-          product = Object.assign( product, { styles: results[ call + 2 ].data.data.results[ 0 ] } );
+          product = Object.assign( product, { styles: results.data.data[ call + 2 ].results[ 0 ] } );
         }
 
         relatedProductsArray.push( product );
@@ -90,8 +86,8 @@ class ProductList extends React.Component {
     if (productList.offsetWidth + productList.scrollLeft < productList.scrollWidth) {
       var scroll = setInterval(() => {
         if (count < 220 && (productList.offsetWidth + productList.scrollLeft) < productList.scrollWidth) {
-          productList.scrollLeft += 1
-          count += 1;
+          productList.scrollLeft += 2
+          count += 2;
         } else {
 
           $('.card-fade-left').show(0);
@@ -116,8 +112,8 @@ class ProductList extends React.Component {
     if (productList.scrollLeft > 0) {
       var scroll = setInterval(() => {
         if (count < 220 && productList.scrollLeft > 0) {
-          productList.scrollLeft -= 1
-          count += 1;
+          productList.scrollLeft -= 2
+          count += 2;
         } else {
           $('.card-fade-right').show(0);
           if (productList.scrollLeft === 0) {
@@ -143,7 +139,9 @@ class ProductList extends React.Component {
 
     if (!this.isReady || this.productId !== this.props.productId) {
       this.buildRelatedItemsData();
-      return null;
+      return (
+        <LoadingCard />
+      )
     }
 
     var productCards = this.state.items.map( ( item, index ) => {
