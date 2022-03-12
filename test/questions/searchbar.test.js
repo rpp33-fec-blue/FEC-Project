@@ -1,7 +1,7 @@
 var { JSDOM } = require( "jsdom" );
 
 import React from 'react';
-import SearchBar from '../../client/src/components/qa/SearchBar.jsx';
+import SearchBar from '../../client/src/components/qa/searchbar.jsx';
 import initialState from '../../client/src/initialState.js'
 import {shallow, mount} from 'enzyme';
 

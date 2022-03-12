@@ -40,20 +40,19 @@ jobs:
       - checkout
       - run: npm install
       # Need to find out how to store github token in the github first!!
-      # - run: npm run server-dev
-      - run: npm run test
-      # - run: npm run test-questions
+      # - run: npm run server-dev;:
+      - run: npm run test-questions
       # - run: npm run test-api
       # - run: npm run test-redux
       # - run: npm run test-overview
       # - run: npm run test-reviews
       # - run: npm run test-related
-      
+
 
 workflows:
   version: 2
   sampleworkflowname: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
-    jobs: 
+    jobs:
       - build
       - test
