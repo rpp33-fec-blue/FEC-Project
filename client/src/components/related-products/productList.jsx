@@ -2,6 +2,8 @@ import React from 'react';
 import ProductCard from './productCard.jsx';
 import Comparison from './comparison.jsx';
 import LoadingCard from './loadingCard.jsx';
+import Scroll from './scroll.js';
+import buildProductArray from './buildProductArray.js';
 import _ from 'underscore';
 import $ from 'jquery';
 
@@ -31,24 +33,7 @@ class ProductList extends React.Component {
 
     axios.get('/relatedProducts', {params: {related: JSON.stringify(uniqueProducts)}})
     .then((results) => {
-      var relatedProductsArray = [];
-      for ( var call = 0; call < results.data.data.length; call+=3 ) {
-        var product = Object.assign( results.data.data[ call ], results.data.data[ call + 1 ] );
-        var defaultFound = false;
-        for ( var style = 0; style < results.data.data[ call + 2 ].results.length; style++ ) {
-          if ( results.data.data[ call + 2 ].results[ style ]['default?'] ) {
-            product = Object.assign( product, { styles: results.data.data[ call + 2 ].results[ style ] } );
-            defaultFound = true;
-            break;
-          }
-        }
-
-        if ( !defaultFound ) {
-          product = Object.assign( product, { styles: results.data.data[ call + 2 ].results[ 0 ] } );
-        }
-
-        relatedProductsArray.push( product );
-      }
+      var relatedProductsArray = buildProductArray(results);
 
       this.isReady = true;
       this.productId = this.props.productId;
@@ -80,53 +65,13 @@ class ProductList extends React.Component {
   }
 
   scrollRight() {
-    var count = 0;
-    var productList = document.getElementById('related-product-list');
-    $('.card-fade-left').removeClass('card-no-arrow');
-    if (productList.offsetWidth + productList.scrollLeft < productList.scrollWidth) {
-      var scroll = setInterval(() => {
-        if (count < 220 && (productList.offsetWidth + productList.scrollLeft) < productList.scrollWidth) {
-          productList.scrollLeft += 2
-          count += 2;
-        } else {
-
-          $('.card-fade-left').show(0);
-
-          if (productList.offsetWidth + productList.scrollLeft >= productList.scrollWidth) {
-            $('.card-fade-right').hide(0);
-          }
-
-          clearInterval(scroll);
-        }
-      }, 1)
-    } else {
-      $('.card-fade-left').show(0);
-      $('.card-fade-right').hide(0);
-      console.log('reached the end');
-    }
+    var scroll = new Scroll.ScrollProductList();
+    scroll.scrollRight();
   }
 
   scrollLeft() {
-    var count = 0;
-    var productList = document.getElementById('related-product-list');
-    if (productList.scrollLeft > 0) {
-      var scroll = setInterval(() => {
-        if (count < 220 && productList.scrollLeft > 0) {
-          productList.scrollLeft -= 2
-          count += 2;
-        } else {
-          $('.card-fade-right').show(0);
-          if (productList.scrollLeft === 0) {
-            $('.card-fade-left').hide(0);
-          }
-          clearInterval(scroll);
-        }
-      }, 1)
-    } else {
-      $('.card-fade-left').hide(0);
-      $('.card-fade-right').show(0);
-      console.log('reached the end!')
-    }
+    var scroll = new Scroll.ScrollProductList();
+    scroll.scrollLeft();
   }
 
   changeUrl (productId) {
