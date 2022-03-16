@@ -8,7 +8,7 @@ class LoadingCard extends React.Component {
   render() {
 
     return (
-      <div className='product-card' onClick={this.props.addToOutfit}>
+      <div className='product-card'>
         <div className='add-outfit-container'>
           <div className='default-image-color'></div>
         </div>
