@@ -13,11 +13,6 @@ class ImageGallery extends React.Component {
     this.state = {
       defaultView: true
     };
-    this.updateDefaultView = this.updateDefaultView.bind(this);
-  }
-
-  updateDefaultView(event) {
-    // TO DO
   }
 
   render() {
@@ -30,22 +25,7 @@ class ImageGallery extends React.Component {
               selectedStyleIndex={this.props.selectedStyleIndex}
               selectedImageIndex={this.props.selectedImageIndex}
               updateSelectedImageIndex={this.props.updateSelectedImageIndex}
-              updateDefaultView={this.updateDefaultView}
             />
-          </div>
-        </ErrorBoundary>
-      );
-    } else {
-      return (
-        <ErrorBoundary component={'ImageGallery'}>
-          <div className='image-gallery-component'>
-            {/* <ExpandedView
-              styles={this.props.styles}
-              selectedStyleId={this.props.selectedStyleId}
-              selectedImageIndex={this.props.selectedImageIndex}
-              updateSelectedImageIndex={this.props.updateSelectedImageIndex}
-              updateDefaultView={this.updateDefaultView}
-            /> */}
           </div>
         </ErrorBoundary>
       );

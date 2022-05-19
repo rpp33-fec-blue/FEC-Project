@@ -9,8 +9,6 @@ const GalleryBrowser = ({ styles, selectedStyleIndex, selectedImageIndex, update
 
   const images = styles.results[selectedStyleIndex].photos;
 
-
-
   const scrollDown = (event) => {
     var thumbnails = $('.gallery-thumbnail-component');
     var top = thumbnails.css('top');
@@ -18,8 +16,6 @@ const GalleryBrowser = ({ styles, selectedStyleIndex, selectedImageIndex, update
     topNumber -= 20;
     thumbnails.css('top', topNumber.toString() + 'px');
   };
-
-
 
   const scrollUp = (event) => {
     var thumbnails = $('.gallery-thumbnail-component');
