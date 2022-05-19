@@ -9,7 +9,7 @@
     "test-overview": "jest test/overview/test.js",
     "test-questions": "jest question",
     "test-reviews": "jest test/reviews/test.js",
-    "test-related": "jest test/related-products/test.js",
+    "test-related": "jest related-products",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -w"
   },
@@ -33,6 +33,7 @@
     "form-data": "^4.0.0",
     "multer": "^1.4.4",
     "prop-types": "^15.8.1",
+    "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
@@ -57,11 +58,12 @@
     "jest": "^27.4.7",
     "jquery": "^3.6.0",
     "nodemon": "^2.0.15",
-    "react": "^16.14.0",
     "redux-devtools-extension": "^2.13.9",
+    "sinon": "^13.0.1",
     "terser-webpack-plugin": "^5.3.1",
     "underscore": "^1.13.2",
     "webpack": "^5.68.0",
+    "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.2"
   },
   "jest": {

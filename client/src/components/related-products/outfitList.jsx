@@ -1,6 +1,8 @@
 import React from 'react';
 import ProductCard from './productCard.jsx';
 import AddOutfitCard from './addOutfitCard.jsx';
+import Scroll from './scroll.js';
+import buildProductArray from './buildProductArray.js';
 import $ from 'jquery';
 
 class OutfitList extends React.Component {
@@ -16,8 +18,6 @@ class OutfitList extends React.Component {
   }
 
   buildOutfitList() {
-    var apiCalls = [];
-
     if (this.props.outfit.lenght === this.state.items.length) {
       this.isReady = true;
       this.setState({
@@ -25,32 +25,9 @@ class OutfitList extends React.Component {
       });
     }
 
-    for (var i = 0; i < this.props.outfit.length; i++) {
-      var productId = this.props.outfit[i];
-      apiCalls.push(axios.get(`/products/${productId}`, {params: {product_id: productId}} ));
-      apiCalls.push(axios.get('/reviews/meta', {params: {product_id: productId}} ));
-      apiCalls.push(axios.get(`/products/${productId}/styles`, {params: {product_id: productId}} ));
-    }
-
-    Promise.all(apiCalls).then((results) => {
-      var outfitArray = [];
-      for (var call = 0; call < results.length; call+=3) {
-        var product = Object.assign(results[call].data.data, results[call + 1].data.data);
-        var defaultFound = false;
-        for (var style = 0; style < results[call + 2].data.data.results.length; style++) {
-          if (results[call + 2].data.data.results[style]['default?']) {
-            product = Object.assign(product, {styles: results[call + 2].data.data.results[style]});
-            defaultFound = true;
-            break;
-          }
-        }
-
-        if (!defaultFound) {
-          product = Object.assign(product, {styles: results[call + 2].data.data.results[0]});
-        }
-
-        outfitArray.push(product);
-      }
+    axios.get('/relatedProducts', {params: {related: JSON.stringify(this.props.outfit)}})
+    .then((results) => {
+      var outfitArray = buildProductArray(results);
 
       this.isReady = true;
       this.setState({
@@ -73,53 +50,13 @@ class OutfitList extends React.Component {
   }
 
   scrollRight() {
-    console.log('scroll right');
-    var count = 0;
-    var productList = document.getElementById('outfit-product-list');
-    $('.card-fade-left-outfit').removeClass('card-no-arrow');
-    if (productList.offsetWidth + productList.scrollLeft < productList.scrollWidth) {
-      var scroll = setInterval(() => {
-        if (count < 220 && (productList.offsetWidth + productList.scrollLeft) < productList.scrollWidth) {
-          productList.scrollLeft += 2;
-          count += 2;
-        } else {
-          $('.card-fade-left-outfit').show(0);
-          if (productList.offsetWidth + productList.scrollLeft >= productList.scrollWidth) {
-            $('.card-fade-right-outfit').hide(0);
-          }
-
-          clearInterval(scroll);
-        }
-      }, 1)
-    } else {
-      $('.card-fade-left-outfit').show(0);
-      $('.card-fade-right-outfit').hide(0);
-      console.log('reached the end');
-    }
+    var scroll = new Scroll.ScrollOutfitList();
+    scroll.scrollRight();
   }
 
   scrollLeft() {
-    console.log('scroll left');
-    var count = 0;
-    var productList = document.getElementById('outfit-product-list');
-    if (productList.scrollLeft > 0) {
-      var scroll = setInterval(() => {
-        if (count < 220 && productList.scrollLeft > 0) {
-          productList.scrollLeft -= 2;
-          count += 2;
-        } else {
-          $('.card-fade-right-outfit').show(0);
-          if (productList.scrollLeft === 0) {
-            $('.card-fade-left-outfit').hide(0);
-          }
-          clearInterval(scroll);
-        }
-      }, 1)
-    } else {
-      $('.card-fade-left-outfit').hide(0);
-      $('.card-fade-right-outfit').show(0);
-      console.log('reached the end!')
-    }
+    var scroll = new Scroll.ScrollOutfitList();
+    scroll.scrollLeft();
   }
 
   render() {

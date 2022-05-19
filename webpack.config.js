@@ -1,7 +1,7 @@
 var path = require('path');
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
-// const BrotliPlugin = require('brotli-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+
 
 module.exports = {
   mode: 'production',

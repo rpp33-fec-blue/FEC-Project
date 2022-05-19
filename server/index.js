@@ -9,6 +9,7 @@ var multer = require('multer');
 var forms = multer();
 var cors = require('cors')
 const generateUploadURL = require('./s3.js');
+var compression = require('compression')
 
 let app = express();
 let port = 8080;
@@ -17,6 +18,17 @@ var startClusters = () => {
   for ( let i = 0; i < numberOfCores; i++ ) {
     cluster.fork();
   }
+}
+
+var cacheHeader = {
+  etag: true, // Just being explicit about the default.
+  lastModified: true,  // Just being explicit about the default.
+  setHeaders: (res, path) => {
+    if (path.endsWith('.html')) {
+      // All of the project's HTML files end in .html
+      res.setHeader('Cache-Control', 'no-cache');
+    }
+  },
 }
 
 var handleWorkerStopping = () => {
@@ -28,8 +40,8 @@ var handleWorkerStopping = () => {
 }
 
 var applyMiddleware = () => {
-  app.use(express.static('client/dist'));
-  app.use('/product/*', express.static('client/dist'));
+  app.use(express.static('client/dist', cacheHeader));
+  app.use('/product/*', express.static('client/dist', cacheHeader));
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(forms.array());
