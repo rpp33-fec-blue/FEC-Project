@@ -10,14 +10,12 @@ import OutfitToggle from '../../client/src/components/overview/OutfitToggle.jsx'
 import StyleSelector from '../../client/src/components/overview/StyleSelector.jsx';
 import ImageGallery from '../../client/src/components/overview/ImageGallery.jsx';
 import DefaultView from '../../client/src/components/overview/DefaultView.jsx';
-import ExpandedView from '../../client/src/components/overview/ExpandedView.jsx';
 import AddToCart from '../../client/src/components/overview/AddToCart.jsx';
 import SizeSelector from '../../client/src/components/overview/SizeSelector.jsx';
 import QuantitySelector from '../../client/src/components/overview/QuantitySelector.jsx';
 import AddToCartButton from '../../client/src/components/overview/AddToCartButton.jsx';
 import ProductFeatures from '../../client/src/components/overview/ProductFeatures.jsx';
 import GalleryBrowser from '../../client/src/components/overview/GalleryBrowser.jsx';
-import GalleryIcon from '../../client/src/components/overview/GalleryIcon.jsx';
 import ScrollArrow from '../../client/src/components/overview/ScrollArrow.jsx';
 import StyleThumbnail from '../../client/src/components/overview/StyleThumbnail.jsx';
 
@@ -56,8 +54,6 @@ describe('Overview Component', function() {
   });
 
 });
-
-// ProductInformation and subcomponents
 
 describe('ProductInformation Component', function() {
 
@@ -178,8 +174,8 @@ describe('OutfitToggle Component', function() {
       const props = {
         productId: initialState.productId,
         outfit: initialState.outfit,
-        handleAddOutfit: () => {}, // TO DO
-        handleRemoveOutfit: () => {} // TO DO
+        handleAddOutfit: () => {},
+        handleRemoveOutfit: () => {},
       };
       wrapper = buildwrapper(props);
     });
@@ -190,8 +186,6 @@ describe('OutfitToggle Component', function() {
     });
   });
 });
-
-// StyleSelector
 
 describe('StyleSelector Component', function() {
 
@@ -207,7 +201,7 @@ describe('StyleSelector Component', function() {
       const props = {
         styles: initialState.styles,
         selectedStyleIndex: 0,
-        updateSelectedStyle: () => {} // TO DO
+        updateSelectedStyle: () => {}
       };
       wrapper = buildwrapper(props);
     });
@@ -218,8 +212,6 @@ describe('StyleSelector Component', function() {
     });
   });
 });
-
-// ImageGallery and subcomponents
 
 describe('ImageGallery Component', function() {
 
@@ -236,7 +228,7 @@ describe('ImageGallery Component', function() {
         styles: initialState.styles,
         selectedStyleIndex: 0,
         selectedImageIndex: 0,
-        updateSelectedImageIndex: () => {} // TO DO
+        updateSelectedImageIndex: () => {}
       };
       wrapper = buildwrapper(props);
     });
@@ -263,8 +255,8 @@ describe('DefaultView Component', function() {
         styles: initialState.styles,
         selectedStyleIndex: 0,
         selectedImageIndex: 0,
-        updateSelectedImageIndex: () => {},  // TO DO
-        updateSelectedStyle: () => {}, // TO DO
+        updateSelectedImageIndex: () => {},
+        updateSelectedStyle: () => {},
         updateDefaultView: () => {}
       };
       wrapper = buildwrapper(props);
@@ -276,28 +268,6 @@ describe('DefaultView Component', function() {
     });
   });
 });
-
-// describe('ExpandedView Component', function() {
-
-//   it('Should render', function() {
-//     const wrapper = shallow(<ExpandedView />);
-//     const component = wrapper.find('.expandedView-component');
-//     expect(component.length).toBe(1);
-//   });
-
-// });
-
-describe('GalleryIcon Component', function() {
-
-  it('Should render', function() {
-    const wrapper = shallow(<GalleryIcon />);
-    const component = wrapper.find('.gallery-icon-component');
-    expect(component.length).toBe(1);
-  });
-
-});
-
-// AddToCart and its subcomponents
 
 describe('AddToCart Component', function() {
 
@@ -313,15 +283,15 @@ describe('AddToCart Component', function() {
       const props = {
         selectedStyleIndex: 0,
         styles: initialState.styles,
-        handleAddCart: () => {}, // TO DO
+        handleAddCart: () => {},
         sku: null,
         sizeSelected: 'Select Size',
         quantitySelected: '-',
         outOfStock: false,
-        updateSizeSelectedAndSku: () => {}, // TO DO
-        updateQuantitySelected: () => {}, // TO DO
-        addToCart: () => {}, // TO DO
-        updateOutOfStock: () => {} // TO DO
+        updateSizeSelectedAndSku: () => {},
+        updateQuantitySelected: () => {},
+        addToCart: () => {},
+        updateOutOfStock: () => {}
       };
       wrapper = buildwrapper(props);
     });
@@ -348,8 +318,8 @@ describe('SizeSelector Component', function() {
         selectedStyleIndex: 0,
         styles: initialState.styles,
         sizeSelected: 'Select Size',
-        updateSizeSelectedAndSku: () => {}, // TO DO
-        updateOutOfStock: () => {} // TO DO
+        updateSizeSelectedAndSku: () => {},
+        updateOutOfStock: () => {}
       };
       wrapper = buildwrapper(props);
     });
@@ -378,7 +348,7 @@ describe('QuantitySelector Component', function() {
         sku: null,
         sizeSelected: 'Select Size',
         quantitySelected: '-',
-        updateQuantitySelected: () => {}, // TO DO
+        updateQuantitySelected: () => {},
       };
       wrapper = buildwrapper(props);
     });
